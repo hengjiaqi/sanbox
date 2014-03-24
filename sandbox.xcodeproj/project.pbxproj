@@ -13,6 +13,7 @@
 		23B39B8E18DD6A610098F06A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B39B8D18DD6A610098F06A /* SystemConfiguration.framework */; };
 		23BB25DC18D80B4100ED81E8 /* newUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB25DB18D80B4100ED81E8 /* newUser.m */; };
 		23BB25E518D823A000ED81E8 /* confirmPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB25E418D823A000ED81E8 /* confirmPage.m */; };
+		23F029DB18E0E391000F2BD6 /* mainPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F029DA18E0E391000F2BD6 /* mainPage.m */; };
 		23F3EB6018D6C7460075819D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23F3EB5F18D6C7460075819D /* Foundation.framework */; };
 		23F3EB6218D6C7460075819D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23F3EB6118D6C7460075819D /* CoreGraphics.framework */; };
 		23F3EB6418D6C7460075819D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23F3EB6318D6C7460075819D /* UIKit.framework */; };
@@ -51,6 +52,8 @@
 		23BB25DB18D80B4100ED81E8 /* newUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newUser.m; sourceTree = "<group>"; };
 		23BB25E318D823A000ED81E8 /* confirmPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = confirmPage.h; sourceTree = "<group>"; };
 		23BB25E418D823A000ED81E8 /* confirmPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = confirmPage.m; sourceTree = "<group>"; };
+		23F029D918E0E391000F2BD6 /* mainPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mainPage.h; path = ../mainPage.h; sourceTree = "<group>"; };
+		23F029DA18E0E391000F2BD6 /* mainPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = mainPage.m; path = ../mainPage.m; sourceTree = "<group>"; };
 		23F3EB5C18D6C7460075819D /* sandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23F3EB5F18D6C7460075819D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		23F3EB6118D6C7460075819D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -146,6 +149,8 @@
 		23F3EB6518D6C7460075819D /* sandbox */ = {
 			isa = PBXGroup;
 			children = (
+				23F029D918E0E391000F2BD6 /* mainPage.h */,
+				23F029DA18E0E391000F2BD6 /* mainPage.m */,
 				23BB25E318D823A000ED81E8 /* confirmPage.h */,
 				23BB25E418D823A000ED81E8 /* confirmPage.m */,
 				23BB25DA18D80B4100ED81E8 /* newUser.h */,
@@ -291,6 +296,7 @@
 				23F3EB6C18D6C7460075819D /* main.m in Sources */,
 				23BB25E518D823A000ED81E8 /* confirmPage.m in Sources */,
 				23F3EB9218D6C7B50075819D /* logInPage.m in Sources */,
+				23F029DB18E0E391000F2BD6 /* mainPage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
