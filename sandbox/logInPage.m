@@ -68,7 +68,7 @@ NSString *twilioNumber = @"4257287464";
     [request setURL:url];
     [request setHTTPMethod:@"POST"];
     
-    NSString *bodyString = [NSString stringWithFormat:@"From=%@&To=%@&Body=%@", twilioNumber,@"2063514366",@"fuck you man!"];
+    NSString *bodyString = [NSString stringWithFormat:@"From=%@&To=%@&Body=%@", twilioNumber,@"2066176882",@"ffuck you man!"];
     NSData *data = [bodyString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:data];
     

@@ -27,9 +27,6 @@
 		23F3EB8518D6C7460075819D /* sandboxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB8418D6C7460075819D /* sandboxTests.m */; };
 		23F3EB8F18D6C7680075819D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F3EB8E18D6C7680075819D /* Storyboard.storyboard */; };
 		23F3EB9218D6C7B50075819D /* logInPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB9118D6C7B50075819D /* logInPage.m */; };
-		BE77D4DA18E0C3D000F1A8DD /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE77D4D718E0C3D000F1A8DD /* libcrypto.a */; };
-		BE77D4DB18E0C3D000F1A8DD /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE77D4D818E0C3D000F1A8DD /* libssl.a */; };
-		BE77D4DC18E0C3D000F1A8DD /* libTwilioClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE77D4D918E0C3D000F1A8DD /* libTwilioClient.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,9 +80,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE77D4DA18E0C3D000F1A8DD /* libcrypto.a in Frameworks */,
-				BE77D4DB18E0C3D000F1A8DD /* libssl.a in Frameworks */,
-				BE77D4DC18E0C3D000F1A8DD /* libTwilioClient.a in Frameworks */,
 				23B39B8E18DD6A610098F06A /* SystemConfiguration.framework in Frameworks */,
 				23B39B8C18DD6A4C0098F06A /* CFNetwork.framework in Frameworks */,
 				23B39B8A18DD6A450098F06A /* AVFoundation.framework in Frameworks */,
@@ -420,13 +414,11 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"/Users/jake/Desktop/ios/TwilioClient-1.1.3-4598544/Headers",
 				);
 				INFOPLIST_FILE = "sandbox/sandbox-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/jake/Desktop/ios/TwilioClient-1.1.3-4598544/Libraries",
-					/Users/wuyue/Documents/IOS,
 				);
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -447,13 +439,11 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"/Users/jake/Desktop/ios/TwilioClient-1.1.3-4598544/Headers",
 				);
 				INFOPLIST_FILE = "sandbox/sandbox-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/jake/Desktop/ios/TwilioClient-1.1.3-4598544/Libraries",
-					/Users/wuyue/Documents/IOS,
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
