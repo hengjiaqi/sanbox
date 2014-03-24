@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23B39B8418DD650A0098F06A /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B39B8118DD650A0098F06A /* libcrypto.a */; };
-		23B39B8518DD650A0098F06A /* libTwilioClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B39B8218DD650A0098F06A /* libTwilioClient.a */; };
-		23B39B8618DD650A0098F06A /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B39B8318DD650A0098F06A /* libssl.a */; };
 		23B39B8818DD6A330098F06A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B39B8718DD6A330098F06A /* AudioToolbox.framework */; };
 		23B39B8A18DD6A450098F06A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B39B8918DD6A450098F06A /* AVFoundation.framework */; };
 		23B39B8C18DD6A4C0098F06A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B39B8B18DD6A4C0098F06A /* CFNetwork.framework */; };
@@ -30,6 +27,9 @@
 		23F3EB8518D6C7460075819D /* sandboxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB8418D6C7460075819D /* sandboxTests.m */; };
 		23F3EB8F18D6C7680075819D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F3EB8E18D6C7680075819D /* Storyboard.storyboard */; };
 		23F3EB9218D6C7B50075819D /* logInPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB9118D6C7B50075819D /* logInPage.m */; };
+		BE77D4DA18E0C3D000F1A8DD /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE77D4D718E0C3D000F1A8DD /* libcrypto.a */; };
+		BE77D4DB18E0C3D000F1A8DD /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE77D4D818E0C3D000F1A8DD /* libssl.a */; };
+		BE77D4DC18E0C3D000F1A8DD /* libTwilioClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE77D4D918E0C3D000F1A8DD /* libTwilioClient.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +73,9 @@
 		23F3EB8E18D6C7680075819D /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = ../Storyboard.storyboard; sourceTree = "<group>"; };
 		23F3EB9018D6C7B50075819D /* logInPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = logInPage.h; sourceTree = "<group>"; };
 		23F3EB9118D6C7B50075819D /* logInPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = logInPage.m; sourceTree = "<group>"; };
+		BE77D4D718E0C3D000F1A8DD /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = ../libcrypto.a; sourceTree = "<group>"; };
+		BE77D4D818E0C3D000F1A8DD /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = ../libssl.a; sourceTree = "<group>"; };
+		BE77D4D918E0C3D000F1A8DD /* libTwilioClient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTwilioClient.a; path = ../libTwilioClient.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,13 +83,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE77D4DA18E0C3D000F1A8DD /* libcrypto.a in Frameworks */,
+				BE77D4DB18E0C3D000F1A8DD /* libssl.a in Frameworks */,
+				BE77D4DC18E0C3D000F1A8DD /* libTwilioClient.a in Frameworks */,
 				23B39B8E18DD6A610098F06A /* SystemConfiguration.framework in Frameworks */,
 				23B39B8C18DD6A4C0098F06A /* CFNetwork.framework in Frameworks */,
 				23B39B8A18DD6A450098F06A /* AVFoundation.framework in Frameworks */,
 				23B39B8818DD6A330098F06A /* AudioToolbox.framework in Frameworks */,
-				23B39B8418DD650A0098F06A /* libcrypto.a in Frameworks */,
-				23B39B8518DD650A0098F06A /* libTwilioClient.a in Frameworks */,
-				23B39B8618DD650A0098F06A /* libssl.a in Frameworks */,
 				23F3EB6218D6C7460075819D /* CoreGraphics.framework in Frameworks */,
 				23F3EB6418D6C7460075819D /* UIKit.framework in Frameworks */,
 				23F3EB6018D6C7460075819D /* Foundation.framework in Frameworks */,
@@ -128,6 +131,9 @@
 		23F3EB5E18D6C7460075819D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BE77D4D718E0C3D000F1A8DD /* libcrypto.a */,
+				BE77D4D818E0C3D000F1A8DD /* libssl.a */,
+				BE77D4D918E0C3D000F1A8DD /* libTwilioClient.a */,
 				23B39B8D18DD6A610098F06A /* SystemConfiguration.framework */,
 				23B39B8B18DD6A4C0098F06A /* CFNetwork.framework */,
 				23B39B8918DD6A450098F06A /* AVFoundation.framework */,
@@ -420,6 +426,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/jake/Desktop/ios/TwilioClient-1.1.3-4598544/Libraries",
+					/Users/wuyue/Documents/IOS,
 				);
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -446,6 +453,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/jake/Desktop/ios/TwilioClient-1.1.3-4598544/Libraries",
+					/Users/wuyue/Documents/IOS,
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",

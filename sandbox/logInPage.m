@@ -34,7 +34,8 @@ NSString *twilioNumber = @"4257287464";
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
                                    action:@selector(dismissKeyboard)];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:)name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:)name:UIKeyboardDidHideNotification object:nil];
     [self.view addGestureRecognizer:tap];
     password.secureTextEntry = YES;
     phoneNumber.delegate = self;
@@ -116,6 +117,22 @@ NSString *twilioNumber = @"4257287464";
     
     [textField resignFirstResponder];
     return YES;
+}
+-(void)keyboardDidShow:(NSNotification *)notification{
+    if ([[UIScreen mainScreen]bounds].size.height==568) {
+        [self.view setFrame:CGRectMake(0, -50, 320, 568)];
+    }else{
+        [self.view setFrame:CGRectMake(0, -130, 320, 480)];
+    }
+}
+
+
+-(void)keyboardDidHide:(NSNotification *)notification{
+    if ([[UIScreen mainScreen]bounds].size.height==568) {
+        [self.view setFrame:CGRectMake(0, 0, 320, 568)];
+    }else{
+        [self.view setFrame:CGRectMake(0, 0, 320, 480)];
+    }
 }
 
 @end
