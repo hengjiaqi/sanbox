@@ -85,6 +85,10 @@ NSString *twilioNumber = @"4257287464";
 
 }
 
+- (IBAction)LoginButton:(id)sender {
+    [self performSegueWithIdentifier:@"loginTransistion" sender:sender];
+}
+
 /*
  this method might be calling more than one times according to incoming data size
  */

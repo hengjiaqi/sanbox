@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xfq-ev-kRB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xfq-ev-kRB">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -64,6 +64,9 @@
                                     <color key="titleColor" red="0.27473616449999999" green="0.57417629079999999" blue="0.26862212730000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="LoginButton:" destination="xfq-ev-kRB" eventType="touchUpInside" id="3Kt-bp-l1h"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to Eat2gether!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZcO-JW-dr2">
                                 <rect key="frame" x="68" y="61" width="184" height="21"/>
@@ -87,11 +90,12 @@
                     <connections>
                         <outlet property="password" destination="WqG-8i-ndq" id="N8R-Uo-b71"/>
                         <outlet property="phoneNumber" destination="hGL-zy-m5q" id="pps-dQ-fwB"/>
+                        <segue destination="bCB-5y-xqf" kind="modal" identifier="loginTransistion" id="BQQ-xg-t0X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P6G-ig-Azs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-128" y="-867"/>
+            <point key="canvasLocation" x="-142" y="-867"/>
         </scene>
         <!--New User-->
         <scene sceneID="vwE-Hw-r16">

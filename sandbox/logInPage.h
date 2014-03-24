@@ -14,6 +14,7 @@
     IBOutlet UITextField *password;
 }
 - (IBAction)testMessage:(id)sender;
+- (IBAction)LoginButton:(id)sender;
 
 -(void)dismissKeyboard;
 -(BOOL)textFieldShouldReturn:(UITextField*) textField;
