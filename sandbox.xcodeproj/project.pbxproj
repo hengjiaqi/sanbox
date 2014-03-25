@@ -13,6 +13,17 @@
 		23B39B8E18DD6A610098F06A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B39B8D18DD6A610098F06A /* SystemConfiguration.framework */; };
 		23BB25DC18D80B4100ED81E8 /* newUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB25DB18D80B4100ED81E8 /* newUser.m */; };
 		23BB25E518D823A000ED81E8 /* confirmPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB25E418D823A000ED81E8 /* confirmPage.m */; };
+<<<<<<< HEAD
+=======
+		23C645AC18E205CE0097D968 /* AmazonClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C645AB18E205CE0097D968 /* AmazonClientManager.m */; };
+		23C645B018E206B00097D968 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C645AF18E206B00097D968 /* Constants.m */; };
+		23C645B618E207C60097D968 /* AWSRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C645B118E207C60097D968 /* AWSRuntime.framework */; };
+		23C645B718E207C60097D968 /* AWSSNS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C645B218E207C60097D968 /* AWSSNS.framework */; };
+		23C645B818E207C60097D968 /* AWSSQS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C645B318E207C60097D968 /* AWSSQS.framework */; };
+		23C645B918E207C60097D968 /* AWSSimpleDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C645B418E207C60097D968 /* AWSSimpleDB.framework */; };
+		23C645BA18E207C60097D968 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C645B518E207C60097D968 /* AWSS3.framework */; };
+		23F029DB18E0E391000F2BD6 /* mainPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F029DA18E0E391000F2BD6 /* mainPage.m */; };
+>>>>>>> FETCH_HEAD
 		23F3EB6018D6C7460075819D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23F3EB5F18D6C7460075819D /* Foundation.framework */; };
 		23F3EB6218D6C7460075819D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23F3EB6118D6C7460075819D /* CoreGraphics.framework */; };
 		23F3EB6418D6C7460075819D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23F3EB6318D6C7460075819D /* UIKit.framework */; };
@@ -55,6 +66,20 @@
 		23BB25DB18D80B4100ED81E8 /* newUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newUser.m; sourceTree = "<group>"; };
 		23BB25E318D823A000ED81E8 /* confirmPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = confirmPage.h; sourceTree = "<group>"; };
 		23BB25E418D823A000ED81E8 /* confirmPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = confirmPage.m; sourceTree = "<group>"; };
+<<<<<<< HEAD
+=======
+		23C645A918E205CE0097D968 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		23C645AA18E205CE0097D968 /* AmazonClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmazonClientManager.h; sourceTree = "<group>"; };
+		23C645AB18E205CE0097D968 /* AmazonClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmazonClientManager.m; sourceTree = "<group>"; };
+		23C645AF18E206B00097D968 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		23C645B118E207C60097D968 /* AWSRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSRuntime.framework; sourceTree = "<group>"; };
+		23C645B218E207C60097D968 /* AWSSNS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSNS.framework; sourceTree = "<group>"; };
+		23C645B318E207C60097D968 /* AWSSQS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSQS.framework; sourceTree = "<group>"; };
+		23C645B418E207C60097D968 /* AWSSimpleDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSimpleDB.framework; sourceTree = "<group>"; };
+		23C645B518E207C60097D968 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
+		23F029D918E0E391000F2BD6 /* mainPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mainPage.h; path = ../mainPage.h; sourceTree = "<group>"; };
+		23F029DA18E0E391000F2BD6 /* mainPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = mainPage.m; path = ../mainPage.m; sourceTree = "<group>"; };
+>>>>>>> FETCH_HEAD
 		23F3EB5C18D6C7460075819D /* sandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23F3EB5F18D6C7460075819D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		23F3EB6118D6C7460075819D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -74,6 +99,7 @@
 		23F3EB8E18D6C7680075819D /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = ../Storyboard.storyboard; sourceTree = "<group>"; };
 		23F3EB9018D6C7B50075819D /* logInPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = logInPage.h; sourceTree = "<group>"; };
 		23F3EB9118D6C7B50075819D /* logInPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = logInPage.m; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		BE1C18EA18E1F50D00257B7C /* FriendListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListTableViewController.h; sourceTree = "<group>"; };
 		BE1C18EB18E1F50D00257B7C /* FriendListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListTableViewController.m; sourceTree = "<group>"; };
 		BE1C18ED18E1F57200257B7C /* FriendList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendList.h; sourceTree = "<group>"; };
@@ -85,6 +111,8 @@
 		BE77D4D718E0C3D000F1A8DD /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = ../libcrypto.a; sourceTree = "<group>"; };
 		BE77D4D818E0C3D000F1A8DD /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = ../libssl.a; sourceTree = "<group>"; };
 		BE77D4D918E0C3D000F1A8DD /* libTwilioClient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTwilioClient.a; path = ../libTwilioClient.a; sourceTree = "<group>"; };
+=======
+>>>>>>> FETCH_HEAD
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,13 +120,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23C645B818E207C60097D968 /* AWSSQS.framework in Frameworks */,
 				23B39B8E18DD6A610098F06A /* SystemConfiguration.framework in Frameworks */,
+				23C645B718E207C60097D968 /* AWSSNS.framework in Frameworks */,
 				23B39B8C18DD6A4C0098F06A /* CFNetwork.framework in Frameworks */,
+				23C645B918E207C60097D968 /* AWSSimpleDB.framework in Frameworks */,
 				23B39B8A18DD6A450098F06A /* AVFoundation.framework in Frameworks */,
 				23B39B8818DD6A330098F06A /* AudioToolbox.framework in Frameworks */,
 				23F3EB6218D6C7460075819D /* CoreGraphics.framework in Frameworks */,
+				23C645BA18E207C60097D968 /* AWSS3.framework in Frameworks */,
 				23F3EB6418D6C7460075819D /* UIKit.framework in Frameworks */,
 				23F3EB6018D6C7460075819D /* Foundation.framework in Frameworks */,
+				23C645B618E207C60097D968 /* AWSRuntime.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,9 +170,11 @@
 		23F3EB5E18D6C7460075819D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BE77D4D718E0C3D000F1A8DD /* libcrypto.a */,
-				BE77D4D818E0C3D000F1A8DD /* libssl.a */,
-				BE77D4D918E0C3D000F1A8DD /* libTwilioClient.a */,
+				23C645B118E207C60097D968 /* AWSRuntime.framework */,
+				23C645B218E207C60097D968 /* AWSSNS.framework */,
+				23C645B318E207C60097D968 /* AWSSQS.framework */,
+				23C645B418E207C60097D968 /* AWSSimpleDB.framework */,
+				23C645B518E207C60097D968 /* AWSS3.framework */,
 				23B39B8D18DD6A610098F06A /* SystemConfiguration.framework */,
 				23B39B8B18DD6A4C0098F06A /* CFNetwork.framework */,
 				23B39B8918DD6A450098F06A /* AVFoundation.framework */,
@@ -184,6 +219,10 @@
 		23F3EB6618D6C7460075819D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				23C645AF18E206B00097D968 /* Constants.m */,
+				23C645A918E205CE0097D968 /* Constants.h */,
+				23C645AA18E205CE0097D968 /* AmazonClientManager.h */,
+				23C645AB18E205CE0097D968 /* AmazonClientManager.m */,
 				23F3EB6718D6C7460075819D /* sandbox-Info.plist */,
 				23F3EB6818D6C7460075819D /* InfoPlist.strings */,
 				23F3EB6B18D6C7460075819D /* main.m */,
@@ -306,10 +345,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				BE1C18F518E2350500257B7C /* FriendRequestTableViewController.m in Sources */,
+=======
+				23C645AC18E205CE0097D968 /* AmazonClientManager.m in Sources */,
+>>>>>>> FETCH_HEAD
 				23F3EB7018D6C7460075819D /* AppDelegate.m in Sources */,
 				BE1C18F218E1F5C000257B7C /* AddFriendTableViewController.m in Sources */,
 				23BB25DC18D80B4100ED81E8 /* newUser.m in Sources */,
+				23C645B018E206B00097D968 /* Constants.m in Sources */,
 				23F3EB6C18D6C7460075819D /* main.m in Sources */,
 				23BB25E518D823A000ED81E8 /* confirmPage.m in Sources */,
 				23F3EB9218D6C7B50075819D /* logInPage.m in Sources */,
@@ -433,6 +477,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sandbox/sandbox-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -458,6 +506,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sandbox/sandbox-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
