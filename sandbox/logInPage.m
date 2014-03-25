@@ -7,9 +7,8 @@
 //
 
 #import "logInPage.h"
-NSString *twilioAccount = @"ACa8cd84343d08f6f84fd3ca5b1c532751";
-NSString *twilioAuth = @"dd10c126da38021664352140c022b0a6";
-NSString *twilioNumber = @"4257287464";
+#import <AWSSimpleDB/AWSSimpleDB.h>
+#import "AmazonClientManager.h"
 
 
 @interface logInPage ()
@@ -60,32 +59,15 @@ NSString *twilioNumber = @"4257287464";
 }
 */
 
-- (IBAction)testMessage:(id)sender {
-    NSString *urlString = [NSString stringWithFormat:@"https://%@:%@@api.twilio.com/2010-04-01/Accounts/%@/SMS/Messages", twilioAccount, twilioAuth, twilioAccount];
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
-    [request setURL:url];
-    [request setHTTPMethod:@"POST"];
-    
-    NSString *bodyString = [NSString stringWithFormat:@"From=%@&To=%@&Body=%@", twilioNumber,@"2066176882",@"ffuck you man!"];
-    NSData *data = [bodyString dataUsingEncoding:NSUTF8StringEncoding];
-    [request setHTTPBody:data];
-    
-    NSError *error;
-    NSURLResponse *response;
-    NSData *receivedData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    if(error){
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Something is wrong" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-    }else{
-        NSLog(@"%@", receivedData.description);
-    }
 
-}
-
+//Log in button clicked
 - (IBAction)LoginButton:(id)sender {
+    
+    AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
+    SimpleDBDeleteDomainRequest *request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000000"];
+    [sdb deleteDomain:request];
+    
+    
     [self performSegueWithIdentifier:@"loginTransistion" sender:sender];
 }
 
@@ -113,6 +95,8 @@ NSString *twilioNumber = @"4257287464";
     
 }
 
+
+//Dealing with keyboard
 -(void)dismissKeyboard {
     [phoneNumber resignFirstResponder];
     [password resignFirstResponder];
