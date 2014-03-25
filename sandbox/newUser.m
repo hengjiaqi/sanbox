@@ -7,7 +7,9 @@
 //testtt
 
 #import "newUser.h"
-
+NSString *twilioAccount = @"ACa8cd84343d08f6f84fd3ca5b1c532751";
+NSString *twilioAuth = @"dd10c126da38021664352140c022b0a6";
+NSString *twilioNumber = @"4257287464";
 @interface newUser ()
 
 @end
@@ -61,6 +63,7 @@
     int code = [self checkRegisterInfo];
     UIAlertView *alert;
     if (code == 0) {
+        [self sendMessage];
         [self performSegueWithIdentifier:@"goToConfirmPage" sender:sender];
     }else if(code == 1){
         alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter a valid Phone Number" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -73,6 +76,9 @@
         [alert show];
     }else if(code == 4){
         alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter your password again" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }else if(code == 5){
+        alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Nick name cannot be empty" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     }
     
@@ -89,14 +95,44 @@
         return 3;
     }else if ([newUserPasswordAgain.text isEqualToString:@""]) {
         return 4;
+    }else if ([newUserNickName.text isEqualToString:@""]) {
+        return 5;
     }else{
         return 0;
     }
 }
+
+- (void)sendMessage {
+    NSString *urlString = [NSString stringWithFormat:@"https://%@:%@@api.twilio.com/2010-04-01/Accounts/%@/SMS/Messages", twilioAccount, twilioAuth, twilioAccount];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
+    [request setURL:url];
+    [request setHTTPMethod:@"POST"];
+    
+    NSString *bodyString = [NSString stringWithFormat:@"From=%@&To=%@&Body=%@", twilioNumber,@"2066176882",@"ffuck you man!"];
+    NSData *data = [bodyString dataUsingEncoding:NSUTF8StringEncoding];
+    [request setHTTPBody:data];
+    
+    NSError *error;
+    NSURLResponse *response;
+    NSData *receivedData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    if(error){
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Something is wrong" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }else{
+        NSLog(@"%@", receivedData.description);
+    }
+    
+}
+
+
 -(void)dismissKeyboard {
     [newUserPassword resignFirstResponder];
     [newUserPhoneNumber resignFirstResponder];
     [newUserPasswordAgain resignFirstResponder];
+    [newUserNickName resignFirstResponder];
 }
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
     
@@ -119,5 +155,8 @@
         [self.view setFrame:CGRectMake(0, 0, 320, 480)];
     }
 }
+
+
+
 
 @end

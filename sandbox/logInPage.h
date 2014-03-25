@@ -13,7 +13,6 @@
     IBOutlet UITextField *phoneNumber;
     IBOutlet UITextField *password;
 }
-- (IBAction)testMessage:(id)sender;
 - (IBAction)LoginButton:(id)sender;
 
 -(void)dismissKeyboard;

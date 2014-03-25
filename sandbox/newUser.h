@@ -10,6 +10,7 @@
 
 @interface newUser : UIViewController<UITextFieldDelegate>{
     
+    IBOutlet UITextField *newUserNickName;
     IBOutlet UITextField *newUserPasswordAgain;
     IBOutlet UITextField *newUserPassword;
     IBOutlet UITextField *newUserPhoneNumber;
