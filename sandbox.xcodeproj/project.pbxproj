@@ -20,6 +20,11 @@
 		23C645B818E207C60097D968 /* AWSSQS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C645B318E207C60097D968 /* AWSSQS.framework */; };
 		23C645B918E207C60097D968 /* AWSSimpleDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C645B418E207C60097D968 /* AWSSimpleDB.framework */; };
 		23C645BA18E207C60097D968 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C645B518E207C60097D968 /* AWSS3.framework */; };
+		23C645CF18E251B80097D968 /* AddFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C645C618E251B80097D968 /* AddFriendTableViewController.m */; };
+		23C645D018E251B80097D968 /* FriendList.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C645C818E251B80097D968 /* FriendList.m */; };
+		23C645D118E251B80097D968 /* FriendListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C645CA18E251B80097D968 /* FriendListTableViewController.m */; };
+		23C645D218E251B80097D968 /* FriendRequestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C645CC18E251B80097D968 /* FriendRequestTableViewController.m */; };
+		23C645D318E251B80097D968 /* confirm.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C645CE18E251B80097D968 /* confirm.m */; };
 		23F029DB18E0E391000F2BD6 /* mainPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F029DA18E0E391000F2BD6 /* mainPage.m */; };
 		23F3EB6018D6C7460075819D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23F3EB5F18D6C7460075819D /* Foundation.framework */; };
 		23F3EB6218D6C7460075819D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23F3EB6118D6C7460075819D /* CoreGraphics.framework */; };
@@ -68,6 +73,16 @@
 		23C645B318E207C60097D968 /* AWSSQS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSQS.framework; sourceTree = "<group>"; };
 		23C645B418E207C60097D968 /* AWSSimpleDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSimpleDB.framework; sourceTree = "<group>"; };
 		23C645B518E207C60097D968 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
+		23C645C518E251B80097D968 /* AddFriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendTableViewController.h; sourceTree = "<group>"; };
+		23C645C618E251B80097D968 /* AddFriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendTableViewController.m; sourceTree = "<group>"; };
+		23C645C718E251B80097D968 /* FriendList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendList.h; sourceTree = "<group>"; };
+		23C645C818E251B80097D968 /* FriendList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendList.m; sourceTree = "<group>"; };
+		23C645C918E251B80097D968 /* FriendListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListTableViewController.h; sourceTree = "<group>"; };
+		23C645CA18E251B80097D968 /* FriendListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListTableViewController.m; sourceTree = "<group>"; };
+		23C645CB18E251B80097D968 /* FriendRequestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendRequestTableViewController.h; sourceTree = "<group>"; };
+		23C645CC18E251B80097D968 /* FriendRequestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendRequestTableViewController.m; sourceTree = "<group>"; };
+		23C645CD18E251B80097D968 /* confirm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = confirm.h; sourceTree = "<group>"; };
+		23C645CE18E251B80097D968 /* confirm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = confirm.m; sourceTree = "<group>"; };
 		23F029D918E0E391000F2BD6 /* mainPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mainPage.h; path = ../mainPage.h; sourceTree = "<group>"; };
 		23F029DA18E0E391000F2BD6 /* mainPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = mainPage.m; path = ../mainPage.m; sourceTree = "<group>"; };
 		23F3EB5C18D6C7460075819D /* sandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +184,16 @@
 		23F3EB6518D6C7460075819D /* sandbox */ = {
 			isa = PBXGroup;
 			children = (
+				23C645C518E251B80097D968 /* AddFriendTableViewController.h */,
+				23C645C618E251B80097D968 /* AddFriendTableViewController.m */,
+				23C645C718E251B80097D968 /* FriendList.h */,
+				23C645C818E251B80097D968 /* FriendList.m */,
+				23C645C918E251B80097D968 /* FriendListTableViewController.h */,
+				23C645CA18E251B80097D968 /* FriendListTableViewController.m */,
+				23C645CB18E251B80097D968 /* FriendRequestTableViewController.h */,
+				23C645CC18E251B80097D968 /* FriendRequestTableViewController.m */,
+				23C645CD18E251B80097D968 /* confirm.h */,
+				23C645CE18E251B80097D968 /* confirm.m */,
 				23F029D918E0E391000F2BD6 /* mainPage.h */,
 				23F029DA18E0E391000F2BD6 /* mainPage.m */,
 				23BB25E318D823A000ED81E8 /* confirmPage.h */,
@@ -315,13 +340,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23C645D118E251B80097D968 /* FriendListTableViewController.m in Sources */,
 				23C645AC18E205CE0097D968 /* AmazonClientManager.m in Sources */,
 				23F3EB7018D6C7460075819D /* AppDelegate.m in Sources */,
 				23BB25DC18D80B4100ED81E8 /* newUser.m in Sources */,
+				23C645D018E251B80097D968 /* FriendList.m in Sources */,
 				23C645B018E206B00097D968 /* Constants.m in Sources */,
 				23F3EB6C18D6C7460075819D /* main.m in Sources */,
+				23C645CF18E251B80097D968 /* AddFriendTableViewController.m in Sources */,
 				23BB25E518D823A000ED81E8 /* confirmPage.m in Sources */,
+				23C645D218E251B80097D968 /* FriendRequestTableViewController.m in Sources */,
 				23F3EB9218D6C7B50075819D /* logInPage.m in Sources */,
+				23C645D318E251B80097D968 /* confirm.m in Sources */,
 				23F029DB18E0E391000F2BD6 /* mainPage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
