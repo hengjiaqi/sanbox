@@ -7,9 +7,12 @@
 //testtt
 
 #import "newUser.h"
+#import "AmazonClientManager.h"
 NSString *twilioAccount = @"ACa8cd84343d08f6f84fd3ca5b1c532751";
 NSString *twilioAuth = @"dd10c126da38021664352140c022b0a6";
 NSString *twilioNumber = @"4257287464";
+int confirmation;
+NSMutableArray *domains;
 @interface newUser ()
 
 @end
@@ -62,8 +65,9 @@ NSString *twilioNumber = @"4257287464";
 - (IBAction)confirmButton:(id)sender {
     int code = [self checkRegisterInfo];
     UIAlertView *alert;
+    //everything is ok, send user a confirmation code
     if (code == 0) {
-        [self sendMessage];
+        [self sendMessage : newUserPhoneNumber.text];
         [self performSegueWithIdentifier:@"goToConfirmPage" sender:sender];
     }else if(code == 1){
         alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter a valid Phone Number" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -80,11 +84,38 @@ NSString *twilioNumber = @"4257287464";
     }else if(code == 5){
         alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Nick name cannot be empty" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
+    }else if(code == 6){
+        alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your phone number is already registered. Please contact admin if this is a mistake. We are sorry about inconvenience." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
     }
     
     
     
 }
+- (BOOL) checkPhoneNumberRegistered{
+    SimpleDBListDomainsRequest *listDoaminRequest = [[SimpleDBListDomainsRequest alloc]init];
+    SimpleDBListDomainsResponse *listDomainResponse = [[AmazonClientManager sdb] listDomains:listDoaminRequest];
+    if (listDomainResponse.error != nil) {
+        NSLog(@"Error: @%", listDomainResponse.error);
+    }
+    if (domains == nil) {
+        domains = [[NSMutableArray alloc] initWithCapacity:[listDomainResponse.domainNames count]];
+    }
+    else {
+        [domains removeAllObjects];
+    }
+    
+    for (NSString *name in listDomainResponse.domainNames) {
+        [domains addObject:name];
+    }
+    
+    [domains sortUsingSelector:@selector(compare:)];
+    
+    bool exist = [domains containsObject:newUserPhoneNumber.text];
+    return exist;
+}
+
+
 
 -(int) checkRegisterInfo{
     if ([newUserPhoneNumber.text isEqualToString:@""]) {
@@ -97,20 +128,23 @@ NSString *twilioNumber = @"4257287464";
         return 4;
     }else if ([newUserNickName.text isEqualToString:@""]) {
         return 5;
+    }else if ([self checkPhoneNumberRegistered]) {
+        return 6;
     }else{
         return 0;
     }
 }
 
-- (void)sendMessage {
+- (void)sendMessage:(NSString *) userPhoneNumber {
     NSString *urlString = [NSString stringWithFormat:@"https://%@:%@@api.twilio.com/2010-04-01/Accounts/%@/SMS/Messages", twilioAccount, twilioAuth, twilioAccount];
     NSURL *url = [NSURL URLWithString:urlString];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
     [request setURL:url];
     [request setHTTPMethod:@"POST"];
-    
-    NSString *bodyString = [NSString stringWithFormat:@"From=%@&To=%@&Body=%@", twilioNumber,@"2066176882",@"ffuck you man!"];
+    confirmation = arc4random() % (10000);
+    NSString *textContent = [NSString stringWithFormat:@"Hello from Eat2gether! Your confirmation code IS: %d", confirmation];
+    NSString *bodyString = [NSString stringWithFormat:@"From=%@&To=%@&Body=%@", twilioNumber,userPhoneNumber,textContent];
     NSData *data = [bodyString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:data];
     
@@ -128,6 +162,8 @@ NSString *twilioNumber = @"4257287464";
 }
 
 
+
+//Dismiss keyboard
 -(void)dismissKeyboard {
     [newUserPassword resignFirstResponder];
     [newUserPhoneNumber resignFirstResponder];
@@ -135,10 +171,11 @@ NSString *twilioNumber = @"4257287464";
     [newUserNickName resignFirstResponder];
 }
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
-    
     [textField resignFirstResponder];
     return YES;
 }
+
+
 -(void)keyboardDidShow:(NSNotification *)notification{
     if ([[UIScreen mainScreen]bounds].size.height==568) {
         [self.view setFrame:CGRectMake(0, -50, 320, 568)];

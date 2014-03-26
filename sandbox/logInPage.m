@@ -39,6 +39,7 @@
     password.secureTextEntry = YES;
     phoneNumber.delegate = self;
     password.delegate = self;
+
 }
 
 - (void)didReceiveMemoryWarning

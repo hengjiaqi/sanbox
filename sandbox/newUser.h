@@ -16,6 +16,11 @@
     IBOutlet UITextField *newUserPhoneNumber;
 }
 - (IBAction)confirmButton:(id)sender;
+- (IBAction)phoneNumberDone:(id)sender;
+- (IBAction)passwordDone:(id)sender;
+
+- (IBAction)nickNameDone:(id)sender;
+- (IBAction)passwordAgainDone:(id)sender;
 
 -(void)dismissKeyboard;
 -(BOOL)textFieldShouldReturn:(UITextField*) textField;
