@@ -35,6 +35,10 @@
 		23F3EB8518D6C7460075819D /* sandboxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB8418D6C7460075819D /* sandboxTests.m */; };
 		23F3EB8F18D6C7680075819D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F3EB8E18D6C7680075819D /* Storyboard.storyboard */; };
 		23F3EB9218D6C7B50075819D /* logInPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB9118D6C7B50075819D /* logInPage.m */; };
+		BE5FF76B18E251270000656D /* FriendList.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5FF76618E251270000656D /* FriendList.m */; };
+		BE5FF76C18E251270000656D /* FriendListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5FF76818E251270000656D /* FriendListTableViewController.m */; };
+		BE5FF76D18E251270000656D /* FriendRequestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5FF76A18E251270000656D /* FriendRequestTableViewController.m */; };
+		BE5FF77018E251740000656D /* AddFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5FF76F18E251740000656D /* AddFriendTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +93,14 @@
 		23F3EB8E18D6C7680075819D /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = ../Storyboard.storyboard; sourceTree = "<group>"; };
 		23F3EB9018D6C7B50075819D /* logInPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = logInPage.h; sourceTree = "<group>"; };
 		23F3EB9118D6C7B50075819D /* logInPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = logInPage.m; sourceTree = "<group>"; };
+		BE5FF76518E251270000656D /* FriendList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendList.h; sourceTree = "<group>"; };
+		BE5FF76618E251270000656D /* FriendList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendList.m; sourceTree = "<group>"; };
+		BE5FF76718E251270000656D /* FriendListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListTableViewController.h; sourceTree = "<group>"; };
+		BE5FF76818E251270000656D /* FriendListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListTableViewController.m; sourceTree = "<group>"; };
+		BE5FF76918E251270000656D /* FriendRequestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendRequestTableViewController.h; sourceTree = "<group>"; };
+		BE5FF76A18E251270000656D /* FriendRequestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendRequestTableViewController.m; sourceTree = "<group>"; };
+		BE5FF76E18E251740000656D /* AddFriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendTableViewController.h; sourceTree = "<group>"; };
+		BE5FF76F18E251740000656D /* AddFriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +181,14 @@
 		23F3EB6518D6C7460075819D /* sandbox */ = {
 			isa = PBXGroup;
 			children = (
+				BE5FF76E18E251740000656D /* AddFriendTableViewController.h */,
+				BE5FF76F18E251740000656D /* AddFriendTableViewController.m */,
+				BE5FF76518E251270000656D /* FriendList.h */,
+				BE5FF76618E251270000656D /* FriendList.m */,
+				BE5FF76718E251270000656D /* FriendListTableViewController.h */,
+				BE5FF76818E251270000656D /* FriendListTableViewController.m */,
+				BE5FF76918E251270000656D /* FriendRequestTableViewController.h */,
+				BE5FF76A18E251270000656D /* FriendRequestTableViewController.m */,
 				23F029D918E0E391000F2BD6 /* mainPage.h */,
 				23F029DA18E0E391000F2BD6 /* mainPage.m */,
 				23BB25E318D823A000ED81E8 /* confirmPage.h */,
@@ -320,9 +340,13 @@
 				23BB25DC18D80B4100ED81E8 /* newUser.m in Sources */,
 				23C645B018E206B00097D968 /* Constants.m in Sources */,
 				23F3EB6C18D6C7460075819D /* main.m in Sources */,
+				BE5FF77018E251740000656D /* AddFriendTableViewController.m in Sources */,
 				23BB25E518D823A000ED81E8 /* confirmPage.m in Sources */,
 				23F3EB9218D6C7B50075819D /* logInPage.m in Sources */,
+				BE5FF76C18E251270000656D /* FriendListTableViewController.m in Sources */,
 				23F029DB18E0E391000F2BD6 /* mainPage.m in Sources */,
+				BE5FF76B18E251270000656D /* FriendList.m in Sources */,
+				BE5FF76D18E251270000656D /* FriendRequestTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,10 +476,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = "sandbox/sandbox-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/jake/Desktop/ios/TwilioClient-1.1.3-4598544/Libraries",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -481,10 +502,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = "sandbox/sandbox-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/jake/Desktop/ios/TwilioClient-1.1.3-4598544/Libraries",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
