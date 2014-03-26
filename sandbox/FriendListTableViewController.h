@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface FriendListTableViewController : UITableViewController
--(IBAction)cancelButtonPress:(id)sender;
+//-(IBAction)cancelButtonPress:(id)sender;
 
-// create a mutable array list for friend list
-@property(nonatomic,strong) NSMutableArray *FriendListelement;
+// create a mutable array list for friend list reorder editing 
+// here is domains  tasks
+@property(nonatomic,strong) NSMutableArray *FriendListelements;
 
 @end

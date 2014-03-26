@@ -53,9 +53,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		23B39B8118DD650A0098F06A /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../TwilioClient-1.1.3-4598544/Libraries/libcrypto.a"; sourceTree = "<group>"; };
-		23B39B8218DD650A0098F06A /* libTwilioClient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTwilioClient.a; path = "../TwilioClient-1.1.3-4598544/Libraries/libTwilioClient.a"; sourceTree = "<group>"; };
-		23B39B8318DD650A0098F06A /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../TwilioClient-1.1.3-4598544/Libraries/libssl.a"; sourceTree = "<group>"; };
 		23B39B8718DD6A330098F06A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		23B39B8918DD6A450098F06A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		23B39B8B18DD6A4C0098F06A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -170,9 +167,6 @@
 				23B39B8B18DD6A4C0098F06A /* CFNetwork.framework */,
 				23B39B8918DD6A450098F06A /* AVFoundation.framework */,
 				23B39B8718DD6A330098F06A /* AudioToolbox.framework */,
-				23B39B8118DD650A0098F06A /* libcrypto.a */,
-				23B39B8218DD650A0098F06A /* libTwilioClient.a */,
-				23B39B8318DD650A0098F06A /* libssl.a */,
 				23F3EB5F18D6C7460075819D /* Foundation.framework */,
 				23F3EB6118D6C7460075819D /* CoreGraphics.framework */,
 				23F3EB6318D6C7460075819D /* UIKit.framework */,

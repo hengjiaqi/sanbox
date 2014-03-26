@@ -17,7 +17,7 @@
 
 // set and get the frindlist
 
-@synthesize FriendListelement = _FriendListelement;
+@synthesize FriendListelements = _FriendListelements;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -38,9 +38,15 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.FriendListelement =[[NSMutableArray alloc]init];
-    FriendList *myFriendList = [[FriendList alloc]initWithName:@"My first friend" onLineorNot:(NO)];
-    [self.FriendListelement addObject:myFriendList];
+    self.FriendListelements =[[NSMutableArray alloc]init];
+    FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:@"My first online friend" onLineorNot:(YES)];
+    [self.FriendListelements addObject:myOnlineFriendListelement];
+    
+    FriendList *myOfflineFriendListelement = [[FriendList alloc]initWithName:@"My first Offline friend" onLineorNot:(NO)];
+    
+    [self.FriendListelements addObject:myOfflineFriendListelement];
+    
+    // reload the data
     [self.tableView reloadData];
 }
 
@@ -55,27 +61,37 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
-    // Return the number of sections.
+    // Return the number of sections. always in one section
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return self.FriendListelement.count;
+    return self.FriendListelements.count;
 }
 
 // we can refer certain view
+// index path a list of numbers what row we looking at
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIndetifier = @"onLineFriendCell";
+    static NSString *OnLineCellIndetifier = @"OnLineFriendCell";  // what type of cell  to actuall indentify use that in story board
+    
+    
+    static NSString *OffLineCellIndetifier = @"OffLineFriendCell";
     // which friend we point at
-    FriendList *currentFriend = [self.FriendListelement objectAtIndex:indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIndetifier];
+    FriendList *currentFriend = [self.FriendListelements objectAtIndex:indexPath.row];  // which cell we looking at
+    
+    
+    NSString *cellIdentifier = currentFriend.onLineorNot ? OnLineCellIndetifier : OffLineCellIndetifier;
+    
+    
+    // if you have extra give it to me
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (cell==nil){
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIndetifier];
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
     // Configure the cell...
