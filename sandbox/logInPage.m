@@ -65,7 +65,7 @@
 - (IBAction)LoginButton:(id)sender {
     
     AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
-    SimpleDBDeleteDomainRequest *request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000000"];
+    SimpleDBDeleteDomainRequest *request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2066176882"];
     [sdb deleteDomain:request];
     
     

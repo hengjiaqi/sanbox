@@ -12,6 +12,9 @@
     
     IBOutlet UITextField *confirmCode;
 }
+@property (strong, nonatomic) NSString* confirmationCode;
+- (IBAction)confirmButton:(id)sender;
+
 -(void)dismissKeyboard;
 -(BOOL)textFieldShouldReturn:(UITextField*) textField;
 @end

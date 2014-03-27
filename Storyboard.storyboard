@@ -62,7 +62,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P6G-ig-Azs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-643" y="-867"/>
+            <point key="canvasLocation" x="-799" y="-855"/>
         </scene>
         <!--New User - Register-->
         <scene sceneID="vwE-Hw-r16">
@@ -77,7 +77,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2s-ig-dNe">
-                                <rect key="frame" x="133" y="346" width="55" height="30"/>
+                                <rect key="frame" x="133" y="350" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Confirm">
                                     <color key="titleColor" red="0.27473616449999999" green="0.57417629079999999" blue="0.26862212730000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -88,25 +88,25 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rEt-6k-5YW">
-                                <rect key="frame" x="89" y="162" width="142" height="30"/>
+                                <rect key="frame" x="89" y="198" width="142" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nick Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="al4-Df-MZg">
-                                <rect key="frame" x="89" y="210" width="142" height="30"/>
+                                <rect key="frame" x="89" y="236" width="142" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RLh-fI-8Fu">
-                                <rect key="frame" x="89" y="259" width="142" height="30"/>
+                                <rect key="frame" x="89" y="274" width="142" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password again" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MFM-cX-Fzi">
-                                <rect key="frame" x="89" y="308" width="142" height="30"/>
+                                <rect key="frame" x="89" y="312" width="142" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -115,9 +115,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Register" id="lv1-Uq-lkz">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="mLq-wQ-WBp">
+                        <barButtonItem key="leftBarButtonItem" title="Home" id="mLq-wQ-WBp">
                             <connections>
-                                <segue destination="xfq-ev-kRB" kind="push" id="J9P-dY-Yj2"/>
+                                <segue destination="xfq-ev-kRB" kind="modal" modalTransitionStyle="crossDissolve" id="0tz-Tm-IF4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -126,12 +126,12 @@
                         <outlet property="newUserPassword" destination="RLh-fI-8Fu" id="sFk-sK-hr6"/>
                         <outlet property="newUserPasswordAgain" destination="MFM-cX-Fzi" id="LpR-g5-7OS"/>
                         <outlet property="newUserPhoneNumber" destination="rEt-6k-5YW" id="cWS-Da-Lmy"/>
-                        <segue destination="Y16-Xz-JuT" kind="modal" identifier="goToConfirmPage" modalTransitionStyle="crossDissolve" id="0fW-6I-tgh"/>
+                        <segue destination="7uh-a7-07u" kind="modal" identifier="goToConfirmPage" modalTransitionStyle="crossDissolve" id="0fW-6I-tgh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xlw-FG-xr3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="465" y="-867"/>
+            <point key="canvasLocation" x="453" y="-855"/>
         </scene>
         <!--Add Friend Table View Controller - Add Friend-->
         <scene sceneID="qs2-OX-q3q">
@@ -327,7 +327,7 @@
             </objects>
             <point key="canvasLocation" x="1471" y="-192"/>
         </scene>
-        <!--Confirm Page-->
+        <!--Confirm Page - Confirmation-->
         <scene sceneID="FnX-2E-jnG">
             <objects>
                 <viewController id="Y16-Xz-JuT" customClass="confirmPage" sceneMemberID="viewController">
@@ -340,29 +340,40 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="4 digits code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Haq-C4-A3U">
-                                <rect key="frame" x="98" y="173" width="125" height="30"/>
+                                <rect key="frame" x="98" y="230" width="125" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6E7-Ln-rpH">
-                                <rect key="frame" x="133" y="239" width="57" height="30"/>
+                                <rect key="frame" x="133" y="296" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Register">
+                                <state key="normal" title="Confirm">
                                     <color key="titleColor" red="0.27473616449999999" green="0.57417629079999999" blue="0.26862212730000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="confirmButton:" destination="Y16-Xz-JuT" eventType="touchUpInside" id="Kmz-Hw-Cau"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Confirmation" id="jF2-nI-QRP">
+                        <barButtonItem key="leftBarButtonItem" title="Home" id="vap-qe-4DB">
+                            <connections>
+                                <segue destination="xfq-ev-kRB" kind="modal" modalTransitionStyle="crossDissolve" id="f7V-hi-uSr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="confirmCode" destination="Haq-C4-A3U" id="h9V-u6-wtg"/>
+                        <segue destination="7He-rb-jQY" kind="modal" identifier="logInAfterRegister" id="2Vb-1u-B8a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BbJ-wm-xVY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1011" y="-867"/>
+            <point key="canvasLocation" x="1799" y="-867"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Uo6-05-g1Z">
@@ -383,7 +394,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PU2-t5-jB3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarItem title="Item" id="UaN-QA-2Zy"/>
             </objects>
-            <point key="canvasLocation" x="-467" y="1274"/>
+            <point key="canvasLocation" x="-799" y="-196"/>
         </scene>
         <!--Table View Controller - SETTING-->
         <scene sceneID="Uft-zY-pbR">
@@ -733,7 +744,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <!--Navigation Controller-->
         <scene sceneID="50R-be-DFW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q3m-Cu-b6L" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="O5i-NO-g6P" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p2T-na-uAQ">
@@ -745,8 +755,27 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <segue destination="6oE-Ru-ph7" kind="relationship" relationship="rootViewController" id="pO0-4i-Hb8"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q3m-Cu-b6L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-101" y="-867"/>
+            <point key="canvasLocation" x="-145" y="-867"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sXZ-gx-3A0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7uh-a7-07u" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hsP-eG-zoY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y16-Xz-JuT" kind="relationship" relationship="rootViewController" id="tia-dQ-RUu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mYu-Eu-K8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1233" y="-855"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -755,6 +784,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="f7V-hi-uSr"/>
+        <segue reference="pO6-Wj-Yd5"/>
         <segue reference="mRH-Co-eAl"/>
     </inferredMetricsTieBreakers>
 </document>

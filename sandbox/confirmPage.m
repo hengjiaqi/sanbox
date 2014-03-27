@@ -7,7 +7,6 @@
 //
 
 #import "confirmPage.h"
-
 @interface confirmPage ()
 
 @end
@@ -34,12 +33,26 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:)name:UIKeyboardDidHideNotification object:nil];
     [self.view addGestureRecognizer:tap];
     confirmCode.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (IBAction)confirmButton:(id)sender {
+    NSLog(@"code got sent is %@", self.confirmationCode);
+    NSLog(@"code got entered is %@", confirmCode.text);
+    if ( [self.confirmationCode isEqualToString:confirmCode.text]) {
+        [self performSegueWithIdentifier:@"logInAfterRegister" sender:sender];
+    }else{
+        UIAlertView *alert;
+        alert = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:@"The confirmation code is incorret. Please check again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
 
 -(void)dismissKeyboard {

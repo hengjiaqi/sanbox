@@ -8,6 +8,7 @@
 
 #import "newUser.h"
 #import "AmazonClientManager.h"
+#import "confirmPage.h"
 NSString *twilioAccount = @"ACa8cd84343d08f6f84fd3ca5b1c532751";
 NSString *twilioAuth = @"dd10c126da38021664352140c022b0a6";
 NSString *twilioNumber = @"4257287464";
@@ -52,23 +53,25 @@ NSMutableArray *domains;
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"goToConfirmPage"]){
+        confirmPage *confirm = (confirmPage *)[[segue destinationViewController] topViewController];
+        NSString* myNewString = [NSString stringWithFormat:@"%d", confirmation];
+        NSLog(@"mynewString is %@", myNewString);
+        confirm.confirmationCode = myNewString;
+    }
 }
-*/
 - (IBAction)confirmButton:(id)sender {
     int code = [self checkRegisterInfo];
     UIAlertView *alert;
     //everything is ok, send user a confirmation code
     if (code == 0) {
         [self sendMessage : newUserPhoneNumber.text];
+        alert = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:@"We have send you a text message with confirmation code." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
         [self performSegueWithIdentifier:@"goToConfirmPage" sender:sender];
+
+        
     }else if(code == 1){
         alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter a valid Phone Number" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
@@ -142,7 +145,7 @@ NSMutableArray *domains;
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
     [request setURL:url];
     [request setHTTPMethod:@"POST"];
-    confirmation = arc4random() % (10000);
+    confirmation = (arc4random() % (9000)) + 1000;
     NSString *textContent = [NSString stringWithFormat:@"Hello from Eat2gether! Your confirmation code IS: %d", confirmation];
     NSString *bodyString = [NSString stringWithFormat:@"From=%@&To=%@&Body=%@", twilioNumber,userPhoneNumber,textContent];
     NSData *data = [bodyString dataUsingEncoding:NSUTF8StringEncoding];
