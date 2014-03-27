@@ -7,12 +7,17 @@
 //
 
 #import "AddFriendTableViewController.h"
+#import "FriendListTableViewController.h"
+#import "FriendList.h"
 
 @interface AddFriendTableViewController ()
 
 @end
 
 @implementation AddFriendTableViewController
+@synthesize nameField=_nameField;
+@synthesize FriendListViewController_ADD = _FriendListViewController_ADD;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -102,6 +107,8 @@
  // Pass the selected object to the new view controller.
  }
  */
+
+// start the view control dimissiong your self 
 -(void)backButtonPress:(id)sender{
     [self dismissModalViewControllerAnimated:YES];
 }
@@ -110,5 +117,23 @@
 //    tableData = @"aaa"; //load the values in the table source
 //    [self.tableView reloadData]; //just call reloadData on the tableView
 //}
+//-(IBAction)searchButtonPress:(id)sender{
+ //   FriendList *newFriendListElement = [[FriendList alloc] initWithName:self.nameField.text onLineorNot:NO];
+    
+    // if it doesn't find this person give a alerm
+    
+    // else go create a table view by having a button add 
+    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message" message:@"cannot find this person" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
+    
+    //[alert show];
+   // [self dismissModalViewControllerAnimated:YES];
+//}
 
+- (IBAction)search:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message" message:@"cannot find this person" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
+    
+    [alert show];
+
+}
 @end
