@@ -131,7 +131,9 @@
 //}
 
 - (IBAction)search:(id)sender {
+    // if no this person alert pop out else
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message" message:@"cannot find this person" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
+    // else pop out a table list
     
     [alert show];
 
