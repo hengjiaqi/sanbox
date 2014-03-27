@@ -7,6 +7,8 @@
 //
 
 #import "confirmPage.h"
+#import <AWSSimpleDB/AWSSimpleDB.h>
+#import "AmazonClientManager.h"
 @interface confirmPage ()
 
 @end
@@ -47,12 +49,79 @@
     NSLog(@"code got sent is %@", self.confirmationCode);
     NSLog(@"code got entered is %@", confirmCode.text);
     if ( [self.confirmationCode isEqualToString:confirmCode.text]) {
+        [self setupDatabase];
         [self performSegueWithIdentifier:@"logInAfterRegister" sender:sender];
     }else{
         UIAlertView *alert;
         alert = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:@"The confirmation code is incorret. Please check again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     }
+}
+
+-(void)setupDatabase{
+    //create domain
+    AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
+    SimpleDBCreateDomainRequest *request = [[SimpleDBCreateDomainRequest alloc] initWithDomainName:self.registerPhoneNumber];
+    [sdb createDomain:request];
+    
+    //password item
+    SimpleDBReplaceableAttribute *passwordAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"passwordAttribute" andValue:self.registerPassword andReplace:YES];
+    NSMutableArray *attributes = [[NSMutableArray alloc] initWithCapacity:1];
+    [attributes addObject:passwordAttribute];
+    SimpleDBPutAttributesRequest *putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"passwordItem" andAttributes:attributes];
+    [sdb putAttributes:putAttributesRequest];
+    
+    //nickname item
+    SimpleDBReplaceableAttribute *nickNameAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"nicknameAttribute" andValue:self.registerNickName andReplace:YES];
+    NSMutableArray *NicknameAttributes = [[NSMutableArray alloc] initWithCapacity:1];
+    [NicknameAttributes addObject:nickNameAttribute];
+    putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"nicknameItem" andAttributes:NicknameAttributes];
+    [sdb putAttributes:putAttributesRequest];
+    
+    //friendList item
+    NSMutableArray *friendListAttributes = [[NSMutableArray alloc] initWithCapacity:2];
+    SimpleDBReplaceableAttribute *friendListAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"2066176882" andValue:@"" andReplace:YES];
+    SimpleDBReplaceableAttribute *friendListAttribute2 = [[SimpleDBReplaceableAttribute alloc] initWithName:@"2066608173" andValue:@"" andReplace:YES];
+    [friendListAttributes addObject:friendListAttribute];
+    [friendListAttributes addObject:friendListAttribute2];
+    putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"friendListItem" andAttributes:friendListAttributes];
+    [sdb putAttributes:putAttributesRequest];
+    
+    //friendRequestList item
+    NSMutableArray *friendRequestListAttributes = [[NSMutableArray alloc] initWithCapacity:1];
+    SimpleDBReplaceableAttribute *friendRequestListAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"2066176882" andValue:@"" andReplace:YES];
+    [friendRequestListAttributes addObject:friendRequestListAttribute];
+    putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"friendRequestListItem" andAttributes:friendRequestListAttributes];
+    [sdb putAttributes:putAttributesRequest];
+    
+    //Availibility item
+    NSMutableArray *availibility= [[NSMutableArray alloc] initWithCapacity:4];
+    SimpleDBReplaceableAttribute *startHourAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"startHourAttribute" andValue:@"" andReplace:YES];
+    SimpleDBReplaceableAttribute *endHourAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"endHourAttribute" andValue:@"" andReplace:YES];
+    SimpleDBReplaceableAttribute *startMinuteAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"startMinuteAttribute" andValue:@"" andReplace:YES];
+    SimpleDBReplaceableAttribute *endMinuteAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"endMinuteAttribute" andValue:@"" andReplace:YES];
+    [availibility addObject:startHourAttribute];
+    [availibility addObject:endHourAttribute];
+    [availibility addObject:startMinuteAttribute];
+    [availibility addObject:endMinuteAttribute];
+    putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"availbilityItem" andAttributes:availibility];
+    [sdb putAttributes:putAttributesRequest];
+    
+    //beVisiableTo item
+    NSMutableArray *beVisibleToListAttributes = [[NSMutableArray alloc] initWithCapacity:1];
+    SimpleDBReplaceableAttribute *beVisibleToListAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"2066176882" andValue:@"" andReplace:YES];
+    [beVisibleToListAttributes addObject:beVisibleToListAttribute];
+    
+    putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"beVisiableToItem" andAttributes:beVisibleToListAttributes];
+    [sdb putAttributes:putAttributesRequest];
+    
+    //beInvisiableTo item
+    NSMutableArray *beInvisibleToListAttributes = [[NSMutableArray alloc] initWithCapacity:1];
+    SimpleDBReplaceableAttribute *beInvisibleToListAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"2066608173" andValue:@"" andReplace:YES];
+    [beInvisibleToListAttributes addObject:beInvisibleToListAttribute];
+    putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"beInvisiableToItem" andAttributes:beInvisibleToListAttributes];
+    [sdb putAttributes:putAttributesRequest];
+    
 }
 
 -(void)dismissKeyboard {

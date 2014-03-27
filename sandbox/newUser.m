@@ -32,6 +32,9 @@ NSMutableArray *domains;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
+    SimpleDBDeleteDomainRequest *request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2066176882"];
+    [sdb deleteDomain:request];
     // Do any additional setup after loading the view.
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
@@ -59,6 +62,9 @@ NSMutableArray *domains;
         NSString* myNewString = [NSString stringWithFormat:@"%d", confirmation];
         NSLog(@"mynewString is %@", myNewString);
         confirm.confirmationCode = myNewString;
+        confirm.registerNickName = newUserNickName.text;
+        confirm.registerPhoneNumber = newUserPhoneNumber.text;
+        confirm.registerPassword = newUserPassword.text;
     }
 }
 - (IBAction)confirmButton:(id)sender {

@@ -13,6 +13,9 @@
     IBOutlet UITextField *confirmCode;
 }
 @property (strong, nonatomic) NSString* confirmationCode;
+@property (strong, nonatomic) NSString* registerPhoneNumber;
+@property (strong, nonatomic) NSString* registerNickName;
+@property (strong, nonatomic) NSString* registerPassword;
 - (IBAction)confirmButton:(id)sender;
 
 -(void)dismissKeyboard;
