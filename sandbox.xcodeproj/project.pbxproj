@@ -40,6 +40,8 @@
 		23F3EB8518D6C7460075819D /* sandboxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB8418D6C7460075819D /* sandboxTests.m */; };
 		23F3EB8F18D6C7680075819D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F3EB8E18D6C7680075819D /* Storyboard.storyboard */; };
 		23F3EB9218D6C7B50075819D /* logInPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB9118D6C7B50075819D /* logInPage.m */; };
+		BE63CA3918E4DB4C0001E8A1 /* searchfriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63CA3818E4DB4C0001E8A1 /* searchfriendTableViewController.m */; };
+		BE63CA3C18E4E8280001E8A1 /* SettingPageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63CA3B18E4E8280001E8A1 /* SettingPageTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +103,10 @@
 		23F3EB8E18D6C7680075819D /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = ../Storyboard.storyboard; sourceTree = "<group>"; };
 		23F3EB9018D6C7B50075819D /* logInPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = logInPage.h; sourceTree = "<group>"; };
 		23F3EB9118D6C7B50075819D /* logInPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = logInPage.m; sourceTree = "<group>"; };
+		BE63CA3718E4DB4C0001E8A1 /* searchfriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchfriendTableViewController.h; sourceTree = "<group>"; };
+		BE63CA3818E4DB4C0001E8A1 /* searchfriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchfriendTableViewController.m; sourceTree = "<group>"; };
+		BE63CA3A18E4E8280001E8A1 /* SettingPageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingPageTableViewController.h; sourceTree = "<group>"; };
+		BE63CA3B18E4E8280001E8A1 /* SettingPageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingPageTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +186,8 @@
 			children = (
 				23E8D9CA18E34A7D0092A1C3 /* AddFriendTableViewController.h */,
 				23E8D9CB18E34A7D0092A1C3 /* AddFriendTableViewController.m */,
+				BE63CA3718E4DB4C0001E8A1 /* searchfriendTableViewController.h */,
+				BE63CA3818E4DB4C0001E8A1 /* searchfriendTableViewController.m */,
 				23E8D9CC18E34A7D0092A1C3 /* FriendList.h */,
 				23E8D9CD18E34A7D0092A1C3 /* FriendList.m */,
 				23E8D9CE18E34A7D0092A1C3 /* FriendListTableViewController.h */,
@@ -197,6 +205,8 @@
 				23F3EB9018D6C7B50075819D /* logInPage.h */,
 				23F3EB9118D6C7B50075819D /* logInPage.m */,
 				23F3EB8E18D6C7680075819D /* Storyboard.storyboard */,
+				BE63CA3A18E4E8280001E8A1 /* SettingPageTableViewController.h */,
+				BE63CA3B18E4E8280001E8A1 /* SettingPageTableViewController.m */,
 				23F3EB6E18D6C7460075819D /* AppDelegate.h */,
 				23F3EB6F18D6C7460075819D /* AppDelegate.m */,
 				23F3EB7118D6C7460075819D /* Images.xcassets */,
@@ -339,6 +349,7 @@
 				23F3EB7018D6C7460075819D /* AppDelegate.m in Sources */,
 				23BB25DC18D80B4100ED81E8 /* newUser.m in Sources */,
 				23E8D9D518E34A7D0092A1C3 /* FriendList.m in Sources */,
+				BE63CA3C18E4E8280001E8A1 /* SettingPageTableViewController.m in Sources */,
 				23C645B018E206B00097D968 /* Constants.m in Sources */,
 				23F3EB6C18D6C7460075819D /* main.m in Sources */,
 				23E8D9D418E34A7D0092A1C3 /* AddFriendTableViewController.m in Sources */,
@@ -347,6 +358,7 @@
 				23F3EB9218D6C7B50075819D /* logInPage.m in Sources */,
 				23E8D9D818E34A7D0092A1C3 /* confirm.m in Sources */,
 				23F029DB18E0E391000F2BD6 /* mainPage.m in Sources */,
+				BE63CA3918E4DB4C0001E8A1 /* searchfriendTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

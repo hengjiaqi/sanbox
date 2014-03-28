@@ -133,7 +133,12 @@
 - (IBAction)search:(id)sender {
     // if no this person alert pop out else
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message" message:@"cannot find this person" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
-    // else pop out a table list
+    
+    // else pop out a table view
+    FriendList *searchedfriend = [[FriendList alloc] initWithName:self.nameField.text onLineorNot:NO];
+    [self.FriendListViewController_ADD.FriendListelements addObject:searchedfriend];
+    
+    
     
     [alert show];
 
