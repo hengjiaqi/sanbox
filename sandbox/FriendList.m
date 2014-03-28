@@ -21,10 +21,12 @@
 
 @synthesize name = _name;
 @synthesize onLineorNot = _onLineorNot;
--(id)initWithName:(NSString *)name onLineorNot:(BOOL)onLineorNot{
+@synthesize phoneNumber = _phoneNumber;
+-(id)initWithName:(NSString *)name onLineorNot:(BOOL)onLineorNot number:(NSString *)phonenumber{
     self = [super init];
     
     if(self){
+        self.phoneNumber = phonenumber;
         self.name=name;
         self.onLineorNot = onLineorNot;
         

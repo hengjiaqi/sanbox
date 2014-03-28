@@ -8,6 +8,12 @@
 
 #import "FriendListTableViewController.h"
 #import "FriendList.h"
+#import <AWSSimpleDB/AWSSimpleDB.h>
+#import "AmazonClientManager.h"
+NSString *USER_NAME;
+NSMutableArray *onlineFriendList;
+NSMutableArray *offlineFriendList;
+
 
 @interface FriendListTableViewController ()
 
@@ -31,21 +37,62 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    USER_NAME = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //load all the online friend
+    SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:USER_NAME andItemName:@"onlineFriendListItem"];
+    SimpleDBGetAttributesResponse *response = [[AmazonClientManager sdb] getAttributes:gar];
+    if(response.error != nil)
+    {
+        NSLog(@"Error: %@", response.error);
+    }
+    if (onlineFriendList == nil) {
+        onlineFriendList = [[NSMutableArray alloc] initWithCapacity:[response.attributes count]];
+    }
+    else {
+        [onlineFriendList removeAllObjects];
+    }
+    for (SimpleDBAttribute *attr in response.attributes) {
+        FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:attr.value onLineorNot:(YES) number:attr.name];
+        [onlineFriendList addObject:myOnlineFriendListelement];
+    }
+
     
+    //load all the offline friend
+    SimpleDBGetAttributesRequest *gar2 = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:USER_NAME andItemName:@"offlineFriendListItem"];
+    SimpleDBGetAttributesResponse *response2 = [[AmazonClientManager sdb] getAttributes:gar2];
+    if(response2.error != nil)
+    {
+        NSLog(@"Error: %@", response2.error);
+    }
+    if (offlineFriendList == nil) {
+        offlineFriendList = [[NSMutableArray alloc] initWithCapacity:[response2.attributes count]];
+    }
+    else {
+        [offlineFriendList removeAllObjects];
+    }
+    
+    for (SimpleDBAttribute *attr in response2.attributes) {
+        FriendList *myOfflineFriendListelement = [[FriendList alloc]initWithName:attr.value onLineorNot:(NO) number:attr.name];
+        [offlineFriendList addObject:myOfflineFriendListelement];
+    }
+    
+    //add all of them to the table view
     self.FriendListelements =[[NSMutableArray alloc]init];
+    [self.FriendListelements addObjectsFromArray:(onlineFriendList)];
+    [self.FriendListelements addObjectsFromArray:(offlineFriendList)];
+
+
+    
+    /*
     FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:@"My first online friend" onLineorNot:(YES)];
     [self.FriendListelements addObject:myOnlineFriendListelement];
     
     FriendList *myOfflineFriendListelement = [[FriendList alloc]initWithName:@"My first Offline friend" onLineorNot:(NO)];
-    
     [self.FriendListelements addObject:myOfflineFriendListelement];
-    
+    */
     // reload the data
     [self.tableView reloadData];
 }
@@ -67,7 +114,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
+    NSLog(@"THERE ARE %d", self.FriendListelements.count);
     return self.FriendListelements.count;
 }
 
