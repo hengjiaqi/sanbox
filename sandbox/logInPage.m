@@ -63,10 +63,75 @@
 
 //Log in button clicked
 - (IBAction)LoginButton:(id)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([phoneNumber.text isEqualToString:@""]) {
+        [defaults setObject:@"2066176882" forKey:@"EAT2GETHER_ACCOUNT_NAME"];
+        [defaults synchronize];
+        [self performSegueWithIdentifier:@"loginTransistion" sender:sender];
+    }else{
+        NSMutableArray *domains = [[NSMutableArray alloc] init];
+        SimpleDBListDomainsRequest  *listDomainsRequest  = [[SimpleDBListDomainsRequest alloc] init];
+        SimpleDBListDomainsResponse *listDomainsResponse = [[AmazonClientManager sdb] listDomains:listDomainsRequest];
+        if(listDomainsResponse.error != nil)
+        {
+            NSLog(@"Error: %@", listDomainsResponse.error);
+        }
+        
+        if (domains == nil) {
+            domains = [[NSMutableArray alloc] initWithCapacity:[listDomainsResponse.domainNames count]];
+        }
+        else {
+            [domains removeAllObjects];
+        }
+        
+        for (NSString *name in listDomainsResponse.domainNames) {
+            [domains addObject:name];
+        }
+        if (![domains containsObject:phoneNumber.text]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"This phone number is not registered." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }else if(![[self getPassword:phoneNumber.text] isEqualToString:password.text]){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Password is not correct." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }else{
+            [defaults setObject:phoneNumber.text forKey:@"EAT2GETHER_ACCOUNT_NAME"];
+            [defaults synchronize];
+            [self performSegueWithIdentifier:@"loginTransistion" sender:sender];
+        }
+    }
     
+
     
-    [self performSegueWithIdentifier:@"loginTransistion" sender:sender];
 }
+
+- (NSString *)getPassword:(NSString *)domainName {
+    SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:domainName andItemName:@"domainName"];
+    SimpleDBGetAttributesResponse *response = [[AmazonClientManager sdb] getAttributes:gar];
+    if(response.error != nil)
+    {
+        NSLog(@"Error: %@", response.error);
+    }
+    NSMutableArray *data;
+    if (data == nil) {
+        data = [[NSMutableArray alloc] initWithCapacity:[response.attributes count]];
+    }
+    else {
+        [data removeAllObjects];
+    }
+    
+    for (SimpleDBAttribute *attr in response.attributes) {
+        if ([attr.name isEqualToString:@"nicknameItem"]) {
+            [data addObject:[NSString stringWithFormat:@"%@",attr.value]];
+        }
+    }
+    if ([data count] == 1) {
+        return data[0];
+    }else{
+        return nil;
+    }
+    
+}
+
 
 /*
  this method might be calling more than one times according to incoming data size

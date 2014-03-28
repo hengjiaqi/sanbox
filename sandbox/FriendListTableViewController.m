@@ -39,7 +39,7 @@ NSMutableArray *offlineFriendList;
     [super viewDidLoad];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     USER_NAME = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
-    
+    [self.tableView reloadData];
     
     //load all the online friend
     SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:USER_NAME andItemName:@"onlineFriendListItem"];
@@ -59,7 +59,7 @@ NSMutableArray *offlineFriendList;
         [onlineFriendList addObject:myOnlineFriendListelement];
     }
 
-    
+    [self.tableView reloadData];
     //load all the offline friend
     SimpleDBGetAttributesRequest *gar2 = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:USER_NAME andItemName:@"offlineFriendListItem"];
     SimpleDBGetAttributesResponse *response2 = [[AmazonClientManager sdb] getAttributes:gar2];
@@ -73,11 +73,13 @@ NSMutableArray *offlineFriendList;
     else {
         [offlineFriendList removeAllObjects];
     }
-    
+    int count = 0;
     for (SimpleDBAttribute *attr in response2.attributes) {
         FriendList *myOfflineFriendListelement = [[FriendList alloc]initWithName:attr.value onLineorNot:(NO) number:attr.name];
         [offlineFriendList addObject:myOfflineFriendListelement];
+        count++;
     }
+    NSLog(@"RESPONSE2 IS %d", count);
     
     //add all of them to the table view
     self.FriendListelements =[[NSMutableArray alloc]init];
@@ -85,7 +87,7 @@ NSMutableArray *offlineFriendList;
     [self.FriendListelements addObjectsFromArray:(offlineFriendList)];
 
 
-    
+    [self.tableView reloadData];
     /*
     FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:@"My first online friend" onLineorNot:(YES)];
     [self.FriendListelements addObject:myOnlineFriendListelement];

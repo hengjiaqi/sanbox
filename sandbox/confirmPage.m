@@ -132,7 +132,7 @@
     [sdb putAttributes:putAttributesRequest];
     
     //onlineFriendList item
-    NSMutableArray *onlineFriendListAttributes = [[NSMutableArray alloc] initWithCapacity:1];
+    NSMutableArray *onlineFriendListAttributes = [[NSMutableArray alloc] initWithCapacity:2];
     SimpleDBReplaceableAttribute *onlineFriendListAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"2060000001" andValue:@"secondUser" andReplace:YES];
     SimpleDBReplaceableAttribute *onlineFriendListAttribute2 = [[SimpleDBReplaceableAttribute alloc] initWithName:@"2060000002" andValue:@"thirdUser" andReplace:YES];
     [onlineFriendListAttributes addObject:onlineFriendListAttribute];
