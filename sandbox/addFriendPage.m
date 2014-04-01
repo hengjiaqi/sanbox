@@ -62,9 +62,14 @@ NSString *friendNickname;
 */
 
 
-
-
-- (IBAction)searchEnteredNumber:(id)sender {
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"goToSearchResult"]){
+        searchFriendPage *confirmm = (searchFriendPage *)[[segue destinationViewController] topViewController];
+        confirmm.friendPhoneNumber = friendNumber;
+        confirmm.friendNickName = friendNickname;
+    }
+}
+- (IBAction)searchNumber:(id)sender {
     NSMutableArray *domains = [[NSMutableArray alloc] init];
     SimpleDBListDomainsRequest  *listDomainsRequest  = [[SimpleDBListDomainsRequest alloc] init];
     SimpleDBListDomainsResponse *listDomainsResponse = [[AmazonClientManager sdb] listDomains:listDomainsRequest];
@@ -87,41 +92,34 @@ NSString *friendNickname;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Cannot find this user." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     }else{
-    // get the nickname on the database
-    SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:USER_NAME andItemName:@"friendListItem"];
-    SimpleDBGetAttributesResponse *response = [[AmazonClientManager sdb] getAttributes:gar];
-    BOOL alreadyFriend = NO;
-    for (SimpleDBAttribute *attr in response.attributes) {
-        if ([attr.name isEqualToString:numberToSearch.text]) {
-            alreadyFriend = YES;
-            break;
-        }
-    }
-
-    if (alreadyFriend) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"This person is already your friend." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-    }else{
-
-        SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:numberToSearch.text andItemName:@"nicknameItem"];
+        // get the nickname on the database
+        SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:USER_NAME andItemName:@"friendListItem"];
         SimpleDBGetAttributesResponse *response = [[AmazonClientManager sdb] getAttributes:gar];
-        friendNumber = numberToSearch.text;
+        BOOL alreadyFriend = NO;
         for (SimpleDBAttribute *attr in response.attributes) {
-            friendNickname = attr.value;
+            if ([attr.name isEqualToString:numberToSearch.text]) {
+                alreadyFriend = YES;
+                break;
+            }
         }
-        [self performSegueWithIdentifier:@"goToSearchFriendPage" sender:sender];
+        
+        if (alreadyFriend) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"This person is already your friend." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }else{
+            
+            SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:numberToSearch.text andItemName:@"nicknameItem"];
+            SimpleDBGetAttributesResponse *response = [[AmazonClientManager sdb] getAttributes:gar];
+            friendNumber = numberToSearch.text;
+            for (SimpleDBAttribute *attr in response.attributes) {
+                friendNickname = attr.value;
+            }
+            [self performSegueWithIdentifier:@"goToSearchResult" sender:sender];
+        }
     }
-    }
+    
 }
 
-
--(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([segue.identifier isEqualToString:@"goToSearchFriendPage"]){
-        searchFriendPage *confirm = (searchFriendPage *)[[segue destinationViewController] topViewController];
-        confirm.friendPhoneNumber = friendNumber;
-        confirm.friendNickName = friendNickname;
-    }
-}
 - (IBAction)backButtonPressed:(id)sender {
     [self dismissViewControllerAnimated:NO completion:nil];
 }

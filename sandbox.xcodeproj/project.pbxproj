@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		232D08C618EB3124008798A0 /* searchFriendPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 232D08C518EB3124008798A0 /* searchFriendPage.m */; };
 		23B24A1718EA61850040586A /* addFriendPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B24A1618EA61850040586A /* addFriendPage.m */; };
-		23B24A1A18EA61990040586A /* searchFriendPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B24A1918EA61990040586A /* searchFriendPage.m */; };
 		23B39B8818DD6A330098F06A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B39B8718DD6A330098F06A /* AudioToolbox.framework */; };
 		23B39B8A18DD6A450098F06A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B39B8918DD6A450098F06A /* AVFoundation.framework */; };
 		23B39B8C18DD6A4C0098F06A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B39B8B18DD6A4C0098F06A /* CFNetwork.framework */; };
@@ -57,10 +57,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		232D08C418EB3124008798A0 /* searchFriendPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = searchFriendPage.h; path = ../searchFriendPage.h; sourceTree = "<group>"; };
+		232D08C518EB3124008798A0 /* searchFriendPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = searchFriendPage.m; path = ../searchFriendPage.m; sourceTree = "<group>"; };
 		23B24A1518EA61850040586A /* addFriendPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addFriendPage.h; sourceTree = "<group>"; };
 		23B24A1618EA61850040586A /* addFriendPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addFriendPage.m; sourceTree = "<group>"; };
-		23B24A1818EA61990040586A /* searchFriendPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchFriendPage.h; sourceTree = "<group>"; };
-		23B24A1918EA61990040586A /* searchFriendPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchFriendPage.m; sourceTree = "<group>"; };
 		23B39B8718DD6A330098F06A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		23B39B8918DD6A450098F06A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		23B39B8B18DD6A4C0098F06A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -190,8 +190,8 @@
 		23F3EB6518D6C7460075819D /* sandbox */ = {
 			isa = PBXGroup;
 			children = (
-				23B24A1818EA61990040586A /* searchFriendPage.h */,
-				23B24A1918EA61990040586A /* searchFriendPage.m */,
+				232D08C418EB3124008798A0 /* searchFriendPage.h */,
+				232D08C518EB3124008798A0 /* searchFriendPage.m */,
 				23B24A1518EA61850040586A /* addFriendPage.h */,
 				23B24A1618EA61850040586A /* addFriendPage.m */,
 				23E8D9CC18E34A7D0092A1C3 /* FriendList.h */,
@@ -354,6 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				232D08C618EB3124008798A0 /* searchFriendPage.m in Sources */,
 				23E8D9D618E34A7D0092A1C3 /* FriendListTableViewController.m in Sources */,
 				23C645AC18E205CE0097D968 /* AmazonClientManager.m in Sources */,
 				23F3EB7018D6C7460075819D /* AppDelegate.m in Sources */,
@@ -364,7 +365,6 @@
 				23C645B018E206B00097D968 /* Constants.m in Sources */,
 				23F3EB6C18D6C7460075819D /* main.m in Sources */,
 				BEBE44C418E691A400929899 /* personalpreferencepageViewController.m in Sources */,
-				23B24A1A18EA61990040586A /* searchFriendPage.m in Sources */,
 				BEBE44BB18E6911800929899 /* preferencepageTableViewController.m in Sources */,
 				23BB25E518D823A000ED81E8 /* confirmPage.m in Sources */,
 				23E8D9D718E34A7D0092A1C3 /* FriendRequestTableViewController.m in Sources */,

@@ -102,15 +102,11 @@
     [sdb putAttributes:putAttributesRequest];
     
     //Availibility item
-    NSMutableArray *availibility= [[NSMutableArray alloc] initWithCapacity:4];
-    SimpleDBReplaceableAttribute *startHourAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"startHourAttribute" andValue:@"" andReplace:YES];
-    SimpleDBReplaceableAttribute *endHourAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"endHourAttribute" andValue:@"" andReplace:YES];
-    SimpleDBReplaceableAttribute *startMinuteAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"startMinuteAttribute" andValue:@"" andReplace:YES];
-    SimpleDBReplaceableAttribute *endMinuteAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"endMinuteAttribute" andValue:@"" andReplace:YES];
-    [availibility addObject:startHourAttribute];
-    [availibility addObject:endHourAttribute];
-    [availibility addObject:startMinuteAttribute];
-    [availibility addObject:endMinuteAttribute];
+    NSMutableArray *availibility= [[NSMutableArray alloc] initWithCapacity:2];
+    SimpleDBReplaceableAttribute *startTimeAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"startTimeAttribute" andValue:@"" andReplace:YES];
+    SimpleDBReplaceableAttribute *endTimeAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"endTimeAttribute" andValue:@"" andReplace:YES];
+    [availibility addObject:startTimeAttribute];
+    [availibility addObject:endTimeAttribute];
     putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"availbilityItem" andAttributes:availibility];
     [sdb putAttributes:putAttributesRequest];
     

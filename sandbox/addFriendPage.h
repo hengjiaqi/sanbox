@@ -16,7 +16,7 @@
     
 }
 
-- (IBAction)searchEnteredNumber:(id)sender;
+- (IBAction)searchNumber:(id)sender;
 
 - (IBAction)backButtonPressed:(id)sender;
 -(void)dismissKeyboard;

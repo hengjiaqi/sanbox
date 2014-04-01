@@ -203,7 +203,6 @@ NSMutableArray *offlineFriendList;
 
 -(void)cancelButtonPress:(id)sender{
     [self dismissViewControllerAnimated:YES completion:nil];
-
 }
 
 @end
