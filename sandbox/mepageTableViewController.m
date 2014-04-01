@@ -10,7 +10,8 @@
 #import <AWSSimpleDB/AWSSimpleDB.h>
 #import "AmazonClientManager.h"
 //#import "FriendListTableViewController.m"
-extern NSString *USER_NAME;
+NSString *USER_NAME;
+NSString *GNickname;
 @interface mepageTableViewController ()
 
 @end
@@ -31,10 +32,20 @@ extern NSString *USER_NAME;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
                                    action:@selector(dismissKeyboard)];
      [self.view addGestureRecognizer:tap];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    USER_NAME = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
+    SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:USER_NAME andItemName:@"nicknameItem"];
+    SimpleDBGetAttributesResponse *response = [[AmazonClientManager sdb] getAttributes:gar];
+    for (SimpleDBAttribute *attr in response.attributes) {
+        NSLog(@"nickname here is %@", attr.value);
+        _me_NickName_textfield.text = attr.value;
+    }
+
     
     //me_NickName_textfield.delegate = self;
     
@@ -140,26 +151,25 @@ extern NSString *USER_NAME;
      NSLog(@"NickName text field%@", _me_NickName_textfield.text);
      NSLog(@"password text field%@", _me_Password_textfield.text);
      NSLog(@"repassword text field%@", _me_rePassword_textfield.text);
- 
+    AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
     // get the nickname on the database
-    SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:@"2066608173" andItemName:@"nicknameItem"];
+    SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:USER_NAME andItemName:@"nicknameItem"];
     SimpleDBGetAttributesResponse *response = [[AmazonClientManager sdb] getAttributes:gar];
-    NSLog(@"nickname here is %@", response.attributes);
-    // update the nickname on the database
-    //SimpleDBAttribute *attr = response;
-    //NSString *nickname = [[NSString alloc]initWithName:attr.value];
+    for (SimpleDBAttribute *attr in response.attributes) {
+          NSLog(@"nickname here is %@", attr.value);
+    }
+    SimpleDBReplaceableAttribute *nickNameAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"nicknameAttribute" andValue:_me_NickName_textfield.text andReplace:YES];
+    NSMutableArray *NicknameAttributes = [[NSMutableArray alloc] initWithCapacity:1];
+    [NicknameAttributes addObject:nickNameAttribute];
     
+    SimpleDBPutAttributesRequest *putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName: USER_NAME andItemName:@"nicknameItem" andAttributes:NicknameAttributes];
+    [sdb putAttributes:putAttributesRequest];
+    response = [[AmazonClientManager sdb] getAttributes:gar];
     
-    //SimpleDBDeleteAttributesRequest *deleteItem = [[[SimpleDBDeleteAttributesRequest alloc] initWithDomainName:@"2066608173" andItemName:@"nicknameItem"]autorelease];
-    //[sdbClient deleteAttributes:deleteItem];
-    
-    
-    //FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:attr.value onLineorNot:(YES) number:attr.name];
-    //[onlineFriendList addObject:myOnlineFriendListelement];
-
-    //  NSLog(@"repassword text field%@", USER_NAME);
-    // print out the current password on the database
-    // print out the changed
-    
+    for (SimpleDBAttribute *attr in response.attributes) {
+        NSLog(@"nickname here is after update %@", attr.value);
+        GNickname =attr.value;
+        //_me_NickName_textfield.text = attr.value;
+    }
 }
 @end

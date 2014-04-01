@@ -7,6 +7,9 @@
 //
 
 #import "changeAvailableTimeViewController.h"
+#import <AWSSimpleDB/AWSSimpleDB.h>
+#import "AmazonClientManager.h"
+NSString *USER_NAME;
 
 @interface changeAvailableTimeViewController ()
 
@@ -57,20 +60,48 @@
     NSDate *select = [_datePicker date];
     NSString *message = [[NSString alloc] initWithFormat:@"%@",select];
     
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    
+    [df setDateFormat:@"HH:mm"];
+    [df setDateStyle:NSDateFormatterMediumStyle];
+    [df setTimeStyle:NSDateFormatterMediumStyle];
+    
+    NSString *stringToDisplay = [df stringFromDate:select];
+    
     NSLog(@"%@",[message substringWithRange:NSMakeRange(10, 6)]);
-    _starttimelabel.text = [message substringWithRange:NSMakeRange(10, 6)];
+    NSLog(@"%@",stringToDisplay);
+    _starttimelabel.text = [stringToDisplay substringWithRange:NSMakeRange(13, 6)];
 }
 
 - (IBAction)setendtimebutton:(id)sender {
     NSDate *select = [_datePicker date];
     NSString *message = [[NSString alloc] initWithFormat:@"%@",select];
-    NSLog(@"%@",[message substringWithRange:NSMakeRange(10, 6)]);
+   // NSLog(@"%@",[message substringWithRange:NSMakeRange(10, 6)]);
+    NSLog(@"%@",message );
     _endtimelabel.text = [message substringWithRange:NSMakeRange(10, 6)];
-
-  //  _endtimelabel.text = message;
 }
 
 - (IBAction)updatebutton:(id)sender {
-    
+//    // put the start time and end time on the database
+//      AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
+//    SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:USER_NAME andItemName:@"nicknameItem"];
+//    SimpleDBGetAttributesResponse *response = [[AmazonClientManager sdb] getAttributes:gar];
+//    for (SimpleDBAttribute *attr in response.attributes) {
+//        NSLog(@"nickname here is %@", attr.value);
+//    }
+//    SimpleDBReplaceableAttribute *nickNameAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"nicknameAttribute" andValue:_me_NickName_textfield.text andReplace:YES];
+//    NSMutableArray *NicknameAttributes = [[NSMutableArray alloc] initWithCapacity:1];
+//    [NicknameAttributes addObject:nickNameAttribute];
+//    
+//    SimpleDBPutAttributesRequest *putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName: USER_NAME andItemName:@"nicknameItem" andAttributes:NicknameAttributes];
+//    [sdb putAttributes:putAttributesRequest];
+//    response = [[AmazonClientManager sdb] getAttributes:gar];
+//    
+//    for (SimpleDBAttribute *attr in response.attributes) {
+//        NSLog(@"nickname here is after update %@", attr.value);
+//        GNickname =attr.value;
+//        //_me_NickName_textfield.text = attr.value;
+//    }
+
 }
 @end
