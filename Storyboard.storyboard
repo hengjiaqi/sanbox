@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xfq-ev-kRB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xfq-ev-kRB">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -131,51 +131,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xlw-FG-xr3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="385" y="-947"/>
+            <point key="canvasLocation" x="397" y="-855"/>
         </scene>
-        <!--View Controller - Add Friend-->
-        <scene sceneID="H0M-4q-J1q">
-            <objects>
-                <viewController id="4pj-tI-Xxp" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Q1i-dO-l8Z"/>
-                        <viewControllerLayoutGuide type="bottom" id="ppV-7y-E7N"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="F8o-rf-cuu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g5T-nT-n9E">
-                                <rect key="frame" x="66" y="134" width="189" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPh-Gk-P8X">
-                                <rect key="frame" x="137" y="181" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Add Friend" id="atp-Tj-Q22">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="bUP-ms-Rov"/>
-                    </navigationItem>
-                    <connections>
-                        <segue destination="0V3-wZ-tQq" kind="modal" id="8JE-WQ-qvb"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0FP-Jo-n6A" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2074" y="590"/>
-        </scene>
-        <!--View Controller-->
+        <!--Search Friend Page - Search Friend-->
         <scene sceneID="Vjb-6l-NZb">
             <objects>
-                <viewController id="UoP-1e-ggu" sceneMemberID="viewController">
+                <viewController id="UoP-1e-ggu" customClass="searchFriendPage" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kTF-52-f8H"/>
                         <viewControllerLayoutGuide type="bottom" id="lBk-D9-lG7"/>
@@ -185,11 +146,17 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="tsW-LB-zMm"/>
+                    <navigationItem key="navigationItem" title="Search Friend" id="hQ9-f6-eJP">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="BjU-up-LJg">
+                            <connections>
+                                <segue destination="PWD-Za-uoZ" kind="modal" modalTransitionStyle="crossDissolve" id="YGN-NA-rDq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ZB-rY-STR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3052" y="590"/>
+            <point key="canvasLocation" x="3018" y="474"/>
         </scene>
         <!--Table View Controller - Friend Preference-->
         <scene sceneID="BpO-JX-K8I">
@@ -367,7 +334,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BbJ-wm-xVY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1799" y="-867"/>
+            <point key="canvasLocation" x="1871" y="-855"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Uo6-05-g1Z">
@@ -402,12 +369,40 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="4pj-tI-Xxp" kind="relationship" relationship="rootViewController" id="uXc-7w-edu"/>
+                        <segue destination="PWD-Za-uoZ" kind="relationship" relationship="rootViewController" id="I6r-6z-H7c"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xhH-nl-c3m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1461" y="578"/>
+            <point key="canvasLocation" x="1471" y="487"/>
+        </scene>
+        <!--Add Friend Page - Add Friend-->
+        <scene sceneID="h9N-pW-YNA">
+            <objects>
+                <viewController id="PWD-Za-uoZ" customClass="addFriendPage" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZJ2-uQ-PAM"/>
+                        <viewControllerLayoutGuide type="bottom" id="eTn-bx-h1K"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GH7-Lu-Fy5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Friend" id="0U4-mk-8WS">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="n8K-Ah-LLb">
+                            <connections>
+                                <segue destination="1yn-hO-oJv" kind="modal" modalTransitionStyle="crossDissolve" id="Zqs-vj-DMW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="0V3-wZ-tQq" kind="modal" id="jQB-pn-JUl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3I9-EX-tWm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2018" y="474"/>
         </scene>
         <!--Friend Request Table View Controller - FRIEND REQUEST-->
         <scene sceneID="j2y-7J-vtV">
@@ -553,7 +548,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="dCJ-TR-iNQ" kind="modal" id="OgY-Ia-b5g"/>
+                                                        <segue destination="dCJ-TR-iNQ" kind="modal" modalTransitionStyle="crossDissolve" id="OgY-Ia-b5g"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -578,7 +573,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="nxr-hc-SAM" kind="modal" id="aC8-8t-m0j"/>
+                                                        <segue destination="nxr-hc-SAM" kind="modal" modalTransitionStyle="crossDissolve" id="aC8-8t-m0j"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -596,7 +591,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="86W-AI-6Mr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="897" y="866"/>
+            <point key="canvasLocation" x="884" y="866"/>
         </scene>
         <!--Navigation Controller - FM-->
         <scene sceneID="pFa-xw-oCb">
@@ -604,6 +599,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1yn-hO-oJv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="FM" id="VnM-N7-QE0"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="k2D-cz-nah"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gr4-CG-567">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1150,7 +1146,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJW-q0-rfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2526" y="590"/>
+            <point key="canvasLocation" x="2558" y="474"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -1159,8 +1155,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="0tz-Tm-IF4"/>
-        <segue reference="TxA-ri-NUC"/>
+        <segue reference="kc6-Se-Icc"/>
+        <segue reference="f7V-hi-uSr"/>
         <segue reference="XCL-IE-7fz"/>
+        <segue reference="Zqs-vj-DMW"/>
+        <segue reference="YGN-NA-rDq"/>
     </inferredMetricsTieBreakers>
 </document>

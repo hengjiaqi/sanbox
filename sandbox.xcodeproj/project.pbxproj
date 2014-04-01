@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23B24A1718EA61850040586A /* addFriendPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B24A1618EA61850040586A /* addFriendPage.m */; };
+		23B24A1A18EA61990040586A /* searchFriendPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B24A1918EA61990040586A /* searchFriendPage.m */; };
 		23B39B8818DD6A330098F06A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B39B8718DD6A330098F06A /* AudioToolbox.framework */; };
 		23B39B8A18DD6A450098F06A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B39B8918DD6A450098F06A /* AVFoundation.framework */; };
 		23B39B8C18DD6A4C0098F06A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B39B8B18DD6A4C0098F06A /* CFNetwork.framework */; };
@@ -20,7 +22,6 @@
 		23C645B818E207C60097D968 /* AWSSQS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C645B318E207C60097D968 /* AWSSQS.framework */; };
 		23C645B918E207C60097D968 /* AWSSimpleDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C645B418E207C60097D968 /* AWSSimpleDB.framework */; };
 		23C645BA18E207C60097D968 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C645B518E207C60097D968 /* AWSS3.framework */; };
-		23E8D9D418E34A7D0092A1C3 /* AddFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E8D9CB18E34A7D0092A1C3 /* AddFriendTableViewController.m */; };
 		23E8D9D518E34A7D0092A1C3 /* FriendList.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E8D9CD18E34A7D0092A1C3 /* FriendList.m */; };
 		23E8D9D618E34A7D0092A1C3 /* FriendListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E8D9CF18E34A7D0092A1C3 /* FriendListTableViewController.m */; };
 		23E8D9D718E34A7D0092A1C3 /* FriendRequestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E8D9D118E34A7D0092A1C3 /* FriendRequestTableViewController.m */; };
@@ -41,7 +42,6 @@
 		23F3EB8F18D6C7680075819D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F3EB8E18D6C7680075819D /* Storyboard.storyboard */; };
 		23F3EB9218D6C7B50075819D /* logInPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB9118D6C7B50075819D /* logInPage.m */; };
 		BE47CFC918E8F62300503842 /* changeAvailableTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE47CFC818E8F62300503842 /* changeAvailableTimeViewController.m */; };
-		BE63CA3918E4DB4C0001E8A1 /* searchfriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63CA3818E4DB4C0001E8A1 /* searchfriendTableViewController.m */; };
 		BE63CA3C18E4E8280001E8A1 /* SettingPageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63CA3B18E4E8280001E8A1 /* SettingPageTableViewController.m */; };
 		BEBE44BB18E6911800929899 /* preferencepageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBE44BA18E6911800929899 /* preferencepageTableViewController.m */; };
 		BEBE44BE18E6915000929899 /* mepageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBE44BD18E6915000929899 /* mepageTableViewController.m */; };
@@ -59,6 +59,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		23B24A1518EA61850040586A /* addFriendPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addFriendPage.h; sourceTree = "<group>"; };
+		23B24A1618EA61850040586A /* addFriendPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addFriendPage.m; sourceTree = "<group>"; };
+		23B24A1818EA61990040586A /* searchFriendPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchFriendPage.h; sourceTree = "<group>"; };
+		23B24A1918EA61990040586A /* searchFriendPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchFriendPage.m; sourceTree = "<group>"; };
 		23B39B8718DD6A330098F06A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		23B39B8918DD6A450098F06A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		23B39B8B18DD6A4C0098F06A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -76,8 +80,6 @@
 		23C645B318E207C60097D968 /* AWSSQS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSQS.framework; sourceTree = "<group>"; };
 		23C645B418E207C60097D968 /* AWSSimpleDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSimpleDB.framework; sourceTree = "<group>"; };
 		23C645B518E207C60097D968 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
-		23E8D9CA18E34A7D0092A1C3 /* AddFriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendTableViewController.h; sourceTree = "<group>"; };
-		23E8D9CB18E34A7D0092A1C3 /* AddFriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendTableViewController.m; sourceTree = "<group>"; };
 		23E8D9CC18E34A7D0092A1C3 /* FriendList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendList.h; sourceTree = "<group>"; };
 		23E8D9CD18E34A7D0092A1C3 /* FriendList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendList.m; sourceTree = "<group>"; };
 		23E8D9CE18E34A7D0092A1C3 /* FriendListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListTableViewController.h; sourceTree = "<group>"; };
@@ -109,8 +111,6 @@
 		23F3EB9118D6C7B50075819D /* logInPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = logInPage.m; sourceTree = "<group>"; };
 		BE47CFC718E8F62300503842 /* changeAvailableTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = changeAvailableTimeViewController.h; sourceTree = "<group>"; };
 		BE47CFC818E8F62300503842 /* changeAvailableTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = changeAvailableTimeViewController.m; sourceTree = "<group>"; };
-		BE63CA3718E4DB4C0001E8A1 /* searchfriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchfriendTableViewController.h; sourceTree = "<group>"; };
-		BE63CA3818E4DB4C0001E8A1 /* searchfriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchfriendTableViewController.m; sourceTree = "<group>"; };
 		BE63CA3A18E4E8280001E8A1 /* SettingPageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingPageTableViewController.h; sourceTree = "<group>"; };
 		BE63CA3B18E4E8280001E8A1 /* SettingPageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingPageTableViewController.m; sourceTree = "<group>"; };
 		BEBE44B918E6911800929899 /* preferencepageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = preferencepageTableViewController.h; sourceTree = "<group>"; };
@@ -196,10 +196,10 @@
 		23F3EB6518D6C7460075819D /* sandbox */ = {
 			isa = PBXGroup;
 			children = (
-				23E8D9CA18E34A7D0092A1C3 /* AddFriendTableViewController.h */,
-				23E8D9CB18E34A7D0092A1C3 /* AddFriendTableViewController.m */,
-				BE63CA3718E4DB4C0001E8A1 /* searchfriendTableViewController.h */,
-				BE63CA3818E4DB4C0001E8A1 /* searchfriendTableViewController.m */,
+				23B24A1818EA61990040586A /* searchFriendPage.h */,
+				23B24A1918EA61990040586A /* searchFriendPage.m */,
+				23B24A1518EA61850040586A /* addFriendPage.h */,
+				23B24A1618EA61850040586A /* addFriendPage.m */,
 				23E8D9CC18E34A7D0092A1C3 /* FriendList.h */,
 				23E8D9CD18E34A7D0092A1C3 /* FriendList.m */,
 				23E8D9CE18E34A7D0092A1C3 /* FriendListTableViewController.h */,
@@ -370,10 +370,11 @@
 				23BB25DC18D80B4100ED81E8 /* newUser.m in Sources */,
 				23E8D9D518E34A7D0092A1C3 /* FriendList.m in Sources */,
 				BE63CA3C18E4E8280001E8A1 /* SettingPageTableViewController.m in Sources */,
+				23B24A1718EA61850040586A /* addFriendPage.m in Sources */,
 				23C645B018E206B00097D968 /* Constants.m in Sources */,
 				23F3EB6C18D6C7460075819D /* main.m in Sources */,
 				BEBE44C418E691A400929899 /* personalpreferencepageViewController.m in Sources */,
-				23E8D9D418E34A7D0092A1C3 /* AddFriendTableViewController.m in Sources */,
+				23B24A1A18EA61990040586A /* searchFriendPage.m in Sources */,
 				BEBE44BB18E6911800929899 /* preferencepageTableViewController.m in Sources */,
 				23BB25E518D823A000ED81E8 /* confirmPage.m in Sources */,
 				23E8D9D718E34A7D0092A1C3 /* FriendRequestTableViewController.m in Sources */,
@@ -382,7 +383,6 @@
 				BEBE44BE18E6915000929899 /* mepageTableViewController.m in Sources */,
 				23E8D9D818E34A7D0092A1C3 /* confirm.m in Sources */,
 				23F029DB18E0E391000F2BD6 /* mainPage.m in Sources */,
-				BE63CA3918E4DB4C0001E8A1 /* searchfriendTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
