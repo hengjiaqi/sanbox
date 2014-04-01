@@ -9,13 +9,13 @@
 #import "AddFriendTableViewController.h"
 #import "FriendListTableViewController.h"
 #import "FriendList.h"
-
+#import <AWSSimpleDB/AWSSimpleDB.h>
+#import "AmazonClientManager.h"
 @interface AddFriendTableViewController ()
 
 @end
 
 @implementation AddFriendTableViewController
-@synthesize nameField=_nameField;
 @synthesize FriendListViewController_ADD = _FriendListViewController_ADD;
 
 
@@ -131,16 +131,36 @@
 //}
 
 - (IBAction)search:(id)sender {
-    // if no this person alert pop out else
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message" message:@"cannot find this person" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
+    NSMutableArray *domains = [[NSMutableArray alloc] init];
+    SimpleDBListDomainsRequest  *listDomainsRequest  = [[SimpleDBListDomainsRequest alloc] init];
+    SimpleDBListDomainsResponse *listDomainsResponse = [[AmazonClientManager sdb] listDomains:listDomainsRequest];
+    if(listDomainsResponse.error != nil)
+    {
+        NSLog(@"Error: %@", listDomainsResponse.error);
+    }
     
-    // else pop out a table view
-    //FriendList *searchedfriend = [[FriendList alloc] initWithName:self.nameField.text onLineorNot:NO];
-  //  [self.FriendListViewController_ADD.FriendListelements addObject:searchedfriend];
+    if (domains == nil) {
+        domains = [[NSMutableArray alloc] initWithCapacity:[listDomainsResponse.domainNames count]];
+    }
+    else {
+        [domains removeAllObjects];
+    }
+    
+    for (NSString *name in listDomainsResponse.domainNames) {
+        [domains addObject:name];
+    }
+    if (![domains containsObject:nameField.text]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message" message:@"Cannot find this person." delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
+        [alert show];
+    }else{
+        
+    }
     
     
     
-    [alert show];
+    
+    
+    
 
 }
 @end

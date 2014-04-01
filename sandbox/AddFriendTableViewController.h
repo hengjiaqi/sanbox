@@ -8,17 +8,15 @@
 
 #import <UIKit/UIKit.h>
 @class FriendListTableViewController;
-@interface AddFriendTableViewController : UITableViewController
+@interface AddFriendTableViewController : UITableViewController{
+    IBOutlet UITextField *nameField;
+}
 // add the button click listener
 -(IBAction)backButtonPress:(id)sender;
 //-(IBAction)searchButtonPress:(id)sender;
 
 - (IBAction)search:(id)sender;
 
-
-
-// add text field
-@property (nonatomic, strong) IBOutlet UITextField *nameField;
 
 // add the friend into list
 @property(nonatomic, strong)FriendListTableViewController * FriendListViewController_ADD;
