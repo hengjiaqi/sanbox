@@ -144,7 +144,8 @@ NSString *GNickname;
     [_me_rePassword_textfield resignFirstResponder];
 }
 - (IBAction)me_back_button:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:NO completion:nil];
+
 }
 
 - (IBAction)me_update_button:(id)sender {

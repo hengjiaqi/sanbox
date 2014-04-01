@@ -11,9 +11,15 @@
 @interface addFriendPage : UIViewController<UITextFieldDelegate>{
 
    
+    IBOutlet UITextField *numberToSearch;
+
     
 }
 
+- (IBAction)searchEnteredNumber:(id)sender;
 
+- (IBAction)backButtonPressed:(id)sender;
+-(void)dismissKeyboard;
+-(BOOL)textFieldShouldReturn:(UITextField*) textField;
 
 @end

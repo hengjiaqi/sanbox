@@ -147,16 +147,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Search Friend" id="hQ9-f6-eJP">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="BjU-up-LJg">
-                            <connections>
-                                <segue destination="PWD-Za-uoZ" kind="modal" modalTransitionStyle="crossDissolve" id="YGN-NA-rDq"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="BjU-up-LJg"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ZB-rY-STR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3018" y="474"/>
+            <point key="canvasLocation" x="3102" y="487"/>
         </scene>
         <!--Table View Controller - Friend Preference-->
         <scene sceneID="BpO-JX-K8I">
@@ -166,6 +162,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="dt3-07-MU0">
+                            <rect key="frame" x="0.0" y="372" width="320" height="108"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </view>
                         <sections>
                             <tableViewSection headerTitle="Phone number" id="iFq-cb-Sv1">
                                 <cells>
@@ -217,20 +218,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="fA8-Fb-gtV">
-                                        <rect key="frame" x="0.0" y="262" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fA8-Fb-gtV" id="PrU-hj-3fk">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Contact" id="kwa-HD-978">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="6T2-oS-MTj">
-                                        <rect key="frame" x="0.0" y="328" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="284" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6T2-oS-MTj" id="5EY-yZ-gO0">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -254,7 +247,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="uGY-Gy-Z9E">
-                                        <rect key="frame" x="0.0" y="372" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="328" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uGY-Gy-Z9E" id="rzq-gE-cd5">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -387,22 +380,41 @@
                     <view key="view" contentMode="scaleToFill" id="GH7-Lu-Fy5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hmh-5T-z0q">
+                                <rect key="frame" x="61" y="184" width="198" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W17-MG-Sb6">
+                                <rect key="frame" x="137" y="225" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchEnteredNumber:" destination="PWD-Za-uoZ" eventType="touchUpInside" id="VPm-Bg-ge3"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Friend" id="0U4-mk-8WS">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="n8K-Ah-LLb">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="n8K-Ah-LLb">
                             <connections>
-                                <segue destination="1yn-hO-oJv" kind="modal" modalTransitionStyle="crossDissolve" id="Zqs-vj-DMW"/>
+                                <action selector="backButtonPressed:" destination="PWD-Za-uoZ" id="otM-M3-Zq1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="0V3-wZ-tQq" kind="modal" id="jQB-pn-JUl"/>
+                        <outlet property="numberToSearch" destination="hmh-5T-z0q" id="Zdv-13-sE4"/>
+                        <segue destination="0V3-wZ-tQq" kind="modal" identifier="goToSearchFriendPage" id="jQB-pn-JUl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3I9-EX-tWm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2018" y="474"/>
+            <point key="canvasLocation" x="2018" y="482"/>
         </scene>
         <!--Friend Request Table View Controller - FRIEND REQUEST-->
         <scene sceneID="j2y-7J-vtV">
@@ -1145,7 +1157,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJW-q0-rfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2558" y="474"/>
+            <point key="canvasLocation" x="2564" y="487"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -1155,9 +1167,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="kc6-Se-Icc"/>
-        <segue reference="f7V-hi-uSr"/>
+        <segue reference="0tz-Tm-IF4"/>
         <segue reference="XCL-IE-7fz"/>
-        <segue reference="Zqs-vj-DMW"/>
-        <segue reference="YGN-NA-rDq"/>
     </inferredMetricsTieBreakers>
 </document>

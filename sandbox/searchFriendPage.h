@@ -10,5 +10,9 @@
 #import <AWSSimpleDB/AWSSimpleDB.h>
 #import "AmazonClientManager.h"
 @interface searchFriendPage : UIViewController
-
+{
+    
+}
+@property (strong, nonatomic) NSString* friendPhoneNumber;
+@property (strong, nonatomic) NSString* friendNickName;
 @end
