@@ -169,7 +169,6 @@ NSString *GNickname;
     for (SimpleDBAttribute *attr in response.attributes) {
         NSLog(@"nickname here is after update %@", attr.value);
         GNickname =attr.value;
-        //_me_NickName_textfield.text = attr.value;
     }
 }
 @end

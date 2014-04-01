@@ -56,34 +56,67 @@ NSString *USER_NAME;
 */
 
 - (IBAction)setstarttimebutton:(id)sender {
-    
+    NSString *hrmin;
+    NSString *PMAM;
     NSDate *select = [_datePicker date];
-    NSString *message = [[NSString alloc] initWithFormat:@"%@",select];
-    
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    
+     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"HH:mm"];
     [df setDateStyle:NSDateFormatterMediumStyle];
     [df setTimeStyle:NSDateFormatterMediumStyle];
-    
     NSString *stringToDisplay = [df stringFromDate:select];
-    
-    NSLog(@"%@",[message substringWithRange:NSMakeRange(10, 6)]);
-    NSLog(@"%@",stringToDisplay);
-    _starttimelabel.text = [stringToDisplay substringWithRange:NSMakeRange(13, 6)];
+    if(stringToDisplay.length == 25){
+    NSLog(@"length of string to display %d",stringToDisplay.length);
+    NSLog(@"STRING TO DISPLAY IS %@",[stringToDisplay substringWithRange:NSMakeRange(13, 6)]);
+    NSLog(@"STRING TO DISPLAY IS %@",[stringToDisplay substringFromIndex:22]);
+    hrmin = [stringToDisplay substringWithRange:NSMakeRange(13, 6)];
+    PMAM =[stringToDisplay  substringFromIndex:22];
+    }else{ NSLog(@"length of string to display %d",stringToDisplay.length);
+        NSLog(@"STRING TO DISPLAY IS %@",[stringToDisplay substringWithRange:NSMakeRange(13, 5)]);
+        NSLog(@"STRING TO DISPLAY IS %@",[stringToDisplay substringFromIndex:21]);
+        hrmin = [stringToDisplay substringWithRange:NSMakeRange(13, 5)];
+        PMAM =[stringToDisplay  substringFromIndex:21];
+    }
+    NSString *LABEL = [hrmin stringByAppendingString:PMAM];
+   // _starttimelabel.text = [stringToDisplay substringWithRange:NSMakeRange(13, 5)];
+    _starttimelabel.text = LABEL;
 }
 
 - (IBAction)setendtimebutton:(id)sender {
+    NSString *hrmin;
+    NSString *PMAM;
     NSDate *select = [_datePicker date];
-    NSString *message = [[NSString alloc] initWithFormat:@"%@",select];
-   // NSLog(@"%@",[message substringWithRange:NSMakeRange(10, 6)]);
-    NSLog(@"%@",message );
-    _endtimelabel.text = [message substringWithRange:NSMakeRange(10, 6)];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"HH:mm"];
+    [df setDateStyle:NSDateFormatterMediumStyle];
+    [df setTimeStyle:NSDateFormatterMediumStyle];
+    NSString *stringToDisplay = [df stringFromDate:select];
+    if(stringToDisplay.length == 25){
+        NSLog(@"length of string to display %d",stringToDisplay.length);
+        NSLog(@"STRING TO DISPLAY IS %@",[stringToDisplay substringWithRange:NSMakeRange(13, 6)]);
+        NSLog(@"STRING TO DISPLAY IS %@",[stringToDisplay substringFromIndex:22]);
+        hrmin = [stringToDisplay substringWithRange:NSMakeRange(13, 6)];
+        PMAM =[stringToDisplay  substringFromIndex:22];
+    }else{ NSLog(@"length of string to display %d",stringToDisplay.length);
+        NSLog(@"STRING TO DISPLAY IS %@",[stringToDisplay substringWithRange:NSMakeRange(13, 5)]);
+        NSLog(@"STRING TO DISPLAY IS %@",[stringToDisplay substringFromIndex:21]);
+        hrmin = [stringToDisplay substringWithRange:NSMakeRange(13, 5)];
+        PMAM =[stringToDisplay  substringFromIndex:21];
+    }
+    NSString *LABEL = [hrmin stringByAppendingString:PMAM];
+    _endtimelabel.text = LABEL;
 }
 
 - (IBAction)updatebutton:(id)sender {
-//    // put the start time and end time on the database
-//      AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
+    NSLog(@"NickName text field%d", _starttimelabel.text.length);
+    NSLog(@"password text field%d", _endtimelabel.text.length);
+    // load start time to the database
+    if(_starttimelabel.text.length == 8){
+        
+    }
+
+    
+//    AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
+//    // get the nickname on the database
 //    SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:USER_NAME andItemName:@"nicknameItem"];
 //    SimpleDBGetAttributesResponse *response = [[AmazonClientManager sdb] getAttributes:gar];
 //    for (SimpleDBAttribute *attr in response.attributes) {
@@ -100,7 +133,6 @@ NSString *USER_NAME;
 //    for (SimpleDBAttribute *attr in response.attributes) {
 //        NSLog(@"nickname here is after update %@", attr.value);
 //        GNickname =attr.value;
-//        //_me_NickName_textfield.text = attr.value;
 //    }
 
 }
