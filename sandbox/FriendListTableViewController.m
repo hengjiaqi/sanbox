@@ -34,9 +34,15 @@ NSMutableArray *offlineFriendList;
     return self;
 }
 
+
+- (void)viewDidAppear:(BOOL)animated{
+    NSLog(@"Tabs showed up!");
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"Tabs showed up!");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     USER_NAME = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
     [self.tableView reloadData];
@@ -96,7 +102,6 @@ NSMutableArray *offlineFriendList;
     [self.FriendListelements addObject:myOfflineFriendListelement];
     */
     // reload the data
-    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning

@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface searchFriendPage : UITableViewController{
+@interface searchFriendPage : UITableViewController<UIAlertViewDelegate>{
     
 }
 @property (strong, nonatomic) NSString* friendPhoneNumber;
 @property (strong, nonatomic) NSString* friendNickName;
+@property(nonatomic,strong) NSMutableArray* FriendListelements;
+
 - (IBAction)backButtonPressed:(id)sender;
 @end

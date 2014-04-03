@@ -34,9 +34,11 @@ NSMutableArray *domains;
     [super viewDidLoad];
     
     AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
-    /*SimpleDBDeleteDomainRequest *request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2066176882"];
-    [sdb deleteDomain:request];*/
-     
+    SimpleDBDeleteDomainRequest *request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2066176882"];
+    //[sdb deleteDomain:request];
+    request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2066608173"];
+    [sdb deleteDomain:request];
+    
     // Do any additional setup after loading the view.
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self

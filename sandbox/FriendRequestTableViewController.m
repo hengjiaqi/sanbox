@@ -7,7 +7,14 @@
 //
 
 #import "FriendRequestTableViewController.h"
-
+#import <AWSSimpleDB/AWSSimpleDB.h>
+#import "AmazonClientManager.h"
+#import "FriendList.h"
+#import "simpleDBHelper.h"
+NSString *USER_NAME;
+NSMutableArray *requestList;
+NSString* numberToAccept;
+NSString* nameToAccept;
 @interface FriendRequestTableViewController ()
 
 @end
@@ -26,12 +33,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    requestList = [[NSMutableArray alloc] init];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    USER_NAME = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
+    SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:USER_NAME andItemName:@"friendRequestListItem"];
+    SimpleDBGetAttributesResponse *response = [[AmazonClientManager sdb] getAttributes:gar];
+    int count = 0;
+    for (SimpleDBAttribute *attr in response.attributes ) {
+        count++;
+        FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:attr.value onLineorNot:(YES) number:attr.name];
+        [requestList addObject:myOnlineFriendListelement];
+    }
+    NSLog(@"requestlist is %d and  %d", requestList.count, count);
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,26 +59,30 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return requestList.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"friendRequstCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendRequstCell"];
     
-    // Configure the cell...
-    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    FriendList *currentFriend = [requestList objectAtIndex:indexPath.row];
+    cell.textLabel.text = currentFriend.name;
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -115,6 +132,40 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    FriendList *currentFriend = [requestList objectAtIndex:indexPath.row];
+    numberToAccept = [[NSString alloc] initWithFormat:@"%@",currentFriend.phoneNumber];
+    nameToAccept = [[NSString alloc] initWithFormat:@"%@",currentFriend.name];
+    NSString* message = [[NSString alloc] initWithFormat:@"Do you want to accept friend request from %@ (%@)?", currentFriend.name,currentFriend.phoneNumber];
+    UIAlertView *alert;
+    alert = [[UIAlertView alloc] initWithTitle:@"Accept Friend" message:message delegate:self cancelButtonTitle:@"Accept" otherButtonTitles:@"Decline", nil];
+    [alert show];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+//if the person accept the friend request
+//add each other to the friendListItem
+//add each other to the beVisiableToListItem
+//delete from the friendRequestList
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    simpleDBHelper* hp = [[simpleDBHelper alloc] init];
+    if (buttonIndex == 0 && [[alertView title] isEqualToString:@"Accept Friend"])
+    {
+        [hp addAtrribute:USER_NAME item:@"friendListItem" attribute:numberToAccept value:nameToAccept];
+        NSString* myNickName = [hp getAtrributeValue:USER_NAME item:@"nicknameItem" attribute:@"nicknameAttribute"];
+        [hp addAtrribute:numberToAccept item:@"friendListItem" attribute:USER_NAME value:myNickName];
+        [hp addAtrribute:USER_NAME item:@"onlineFriendListItem" attribute:numberToAccept value:nameToAccept];
+        [hp addAtrribute:numberToAccept item:@"onlineFriendListItem" attribute:USER_NAME value:myNickName];
+    }
+    NSLog(@"%@, %@, %@", USER_NAME, numberToAccept, nameToAccept);
+    //[hp deleteAtrribute:USER_NAME item:@"friendRequestListItem" attribute:numberToAccept value:nameToAccept];
+    [self.tableView reloadData];
+}
+
+
 -(void)backButtonPress:(id)sender{
     [self dismissViewControllerAnimated:YES completion:nil];
 

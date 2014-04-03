@@ -105,30 +105,13 @@
 }
 
 - (NSString *)getPassword:(NSString *)domainName {
-    SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:domainName andItemName:@"domainName"];
+    NSString* myNickName = [[NSString alloc] init];
+    SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:domainName andItemName:@"passwordItem"];
     SimpleDBGetAttributesResponse *response = [[AmazonClientManager sdb] getAttributes:gar];
-    if(response.error != nil)
-    {
-        NSLog(@"Error: %@", response.error);
-    }
-    NSMutableArray *data;
-    if (data == nil) {
-        data = [[NSMutableArray alloc] initWithCapacity:[response.attributes count]];
-    }
-    else {
-        [data removeAllObjects];
-    }
-    
     for (SimpleDBAttribute *attr in response.attributes) {
-        if ([attr.name isEqualToString:@"nicknameItem"]) {
-            [data addObject:[NSString stringWithFormat:@"%@",attr.value]];
-        }
+        myNickName = attr.value;
     }
-    if ([data count] == 1) {
-        return data[0];
-    }else{
-        return nil;
-    }
+    return myNickName;
     
 }
 

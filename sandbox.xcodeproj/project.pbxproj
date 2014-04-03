@@ -22,6 +22,7 @@
 		23C645B818E207C60097D968 /* AWSSQS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C645B318E207C60097D968 /* AWSSQS.framework */; };
 		23C645B918E207C60097D968 /* AWSSimpleDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C645B418E207C60097D968 /* AWSSimpleDB.framework */; };
 		23C645BA18E207C60097D968 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C645B518E207C60097D968 /* AWSS3.framework */; };
+		23E6235818ECFFB6003F1693 /* simpleDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E6235718ECFFB6003F1693 /* simpleDBHelper.m */; };
 		23E8D9D518E34A7D0092A1C3 /* FriendList.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E8D9CD18E34A7D0092A1C3 /* FriendList.m */; };
 		23E8D9D618E34A7D0092A1C3 /* FriendListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E8D9CF18E34A7D0092A1C3 /* FriendListTableViewController.m */; };
 		23E8D9D718E34A7D0092A1C3 /* FriendRequestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E8D9D118E34A7D0092A1C3 /* FriendRequestTableViewController.m */; };
@@ -78,6 +79,8 @@
 		23C645B318E207C60097D968 /* AWSSQS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSQS.framework; sourceTree = "<group>"; };
 		23C645B418E207C60097D968 /* AWSSimpleDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSimpleDB.framework; sourceTree = "<group>"; };
 		23C645B518E207C60097D968 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
+		23E6235618ECFFB6003F1693 /* simpleDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simpleDBHelper.h; sourceTree = "<group>"; };
+		23E6235718ECFFB6003F1693 /* simpleDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = simpleDBHelper.m; sourceTree = "<group>"; };
 		23E8D9CC18E34A7D0092A1C3 /* FriendList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendList.h; sourceTree = "<group>"; };
 		23E8D9CD18E34A7D0092A1C3 /* FriendList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendList.m; sourceTree = "<group>"; };
 		23E8D9CE18E34A7D0092A1C3 /* FriendListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListTableViewController.h; sourceTree = "<group>"; };
@@ -190,6 +193,8 @@
 		23F3EB6518D6C7460075819D /* sandbox */ = {
 			isa = PBXGroup;
 			children = (
+				23E6235618ECFFB6003F1693 /* simpleDBHelper.h */,
+				23E6235718ECFFB6003F1693 /* simpleDBHelper.m */,
 				232D08C418EB3124008798A0 /* searchFriendPage.h */,
 				232D08C518EB3124008798A0 /* searchFriendPage.m */,
 				23B24A1518EA61850040586A /* addFriendPage.h */,
@@ -361,6 +366,7 @@
 				23BB25DC18D80B4100ED81E8 /* newUser.m in Sources */,
 				23E8D9D518E34A7D0092A1C3 /* FriendList.m in Sources */,
 				BE63CA3C18E4E8280001E8A1 /* SettingPageTableViewController.m in Sources */,
+				23E6235818ECFFB6003F1693 /* simpleDBHelper.m in Sources */,
 				23B24A1718EA61850040586A /* addFriendPage.m in Sources */,
 				23C645B018E206B00097D968 /* Constants.m in Sources */,
 				23F3EB6C18D6C7460075819D /* main.m in Sources */,

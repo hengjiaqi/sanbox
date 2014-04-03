@@ -82,6 +82,12 @@
     [NicknameAttributes addObject:nickNameAttribute];
     putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"nicknameItem" andAttributes:NicknameAttributes];
     [sdb putAttributes:putAttributesRequest];
+    //onlineItem
+    SimpleDBReplaceableAttribute *onlineAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"onlineAttribute" andValue:@"online" andReplace:YES];
+    NSMutableArray *onlineAttributes = [[NSMutableArray alloc] initWithCapacity:1];
+    [onlineAttributes addObject:onlineAttribute];
+    putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"onlineItem" andAttributes:onlineAttributes];
+    [sdb putAttributes:putAttributesRequest];
     
     //friendList item
     NSMutableArray *friendListAttributes = [[NSMutableArray alloc] initWithCapacity:2];
@@ -103,8 +109,8 @@
     
     //Availibility item
     NSMutableArray *availibility= [[NSMutableArray alloc] initWithCapacity:2];
-    SimpleDBReplaceableAttribute *startTimeAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"startTimeAttribute" andValue:@"" andReplace:YES];
-    SimpleDBReplaceableAttribute *endTimeAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"endTimeAttribute" andValue:@"" andReplace:YES];
+    SimpleDBReplaceableAttribute *startTimeAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"startTimeAttribute" andValue:@"00:00AM" andReplace:YES];
+    SimpleDBReplaceableAttribute *endTimeAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"endTimeAttribute" andValue:@"00:00AM" andReplace:YES];
     [availibility addObject:startTimeAttribute];
     [availibility addObject:endTimeAttribute];
     putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"availbilityItem" andAttributes:availibility];

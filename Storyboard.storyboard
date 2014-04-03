@@ -484,7 +484,7 @@
             </objects>
             <point key="canvasLocation" x="335" y="-192"/>
         </scene>
-        <!--Friend List Table View Controller-->
+        <!--Friend List Table View Controller - My Friends-->
         <scene sceneID="tfC-Zd-coR">
             <objects>
                 <tableViewController id="7He-rb-jQY" customClass="FriendListTableViewController" sceneMemberID="viewController">
@@ -542,7 +542,7 @@
                             <outlet property="delegate" destination="7He-rb-jQY" id="EUo-RO-50g"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="AMD-kF-lnw"/>
+                    <navigationItem key="navigationItem" title="My Friends" id="AMD-kF-lnw"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2B8-OR-zQM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
