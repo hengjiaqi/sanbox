@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		232D08C618EB3124008798A0 /* searchFriendPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 232D08C518EB3124008798A0 /* searchFriendPage.m */; };
+		239B473018EDD5DA00D552B8 /* friendPreference.m in Sources */ = {isa = PBXBuildFile; fileRef = 239B472F18EDD5DA00D552B8 /* friendPreference.m */; };
 		23B24A1718EA61850040586A /* addFriendPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B24A1618EA61850040586A /* addFriendPage.m */; };
 		23B39B8818DD6A330098F06A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B39B8718DD6A330098F06A /* AudioToolbox.framework */; };
 		23B39B8A18DD6A450098F06A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B39B8918DD6A450098F06A /* AVFoundation.framework */; };
@@ -60,6 +61,8 @@
 /* Begin PBXFileReference section */
 		232D08C418EB3124008798A0 /* searchFriendPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = searchFriendPage.h; path = ../searchFriendPage.h; sourceTree = "<group>"; };
 		232D08C518EB3124008798A0 /* searchFriendPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = searchFriendPage.m; path = ../searchFriendPage.m; sourceTree = "<group>"; };
+		239B472E18EDD5DA00D552B8 /* friendPreference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = friendPreference.h; sourceTree = "<group>"; };
+		239B472F18EDD5DA00D552B8 /* friendPreference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = friendPreference.m; sourceTree = "<group>"; };
 		23B24A1518EA61850040586A /* addFriendPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addFriendPage.h; sourceTree = "<group>"; };
 		23B24A1618EA61850040586A /* addFriendPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addFriendPage.m; sourceTree = "<group>"; };
 		23B39B8718DD6A330098F06A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -193,6 +196,8 @@
 		23F3EB6518D6C7460075819D /* sandbox */ = {
 			isa = PBXGroup;
 			children = (
+				239B472E18EDD5DA00D552B8 /* friendPreference.h */,
+				239B472F18EDD5DA00D552B8 /* friendPreference.m */,
 				23E6235618ECFFB6003F1693 /* simpleDBHelper.h */,
 				23E6235718ECFFB6003F1693 /* simpleDBHelper.m */,
 				232D08C418EB3124008798A0 /* searchFriendPage.h */,
@@ -224,7 +229,6 @@
 				BEBE44BA18E6911800929899 /* preferencepageTableViewController.m */,
 				BEBE44BC18E6915000929899 /* mepageTableViewController.h */,
 				BEBE44BD18E6915000929899 /* mepageTableViewController.m */,
-				23F3EB7118D6C7460075819D /* Images.xcassets */,
 				23F3EB6618D6C7460075819D /* Supporting Files */,
 			);
 			path = sandbox;
@@ -233,6 +237,7 @@
 		23F3EB6618D6C7460075819D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				23F3EB7118D6C7460075819D /* Images.xcassets */,
 				23C645AF18E206B00097D968 /* Constants.m */,
 				23C645A918E205CE0097D968 /* Constants.h */,
 				23C645AA18E205CE0097D968 /* AmazonClientManager.h */,
@@ -365,6 +370,7 @@
 				23F3EB7018D6C7460075819D /* AppDelegate.m in Sources */,
 				23BB25DC18D80B4100ED81E8 /* newUser.m in Sources */,
 				23E8D9D518E34A7D0092A1C3 /* FriendList.m in Sources */,
+				239B473018EDD5DA00D552B8 /* friendPreference.m in Sources */,
 				BE63CA3C18E4E8280001E8A1 /* SettingPageTableViewController.m in Sources */,
 				23E6235818ECFFB6003F1693 /* simpleDBHelper.m in Sources */,
 				23B24A1718EA61850040586A /* addFriendPage.m in Sources */,

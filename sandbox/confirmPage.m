@@ -89,6 +89,13 @@
     putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"onlineItem" andAttributes:onlineAttributes];
     [sdb putAttributes:putAttributesRequest];
     
+    //preferenceItem
+    SimpleDBReplaceableAttribute *preferenceAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"preferenceAttribute" andValue:@"I have no preference" andReplace:YES];
+    NSMutableArray *preferenceAttributes = [[NSMutableArray alloc] initWithCapacity:1];
+    [preferenceAttributes addObject:preferenceAttribute];
+    putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"preferenceItem" andAttributes:preferenceAttributes];
+    [sdb putAttributes:putAttributesRequest];
+    
     //friendList item
     NSMutableArray *friendListAttributes = [[NSMutableArray alloc] initWithCapacity:2];
     SimpleDBReplaceableAttribute *friendListAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"2060000000" andValue:@"firstUser" andReplace:YES];

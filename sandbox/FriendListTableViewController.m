@@ -37,6 +37,7 @@ NSMutableArray *offlineFriendList;
 
 - (void)viewDidAppear:(BOOL)animated{
     NSLog(@"Tabs showed up!");
+    [self loadFriends];
 }
 
 - (void)viewDidLoad
@@ -47,6 +48,18 @@ NSMutableArray *offlineFriendList;
     USER_NAME = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
     [self.tableView reloadData];
     
+    /*
+    FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:@"My first online friend" onLineorNot:(YES)];
+    [self.FriendListelements addObject:myOnlineFriendListelement];
+    
+    FriendList *myOfflineFriendListelement = [[FriendList alloc]initWithName:@"My first Offline friend" onLineorNot:(NO)];
+    [self.FriendListelements addObject:myOfflineFriendListelement];
+    */
+    // reload the data
+}
+
+
+- (void)loadFriends{
     //load all the online friend
     SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:USER_NAME andItemName:@"onlineFriendListItem"];
     SimpleDBGetAttributesResponse *response = [[AmazonClientManager sdb] getAttributes:gar];
@@ -64,7 +77,7 @@ NSMutableArray *offlineFriendList;
         FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:attr.value onLineorNot:(YES) number:attr.name];
         [onlineFriendList addObject:myOnlineFriendListelement];
     }
-
+    
     [self.tableView reloadData];
     //load all the offline friend
     SimpleDBGetAttributesRequest *gar2 = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:USER_NAME andItemName:@"offlineFriendListItem"];
@@ -91,17 +104,7 @@ NSMutableArray *offlineFriendList;
     self.FriendListelements =[[NSMutableArray alloc]init];
     [self.FriendListelements addObjectsFromArray:(onlineFriendList)];
     [self.FriendListelements addObjectsFromArray:(offlineFriendList)];
-
-
     [self.tableView reloadData];
-    /*
-    FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:@"My first online friend" onLineorNot:(YES)];
-    [self.FriendListelements addObject:myOnlineFriendListelement];
-    
-    FriendList *myOfflineFriendListelement = [[FriendList alloc]initWithName:@"My first Offline friend" onLineorNot:(NO)];
-    [self.FriendListelements addObject:myOfflineFriendListelement];
-    */
-    // reload the data
 }
 
 - (void)didReceiveMemoryWarning
@@ -205,6 +208,13 @@ NSMutableArray *offlineFriendList;
  // Pass the selected object to the new view controller.
  }
  */
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    FriendList *currentFriend = [self.FriendListelements objectAtIndex:indexPath.row];
+    
+    
+}
 
 -(void)cancelButtonPress:(id)sender{
     [self dismissViewControllerAnimated:YES completion:nil];

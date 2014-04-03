@@ -89,9 +89,8 @@ NSString* numberToAdd;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
 
-    if (buttonIndex == 0 && [[alertView title] isEqualToString:@"Add Friend"]);
+    if ((buttonIndex == 0) && ([[alertView title] isEqualToString:@"Add Friend"]));
     {
         //Check to see if request has already been sent
         SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:numberToAdd andItemName:@"friendRequestListItem"];
