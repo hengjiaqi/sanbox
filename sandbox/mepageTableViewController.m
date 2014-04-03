@@ -32,7 +32,7 @@ NSString *GNickname;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
+  //  AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
                                    action:@selector(dismissKeyboard)];

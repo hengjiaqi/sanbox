@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface personalpreferencepageViewController : UIViewController
+@interface personalpreferencepageViewController : UIViewController  <UITextFieldDelegate>
+@property (strong, nonatomic) IBOutlet UITextField *inputPreferText;
+- (IBAction)backButtonPress:(id)sender;
 
 @end

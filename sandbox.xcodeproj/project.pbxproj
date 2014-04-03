@@ -40,11 +40,11 @@
 		23F3EB8518D6C7460075819D /* sandboxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB8418D6C7460075819D /* sandboxTests.m */; };
 		23F3EB8F18D6C7680075819D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F3EB8E18D6C7680075819D /* Storyboard.storyboard */; };
 		23F3EB9218D6C7B50075819D /* logInPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB9118D6C7B50075819D /* logInPage.m */; };
+		BE3CB6C118ECF396008CCC62 /* changePreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3CB6C018ECF396008CCC62 /* changePreferenceViewController.m */; };
 		BE47CFC918E8F62300503842 /* changeAvailableTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE47CFC818E8F62300503842 /* changeAvailableTimeViewController.m */; };
 		BE63CA3C18E4E8280001E8A1 /* SettingPageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63CA3B18E4E8280001E8A1 /* SettingPageTableViewController.m */; };
 		BEBE44BB18E6911800929899 /* preferencepageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBE44BA18E6911800929899 /* preferencepageTableViewController.m */; };
 		BEBE44BE18E6915000929899 /* mepageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBE44BD18E6915000929899 /* mepageTableViewController.m */; };
-		BEBE44C418E691A400929899 /* personalpreferencepageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBE44C318E691A400929899 /* personalpreferencepageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +106,8 @@
 		23F3EB8E18D6C7680075819D /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = ../Storyboard.storyboard; sourceTree = "<group>"; };
 		23F3EB9018D6C7B50075819D /* logInPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = logInPage.h; sourceTree = "<group>"; };
 		23F3EB9118D6C7B50075819D /* logInPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = logInPage.m; sourceTree = "<group>"; };
+		BE3CB6BF18ECF396008CCC62 /* changePreferenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = changePreferenceViewController.h; sourceTree = "<group>"; };
+		BE3CB6C018ECF396008CCC62 /* changePreferenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = changePreferenceViewController.m; sourceTree = "<group>"; };
 		BE47CFC718E8F62300503842 /* changeAvailableTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = changeAvailableTimeViewController.h; sourceTree = "<group>"; };
 		BE47CFC818E8F62300503842 /* changeAvailableTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = changeAvailableTimeViewController.m; sourceTree = "<group>"; };
 		BE63CA3A18E4E8280001E8A1 /* SettingPageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingPageTableViewController.h; sourceTree = "<group>"; };
@@ -114,8 +116,6 @@
 		BEBE44BA18E6911800929899 /* preferencepageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = preferencepageTableViewController.m; sourceTree = "<group>"; };
 		BEBE44BC18E6915000929899 /* mepageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mepageTableViewController.h; sourceTree = "<group>"; };
 		BEBE44BD18E6915000929899 /* mepageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mepageTableViewController.m; sourceTree = "<group>"; };
-		BEBE44C218E691A400929899 /* personalpreferencepageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = personalpreferencepageViewController.h; sourceTree = "<group>"; };
-		BEBE44C318E691A400929899 /* personalpreferencepageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = personalpreferencepageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,12 +218,12 @@
 				23F3EB8E18D6C7680075819D /* Storyboard.storyboard */,
 				BE47CFC718E8F62300503842 /* changeAvailableTimeViewController.h */,
 				BE47CFC818E8F62300503842 /* changeAvailableTimeViewController.m */,
+				BE3CB6BF18ECF396008CCC62 /* changePreferenceViewController.h */,
+				BE3CB6C018ECF396008CCC62 /* changePreferenceViewController.m */,
 				BEBE44B918E6911800929899 /* preferencepageTableViewController.h */,
 				BEBE44BA18E6911800929899 /* preferencepageTableViewController.m */,
 				BEBE44BC18E6915000929899 /* mepageTableViewController.h */,
 				BEBE44BD18E6915000929899 /* mepageTableViewController.m */,
-				BEBE44C218E691A400929899 /* personalpreferencepageViewController.h */,
-				BEBE44C318E691A400929899 /* personalpreferencepageViewController.m */,
 				23F3EB7118D6C7460075819D /* Images.xcassets */,
 				23F3EB6618D6C7460075819D /* Supporting Files */,
 			);
@@ -370,11 +370,11 @@
 				23B24A1718EA61850040586A /* addFriendPage.m in Sources */,
 				23C645B018E206B00097D968 /* Constants.m in Sources */,
 				23F3EB6C18D6C7460075819D /* main.m in Sources */,
-				BEBE44C418E691A400929899 /* personalpreferencepageViewController.m in Sources */,
 				BEBE44BB18E6911800929899 /* preferencepageTableViewController.m in Sources */,
 				23BB25E518D823A000ED81E8 /* confirmPage.m in Sources */,
 				23E8D9D718E34A7D0092A1C3 /* FriendRequestTableViewController.m in Sources */,
 				BE47CFC918E8F62300503842 /* changeAvailableTimeViewController.m in Sources */,
+				BE3CB6C118ECF396008CCC62 /* changePreferenceViewController.m in Sources */,
 				23F3EB9218D6C7B50075819D /* logInPage.m in Sources */,
 				BEBE44BE18E6915000929899 /* mepageTableViewController.m in Sources */,
 			);
