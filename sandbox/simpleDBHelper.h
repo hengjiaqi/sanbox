@@ -11,7 +11,7 @@
 @interface simpleDBHelper : NSObject
 -(void) addAtrribute: (NSString*)doaminName item:(NSString*)itemName attribute:(NSString*)attributeName value:(NSString*)attributeValue;
 
--(void) updateAtrribute: (NSString*)doaminName item:(NSString*)itemName attribute:(NSString*)attributeName value:(NSString*)attributeValue;
+-(void) updateAtrribute: (NSString*)doaminName item:(NSString*)itemName attribute:(NSString*)attributeName newValue:(NSString*)attributeValue;
 
 -(NSString*) getAtrributeValue: (NSString*)doaminName item:(NSString*)itemName attribute:(NSString*)attributeName;
 @end

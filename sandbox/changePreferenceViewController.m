@@ -7,7 +7,11 @@
 //
 
 #import "changePreferenceViewController.h"
-
+#import <AWSSimpleDB/AWSSimpleDB.h>
+#import "AmazonClientManager.h"
+#import "simpleDBhelper.h"
+NSString *USER_NAME;
+NSString *textViewtext;
 
 @interface changePreferenceViewController ()
 
@@ -28,6 +32,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    USER_NAME = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
+
     CGRect textViewFrame = CGRectMake(20.0f, 80.0f, 280.0f, 150.0f);
     UITextView *textView = [[UITextView alloc] initWithFrame:textViewFrame];
     textView.returnKeyType = UIReturnKeyDone;
@@ -35,15 +42,19 @@
     textView.font=[UIFont fontWithName:@"Arial" size:20];
     textView.backgroundColor = color;
     textView.delegate=self;
-    [self.view addSubview:textView];
+    simpleDBHelper *hp = [[simpleDBHelper alloc] init];
+  //  -(NSString*) getAtrributeValue: (NSString*)doaminName item:(NSString*)itemName attribute:(NSString*)attributeName
+    textView.text = [hp getAtrributeValue: USER_NAME item:@"preferenceItem" attribute:@"preferenceAttribute"];
     
+   //
+    
+    [self.view addSubview:textView];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     NSCharacterSet *doneButtonCharacterSet = [NSCharacterSet newlineCharacterSet];
     NSRange replacementTextRange = [text rangeOfCharacterFromSet:doneButtonCharacterSet];
     NSUInteger location = replacementTextRange.location;
-    
     if (textView.text.length + text.length > 160){
         if (location != NSNotFound){
             [textView resignFirstResponder];
@@ -61,16 +72,20 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)me_back_button:(id)sender {
+- (IBAction)me_back_button:(id)sender{
+    simpleDBHelper *hp = [[simpleDBHelper alloc] init];
+    //  -(NSString*) getAtrributeValue: (NSString*)doaminName item:(NSString*)itemName attribute:(NSString*)attributeName
+    //-(void) updateAtrribute: (NSString*)doaminName item:(NSString*)itemName attribute:(NSString*)attributeName newValue:(NSString*)attributeValue
+    [hp getAtrributeValue: USER_NAME item:@"preferenceItem" attribute:@"preferenceAttribute"];
+    [hp updateAtrribute:USER_NAME item:@"preferenceItem" attribute:@"preferenceAttribute" newValue:textViewtext];
+   // textView.text = [hp getAtrributeValue: USER_NAME item:@"preferenceItem" attribute:@"preferenceAttribute"];
+ //[self textView textViewtext];
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 -(void)textViewDidChange:(UITextView *)textView
 {
     int len = textView.text.length;
+    textViewtext =textView.text;
     charleft.text=[NSString stringWithFormat:@"%i",160-len];
 }
-
-
-
-
 @end

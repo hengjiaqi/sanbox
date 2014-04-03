@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface changePreferenceViewController : UIViewController<UITextViewDelegate>{
-    IBOutlet UITextView *mytextview;
+   
 }
 - (IBAction)me_back_button:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *charleft;

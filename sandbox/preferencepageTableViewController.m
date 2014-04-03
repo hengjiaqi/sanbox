@@ -7,7 +7,9 @@
 //
 
 #import "preferencepageTableViewController.h"
-
+#import <AWSSimpleDB/AWSSimpleDB.h>
+#import "AmazonClientManager.h"
+#import "simpleDBhelper.h"
 @interface preferencepageTableViewController ()
 
 @end
