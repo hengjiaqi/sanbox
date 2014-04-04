@@ -42,7 +42,7 @@
 		23F3EB8F18D6C7680075819D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F3EB8E18D6C7680075819D /* Storyboard.storyboard */; };
 		23F3EB9218D6C7B50075819D /* T0logInPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB9118D6C7B50075819D /* T0logInPage.m */; };
 		BE3CB6C118ECF396008CCC62 /* T3changePreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3CB6C018ECF396008CCC62 /* T3changePreferenceViewController.m */; };
-		BE47CFC918E8F62300503842 /* T3changeAvailableTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE47CFC818E8F62300503842 /* T3changeAvailableTimeViewController.m */; };
+		BE47CFC918E8F62300503842 /* TchangeAvailableTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE47CFC818E8F62300503842 /* TchangeAvailableTimeViewController.m */; };
 		BEBE44BB18E6911800929899 /* T3preferencepageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBE44BA18E6911800929899 /* T3preferencepageTableViewController.m */; };
 		BEBE44BE18E6915000929899 /* T3mepageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBE44BD18E6915000929899 /* T3mepageTableViewController.m */; };
 /* End PBXBuildFile section */
@@ -110,8 +110,8 @@
 		23F3EB9118D6C7B50075819D /* T0logInPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T0logInPage.m; sourceTree = "<group>"; };
 		BE3CB6BF18ECF396008CCC62 /* T3changePreferenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3changePreferenceViewController.h; sourceTree = "<group>"; };
 		BE3CB6C018ECF396008CCC62 /* T3changePreferenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3changePreferenceViewController.m; sourceTree = "<group>"; };
-		BE47CFC718E8F62300503842 /* T3changeAvailableTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3changeAvailableTimeViewController.h; sourceTree = "<group>"; };
-		BE47CFC818E8F62300503842 /* T3changeAvailableTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3changeAvailableTimeViewController.m; sourceTree = "<group>"; };
+		BE47CFC718E8F62300503842 /* TchangeAvailableTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TchangeAvailableTimeViewController.h; sourceTree = "<group>"; };
+		BE47CFC818E8F62300503842 /* TchangeAvailableTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TchangeAvailableTimeViewController.m; sourceTree = "<group>"; };
 		BEBE44B918E6911800929899 /* T3preferencepageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3preferencepageTableViewController.h; sourceTree = "<group>"; };
 		BEBE44BA18E6911800929899 /* T3preferencepageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3preferencepageTableViewController.m; sourceTree = "<group>"; };
 		BEBE44BC18E6915000929899 /* T3mepageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3mepageTableViewController.h; sourceTree = "<group>"; };
@@ -216,8 +216,8 @@
 				23F3EB6E18D6C7460075819D /* AppDelegate.h */,
 				23F3EB6F18D6C7460075819D /* AppDelegate.m */,
 				23F3EB8E18D6C7680075819D /* Storyboard.storyboard */,
-				BE47CFC718E8F62300503842 /* T3changeAvailableTimeViewController.h */,
-				BE47CFC818E8F62300503842 /* T3changeAvailableTimeViewController.m */,
+				BE47CFC718E8F62300503842 /* TchangeAvailableTimeViewController.h */,
+				BE47CFC818E8F62300503842 /* TchangeAvailableTimeViewController.m */,
 				BE3CB6BF18ECF396008CCC62 /* T3changePreferenceViewController.h */,
 				BE3CB6C018ECF396008CCC62 /* T3changePreferenceViewController.m */,
 				BEBE44B918E6911800929899 /* T3preferencepageTableViewController.h */,
@@ -373,7 +373,7 @@
 				BEBE44BB18E6911800929899 /* T3preferencepageTableViewController.m in Sources */,
 				23BB25E518D823A000ED81E8 /* T0confirmPage.m in Sources */,
 				23E8D9D718E34A7D0092A1C3 /* T2friendRequestTableViewController.m in Sources */,
-				BE47CFC918E8F62300503842 /* T3changeAvailableTimeViewController.m in Sources */,
+				BE47CFC918E8F62300503842 /* TchangeAvailableTimeViewController.m in Sources */,
 				BE3CB6C118ECF396008CCC62 /* T3changePreferenceViewController.m in Sources */,
 				23F3EB9218D6C7B50075819D /* T0logInPage.m in Sources */,
 				BEBE44BE18E6915000929899 /* T3mepageTableViewController.m in Sources */,

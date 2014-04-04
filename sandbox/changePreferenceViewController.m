@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 jake. All rights reserved.
 //
 
-#import "T3changePreferenceViewController.h"
+#import "changePreferenceViewController.h"
 #import <AWSSimpleDB/AWSSimpleDB.h>
 #import "AmazonClientManager.h"
 #import "simpleDBhelper.h"
 NSString *USER_NAME;
 NSString *textViewtext;
 
-@interface T3changePreferenceViewController ()
+@interface changePreferenceViewController ()
 
 @end
 
-@implementation T3changePreferenceViewController
+@implementation changePreferenceViewController
 @synthesize charleft;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
