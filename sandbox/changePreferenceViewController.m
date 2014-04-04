@@ -45,7 +45,7 @@ NSString *textViewtext;
     simpleDBHelper *hp = [[simpleDBHelper alloc] init];
   //  -(NSString*) getAtrributeValue: (NSString*)doaminName item:(NSString*)itemName attribute:(NSString*)attributeName
     textView.text = [hp getAtrributeValue: USER_NAME item:@"preferenceItem" attribute:@"preferenceAttribute"];
-    
+    textViewtext = textView.text;
    //
     
     [self.view addSubview:textView];
