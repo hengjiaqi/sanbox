@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xfq-ev-kRB">
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xfq-ev-kRB">
+>>>>>>> FETCH_HEAD
 =======
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xfq-ev-kRB">
 >>>>>>> FETCH_HEAD
@@ -675,8 +679,11 @@
             <point key="canvasLocation" x="67" y="2569"/>
         </scene>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <!--3preferencepage Table View Controller - Preference-->
 =======
+=======
+>>>>>>> FETCH_HEAD
         <!--Table View Controller - Preference-->
         <scene sceneID="Tw5-Am-u7G">
             <objects>
