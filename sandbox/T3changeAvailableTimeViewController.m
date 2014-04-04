@@ -6,17 +6,17 @@
 //  Copyright (c) 2014 jake. All rights reserved.
 //
 
-#import "changeAvailableTimeViewController.h"
+#import "T3changeAvailableTimeViewController.h"
 #import <AWSSimpleDB/AWSSimpleDB.h>
 #import "AmazonClientManager.h"
 NSString *USER_NAME;
 NSDate *selectend;
 NSDate *selectstart;
-@interface changeAvailableTimeViewController ()
+@interface T3changeAvailableTimeViewController ()
 
 @end
 
-@implementation changeAvailableTimeViewController
+@implementation T3changeAvailableTimeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

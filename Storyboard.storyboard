@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xfq-ev-kRB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xfq-ev-kRB">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Log In Page - Home-->
+        <!--0log In Page - Home-->
         <scene sceneID="MyD-ui-jv3">
             <objects>
-                <viewController id="xfq-ev-kRB" customClass="logInPage" sceneMemberID="viewController">
+                <viewController id="xfq-ev-kRB" customClass="T0logInPage" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mi9-N1-cEZ"/>
                         <viewControllerLayoutGuide type="bottom" id="2QU-Tp-1WY"/>
@@ -64,10 +64,10 @@
             </objects>
             <point key="canvasLocation" x="-799" y="-855"/>
         </scene>
-        <!--New User - Register-->
+        <!--0new User - Register-->
         <scene sceneID="vwE-Hw-r16">
             <objects>
-                <viewController id="6oE-Ru-ph7" customClass="newUser" sceneMemberID="viewController">
+                <viewController id="6oE-Ru-ph7" customClass="T0newUser" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ckX-PE-lZX"/>
                         <viewControllerLayoutGuide type="bottom" id="goW-8J-3Js"/>
@@ -133,10 +133,10 @@
             </objects>
             <point key="canvasLocation" x="397" y="-855"/>
         </scene>
-        <!--Friend Preference - Preference-->
+        <!--1friend Preference - Preference-->
         <scene sceneID="BpO-JX-K8I">
             <objects>
-                <tableViewController id="Kx5-Jv-5rv" customClass="friendPreference" sceneMemberID="viewController">
+                <tableViewController id="Kx5-Jv-5rv" customClass="T1friendPreference" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="faJ-lO-4nU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -272,10 +272,10 @@
             </objects>
             <point key="canvasLocation" x="2129" y="-196"/>
         </scene>
-        <!--Confirm Page - Confirmation-->
+        <!--0confirm Page - Confirmation-->
         <scene sceneID="FnX-2E-jnG">
             <objects>
-                <viewController id="Y16-Xz-JuT" customClass="confirmPage" sceneMemberID="viewController">
+                <viewController id="Y16-Xz-JuT" customClass="T0confirmPage" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="k0S-M7-XZb"/>
                         <viewControllerLayoutGuide type="bottom" id="sqe-6b-Eij"/>
@@ -360,10 +360,10 @@
             </objects>
             <point key="canvasLocation" x="1471" y="482"/>
         </scene>
-        <!--Add Friend Page - Add Friend-->
+        <!--2add Friend Page - Add Friend-->
         <scene sceneID="h9N-pW-YNA">
             <objects>
-                <viewController id="PWD-Za-uoZ" customClass="addFriendPage" sceneMemberID="viewController">
+                <viewController id="PWD-Za-uoZ" customClass="T2addFriendPage" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZJ2-uQ-PAM"/>
                         <viewControllerLayoutGuide type="bottom" id="eTn-bx-h1K"/>
@@ -407,10 +407,10 @@
             </objects>
             <point key="canvasLocation" x="2018" y="482"/>
         </scene>
-        <!--Search Friend Page - Search Friend-->
+        <!--2search Friend Page - Search Friend-->
         <scene sceneID="PkK-Kq-teN">
             <objects>
-                <tableViewController id="FSc-e0-FlW" customClass="searchFriendPage" sceneMemberID="viewController">
+                <tableViewController id="FSc-e0-FlW" customClass="T2searchFriendPage" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9YB-py-vWY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -442,10 +442,10 @@
             </objects>
             <point key="canvasLocation" x="3204" y="482"/>
         </scene>
-        <!--Friend Request Table View Controller - FRIEND REQUEST-->
+        <!--2friend Request Table View Controller - FRIEND REQUEST-->
         <scene sceneID="j2y-7J-vtV">
             <objects>
-                <tableViewController id="9Oa-Sb-AYI" customClass="FriendRequestTableViewController" sceneMemberID="viewController">
+                <tableViewController id="9Oa-Sb-AYI" customClass="T2friendRequestTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4I8-n6-nPt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -499,7 +499,7 @@
         <!--Friend List Table View Controller - Friends-->
         <scene sceneID="tfC-Zd-coR">
             <objects>
-                <tableViewController id="7He-rb-jQY" customClass="FriendListTableViewController" sceneMemberID="viewController">
+                <tableViewController id="7He-rb-jQY" customClass="T1FriendListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5uM-hu-NUS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -670,10 +670,10 @@
             </objects>
             <point key="canvasLocation" x="67" y="2569"/>
         </scene>
-        <!--Preferencepage Table View Controller - Preference-->
+        <!--3preferencepage Table View Controller - Preference-->
         <scene sceneID="THR-z7-7Fb">
             <objects>
-                <tableViewController id="FKr-6d-3OD" customClass="preferencepageTableViewController" sceneMemberID="viewController">
+                <tableViewController id="FKr-6d-3OD" customClass="T3preferencepageTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="T36-cd-YtF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -833,10 +833,10 @@
             </objects>
             <point key="canvasLocation" x="1471" y="1249"/>
         </scene>
-        <!--Mepage Table View Controller - ME-->
+        <!--3mepage Table View Controller - ME-->
         <scene sceneID="gtk-3r-ynF">
             <objects>
-                <tableViewController id="pBh-Wq-6WV" customClass="mepageTableViewController" sceneMemberID="viewController">
+                <tableViewController id="pBh-Wq-6WV" customClass="T3mepageTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="QQK-cj-LVu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -945,10 +945,10 @@
             </objects>
             <point key="canvasLocation" x="1906" y="2124"/>
         </scene>
-        <!--Change Available Time View Controller - CHANGE AVAILABLE TIME-->
+        <!--3change Available Time View Controller - CHANGE AVAILABLE TIME-->
         <scene sceneID="5tj-PI-VK0">
             <objects>
-                <viewController id="jQF-Uv-KIl" customClass="changeAvailableTimeViewController" sceneMemberID="viewController">
+                <viewController id="jQF-Uv-KIl" customClass="T3changeAvailableTimeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="H6g-cu-85x"/>
                         <viewControllerLayoutGuide type="bottom" id="YHf-gN-DgQ"/>
@@ -1139,10 +1139,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1380" y="3300"/>
         </scene>
-        <!--Change Preference View Controller - Personal Preference-->
+        <!--3change Preference View Controller - Personal Preference-->
         <scene sceneID="Trw-Sz-sBz">
             <objects>
-                <viewController id="kxh-FW-nyJ" customClass="changePreferenceViewController" sceneMemberID="viewController">
+                <viewController id="kxh-FW-nyJ" customClass="T3changePreferenceViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="e8z-qV-U99"/>
                         <viewControllerLayoutGuide type="bottom" id="E2W-6Y-JRy"/>
