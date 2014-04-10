@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface T1FriendListTableViewController : UITableViewController
+@interface T1FriendListTableViewController : UITableViewController{
+    
+}
 //-(IBAction)cancelButtonPress:(id)sender;
 
 // create a mutable array list for friend list reorder editing 
