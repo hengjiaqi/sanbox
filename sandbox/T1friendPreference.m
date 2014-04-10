@@ -8,7 +8,10 @@
 
 #import "T1friendPreference.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import <AWSSimpleDB/AWSSimpleDB.h>
+#import "AmazonClientManager.h"
+#import "simpleDBHelper.h"
+BOOL isOnline;
 @interface T1friendPreference ()
 
 @end
@@ -28,6 +31,7 @@
 {
     [super viewDidLoad];
     NSLog(@"1221321");
+    topbar.title = self.friendNickName;
     [invisibleSwitch setOnTintColor:[UIColor redColor]];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -35,6 +39,31 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+- (void)viewDidAppear:(BOOL)animated{
+    if ([self.onlineORoffline isEqualToString:@"online"]) {
+        isOnline = YES;
+    }else{
+        isOnline = NO;
+    }
+    phoneNumberLabel.text = self.friendPhoneNumber;
+    simpleDBHelper *hp = [[simpleDBHelper alloc] init];
+    NSString* startTime = [hp getAtrributeValue:self.friendPhoneNumber item:@"availbilityItem" attribute:@"startTimeAttribute"];
+    NSString* endTime = [hp getAtrributeValue:self.friendPhoneNumber item:@"availbilityItem" attribute:@"endTimeAttribute"];
+    NSLog(startTime);
+    NSLog(endTime);
+    startTime = [startTime stringByAppendingString:@" - "];
+    avaliableLabel.text = [startTime stringByAppendingString:endTime];
+    preferenceLabel.text = [hp getAtrributeValue:self.friendPhoneNumber item:@"preferenceItem" attribute:@"preferenceAttribute"];
+    if (!isOnline) {
+        phoneNumberLabel.textColor = [UIColor grayColor];
+        avaliableLabel.textColor = [UIColor grayColor];
+        preferenceLabel.textColor = [UIColor grayColor];
+    }
+    
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -63,6 +92,7 @@
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
     // Configure the cell...
@@ -120,8 +150,17 @@
 }
 */
 
+
+
+
+
+
 - (IBAction)switchChanged:(id)sender {
-    
+    if (invisibleSwitch.isOn) {
+        NSLog(@"it's on!");
+    }else{
+        NSLog(@"IT'S OFF!");
+    }
 }
 
 - (IBAction)backButtonPressed:(id)sender {

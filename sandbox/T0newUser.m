@@ -34,9 +34,13 @@ NSMutableArray *domains;
     [super viewDidLoad];
     /*
     AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
-    SimpleDBDeleteDomainRequest *request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2066176882"];
+    SimpleDBDeleteDomainRequest *request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000000"];
     [sdb deleteDomain:request];
-    request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2066608173"];
+    request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000001"];
+    
+    [sdb deleteDomain:request];
+    request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000002"];
+    
     [sdb deleteDomain:request];
     */
     // Do any additional setup after loading the view.

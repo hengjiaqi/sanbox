@@ -9,9 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 @interface simpleDBHelper : NSObject
--(void) addAtrribute: (NSString*)doaminName item:(NSString*)itemName attribute:(NSString*)attributeName value:(NSString*)attributeValue;
+-(void) addAtrribute: (NSString*)domainName item:(NSString*)itemName attribute:(NSString*)attributeName value:(NSString*)attributeValue;
 
--(void) updateAtrribute: (NSString*)doaminName item:(NSString*)itemName attribute:(NSString*)attributeName newValue:(NSString*)attributeValue;
+-(void) updateAtrribute: (NSString*)domainName item:(NSString*)itemName attribute:(NSString*)attributeName newValue:(NSString*)attributeValue;
 
--(NSString*) getAtrributeValue: (NSString*)doaminName item:(NSString*)itemName attribute:(NSString*)attributeName;
+-(NSString*) getAtrributeValue: (NSString*)domainName item:(NSString*)itemName attribute:(NSString*)attributeName;
+
+-(NSMutableArray*) getAllAttributes: (NSString*) domainName item:(NSString*) itemName;
+-(NSMutableArray*) getAllAttributeNames: (NSString*) domainName item:(NSString*) itemName;
+-(void) deleteAttributePair: (NSString*) domainName item:(NSString*)itemName
+                  attribute:(NSString*)attributeName;
 @end
