@@ -33,12 +33,16 @@ NSMutableArray *domains;
 {
     [super viewDidLoad];
     /*
-    AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
-    SimpleDBDeleteDomainRequest *request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2066176882"];
-    [sdb deleteDomain:request];
-    request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2066608173"];
-    [sdb deleteDomain:request];
-    */
+     AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
+     SimpleDBDeleteDomainRequest *request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000000"];
+     [sdb deleteDomain:request];
+     request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000001"];
+     
+     [sdb deleteDomain:request];
+     request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000002"];
+     
+     [sdb deleteDomain:request];
+     */
     // Do any additional setup after loading the view.
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
@@ -80,13 +84,13 @@ NSMutableArray *domains;
         alert = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:@"We have send you a text message with confirmation code." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
         [self performSegueWithIdentifier:@"goToConfirmPage" sender:sender];
-
+        
         
     }else if(code == 1){
         alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter a valid Phone Number" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     }else if(code == 2){
-       alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your password is not consistant" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your password is not consistant" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     }else if(code == 3){
         alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Password cannot be empty" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];

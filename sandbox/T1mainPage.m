@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 wuyue. All rights reserved.
 //
 
-#import "T1FriendListTableViewController.h"
+#import "T1mainPage.h"
 #import "FriendList.h"
 #import <AWSSimpleDB/AWSSimpleDB.h>
 #import "AmazonClientManager.h"
@@ -17,11 +17,11 @@ NSMutableArray *onlineFriendList;
 NSMutableArray *offlineFriendList;
 FriendList *currentFriend;
 
-@interface T1FriendListTableViewController ()
+@interface T1mainPage ()
 
 @end
 
-@implementation T1FriendListTableViewController
+@implementation T1mainPage
 
 // set and get the frindlist
 

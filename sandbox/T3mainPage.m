@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 jake. All rights reserved.
 //
 
-#import "T3preferenceMainTableViewController.h"
+#import "T3mainPage.h"
 #import <AWSSimpleDB/AWSSimpleDB.h>
 #import "AmazonClientManager.h"
 #import "simpleDBhelper.h"
 //#import "FriendListTableViewController.m"
 NSString *USER_NAME;
 NSString *GNickname;
-@interface T3preferenceMainTableViewController ()
+@interface T3mainPage ()
 
 @end
 
-@implementation T3preferenceMainTableViewController
+@implementation T3mainPage
 @synthesize Availability;
 @synthesize myPreference;
 @synthesize tableView;
@@ -35,6 +35,12 @@ NSString *GNickname;
 {
     [super viewDidLoad];
     
+    
+    
+    
+}
+
+-(void) viewDidAppear:(BOOL)animated{
     NSString *starttimeload;
     NSString *endtimeload;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -60,10 +66,6 @@ NSString *GNickname;
     [_labelOnPreference sizeToFit];
     _labelOnPreference.textColor = [UIColor grayColor];
     _labelOnPreference.text = loadstring;
-    
-    
 }
-
-
 
 @end
