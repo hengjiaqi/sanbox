@@ -10,12 +10,10 @@
 #import "FriendList.h"
 #import <AWSSimpleDB/AWSSimpleDB.h>
 #import "AmazonClientManager.h"
-#import "T1friendPreference.h"
-#import "simpleDBHelper.h"
 NSString *USER_NAME;
 NSMutableArray *onlineFriendList;
 NSMutableArray *offlineFriendList;
-FriendList *currentFriend;
+
 
 @interface T1FriendListTableViewController ()
 
@@ -75,12 +73,9 @@ FriendList *currentFriend;
     else {
         [onlineFriendList removeAllObjects];
     }
-    
     for (SimpleDBAttribute *attr in response.attributes) {
         FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:attr.value onLineorNot:(YES) number:attr.name];
-        if (![myOnlineFriendListelement.phoneNumber isEqualToString:@"2060000000"]) {
-            [onlineFriendList addObject:myOnlineFriendListelement];
-        }
+        [onlineFriendList addObject:myOnlineFriendListelement];
     }
     
     [self.tableView reloadData];
@@ -100,11 +95,8 @@ FriendList *currentFriend;
     int count = 0;
     for (SimpleDBAttribute *attr in response2.attributes) {
         FriendList *myOfflineFriendListelement = [[FriendList alloc]initWithName:attr.value onLineorNot:(NO) number:attr.name];
-        if (![myOfflineFriendListelement.phoneNumber isEqualToString:@"2060000000"]) {
-            [offlineFriendList addObject:myOfflineFriendListelement];
-            count++;
-        }
-        
+        [offlineFriendList addObject:myOfflineFriendListelement];
+        count++;
     }
     NSLog(@"RESPONSE2 IS %d", count);
     
@@ -146,7 +138,7 @@ FriendList *currentFriend;
     
     static NSString *OffLineCellIndetifier = @"OffLineFriendCell";
     // which friend we point at
-    currentFriend = [self.FriendListelements objectAtIndex:indexPath.row];  // which cell we looking at
+    FriendList *currentFriend = [self.FriendListelements objectAtIndex:indexPath.row];  // which cell we looking at
     
     
     NSString *cellIdentifier = currentFriend.onLineorNot ? OnLineCellIndetifier : OffLineCellIndetifier;
@@ -219,27 +211,10 @@ FriendList *currentFriend;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    currentFriend = [self.FriendListelements objectAtIndex:indexPath.row];
-    if (currentFriend.onLineorNot) {
-        [self performSegueWithIdentifier:@"onlineFriendClicked" sender:self];
-    }else{
-        [self performSegueWithIdentifier:@"offlineFriendClicked" sender:self];
-    }
+    FriendList *currentFriend = [self.FriendListelements objectAtIndex:indexPath.row];
+    
+    
 }
-
--(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    T1friendPreference *prefer = (T1friendPreference *)[[segue destinationViewController] topViewController];
-    NSLog(@"second, %@", currentFriend.name);
-
-    prefer.friendPhoneNumber = currentFriend.phoneNumber;
-    prefer.friendNickName = currentFriend.name;
-    if([segue.identifier isEqualToString:@"onlineFriendClicked"]){
-        prefer.onlineORoffline = @"online";
-    }else if([segue.identifier isEqualToString:@"offlineFriendClicked"]){
-        prefer.onlineORoffline = @"offline";
-    }
-}
-
 
 -(void)cancelButtonPress:(id)sender{
     [self dismissViewControllerAnimated:YES completion:nil];

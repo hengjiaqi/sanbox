@@ -12,12 +12,9 @@
     
     IBOutlet UITextField *phoneNumber;
     IBOutlet UITextField *password;
-    
 }
 - (IBAction)LoginButton:(id)sender;
-@property (strong, nonatomic) NSString* registerPhoneNumber;
-@property (strong, nonatomic) NSString* registerNickName;
-@property (strong, nonatomic) NSString* registerPassword;
+
 -(void)dismissKeyboard;
 -(BOOL)textFieldShouldReturn:(UITextField*) textField;
 @end

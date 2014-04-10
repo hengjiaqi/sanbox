@@ -42,9 +42,7 @@ NSString* nameToAccept;
     for (SimpleDBAttribute *attr in response.attributes ) {
         count++;
         FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:attr.value onLineorNot:(YES) number:attr.name];
-        if (![myOnlineFriendListelement.phoneNumber isEqualToString:@"2060000000"]) {
-            [requestList addObject:myOnlineFriendListelement];
-        }
+        [requestList addObject:myOnlineFriendListelement];
     }
     NSLog(@"requestlist is %d and  %d", requestList.count, count);
 }
@@ -149,7 +147,7 @@ NSString* nameToAccept;
 
 //if the person accept the friend request
 //add each other to the friendListItem
-//add each other to the onlineFriendList or offlineFriendList according to onlineItem
+//add each other to the beVisiableToListItem
 //delete from the friendRequestList
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -159,18 +157,8 @@ NSString* nameToAccept;
         [hp addAtrribute:USER_NAME item:@"friendListItem" attribute:numberToAccept value:nameToAccept];
         NSString* myNickName = [hp getAtrributeValue:USER_NAME item:@"nicknameItem" attribute:@"nicknameAttribute"];
         [hp addAtrribute:numberToAccept item:@"friendListItem" attribute:USER_NAME value:myNickName];
-        if([[hp getAtrributeValue:numberToAccept item:@"onlineItem" attribute:@"onlineAttribute"] isEqualToString:@"online"]){
-            [hp addAtrribute:USER_NAME item:@"onlineFriendListItem" attribute:numberToAccept value:nameToAccept];
-        }else{
-            [hp addAtrribute:USER_NAME item:@"offlineFriendListItem" attribute:numberToAccept value:nameToAccept];
-        }
-        
-        if([[hp getAtrributeValue:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute"] isEqualToString:@"online"]){
-            [hp addAtrribute:numberToAccept item:@"onlineFriendListItem" attribute:USER_NAME value:myNickName];
-        }else{
-            [hp addAtrribute:numberToAccept item:@"offlineFriendListItem" attribute:USER_NAME value:myNickName];
-        }
-        
+        [hp addAtrribute:USER_NAME item:@"onlineFriendListItem" attribute:numberToAccept value:nameToAccept];
+        [hp addAtrribute:numberToAccept item:@"onlineFriendListItem" attribute:USER_NAME value:myNickName];
     }
     NSLog(@"%@, %@, %@", USER_NAME, numberToAccept, nameToAccept);
     //[hp deleteAtrribute:USER_NAME item:@"friendRequestListItem" attribute:numberToAccept value:nameToAccept];
