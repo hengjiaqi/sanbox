@@ -12,6 +12,8 @@
 #import "AmazonClientManager.h"
 #import "simpleDBHelper.h"
 BOOL isOnline;
+NSString* USER_NAME;
+NSString* myNickName;
 @interface T1friendPreference ()
 
 @end
@@ -33,6 +35,11 @@ BOOL isOnline;
     NSLog(@"1221321");
     topbar.title = self.friendNickName;
     [invisibleSwitch setOnTintColor:[UIColor redColor]];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    USER_NAME = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
+    simpleDBHelper *hp = [[simpleDBHelper alloc] init];
+    myNickName = [hp getAtrributeValue:USER_NAME item:@"nicknameItem" attribute:@"nicknameAttribute"];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -59,6 +66,9 @@ BOOL isOnline;
         phoneNumberLabel.textColor = [UIColor grayColor];
         avaliableLabel.textColor = [UIColor grayColor];
         preferenceLabel.textColor = [UIColor grayColor];
+    }
+    if ([hp hasAttributes:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber]) {
+        [invisibleSwitch setOn:YES];
     }
     
     
@@ -156,10 +166,26 @@ BOOL isOnline;
 
 
 - (IBAction)switchChanged:(id)sender {
+    //beUnavailable to this person
+    simpleDBHelper *hp = [[simpleDBHelper alloc] init];
+    NSLog(@"@%", myNickName);
     if (invisibleSwitch.isOn) {
         NSLog(@"it's on!");
+        [hp addAtrribute:USER_NAME item:@"beUnavailableToListItem" attribute:self.friendPhoneNumber value:self.friendNickName];
+        
+        if([hp hasAttributes:self.friendPhoneNumber item:@"onlineFriendListItem" attributeName:USER_NAME]){
+            [hp deleteAttributePair:self.friendPhoneNumber item:@"onlineFriendListItem" attributeName:USER_NAME attributeValue:myNickName];
+            [hp addAtrribute:self.friendPhoneNumber item:@"offlineFriendListItem" attribute:USER_NAME value:myNickName];
+        }
+        
     }else{
-        NSLog(@"IT'S OFF!");
+        if([hp hasAttributes:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber]){
+            [hp deleteAttributePair:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber attributeValue:self.friendNickName];
+        }
+        if([hp hasAttributes:self.friendPhoneNumber item:@"offlineFriendListItem" attributeName:USER_NAME]){
+            [hp deleteAttributePair:self.friendPhoneNumber item:@"offlineFriendListItem" attributeName:USER_NAME attributeValue:myNickName];
+            [hp addAtrribute:self.friendPhoneNumber item:@"onlineFriendListItem" attribute:USER_NAME value:myNickName];
+        }
     }
 }
 

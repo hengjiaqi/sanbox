@@ -9,6 +9,7 @@
 #import "T0logInPage.h"
 #import <AWSSimpleDB/AWSSimpleDB.h>
 #import "AmazonClientManager.h"
+#import "simpleDBHelper.h"
 
 
 @interface T0logInPage ()
@@ -39,6 +40,7 @@
     password.secureTextEntry = YES;
     phoneNumber.delegate = self;
     password.delegate = self;
+    
     
 }
 

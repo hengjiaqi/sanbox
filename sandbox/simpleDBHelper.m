@@ -52,6 +52,18 @@
     }
 }
 
+-(BOOL) hasAttributes: (NSString*) domainName item:(NSString*) itemName attributeName:(NSString*) attributeName{
+    SimpleDBGetAttributesRequest* gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:domainName andItemName:itemName];
+    SimpleDBGetAttributesResponse* response = [[AmazonClientManager sdb] getAttributes:gar];
+    BOOL attributeExist = NO;
+    for (SimpleDBAttribute *attr in response.attributes ) {
+        if ([attr.name isEqualToString:attributeName]) {
+            attributeExist = YES;
+        }
+    }
+    return attributeExist;
+}
+
 //this is a test for the gift from jing
 -(NSMutableArray*) getAllAttributes: (NSString*) domainName item:(NSString*) itemName{
     SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:domainName andItemName:itemName];
@@ -70,37 +82,25 @@
 }
 
 -(void) deleteAttributePair: (NSString*) domainName item:(NSString*)itemName
-                  attribute:(NSString*)attributeName{
-    SimpleDBGetAttributesRequest* gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:domainName andItemName:itemName];
-    SimpleDBGetAttributesResponse* response = [[AmazonClientManager sdb] getAttributes:gar];
-    NSMutableArray *ListAttributes = [[NSMutableArray alloc] init];
-    for (SimpleDBAttribute *attr in response.attributes ) {
-        SimpleDBReplaceableAttribute *ListAttribute;
-        if (![attr.name isEqualToString:attributeName]) {
-            ListAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:attr.name andValue:attr.value andReplace:YES];
-            [ListAttributes addObject:ListAttribute];
-        }
-    }
-    SimpleDBPutAttributesRequest *putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:domainName andItemName:itemName andAttributes:ListAttributes];
+              attributeName:(NSString*)attributeName attributeValue:(NSString*) attributeValue{
     AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
-    [sdb putAttributes:putAttributesRequest];
+    NSMutableArray *remove = [[NSMutableArray alloc] init];
+    SimpleDBAttribute *ListAttribute = [[SimpleDBAttribute alloc] initWithName:attributeName andValue:attributeValue];
+    [remove addObject:ListAttribute];
+    SimpleDBDeleteAttributesRequest *request = [[SimpleDBDeleteAttributesRequest alloc] initWithDomainName:domainName andItemName:itemName andAttributes:remove];
+    [sdb deleteAttributes:request];
     
 }
 
 -(NSString*) getAtrributeValue: (NSString*)domainName item:(NSString*)itemName attribute:(NSString*)attributeName{
     SimpleDBGetAttributesRequest* gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:domainName andItemName:itemName];
     SimpleDBGetAttributesResponse* response = [[AmazonClientManager sdb] getAttributes:gar];
-    NSMutableArray *ListAttributes = [[NSMutableArray alloc] init];
     NSString* result = [[NSString alloc] init];
     BOOL attributeExist = NO;
     for (SimpleDBAttribute *attr in response.attributes ) {
-        SimpleDBReplaceableAttribute *ListAttribute;
         if ([attr.name isEqualToString:attributeName]) {
             attributeExist = YES;
             result = attr.value;
-        }else{
-            ListAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:attr.name andValue:attr.value andReplace:YES];
-            [ListAttributes addObject:ListAttribute];
         }
     }
     if (attributeExist) {
