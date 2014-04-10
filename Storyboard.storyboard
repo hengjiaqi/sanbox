@@ -662,14 +662,18 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+<<<<<<< HEAD
                     <connections>
                         <segue destination="C3a-l2-VlO" kind="relationship" relationship="rootViewController" id="kIc-cB-KRz"/>
                     </connections>
+=======
+>>>>>>> FETCH_HEAD
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F7z-l3-2B9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="67" y="2569"/>
         </scene>
+<<<<<<< HEAD
         <!--3preference Main Table View Controller - Preference-->
         <scene sceneID="Gol-dd-Ute">
             <objects>
@@ -790,6 +794,8 @@
             </objects>
             <point key="canvasLocation" x="598" y="1944"/>
         </scene>
+=======
+>>>>>>> FETCH_HEAD
         <!--Navigation Controller-->
         <scene sceneID="xYR-7p-fU4">
             <objects>
@@ -808,6 +814,7 @@
             </objects>
             <point key="canvasLocation" x="1471" y="1249"/>
         </scene>
+<<<<<<< HEAD
         <!--3mepage Table View Controller - ME-->
         <scene sceneID="gtk-3r-ynF">
             <objects>
@@ -1023,6 +1030,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1906" y="2708"/>
         </scene>
+=======
+>>>>>>> FETCH_HEAD
         <!--Navigation Controller-->
         <scene sceneID="50R-be-DFW">
             <objects>
@@ -1060,6 +1069,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <point key="canvasLocation" x="1125" y="-855"/>
         </scene>
         <!--Navigation Controller-->
+<<<<<<< HEAD
         <scene sceneID="Ne6-rv-N7x">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w1I-Vw-hTv" sceneMemberID="viewController">
@@ -1152,6 +1162,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <point key="canvasLocation" x="1907" y="3298"/>
         </scene>
         <!--Navigation Controller-->
+=======
+>>>>>>> FETCH_HEAD
         <scene sceneID="e5U-FR-UGP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rzS-bm-afo" sceneMemberID="viewController">
