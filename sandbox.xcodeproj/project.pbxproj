@@ -43,6 +43,7 @@
 		23F3EB9218D6C7B50075819D /* T0logInPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB9118D6C7B50075819D /* T0logInPage.m */; };
 		BE3CB6C118ECF396008CCC62 /* T3changePreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3CB6C018ECF396008CCC62 /* T3changePreferenceViewController.m */; };
 		BE47CFC918E8F62300503842 /* TchangeAvailableTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE47CFC818E8F62300503842 /* TchangeAvailableTimeViewController.m */; };
+		BE5B07BB18EF503D0090D3F2 /* T3preferenceMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5B07BA18EF503D0090D3F2 /* T3preferenceMainTableViewController.m */; };
 		BEBE44BB18E6911800929899 /* T3preferencepageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBE44BA18E6911800929899 /* T3preferencepageTableViewController.m */; };
 		BEBE44BE18E6915000929899 /* T3mepageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBE44BD18E6915000929899 /* T3mepageTableViewController.m */; };
 /* End PBXBuildFile section */
@@ -112,6 +113,8 @@
 		BE3CB6C018ECF396008CCC62 /* T3changePreferenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3changePreferenceViewController.m; sourceTree = "<group>"; };
 		BE47CFC718E8F62300503842 /* TchangeAvailableTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TchangeAvailableTimeViewController.h; sourceTree = "<group>"; };
 		BE47CFC818E8F62300503842 /* TchangeAvailableTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TchangeAvailableTimeViewController.m; sourceTree = "<group>"; };
+		BE5B07B918EF503D0090D3F2 /* T3preferenceMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3preferenceMainTableViewController.h; sourceTree = "<group>"; };
+		BE5B07BA18EF503D0090D3F2 /* T3preferenceMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3preferenceMainTableViewController.m; sourceTree = "<group>"; };
 		BEBE44B918E6911800929899 /* T3preferencepageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3preferencepageTableViewController.h; sourceTree = "<group>"; };
 		BEBE44BA18E6911800929899 /* T3preferencepageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3preferencepageTableViewController.m; sourceTree = "<group>"; };
 		BEBE44BC18E6915000929899 /* T3mepageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3mepageTableViewController.h; sourceTree = "<group>"; };
@@ -193,37 +196,39 @@
 		23F3EB6518D6C7460075819D /* sandbox */ = {
 			isa = PBXGroup;
 			children = (
-				23F3EB6E18D6C7460075819D /* AppDelegate.h */,
-				23F3EB6F18D6C7460075819D /* AppDelegate.m */,
-				23E8D9CC18E34A7D0092A1C3 /* FriendList.h */,
-				23E8D9CD18E34A7D0092A1C3 /* FriendList.m */,
-				23E6235618ECFFB6003F1693 /* simpleDBHelper.h */,
-				23E6235718ECFFB6003F1693 /* simpleDBHelper.m */,
-				23F3EB8E18D6C7680075819D /* Storyboard.storyboard */,
-				23BB25E318D823A000ED81E8 /* T0confirmPage.h */,
-				23BB25E418D823A000ED81E8 /* T0confirmPage.m */,
-				23F3EB9018D6C7B50075819D /* T0logInPage.h */,
-				23F3EB9118D6C7B50075819D /* T0logInPage.m */,
-				23BB25DA18D80B4100ED81E8 /* T0newUser.h */,
-				23BB25DB18D80B4100ED81E8 /* T0newUser.m */,
-				23E8D9CE18E34A7D0092A1C3 /* T1FriendListTableViewController.h */,
-				23E8D9CF18E34A7D0092A1C3 /* T1FriendListTableViewController.m */,
 				239B472E18EDD5DA00D552B8 /* T1friendPreference.h */,
 				239B472F18EDD5DA00D552B8 /* T1friendPreference.m */,
-				23B24A1518EA61850040586A /* T2addFriendPage.h */,
-				23B24A1618EA61850040586A /* T2addFriendPage.m */,
-				23E8D9D018E34A7D0092A1C3 /* T2friendRequestTableViewController.h */,
-				23E8D9D118E34A7D0092A1C3 /* T2friendRequestTableViewController.m */,
+				23E6235618ECFFB6003F1693 /* simpleDBHelper.h */,
+				23E6235718ECFFB6003F1693 /* simpleDBHelper.m */,
 				232D08C418EB3124008798A0 /* T2searchFriendPage.h */,
 				232D08C518EB3124008798A0 /* T2searchFriendPage.m */,
-				BE3CB6BF18ECF396008CCC62 /* T3changePreferenceViewController.h */,
-				BE3CB6C018ECF396008CCC62 /* T3changePreferenceViewController.m */,
-				BEBE44BC18E6915000929899 /* T3mepageTableViewController.h */,
-				BEBE44BD18E6915000929899 /* T3mepageTableViewController.m */,
-				BEBE44B918E6911800929899 /* T3preferencepageTableViewController.h */,
-				BEBE44BA18E6911800929899 /* T3preferencepageTableViewController.m */,
+				23B24A1518EA61850040586A /* T2addFriendPage.h */,
+				23B24A1618EA61850040586A /* T2addFriendPage.m */,
+				23E8D9CC18E34A7D0092A1C3 /* FriendList.h */,
+				23E8D9CD18E34A7D0092A1C3 /* FriendList.m */,
+				23E8D9CE18E34A7D0092A1C3 /* T1FriendListTableViewController.h */,
+				23E8D9CF18E34A7D0092A1C3 /* T1FriendListTableViewController.m */,
+				23E8D9D018E34A7D0092A1C3 /* T2friendRequestTableViewController.h */,
+				23E8D9D118E34A7D0092A1C3 /* T2friendRequestTableViewController.m */,
+				23BB25E318D823A000ED81E8 /* T0confirmPage.h */,
+				23BB25E418D823A000ED81E8 /* T0confirmPage.m */,
+				23BB25DA18D80B4100ED81E8 /* T0newUser.h */,
+				23BB25DB18D80B4100ED81E8 /* T0newUser.m */,
+				23F3EB9018D6C7B50075819D /* T0logInPage.h */,
+				23F3EB9118D6C7B50075819D /* T0logInPage.m */,
+				23F3EB6E18D6C7460075819D /* AppDelegate.h */,
+				23F3EB6F18D6C7460075819D /* AppDelegate.m */,
+				23F3EB8E18D6C7680075819D /* Storyboard.storyboard */,
 				BE47CFC718E8F62300503842 /* TchangeAvailableTimeViewController.h */,
 				BE47CFC818E8F62300503842 /* TchangeAvailableTimeViewController.m */,
+				BE3CB6BF18ECF396008CCC62 /* T3changePreferenceViewController.h */,
+				BE3CB6C018ECF396008CCC62 /* T3changePreferenceViewController.m */,
+				BEBE44B918E6911800929899 /* T3preferencepageTableViewController.h */,
+				BEBE44BA18E6911800929899 /* T3preferencepageTableViewController.m */,
+				BE5B07B918EF503D0090D3F2 /* T3preferenceMainTableViewController.h */,
+				BE5B07BA18EF503D0090D3F2 /* T3preferenceMainTableViewController.m */,
+				BEBE44BC18E6915000929899 /* T3mepageTableViewController.h */,
+				BEBE44BD18E6915000929899 /* T3mepageTableViewController.m */,
 				23F3EB6618D6C7460075819D /* Supporting Files */,
 			);
 			path = sandbox;
@@ -370,6 +375,7 @@
 				23B24A1718EA61850040586A /* T2addFriendPage.m in Sources */,
 				23C645B018E206B00097D968 /* Constants.m in Sources */,
 				23F3EB6C18D6C7460075819D /* main.m in Sources */,
+				BE5B07BB18EF503D0090D3F2 /* T3preferenceMainTableViewController.m in Sources */,
 				BEBE44BB18E6911800929899 /* T3preferencepageTableViewController.m in Sources */,
 				23BB25E518D823A000ED81E8 /* T0confirmPage.m in Sources */,
 				23E8D9D718E34A7D0092A1C3 /* T2friendRequestTableViewController.m in Sources */,
