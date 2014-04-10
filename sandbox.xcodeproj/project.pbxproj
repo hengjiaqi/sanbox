@@ -39,7 +39,6 @@
 		23F3EB7B18D6C7460075819D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23F3EB6318D6C7460075819D /* UIKit.framework */; };
 		23F3EB8318D6C7460075819D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 23F3EB8118D6C7460075819D /* InfoPlist.strings */; };
 		23F3EB8518D6C7460075819D /* sandboxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB8418D6C7460075819D /* sandboxTests.m */; };
-		23F3EB8F18D6C7680075819D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F3EB8E18D6C7680075819D /* Storyboard.storyboard */; };
 		23F3EB9218D6C7B50075819D /* T0logInPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB9118D6C7B50075819D /* T0logInPage.m */; };
 		BE3CB6C118ECF396008CCC62 /* T3changePreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3CB6C018ECF396008CCC62 /* T3changePreferenceViewController.m */; };
 		BE47CFC918E8F62300503842 /* TchangeAvailableTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE47CFC818E8F62300503842 /* TchangeAvailableTimeViewController.m */; };
@@ -105,7 +104,6 @@
 		23F3EB8018D6C7460075819D /* sandboxTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "sandboxTests-Info.plist"; sourceTree = "<group>"; };
 		23F3EB8218D6C7460075819D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		23F3EB8418D6C7460075819D /* sandboxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = sandboxTests.m; sourceTree = "<group>"; };
-		23F3EB8E18D6C7680075819D /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = ../Storyboard.storyboard; sourceTree = "<group>"; };
 		23F3EB9018D6C7B50075819D /* T0logInPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T0logInPage.h; sourceTree = "<group>"; };
 		23F3EB9118D6C7B50075819D /* T0logInPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T0logInPage.m; sourceTree = "<group>"; };
 		BE3CB6BF18ECF396008CCC62 /* T3changePreferenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3changePreferenceViewController.h; sourceTree = "<group>"; };
@@ -199,7 +197,6 @@
 				23E8D9CD18E34A7D0092A1C3 /* FriendList.m */,
 				23E6235618ECFFB6003F1693 /* simpleDBHelper.h */,
 				23E6235718ECFFB6003F1693 /* simpleDBHelper.m */,
-				23F3EB8E18D6C7680075819D /* Storyboard.storyboard */,
 				23BB25E318D823A000ED81E8 /* T0confirmPage.h */,
 				23BB25E418D823A000ED81E8 /* T0confirmPage.m */,
 				23F3EB9018D6C7B50075819D /* T0logInPage.h */,
@@ -340,7 +337,6 @@
 			files = (
 				23F3EB6A18D6C7460075819D /* InfoPlist.strings in Resources */,
 				23F3EB7218D6C7460075819D /* Images.xcassets in Resources */,
-				23F3EB8F18D6C7680075819D /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
