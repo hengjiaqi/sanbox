@@ -60,8 +60,14 @@ NSString* myNickName;
     NSLog(startTime);
     NSLog(endTime);
     startTime = [startTime stringByAppendingString:@" - "];
-    avaliableLabel.text = [startTime stringByAppendingString:endTime];
-    preferenceLabel.text = [hp getAtrributeValue:self.friendPhoneNumber item:@"preferenceItem" attribute:@"preferenceAttribute"];
+    if(isOnline){
+        avaliableLabel.text = [startTime stringByAppendingString:endTime];
+        preferenceLabel.text = [hp getAtrributeValue:self.friendPhoneNumber item:@"preferenceItem" attribute:@"preferenceAttribute"];
+
+    }else{
+        avaliableLabel.text = @"This person is currently unavailable";
+        preferenceLabel.text = @"This person is currently unavailablehahahaahhahahahahahaahhaahahahaahahahahaahahahaahaha";
+    }
     if (!isOnline) {
         phoneNumberLabel.textColor = [UIColor grayColor];
         avaliableLabel.textColor = [UIColor grayColor];
