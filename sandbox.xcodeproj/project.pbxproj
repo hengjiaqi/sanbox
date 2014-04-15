@@ -23,6 +23,12 @@
 		23C645B818E207C60097D968 /* AWSSQS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C645B318E207C60097D968 /* AWSSQS.framework */; };
 		23C645B918E207C60097D968 /* AWSSimpleDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C645B418E207C60097D968 /* AWSSimpleDB.framework */; };
 		23C645BA18E207C60097D968 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C645B518E207C60097D968 /* AWSS3.framework */; };
+		23CF983C18FD04D700D9A452 /* checkBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 23CF983818FD04D700D9A452 /* checkBox.png */; };
+		23CF983D18FD04D700D9A452 /* checkBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23CF983918FD04D700D9A452 /* checkBox@2x.png */; };
+		23CF983E18FD04D700D9A452 /* checkBoxMarked.png in Resources */ = {isa = PBXBuildFile; fileRef = 23CF983A18FD04D700D9A452 /* checkBoxMarked.png */; };
+		23CF983F18FD04D700D9A452 /* checkBoxMarked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23CF983B18FD04D700D9A452 /* checkBoxMarked@2x.png */; };
+		23CF984218FD06F100D9A452 /* checkbox_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 23CF984018FD06F100D9A452 /* checkbox_normal.png */; };
+		23CF984318FD06F100D9A452 /* checkbox_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 23CF984118FD06F100D9A452 /* checkbox_checked.png */; };
 		23E6235818ECFFB6003F1693 /* simpleDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E6235718ECFFB6003F1693 /* simpleDBHelper.m */; };
 		23E8D9D518E34A7D0092A1C3 /* FriendList.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E8D9CD18E34A7D0092A1C3 /* FriendList.m */; };
 		23E8D9D618E34A7D0092A1C3 /* T1mainPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E8D9CF18E34A7D0092A1C3 /* T1mainPage.m */; };
@@ -82,6 +88,12 @@
 		23C645B318E207C60097D968 /* AWSSQS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSQS.framework; sourceTree = "<group>"; };
 		23C645B418E207C60097D968 /* AWSSimpleDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSimpleDB.framework; sourceTree = "<group>"; };
 		23C645B518E207C60097D968 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
+		23CF983818FD04D700D9A452 /* checkBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkBox.png; sourceTree = "<group>"; };
+		23CF983918FD04D700D9A452 /* checkBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBox@2x.png"; sourceTree = "<group>"; };
+		23CF983A18FD04D700D9A452 /* checkBoxMarked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkBoxMarked.png; sourceTree = "<group>"; };
+		23CF983B18FD04D700D9A452 /* checkBoxMarked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBoxMarked@2x.png"; sourceTree = "<group>"; };
+		23CF984018FD06F100D9A452 /* checkbox_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_normal.png; sourceTree = "<group>"; };
+		23CF984118FD06F100D9A452 /* checkbox_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_checked.png; sourceTree = "<group>"; };
 		23E6235618ECFFB6003F1693 /* simpleDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simpleDBHelper.h; sourceTree = "<group>"; };
 		23E6235718ECFFB6003F1693 /* simpleDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = simpleDBHelper.m; sourceTree = "<group>"; };
 		23E8D9CC18E34A7D0092A1C3 /* FriendList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendList.h; sourceTree = "<group>"; };
@@ -196,6 +208,12 @@
 		23F3EB6518D6C7460075819D /* sandbox */ = {
 			isa = PBXGroup;
 			children = (
+				23CF984018FD06F100D9A452 /* checkbox_normal.png */,
+				23CF984118FD06F100D9A452 /* checkbox_checked.png */,
+				23CF983818FD04D700D9A452 /* checkBox.png */,
+				23CF983918FD04D700D9A452 /* checkBox@2x.png */,
+				23CF983A18FD04D700D9A452 /* checkBoxMarked.png */,
+				23CF983B18FD04D700D9A452 /* checkBoxMarked@2x.png */,
 				23F3EB6E18D6C7460075819D /* AppDelegate.h */,
 				23F3EB6F18D6C7460075819D /* AppDelegate.m */,
 				23E8D9CC18E34A7D0092A1C3 /* FriendList.h */,
@@ -343,8 +361,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23CF984318FD06F100D9A452 /* checkbox_checked.png in Resources */,
+				23CF983E18FD04D700D9A452 /* checkBoxMarked.png in Resources */,
+				23CF983D18FD04D700D9A452 /* checkBox@2x.png in Resources */,
 				23F3EB6A18D6C7460075819D /* InfoPlist.strings in Resources */,
 				23F3EB7218D6C7460075819D /* Images.xcassets in Resources */,
+				23CF983C18FD04D700D9A452 /* checkBox.png in Resources */,
+				23CF984218FD06F100D9A452 /* checkbox_normal.png in Resources */,
+				23CF983F18FD04D700D9A452 /* checkBoxMarked@2x.png in Resources */,
 				23F3EB8F18D6C7680075819D /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

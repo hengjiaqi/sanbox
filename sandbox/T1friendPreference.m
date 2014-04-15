@@ -12,13 +12,16 @@
 #import "AmazonClientManager.h"
 #import "simpleDBHelper.h"
 BOOL isOnline;
+
 NSString* USER_NAME;
 NSString* myNickName;
+
 @interface T1friendPreference ()
 
 @end
 
 @implementation T1friendPreference
+@synthesize checkBoxButton;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,7 +37,7 @@ NSString* myNickName;
     [super viewDidLoad];
     NSLog(@"1221321");
     topbar.title = self.friendNickName;
-    [invisibleSwitch setOnTintColor:[UIColor redColor]];
+    //[invisibleSwitch setOnTintColor:[UIColor redColor]];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     USER_NAME = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
     simpleDBHelper *hp = [[simpleDBHelper alloc] init];
@@ -74,7 +77,7 @@ NSString* myNickName;
         preferenceLabel.textColor = [UIColor grayColor];
     }
     if ([hp hasAttributes:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber]) {
-        [invisibleSwitch setOn:YES];
+        //[invisibleSwitch setOn:YES];
     }
     
     
@@ -105,67 +108,6 @@ NSString* myNickName;
     return 1;
 }
 
-/*
- - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
- {
- 
- UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
- 
- // Configure the cell...
- 
- return cell;
- }
- */
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
 
 
 
@@ -175,6 +117,7 @@ NSString* myNickName;
     //beUnavailable to this person
     simpleDBHelper *hp = [[simpleDBHelper alloc] init];
     NSLog(@"@%", myNickName);
+    /*
     if (invisibleSwitch.isOn) {
         NSLog(@"it's on!");
         [hp addAtrribute:USER_NAME item:@"beUnavailableToListItem" attribute:self.friendPhoneNumber value:self.friendNickName];
@@ -192,10 +135,23 @@ NSString* myNickName;
             [hp deleteAttributePair:self.friendPhoneNumber item:@"offlineFriendListItem" attributeName:USER_NAME attributeValue:myNickName];
             [hp addAtrribute:self.friendPhoneNumber item:@"onlineFriendListItem" attribute:USER_NAME value:myNickName];
         }
-    }
+    }*/
 }
 
 - (IBAction)backButtonPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)checkBoxClicked:(id)sender {
+    
+    if (!checked) {
+        [checkBoxButton setImage:[UIImage imageNamed:@"checkbox_checked.png"] forState:UIControlStateNormal];
+        checked = YES;
+    }
+    
+    else if (checked) {
+        [checkBoxButton setImage:[UIImage imageNamed:@"checkbox_normal.png"] forState:UIControlStateNormal];
+        checked = NO;
+    }
 }
 @end

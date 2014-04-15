@@ -15,14 +15,16 @@
     IBOutlet UITableViewCell *preferenceLabel;
     IBOutlet UILabel *avaliableLabel;
     IBOutlet UINavigationItem *topbar;
-    IBOutlet UISwitch *invisibleSwitch;
+    BOOL checked;
     
 }
+@property (weak, nonatomic) IBOutlet UIButton *checkBoxButton;
+
 @property (strong, nonatomic) NSString* friendPhoneNumber;
 @property (strong, nonatomic) NSString* friendNickName;
 @property (strong, nonatomic) NSString* onlineORoffline;
-- (IBAction)switchChanged:(id)sender;
 - (IBAction)backButtonPressed:(id)sender;
 
+- (IBAction)checkBoxClicked:(id)sender;
 
 @end
