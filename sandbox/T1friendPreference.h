@@ -17,6 +17,13 @@
     IBOutlet UINavigationItem *topbar;
     BOOL checked;
     
+    IBOutlet UITableViewCell *numberCell;
+    
+    IBOutlet UITableViewCell *availablityCell;
+    
+    IBOutlet UITableViewCell *preferenceCell;
+    IBOutlet UITableViewCell *contactCell;
+    IBOutlet UITableViewCell *checkboxCell;
 }
 @property (weak, nonatomic) IBOutlet UIButton *checkBoxButton;
 

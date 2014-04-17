@@ -127,13 +127,16 @@ FriendList *currentFriend;
 {
     
     // Return the number of sections. always in one section
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"THERE ARE %d", self.FriendListelements.count);
-    return self.FriendListelements.count;
+    if(section == 0){
+        return onlineFriendList.count;
+    }else{
+        return offlineFriendList.count;
+    }
 }
 
 // we can refer certain view
@@ -141,12 +144,18 @@ FriendList *currentFriend;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *OnLineCellIndetifier = @"OnLineFriendCell";  // what type of cell  to actuall indentify use that in story board
+    static NSString *OnLineCellIndetifier = @"Available Friend";  // what type of cell  to actuall indentify use that in story board
     
     
-    static NSString *OffLineCellIndetifier = @"OffLineFriendCell";
+    static NSString *OffLineCellIndetifier = @"Unavailable Friend";
     // which friend we point at
-    currentFriend = [self.FriendListelements objectAtIndex:indexPath.row];  // which cell we looking at
+    if( indexPath.section == 0 ){
+        currentFriend = [onlineFriendList objectAtIndex:indexPath.row];  // which cell we looking at
+
+    }else{
+        currentFriend = [offlineFriendList objectAtIndex:indexPath.row];  // which cell we looking at
+
+    }
     
     
     NSString *cellIdentifier = currentFriend.onLineorNot ? OnLineCellIndetifier : OffLineCellIndetifier;
@@ -160,7 +169,7 @@ FriendList *currentFriend;
     }
     
     // Configure the cell...
-    
+
     
     // set the text of the cell
     cell.textLabel.text = currentFriend.name;
@@ -243,6 +252,21 @@ FriendList *currentFriend;
 
 -(void)cancelButtonPress:(id)sender{
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if(section == 0)
+    {
+        return @"Available Friend";
+    }
+    else if(section == 1)
+    {
+        return @"Unavailable Friend";
+    }
+    else
+    {
+        return @"Title2";
+    }
 }
 
 @end

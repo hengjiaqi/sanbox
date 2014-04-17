@@ -36,6 +36,7 @@ NSString* myNickName;
 {
     [super viewDidLoad];
     NSLog(@"1221321");
+    
     topbar.title = self.friendNickName;
     //[invisibleSwitch setOnTintColor:[UIColor redColor]];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -43,11 +44,12 @@ NSString* myNickName;
     simpleDBHelper *hp = [[simpleDBHelper alloc] init];
     myNickName = [hp getAtrributeValue:USER_NAME item:@"nicknameItem" attribute:@"nicknameAttribute"];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    numberCell.userInteractionEnabled = NO;
+    availablityCell.userInteractionEnabled = NO;
+    preferenceCell.userInteractionEnabled = NO;
+    contactCell.userInteractionEnabled = NO;
+    [checkboxCell setSelectionStyle:UITableViewCellSelectionStyleNone];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -69,7 +71,7 @@ NSString* myNickName;
 
     }else{
         avaliableLabel.text = @"This person is currently unavailable";
-        preferenceLabel.text = @"This person is currently unavailablehahahaahhahahahahahaahhaahahahaahahahahaahahahaahaha";
+        preferenceLabel.text = @"This person is currently unavailable";
     }
     if (!isOnline) {
         phoneNumberLabel.textColor = [UIColor grayColor];
@@ -77,9 +79,25 @@ NSString* myNickName;
         preferenceLabel.textColor = [UIColor grayColor];
     }
     if ([hp hasAttributes:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber]) {
-        //[invisibleSwitch setOn:YES];
+        [checkBoxButton setImage:[UIImage imageNamed:@"checkbox_checked.png"] forState:UIControlStateNormal];
+        checked = YES;
+        [hp addAtrribute:USER_NAME item:@"beUnavailableToListItem" attribute:self.friendPhoneNumber value:self.friendNickName];
+        
+        if([hp hasAttributes:self.friendPhoneNumber item:@"onlineFriendListItem" attributeName:USER_NAME]){
+            [hp deleteAttributePair:self.friendPhoneNumber item:@"onlineFriendListItem" attributeName:USER_NAME attributeValue:myNickName];
+            [hp addAtrribute:self.friendPhoneNumber item:@"offlineFriendListItem" attribute:USER_NAME value:myNickName];
+        }
+    }else{
+        [checkBoxButton setImage:[UIImage imageNamed:@"checkbox_normal.png"] forState:UIControlStateNormal];
+        checked = NO;
+        if([hp hasAttributes:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber]){
+            [hp deleteAttributePair:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber attributeValue:self.friendNickName];
+        }
+        if([hp hasAttributes:self.friendPhoneNumber item:@"offlineFriendListItem" attributeName:USER_NAME]){
+            [hp deleteAttributePair:self.friendPhoneNumber item:@"offlineFriendListItem" attributeName:USER_NAME attributeValue:myNickName];
+            [hp addAtrribute:self.friendPhoneNumber item:@"onlineFriendListItem" attribute:USER_NAME value:myNickName];
+        }
     }
-    
     
 }
 
@@ -94,18 +112,17 @@ NSString* myNickName;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     if (section == 3) {
         return 2;
+    }else{
+        return 1;
     }
-    return 1;
 }
 
 
@@ -115,26 +132,14 @@ NSString* myNickName;
 
 - (IBAction)switchChanged:(id)sender {
     //beUnavailable to this person
-    simpleDBHelper *hp = [[simpleDBHelper alloc] init];
-    NSLog(@"@%", myNickName);
+    NSLog(@"%@", myNickName);
     /*
     if (invisibleSwitch.isOn) {
         NSLog(@"it's on!");
-        [hp addAtrribute:USER_NAME item:@"beUnavailableToListItem" attribute:self.friendPhoneNumber value:self.friendNickName];
-        
-        if([hp hasAttributes:self.friendPhoneNumber item:@"onlineFriendListItem" attributeName:USER_NAME]){
-            [hp deleteAttributePair:self.friendPhoneNumber item:@"onlineFriendListItem" attributeName:USER_NAME attributeValue:myNickName];
-            [hp addAtrribute:self.friendPhoneNumber item:@"offlineFriendListItem" attribute:USER_NAME value:myNickName];
-        }
+     
         
     }else{
-        if([hp hasAttributes:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber]){
-            [hp deleteAttributePair:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber attributeValue:self.friendNickName];
-        }
-        if([hp hasAttributes:self.friendPhoneNumber item:@"offlineFriendListItem" attributeName:USER_NAME]){
-            [hp deleteAttributePair:self.friendPhoneNumber item:@"offlineFriendListItem" attributeName:USER_NAME attributeValue:myNickName];
-            [hp addAtrribute:self.friendPhoneNumber item:@"onlineFriendListItem" attribute:USER_NAME value:myNickName];
-        }
+     
     }*/
 }
 
@@ -143,15 +148,28 @@ NSString* myNickName;
 }
 
 - (IBAction)checkBoxClicked:(id)sender {
-    
+    simpleDBHelper *hp = [[simpleDBHelper alloc] init];
     if (!checked) {
         [checkBoxButton setImage:[UIImage imageNamed:@"checkbox_checked.png"] forState:UIControlStateNormal];
         checked = YES;
+        [hp addAtrribute:USER_NAME item:@"beUnavailableToListItem" attribute:self.friendPhoneNumber value:self.friendNickName];
+        
+        if([hp hasAttributes:self.friendPhoneNumber item:@"onlineFriendListItem" attributeName:USER_NAME]){
+            [hp deleteAttributePair:self.friendPhoneNumber item:@"onlineFriendListItem" attributeName:USER_NAME attributeValue:myNickName];
+            [hp addAtrribute:self.friendPhoneNumber item:@"offlineFriendListItem" attribute:USER_NAME value:myNickName];
+        }
     }
     
     else if (checked) {
         [checkBoxButton setImage:[UIImage imageNamed:@"checkbox_normal.png"] forState:UIControlStateNormal];
         checked = NO;
+        if([hp hasAttributes:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber]){
+            [hp deleteAttributePair:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber attributeValue:self.friendNickName];
+        }
+        if([hp hasAttributes:self.friendPhoneNumber item:@"offlineFriendListItem" attributeName:USER_NAME]){
+            [hp deleteAttributePair:self.friendPhoneNumber item:@"offlineFriendListItem" attributeName:USER_NAME attributeValue:myNickName];
+            [hp addAtrribute:self.friendPhoneNumber item:@"onlineFriendListItem" attribute:USER_NAME value:myNickName];
+        }
     }
 }
 @end
