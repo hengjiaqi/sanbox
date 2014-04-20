@@ -8,11 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface T3mainPage : UITableViewController
-@property (weak, nonatomic) IBOutlet UITableViewCell *Availability;
-@property (weak, nonatomic) IBOutlet UITableViewCell *myPreference;
-@property (weak, nonatomic) IBOutlet UILabel *labelOnAvailability;
-@property (weak, nonatomic) IBOutlet UILabel *labelOnPreference;
--(float)resizeToFit;
--(float)expectedHeight;
+@interface T3mainPage : UITableViewController<UITableViewDataSource>
+
 @end

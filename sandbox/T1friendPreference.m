@@ -67,16 +67,16 @@ NSString* myNickName;
     startTime = [startTime stringByAppendingString:@" - "];
     if(isOnline){
         avaliableLabel.text = [startTime stringByAppendingString:endTime];
-        preferenceLabel.text = [hp getAtrributeValue:self.friendPhoneNumber item:@"preferenceItem" attribute:@"preferenceAttribute"];
+        preferenceLabel.textLabel.text = [hp getAtrributeValue:self.friendPhoneNumber item:@"preferenceItem" attribute:@"preferenceAttribute"];
 
     }else{
         avaliableLabel.text = @"This person is currently unavailable";
-        preferenceLabel.text = @"This person is currently unavailable";
+        preferenceLabel.textLabel.text = @"This person is currently unavailable";
     }
     if (!isOnline) {
         phoneNumberLabel.textColor = [UIColor grayColor];
         avaliableLabel.textColor = [UIColor grayColor];
-        preferenceLabel.textColor = [UIColor grayColor];
+        preferenceLabel.textLabel.textColor = [UIColor grayColor];
     }
     if ([hp hasAttributes:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber]) {
         [checkBoxButton setImage:[UIImage imageNamed:@"checkbox_checked.png"] forState:UIControlStateNormal];
