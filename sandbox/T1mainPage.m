@@ -144,10 +144,10 @@ FriendList *currentFriend;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *OnLineCellIndetifier = @"Available Friend";  // what type of cell  to actuall indentify use that in story board
+    static NSString *OnLineCellIndetifier = @"People who want to eat";  // what type of cell  to actuall indentify use that in story board
     
     
-    static NSString *OffLineCellIndetifier = @"Unavailable Friend";
+    static NSString *OffLineCellIndetifier = @"People who want to sleep";
     // which friend we point at
     if( indexPath.section == 0 ){
         currentFriend = [onlineFriendList objectAtIndex:indexPath.row];  // which cell we looking at
@@ -257,11 +257,11 @@ FriendList *currentFriend;
 {
     if(section == 0)
     {
-        return @"Available Friend";
+        return @"Peole who want to eat";
     }
     else if(section == 1)
     {
-        return @"Unavailable Friend";
+        return @"People who want to sleep";
     }
     else
     {

@@ -90,7 +90,7 @@ NSString* numberToAdd;
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 
-    if ((buttonIndex == 0) && ([[alertView title] isEqualToString:@"Add Friend"]));
+    if ((buttonIndex == 0) && ([[alertView title] isEqualToString:@"Add Friend"]))
     {
         //Check to see if request has already been sent
         SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:numberToAdd andItemName:@"friendRequestListItem"];
@@ -112,12 +112,10 @@ NSString* numberToAdd;
             NSString* myNickName = [[NSString alloc] init];
             SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:USER_NAME andItemName:@"nicknameItem"];
             SimpleDBGetAttributesResponse *response = [[AmazonClientManager sdb] getAttributes:gar];
-            for (SimpleDBAttribute *attr in response.attributes) {
-                myNickName = attr.value;
-            }
+            simpleDBHelper *hp = [[simpleDBHelper alloc]init];
+            myNickName = [hp getAtrributeValue:USER_NAME item:@"nicknameItem" attribute:@"nicknameAttribute"];
             NSLog(@"MY NICK NAME IS %@", myNickName);
             //send the request
-            simpleDBHelper *hp = [[simpleDBHelper alloc] init];
             [hp addAtrribute:numberToAdd item:@"friendRequestListItem" attribute:USER_NAME value:myNickName];
         }
         

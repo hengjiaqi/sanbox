@@ -39,14 +39,9 @@ NSMutableArray *domains;
     [remove addObject:ListAttribute];
     SimpleDBDeleteAttributesRequest *request = [[SimpleDBDeleteAttributesRequest alloc] initWithDomainName:@"2069723264" andItemName:@"friendListItem" andAttributes:remove];
     [sdb deleteAttributes:request];
+     
     AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
-     SimpleDBDeleteDomainRequest *request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000003"];
-     [sdb deleteDomain:request];
-     request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000001"];
-     
-     [sdb deleteDomain:request];
-     request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000002"];
-     
+     SimpleDBDeleteDomainRequest *request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2066176882"];
      [sdb deleteDomain:request];
     */
     // Do any additional setup after loading the view.
@@ -167,6 +162,7 @@ NSMutableArray *domains;
     [request setHTTPMethod:@"POST"];
     confirmation = (arc4random() % (9000)) + 1000;
     NSString *textContent = [NSString stringWithFormat:@"Hello from Eat2gether! Your confirmation code IS: %d", confirmation];
+    //textContent = @"LALALALALALA";
     NSString *bodyString = [NSString stringWithFormat:@"From=%@&To=%@&Body=%@", twilioNumber,userPhoneNumber,textContent];
     NSData *data = [bodyString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:data];

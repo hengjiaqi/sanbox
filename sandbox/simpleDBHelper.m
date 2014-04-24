@@ -31,22 +31,20 @@
 -(void) updateAtrribute: (NSString*)domainName item:(NSString*)itemName attribute:(NSString*)attributeName newValue:(NSString*)attributeValue{
     SimpleDBGetAttributesRequest* gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:domainName andItemName:itemName];
     SimpleDBGetAttributesResponse* response = [[AmazonClientManager sdb] getAttributes:gar];
-    NSMutableArray *ListAttributes = [[NSMutableArray alloc] init];
+    NSMutableArray *ListAttributes = response.attributes;
     BOOL attributeExist = NO;
-    for (SimpleDBAttribute *attr in response.attributes ) {
-        SimpleDBReplaceableAttribute *ListAttribute;
-        if ([attr.name isEqualToString:attributeName]) {
+    for (int i = 0; i < ListAttributes.count; i++) {
+        SimpleDBReplaceableAttribute *temp =[ListAttributes objectAtIndex:i];
+        if ([temp.name isEqualToString:attributeName]) {
+            
             attributeExist = YES;
-            ListAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:attr.name andValue:attributeValue andReplace:YES];
-        }else{
-            ListAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:attr.name andValue:attr.value andReplace:YES];
+            [self deleteAttributePair:domainName item:itemName attributeName:temp.name attributeValue:temp.value];
+            [self addAtrribute:domainName item:itemName attribute:attributeName value:attributeValue];
         }
-        [ListAttributes addObject:ListAttribute];
     }
+    
     if (attributeExist) {
-        SimpleDBPutAttributesRequest *putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:domainName andItemName:itemName andAttributes:ListAttributes];
-        AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
-        [sdb putAttributes:putAttributesRequest];
+        
     }else{
         NSLog(@"The attribute does NOT exist");
     }
@@ -81,6 +79,7 @@
     return names;
 }
 
+
 -(void) deleteAttributePair: (NSString*) domainName item:(NSString*)itemName
               attributeName:(NSString*)attributeName attributeValue:(NSString*) attributeValue{
     AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
@@ -91,6 +90,7 @@
     [sdb deleteAttributes:request];
     
 }
+
 
 -(NSString*) getAtrributeValue: (NSString*)domainName item:(NSString*)itemName attribute:(NSString*)attributeName{
     SimpleDBGetAttributesRequest* gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:domainName andItemName:itemName];

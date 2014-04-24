@@ -67,7 +67,7 @@
 - (IBAction)LoginButton:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([phoneNumber.text isEqualToString:@""]) {
-        [defaults setObject:@"2066608173" forKey:@"EAT2GETHER_ACCOUNT_NAME"];
+        [defaults setObject:@"2066176882" forKey:@"EAT2GETHER_ACCOUNT_NAME"];
         [defaults synchronize];
         [self performSegueWithIdentifier:@"loginTransistion" sender:sender];
     }else{

@@ -71,27 +71,33 @@
     
     //password item
     SimpleDBReplaceableAttribute *passwordAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"passwordAttribute" andValue:self.registerPassword andReplace:YES];
-    NSMutableArray *attributes = [[NSMutableArray alloc] initWithCapacity:1];
+    SimpleDBReplaceableAttribute *passwordAttribute1 = [[SimpleDBReplaceableAttribute alloc] initWithName:@"dummyAttribute" andValue:@"dummyAttribute" andReplace:YES];
+    NSMutableArray *attributes = [[NSMutableArray alloc] initWithCapacity:2];
     [attributes addObject:passwordAttribute];
+    [attributes addObject:passwordAttribute1];
     SimpleDBPutAttributesRequest *putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"passwordItem" andAttributes:attributes];
     [sdb putAttributes:putAttributesRequest];
     
     //nickname item
     SimpleDBReplaceableAttribute *nickNameAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"nicknameAttribute" andValue:self.registerNickName andReplace:YES];
-    NSMutableArray *NicknameAttributes = [[NSMutableArray alloc] initWithCapacity:1];
+    NSMutableArray *NicknameAttributes = [[NSMutableArray alloc] initWithCapacity:2];
     [NicknameAttributes addObject:nickNameAttribute];
+    [NicknameAttributes addObject:passwordAttribute1];
     putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"nicknameItem" andAttributes:NicknameAttributes];
     [sdb putAttributes:putAttributesRequest];
+    
     //onlineItem
     SimpleDBReplaceableAttribute *onlineAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"onlineAttribute" andValue:@"online" andReplace:YES];
-    NSMutableArray *onlineAttributes = [[NSMutableArray alloc] initWithCapacity:1];
+    NSMutableArray *onlineAttributes = [[NSMutableArray alloc] initWithCapacity:2];
     [onlineAttributes addObject:onlineAttribute];
+    [onlineAttributes addObject:passwordAttribute1];
     putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"onlineItem" andAttributes:onlineAttributes];
     [sdb putAttributes:putAttributesRequest];
     
     //preferenceItem
     SimpleDBReplaceableAttribute *preferenceAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"preferenceAttribute" andValue:@"I have no preference" andReplace:YES];
-    NSMutableArray *preferenceAttributes = [[NSMutableArray alloc] initWithCapacity:1];
+    NSMutableArray *preferenceAttributes = [[NSMutableArray alloc] initWithCapacity:2];
+    [preferenceAttributes addObject:passwordAttribute1];
     [preferenceAttributes addObject:preferenceAttribute];
     putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"preferenceItem" andAttributes:preferenceAttributes];
     [sdb putAttributes:putAttributesRequest];
