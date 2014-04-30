@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UIKit/UIKit.h>
+#import "loadingAnimation.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface T0logInPage : UIViewController<UITextFieldDelegate>{
     

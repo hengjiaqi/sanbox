@@ -30,6 +30,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    //To show the Indicator
+    [loadingAnimation showHUDAddedTo:self.view animated:YES];
+    
+    //Call the method to hide the Indicator after 3 seconds
+    [self performSelector:@selector(stopRKLoading) withObject:nil afterDelay:3];
+    
+    
     // Do any additional setup after loading the view.
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
@@ -169,5 +178,11 @@
         [self.view setFrame:CGRectMake(0, 0, 320, 480)];
     }
 }
+-(void)stopRKLoading
+{
+    [loadingAnimation hideHUDForView:self.view animated:YES];
+}
+
+
 
 @end

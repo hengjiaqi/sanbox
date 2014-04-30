@@ -72,15 +72,17 @@ UIButton *btnDone;
     simpleDBHelper *hp = [[simpleDBHelper alloc]init];
     [super viewDidLoad];
     
-    // setup our data source
+    // setup our data source (array store)
     data= @[@"From",@"Until",@"Preference",@"I want to eat!"];
     UITableViewCell *pickerViewCellToCheck = [self.tableView dequeueReusableCellWithIdentifier:kPickerCellID];
     self.pickerCellRowHeight = pickerViewCellToCheck.frame.size.height;
     self.dateFormatter = [[NSDateFormatter alloc] init];
     [self.dateFormatter setDateFormat:@"EEE,MM/dd hh:mm a"];
     
+    //get the information from AWS
     //get the start time and end time from AWS
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //get the user name
     USER_NAME = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
     NSString *startTimeFromDB = [hp getAtrributeValue:USER_NAME item:@"availbilityItem" attribute:@"startTimeAttribute"];
     [defaults setObject:startTimeFromDB forKey:@"USER_START_DEFAULT"];
@@ -222,6 +224,7 @@ UIButton *btnDone;
     }
 }
 
+// set the numbers of row in specific section
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (pickerIsShown && section == 0) {
@@ -231,13 +234,16 @@ UIButton *btnDone;
     }
     return 1;
 }
+
+// Return the number of sections.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections. always in one section
     return 3;
 }
 
 
+
+//
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"hehehe");
@@ -287,6 +293,8 @@ UIButton *btnDone;
     
 }
 
+
+
 - (void)displayInlineDatePickerForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -306,7 +314,7 @@ UIButton *btnDone;
     
 }
 
-
+//
 - (IBAction)pickerChanged:(id)sender {
     NSIndexPath *targetedCellIndexPath = nil;
     targetedCellIndexPath = [NSIndexPath indexPathForRow:pickerRow - 1 inSection:0];
@@ -393,6 +401,7 @@ UIButton *btnDone;
         
     }
 }
+
 
 -(void)dismissKeyboard {
     [self.preferenceTextField resignFirstResponder];
