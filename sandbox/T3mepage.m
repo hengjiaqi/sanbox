@@ -172,4 +172,9 @@ NSString *GNickname;
         GNickname =attr.value;
     }
 }
+
+- (IBAction)logOutButton:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"logged_in"];
+    [self performSegueWithIdentifier:@"logOut" sender:sender];
+}
 @end

@@ -48,7 +48,7 @@ FriendList *currentFriend;
     NSLog(@"Tabs showed up!");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     USER_NAME = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
-    [self.tableView reloadData];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"LOGGED_IN"];
     
     /*
      FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:@"My first online friend" onLineorNot:(YES)];

@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		231B045B1910B338003D87F9 /* launchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 231B045A1910B338003D87F9 /* launchImage@2x.png */; };
 		232D08C618EB3124008798A0 /* T2searchFriendPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 232D08C518EB3124008798A0 /* T2searchFriendPage.m */; };
 		239B473018EDD5DA00D552B8 /* T1friendPreference.m in Sources */ = {isa = PBXBuildFile; fileRef = 239B472F18EDD5DA00D552B8 /* T1friendPreference.m */; };
-		23A3B3CA1910B81B00D9BD4C /* iphone4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A3B3C91910B81B00D9BD4C /* iphone4@2x.png */; };
+		23A3B3CD1910FFC300D9BD4C /* iphone4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A3B3CB1910FFC300D9BD4C /* iphone4@2x.png */; };
+		23A3B3CE1910FFC300D9BD4C /* iphone5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A3B3CC1910FFC300D9BD4C /* iphone5@2x.png */; };
 		23B24A1718EA61850040586A /* T2addFriendPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B24A1618EA61850040586A /* T2addFriendPage.m */; };
 		23B39B8818DD6A330098F06A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B39B8718DD6A330098F06A /* AudioToolbox.framework */; };
 		23B39B8A18DD6A450098F06A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B39B8918DD6A450098F06A /* AVFoundation.framework */; };
@@ -70,12 +70,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		231B045A1910B338003D87F9 /* launchImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launchImage@2x.png"; sourceTree = "<group>"; };
 		232D08C418EB3124008798A0 /* T2searchFriendPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = T2searchFriendPage.h; path = ../T2searchFriendPage.h; sourceTree = "<group>"; };
 		232D08C518EB3124008798A0 /* T2searchFriendPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = T2searchFriendPage.m; path = ../T2searchFriendPage.m; sourceTree = "<group>"; };
 		239B472E18EDD5DA00D552B8 /* T1friendPreference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T1friendPreference.h; sourceTree = "<group>"; };
 		239B472F18EDD5DA00D552B8 /* T1friendPreference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T1friendPreference.m; sourceTree = "<group>"; };
-		23A3B3C91910B81B00D9BD4C /* iphone4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone4@2x.png"; sourceTree = "<group>"; };
+		23A3B3CB1910FFC300D9BD4C /* iphone4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone4@2x.png"; sourceTree = "<group>"; };
+		23A3B3CC1910FFC300D9BD4C /* iphone5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone5@2x.png"; sourceTree = "<group>"; };
 		23B24A1518EA61850040586A /* T2addFriendPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T2addFriendPage.h; sourceTree = "<group>"; };
 		23B24A1618EA61850040586A /* T2addFriendPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T2addFriendPage.m; sourceTree = "<group>"; };
 		23B39B8718DD6A330098F06A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -222,8 +222,8 @@
 		23F3EB6518D6C7460075819D /* sandbox */ = {
 			isa = PBXGroup;
 			children = (
-				23A3B3C91910B81B00D9BD4C /* iphone4@2x.png */,
-				231B045A1910B338003D87F9 /* launchImage@2x.png */,
+				23A3B3CB1910FFC300D9BD4C /* iphone4@2x.png */,
+				23A3B3CC1910FFC300D9BD4C /* iphone5@2x.png */,
 				23CF984018FD06F100D9A452 /* checkbox_normal.png */,
 				23CF984118FD06F100D9A452 /* checkbox_checked.png */,
 				23CF983818FD04D700D9A452 /* checkBox.png */,
@@ -384,17 +384,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23A3B3CD1910FFC300D9BD4C /* iphone4@2x.png in Resources */,
 				23CF984318FD06F100D9A452 /* checkbox_checked.png in Resources */,
 				23CF983E18FD04D700D9A452 /* checkBoxMarked.png in Resources */,
 				23CF983D18FD04D700D9A452 /* checkBox@2x.png in Resources */,
+				23A3B3CE1910FFC300D9BD4C /* iphone5@2x.png in Resources */,
 				23F3EB6A18D6C7460075819D /* InfoPlist.strings in Resources */,
 				23F3EB7218D6C7460075819D /* Images.xcassets in Resources */,
 				23CF983C18FD04D700D9A452 /* checkBox.png in Resources */,
 				23CF984218FD06F100D9A452 /* checkbox_normal.png in Resources */,
 				23CF983F18FD04D700D9A452 /* checkBoxMarked@2x.png in Resources */,
-				23A3B3CA1910B81B00D9BD4C /* iphone4@2x.png in Resources */,
 				23F3EB8F18D6C7680075819D /* Storyboard.storyboard in Resources */,
-				231B045B1910B338003D87F9 /* launchImage@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,7 @@
 @interface T3mepage : UITableViewController
 - (IBAction)me_back_button:(id)sender;
 - (IBAction)me_update_button:(id)sender;
+- (IBAction)logOutButton:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITextField *me_NickName_textfield;
 @property (weak, nonatomic) IBOutlet UITextField *me_Password_textfield;
