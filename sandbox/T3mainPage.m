@@ -16,7 +16,7 @@ NSString *GNickname;
 NSString *startTimeFromDefault;
 NSString *endTimeFromDefault;
 NSString *preferenceFromDefault;
-NSString *switchViewFromDefault;
+NSString *availableFromDefault;
 NSString *kDateCellID = @"dateCell";
 NSString *kNormalCellID = @"normalCell";
 NSString *kPickerCellID = @"pickerCell";
@@ -27,7 +27,6 @@ NSArray *data;
 BOOL pickerIsShown = NO;
 int pickerRow;
 UIView *inputAccView;
-UISwitch *switchview;
 UIButton *btnDone;
 
 @interface T3mainPage ()
@@ -96,12 +95,13 @@ UIButton *btnDone;
     [defaults synchronize];
     
     //configure the switch
-    [switchview addTarget:self action:@selector(setState:) forControlEvents:UIControlEventValueChanged];
-    NSString *switchViewFromDB = [hp getAtrributeValue:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute"];
-    [defaults setObject:switchViewFromDB forKey:@"USER_SWITCH_DEFAULT"];
-    NSLog(@"%@", switchViewFromDB);
+    NSString *availableButtonFromDB = [hp getAtrributeValue:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute"];
+    [defaults setObject:availableButtonFromDB forKey:@"USER_SWITCH_DEFAULT"];
     
     //[hp deleteAttributePair:USER_NAME item:@"onlineItem" attributeName:@"onlineAttribute" attributeValue:@"online"];
+    NSLog(@"NSUserDefaults dump: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+    
+    
     
 }
 
@@ -110,7 +110,7 @@ UIButton *btnDone;
     startTimeFromDefault = [timeDefault objectForKey:@"USER_START_DEFAULT"];
     endTimeFromDefault = [timeDefault objectForKey:@"USER_END_DEFAULT"];
     preferenceFromDefault = [timeDefault objectForKey:@"USER_PREF_DEFAULT"];
-    switchViewFromDefault = [timeDefault objectForKey:@"USER_SWITCH_DEFAULT"];
+    availableFromDefault = [timeDefault objectForKey:@"USER_SWITCH_DEFAULT"];
 }
 
 
@@ -132,8 +132,7 @@ UIButton *btnDone;
     startTimeFromDefault = [timeDefault objectForKey:@"USER_START_DEFAULT"];
     endTimeFromDefault = [timeDefault objectForKey:@"USER_END_DEFAULT"];
     preferenceFromDefault = [timeDefault objectForKey:@"USER_PREF_DEFAULT"];
-    switchViewFromDefault = [timeDefault objectForKey:@"USER_SWITCH_DEFAULT"];
-    NSLog(@"%@", switchViewFromDefault);
+    availableFromDefault = [timeDefault objectForKey:@"USER_SWITCH_DEFAULT"];
     NSString *cellIdentifier = [[NSString alloc]init];
     if (indexPath.row == pickerRow && pickerIsShown && indexPath.section == 0) {
         cellIdentifier = kPickerCellID;
@@ -177,12 +176,16 @@ UIButton *btnDone;
         self.preferenceTextField.tag = 0;
         [cell.contentView addSubview:self.preferenceTextField];
     }else if (cellIdentifier == kNormalCellID){
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.text = data[3];
-        switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
-        cell.accessoryView = switchview;
-        [switchview addTarget:self action:@selector(setState:) forControlEvents:UIControlEventValueChanged];
-        switchview.on = [switchViewFromDefault isEqualToString:@"online"];
+        //cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        //cell.accessoryView = availableButton;
+        if ([availableFromDefault isEqualToString:@"online"]) {
+            cell.textLabel.text =@"Make Me Unavailable";
+        }else{
+            cell.textLabel.text =@"Make Me Available";
+        }
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        
     }
     return cell;
 }
@@ -213,7 +216,7 @@ UIButton *btnDone;
     [self.preferenceTextField resignFirstResponder];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:self.preferenceTextField.text forKey:@"USER_PREF_DEFAULT"];
-    if (switchview.isOn) {
+    if ([availableFromDefault isEqualToString:@"online"]) {
         simpleDBHelper *hp = [[simpleDBHelper alloc]init];
         [hp updateAtrribute:USER_NAME item:@"preferenceItem" attribute:@"preferenceAttribute" newValue:self.preferenceTextField.text];
     }
@@ -255,6 +258,31 @@ UIButton *btnDone;
                               withRowAnimation:UITableViewRowAnimationFade];
         
     }
+    if (cell.reuseIdentifier == kNormalCellID) {
+        simpleDBHelper *hp = [[simpleDBHelper alloc]init];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if ([availableFromDefault isEqualToString:@"online"]) {
+            cell.textLabel.text = @"Make Me Available";
+            [hp updateAtrribute:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute" newValue:@"offline"];
+            [defaults setObject:@"offline" forKey:@"USER_SWITCH_DEFAULT"];
+            availableFromDefault = @"offline";
+            NSLog(@"It was on, and will be turned off");
+            
+        }else{
+            cell.textLabel.text = @"Make Me Unavailable";
+            availableFromDefault = @"online";
+            //upload start time and end time to AWS
+            [hp updateAtrribute:USER_NAME item:@"availbilityItem" attribute:@"startTimeAttribute" newValue:startTimeFromDefault];
+            
+            [hp updateAtrribute:USER_NAME item:@"availbilityItem" attribute:@"endTimeAttribute" newValue:endTimeFromDefault];
+            
+            [hp updateAtrribute:USER_NAME item:@"preferenceItem" attribute:@"preferenceAttribute" newValue:self.preferenceTextField.text];
+            
+            [hp updateAtrribute:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute" newValue:@"online"];
+            [defaults setObject:@"online" forKey:@"USER_SWITCH_DEFAULT"];
+            NSLog(@"DONE!");
+        }
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
@@ -293,12 +321,12 @@ UIButton *btnDone;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     simpleDBHelper *hp = [[simpleDBHelper alloc]init];
     if (targetedCellIndexPath.row == 0) {
-        if (switchview.isOn) {
+        if ([availableFromDefault isEqualToString:@"online"]) {
             [hp updateAtrribute:USER_NAME item:@"availbilityItem" attribute:@"startTimeAttribute" newValue:cell.detailTextLabel.text];
         }
         [defaults setObject:cell.detailTextLabel.text forKey:@"USER_START_DEFAULT"];
     }else{
-        if (switchview.isOn) {
+        if ([availableFromDefault isEqualToString:@"online"]) {
             [hp updateAtrribute:USER_NAME item:@"availbilityItem" attribute:@"endTimeAttribute" newValue:cell.detailTextLabel.text];
         }
         [defaults setObject:cell.detailTextLabel.text forKey:@"USER_END_DEFAULT"];
@@ -306,6 +334,7 @@ UIButton *btnDone;
     [defaults synchronize];
     
 }
+
 
 - (void)updateDatePicker
 {
@@ -323,28 +352,6 @@ UIButton *btnDone;
                 [targetedDatePicker setDate:endTime animated:NO];
             }
         }
-    }
-}
-
-- (void)setState:(id)sender
-{
-    simpleDBHelper *hp = [[simpleDBHelper alloc]init];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (![switchview isOn]) {
-        [hp updateAtrribute:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute" newValue:@"offline"];
-        [defaults setObject:@"offline" forKey:@"USER_SWITCH_DEFAULT"];
-        NSLog(@"It was on, and will be turned off");
-    }else{
-        //upload start time and end time to AWS
-        [hp updateAtrribute:USER_NAME item:@"availbilityItem" attribute:@"startTimeAttribute" newValue:startTimeFromDefault];
-
-        [hp updateAtrribute:USER_NAME item:@"availbilityItem" attribute:@"endTimeAttribute" newValue:endTimeFromDefault];
-        
-        [hp updateAtrribute:USER_NAME item:@"preferenceItem" attribute:@"preferenceAttribute" newValue:self.preferenceTextField.text];
-        
-        [hp updateAtrribute:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute" newValue:@"online"];
-        [defaults setObject:@"online" forKey:@"USER_SWITCH_DEFAULT"];
-        NSLog(@"DONE!");
     }
 }
 
