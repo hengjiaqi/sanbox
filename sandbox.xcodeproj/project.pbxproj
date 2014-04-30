@@ -56,7 +56,7 @@
 		BE941C011910B07900E465F7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE941C001910B07900E465F7 /* QuartzCore.framework */; };
 		BE941C041910B1EE00E465F7 /* UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = BE941C031910B1EE00E465F7 /* UIColor.m */; };
 		BEBE44BB18E6911800929899 /* T3preferencepageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBE44BA18E6911800929899 /* T3preferencepageTableViewController.m */; };
-		BEBE44BE18E6915000929899 /* T3mepageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBE44BD18E6915000929899 /* T3mepageTableViewController.m */; };
+		BEBE44BE18E6915000929899 /* T3mepage.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBE44BD18E6915000929899 /* T3mepage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,8 +141,8 @@
 		BE941C031910B1EE00E465F7 /* UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColor.m; sourceTree = "<group>"; };
 		BEBE44B918E6911800929899 /* T3preferencepageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3preferencepageTableViewController.h; sourceTree = "<group>"; };
 		BEBE44BA18E6911800929899 /* T3preferencepageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3preferencepageTableViewController.m; sourceTree = "<group>"; };
-		BEBE44BC18E6915000929899 /* T3mepageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3mepageTableViewController.h; sourceTree = "<group>"; };
-		BEBE44BD18E6915000929899 /* T3mepageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3mepageTableViewController.m; sourceTree = "<group>"; };
+		BEBE44BC18E6915000929899 /* T3mepage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3mepage.h; sourceTree = "<group>"; };
+		BEBE44BD18E6915000929899 /* T3mepage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3mepage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,8 +260,8 @@
 				BE3CB6C018ECF396008CCC62 /* T3changePreferenceViewController.m */,
 				BE5B07B918EF503D0090D3F2 /* T3mainPage.h */,
 				BE5B07BA18EF503D0090D3F2 /* T3mainPage.m */,
-				BEBE44BC18E6915000929899 /* T3mepageTableViewController.h */,
-				BEBE44BD18E6915000929899 /* T3mepageTableViewController.m */,
+				BEBE44BC18E6915000929899 /* T3mepage.h */,
+				BEBE44BD18E6915000929899 /* T3mepage.m */,
 				BEBE44B918E6911800929899 /* T3preferencepageTableViewController.h */,
 				BEBE44BA18E6911800929899 /* T3preferencepageTableViewController.m */,
 				BE941BFD1910AEE400E465F7 /* loadingAnimation.h */,
@@ -433,7 +433,7 @@
 				BE47CFC918E8F62300503842 /* T3changeAvailableTimeViewController.m in Sources */,
 				BE3CB6C118ECF396008CCC62 /* T3changePreferenceViewController.m in Sources */,
 				23F3EB9218D6C7B50075819D /* T0logInPage.m in Sources */,
-				BEBE44BE18E6915000929899 /* T3mepageTableViewController.m in Sources */,
+				BEBE44BE18E6915000929899 /* T3mepage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
