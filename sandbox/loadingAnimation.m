@@ -22,7 +22,6 @@
     loadingAnimation *hud = [[loadingAnimation alloc] initWithFrame:CGRectMake(40, 40, 60, 60)];
   	hud.hidden = NO;
     UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(15, 15,30,30)];
-    img.image =[UIImage imageNamed:@"apple_logo1"];
     hud.center = img.center;
     [hud addSubview:img];
     [hud startSpinProgressBackgroundLayer];

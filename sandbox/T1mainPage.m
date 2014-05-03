@@ -17,7 +17,10 @@ NSMutableArray *onlineFriendList;
 NSMutableArray *offlineFriendList;
 FriendList *currentFriend;
 
-@interface T1mainPage ()
+//setup the dispatch//
+@interface T1mainPage (){
+    dispatch_queue_t queue;
+}
 
 @end
 
@@ -39,6 +42,8 @@ FriendList *currentFriend;
 
 - (void)viewDidAppear:(BOOL)animated{
     NSLog(@"Tabs showed up!");
+    
+    [loadingAnimation showHUDAddedTo:self.view animated:YES];
     [self loadFriends];
 }
 
@@ -48,6 +53,9 @@ FriendList *currentFriend;
     NSLog(@"Tabs showed up!");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     USER_NAME = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
+    
+   
+    
     [self.tableView reloadData];
     
     /*
@@ -58,10 +66,18 @@ FriendList *currentFriend;
      [self.FriendListelements addObject:myOfflineFriendListelement];
      */
     // reload the data
+    
+    
 }
 
 
 - (void)loadFriends{
+    
+    
+    
+    queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+    //*************************************//
     //load all the online friend
     SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:USER_NAME andItemName:@"onlineFriendListItem"];
     SimpleDBGetAttributesResponse *response = [[AmazonClientManager sdb] getAttributes:gar];
@@ -107,12 +123,18 @@ FriendList *currentFriend;
         
     }
     NSLog(@"RESPONSE2 IS %d", count);
-    
+        dispatch_async(dispatch_get_main_queue(),^{
     //add all of them to the table view
     self.FriendListelements =[[NSMutableArray alloc]init];
     [self.FriendListelements addObjectsFromArray:(onlineFriendList)];
     [self.FriendListelements addObjectsFromArray:(offlineFriendList)];
     [self.tableView reloadData];
+            
+            //Call the method to hide the Indicator after 3 seconds
+            [self performSelector:@selector(stopRKLoading) withObject:nil];
+        });
+        
+    });
 }
 
 - (void)didReceiveMemoryWarning
@@ -268,5 +290,8 @@ FriendList *currentFriend;
         return @"Title2";
     }
 }
-
+-(void)stopRKLoading
+{
+    [loadingAnimation hideHUDForView:self.view animated:YES];
+}
 @end

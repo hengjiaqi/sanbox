@@ -10,6 +10,8 @@
 #import <AWSSimpleDB/AWSSimpleDB.h>
 #import "AmazonClientManager.h"
 #import "simpleDBhelper.h"
+
+
 //#import "FriendListTableViewController.m"
 NSString *USER_NAME;
 NSString *GNickname;
@@ -38,6 +40,7 @@ UIButton *btnDone;
 @property (nonatomic, strong) IBOutlet UIDatePicker *pickerView;
 @property (strong, nonatomic) IBOutlet UITextView *preferenceTextField;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *doneButton;
+@property dispatch_queue_t queue;
 @end
 
 
@@ -162,7 +165,6 @@ UIButton *btnDone;
         }
     }else if(cellIdentifier == kPreferenceCellID){
         
-        
         self.preferenceTextField = [[UITextView alloc] initWithFrame:CGRectMake(15, 0, cell.frame.size.width - 15, cell.frame.size.height * 1.5)];
         //preferenceTextField.delegate = self;
         self.preferenceTextField.textColor = [UIColor blackColor];
@@ -182,9 +184,15 @@ UIButton *btnDone;
         
         //cell.accessoryView = availableButton;
         if ([availableFromDefault isEqualToString:@"online"]) {
+            cell.textLabel.textColor = [UIColor redColor];
             cell.textLabel.text =@"Make Me Unavailable";
         }else{
+            
+            cell.textLabel.textColor = [UIColor greenColor];
             cell.textLabel.text =@"Make Me Available";
+            
+
+            
         }
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
         
@@ -269,14 +277,30 @@ UIButton *btnDone;
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         if ([availableFromDefault isEqualToString:@"online"]) {
             cell.textLabel.text = @"Make Me Available";
+            cell.textLabel.textColor = [UIColor greenColor];
+            
             [hp updateAtrribute:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute" newValue:@"offline"];
             [defaults setObject:@"offline" forKey:@"USER_SWITCH_DEFAULT"];
             availableFromDefault = @"offline";
             NSLog(@"It was on, and will be turned off");
             
+            //To show the Indicator
+            [loadingAnimation showHUDAddedTo:self.view animated:YES];
+            
+            //Call the method to hide the Indicator after 3 seconds
+            [self performSelector:@selector(stopRKLoading) withObject:nil];
+            
+
+            
         }else{
+            
+            cell.textLabel.textColor = [UIColor redColor];
             cell.textLabel.text = @"Make Me Unavailable";
-            availableFromDefault = @"online";
+                       availableFromDefault = @"online";
+            
+            [loadingAnimation showHUDAddedTo:self.view animated:YES];
+            _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            dispatch_async(_queue, ^{
             //upload start time and end time to AWS
             [hp updateAtrribute:USER_NAME item:@"availbilityItem" attribute:@"startTimeAttribute" newValue:startTimeFromDefault];
             
@@ -286,7 +310,23 @@ UIButton *btnDone;
             
             [hp updateAtrribute:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute" newValue:@"online"];
             [defaults setObject:@"online" forKey:@"USER_SWITCH_DEFAULT"];
+                
+            
             NSLog(@"DONE!");
+                dispatch_async(dispatch_get_main_queue(),^{
+
+            //To show the Indicator
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"update successful." delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+                    [alert show];
+            [self performSelector:@selector(stopRKLoading) withObject:nil];
+             [self performSelector:@selector(dismissAlert:) withObject:alert afterDelay:1.0f];
+                 });
+            });
+            
+            //Call the method to hide the Indicator after 3 seconds
+            
+            
+
         }
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -436,6 +476,17 @@ UIButton *btnDone;
                              self.navigationItem.rightBarButtonItem = self.doneButton;
                          }];
     }
+}
+
+-(void)stopRKLoading
+{
+    [loadingAnimation hideHUDForView:self.view animated:YES];
+}
+// other code
+
+-(void)dismissAlert:(UIAlertView *) alertView
+{
+   [alertView dismissWithClickedButtonIndex:nil animated:YES];
 }
 
 @end

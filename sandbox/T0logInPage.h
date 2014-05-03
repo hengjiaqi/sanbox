@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <UIKit/UIKit.h>
 #import "loadingAnimation.h"
 #import <QuartzCore/QuartzCore.h>
 
