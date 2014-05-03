@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xfq-ev-kRB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xfq-ev-kRB">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -869,10 +869,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1471" y="1249"/>
         </scene>
-        <!--3mepage Table View Controller - ME-->
+        <!--3mepage - ME-->
         <scene sceneID="gtk-3r-ynF">
             <objects>
-                <tableViewController id="pBh-Wq-6WV" customClass="T3mepageTableViewController" sceneMemberID="viewController">
+                <tableViewController id="pBh-Wq-6WV" customClass="T3mepage" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="QQK-cj-LVu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -965,9 +965,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="ME" id="RmT-5L-Ikc">
-                        <barButtonItem key="leftBarButtonItem" title="back" id="X67-Pn-e3G">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="X67-Pn-e3G">
                             <connections>
                                 <action selector="me_back_button:" destination="pBh-Wq-6WV" id="dbp-67-qcv"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Log out" id="whn-mn-m8I">
+                            <connections>
+                                <action selector="logOutButton:" destination="pBh-Wq-6WV" id="Cmc-jZ-BNT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -975,6 +980,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="me_NickName_textfield" destination="UiB-Qk-gqj" id="7lG-fg-U1b"/>
                         <outlet property="me_Password_textfield" destination="r0v-sn-XgK" id="Nti-w3-6v0"/>
                         <outlet property="me_rePassword_textfield" destination="yI4-iF-8AB" id="s6e-Za-fnF"/>
+                        <segue destination="xfq-ev-kRB" kind="modal" identifier="logOut" id="q8f-cQ-XVB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1S1-Qm-Hwl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1259,7 +1265,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="TxA-ri-NUC"/>
-        <segue reference="f7V-hi-uSr"/>
+        <segue reference="q8f-cQ-XVB"/>
         <segue reference="Sdw-Uo-oLf"/>
     </inferredMetricsTieBreakers>
 </document>
