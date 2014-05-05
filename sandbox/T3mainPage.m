@@ -181,7 +181,7 @@ UIButton *btnDone;
         [cell.contentView addSubview:self.preferenceTextField];
     }else if (cellIdentifier == kNormalCellID){
         //cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+        NSLog(availableFromDefault);
         //cell.accessoryView = availableButton;
         if ([availableFromDefault isEqualToString:@"online"]) {
             cell.textLabel.textColor = [UIColor redColor];
@@ -278,29 +278,48 @@ UIButton *btnDone;
         if ([availableFromDefault isEqualToString:@"online"]) {
             cell.textLabel.text = @"Make Me Available";
             cell.textLabel.textColor = [UIColor greenColor];
-            
-            [hp updateAtrribute:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute" newValue:@"offline"];
-            [defaults setObject:@"offline" forKey:@"USER_SWITCH_DEFAULT"];
-            availableFromDefault = @"offline";
-            NSLog(@"It was on, and will be turned off");
-            
+            [loadingAnimation showHUDAddedTo:self.view animated:YES];
+            _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            dispatch_async(_queue, ^{
+                
+                
+                NSString *dummy = [hp getAtrributeValue:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute"];
+                NSLog(dummy);
+                [hp updateAtrribute:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute" newValue:@"offline"];
+                [defaults setObject:@"offline" forKey:@"USER_SWITCH_DEFAULT"];
+                availableFromDefault = @"offline";
+                while ([dummy isEqualToString:@"online"]) {
+                    dummy = [hp getAtrributeValue:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute"];
+                    [hp updateAtrribute:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute" newValue:@"offline"];
+                }
+                NSLog(@"It was on, and will be turned off");
+                dispatch_async(dispatch_get_main_queue(),^{
+                //To show the Indicator
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"update successful." delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+                [alert show];
+                [self performSelector:@selector(stopRKLoading) withObject:nil];
+                [self performSelector:@selector(dismissAlert:) withObject:alert afterDelay:1.0f];
+                });
+            });
             //To show the Indicator
             [loadingAnimation showHUDAddedTo:self.view animated:YES];
             
             //Call the method to hide the Indicator after 3 seconds
             [self performSelector:@selector(stopRKLoading) withObject:nil];
-            
-
-            
         }else{
-            
             cell.textLabel.textColor = [UIColor redColor];
             cell.textLabel.text = @"Make Me Unavailable";
-                       availableFromDefault = @"online";
-            
+            availableFromDefault = @"online";
+            [defaults setObject:@"online" forKey:@"USER_SWITCH_DEFAULT"];
             [loadingAnimation showHUDAddedTo:self.view animated:YES];
             _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             dispatch_async(_queue, ^{
+            [hp updateAtrribute:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute" newValue:@"online"];
+            NSString *dummy = [hp getAtrributeValue:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute"];
+            while ([dummy isEqualToString:@"offline"]) {
+                dummy = [hp getAtrributeValue:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute"];
+                [hp updateAtrribute:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute" newValue:@"online"];
+            }
             //upload start time and end time to AWS
             [hp updateAtrribute:USER_NAME item:@"availbilityItem" attribute:@"startTimeAttribute" newValue:startTimeFromDefault];
             
@@ -308,25 +327,19 @@ UIButton *btnDone;
             
             [hp updateAtrribute:USER_NAME item:@"preferenceItem" attribute:@"preferenceAttribute" newValue:self.preferenceTextField.text];
             
-            [hp updateAtrribute:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute" newValue:@"online"];
-            [defaults setObject:@"online" forKey:@"USER_SWITCH_DEFAULT"];
-                
             
             NSLog(@"DONE!");
-                dispatch_async(dispatch_get_main_queue(),^{
+            dispatch_async(dispatch_get_main_queue(),^{
 
             //To show the Indicator
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"update successful." delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
                     [alert show];
             [self performSelector:@selector(stopRKLoading) withObject:nil];
-             [self performSelector:@selector(dismissAlert:) withObject:alert afterDelay:1.0f];
+            [self performSelector:@selector(dismissAlert:) withObject:alert afterDelay:1.0f];
                  });
             });
             
             //Call the method to hide the Indicator after 3 seconds
-            
-            
-
         }
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
