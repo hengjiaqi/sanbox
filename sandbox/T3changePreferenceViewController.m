@@ -5,7 +5,7 @@
 //  Created by wuyue on 4/2/14.
 //  Copyright (c) 2014 jake. All rights reserved.
 //
-
+/*
 #import "T3changePreferenceViewController.h"
 #import <AWSSimpleDB/AWSSimpleDB.h>
 #import "AmazonClientManager.h"
@@ -89,3 +89,4 @@ NSString *textViewtext;
     charleft.text=[NSString stringWithFormat:@"%i",160-len];
 }
 @end
+*/

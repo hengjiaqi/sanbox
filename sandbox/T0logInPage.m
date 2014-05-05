@@ -131,7 +131,7 @@
  */
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)data;
-    int code = [httpResponse statusCode];
+    int code = (int)[httpResponse statusCode];
     NSLog(@"DADADA%d", code);
 }
 /*

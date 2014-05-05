@@ -338,14 +338,14 @@ UIButton *btnDone;
 - (void)displayInlineDatePickerForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSLog(@"The indexpath is %d", indexPath.row);
+    NSLog(@"The indexpath is %ld", (long)indexPath.row);
     if (pickerIsShown) {
         
     }else{
         [self.tableView beginUpdates];
         NSArray *indexPaths = @[[NSIndexPath indexPathForRow:indexPath.row + 1 inSection:0]];
         NSLog(@"%@",[indexPaths componentsJoinedByString:@" "]);
-        NSLog(@"length is %d", indexPaths.count);
+        NSLog(@"length is %lu", (unsigned long)indexPaths.count);
         [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
         pickerRow = indexPath.row+1;
         pickerIsShown = YES;
@@ -433,7 +433,7 @@ UIButton *btnDone;
 }
 
 -(void)textFieldDidChange:(id)sender{
-    NSLog(@"%d", self.preferenceTextField.text.length);
+    NSLog(@"%lu", (unsigned long)self.preferenceTextField.text.length);
     if (self.preferenceTextField.text.length > 32) {
         CGRect frameRect = self.preferenceTextField.frame;
         frameRect.size.height = self.tableView.rowHeight * 2;

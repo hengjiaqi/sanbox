@@ -85,7 +85,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
             endingLineNumber = "131"
-            landmarkName = "-numberOfSectionsInTableView:"
+            landmarkName = "-loadFriends"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

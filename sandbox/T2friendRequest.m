@@ -46,7 +46,7 @@ NSString* nameToAccept;
             [requestList addObject:myOnlineFriendListelement];
         }
     }
-    NSLog(@"requestlist is %d and  %d", requestList.count, count);
+    NSLog(@"requestlist is %lu and  %d", (unsigned long)requestList.count, count);
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,14 +59,12 @@ NSString* nameToAccept;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return requestList.count;
 }

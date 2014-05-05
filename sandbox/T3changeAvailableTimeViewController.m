@@ -5,7 +5,7 @@
 //  Created by wuyue on 3/30/14.
 //  Copyright (c) 2014 jake. All rights reserved.
 //
-
+/*
 #import "T3changeAvailableTimeViewController.h"
 #import <AWSSimpleDB/AWSSimpleDB.h>
 #import "AmazonClientManager.h"
@@ -213,3 +213,4 @@ NSDate *selectstart;
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 @end
+*/
