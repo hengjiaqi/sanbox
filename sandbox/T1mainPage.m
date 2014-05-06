@@ -53,6 +53,10 @@ FriendList *currentFriend;
     NSLog(@"Tabs showed up!");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     USER_NAME = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
+<<<<<<< HEAD
+=======
+
+>>>>>>> FETCH_HEAD
     
    
     

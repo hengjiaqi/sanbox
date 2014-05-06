@@ -110,8 +110,7 @@ NSString* numberToAdd;
             //Get my nick name
             
             NSString* myNickName = [[NSString alloc] init];
-            SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:USER_NAME andItemName:@"nicknameItem"];
-            SimpleDBGetAttributesResponse *response = [[AmazonClientManager sdb] getAttributes:gar];
+
             simpleDBHelper *hp = [[simpleDBHelper alloc]init];
             myNickName = [hp getAtrributeValue:USER_NAME item:@"nicknameItem" attribute:@"nicknameAttribute"];
             NSLog(@"MY NICK NAME IS %@", myNickName);
