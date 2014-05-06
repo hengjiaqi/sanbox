@@ -181,7 +181,6 @@ UIButton *btnDone;
         [cell.contentView addSubview:self.preferenceTextField];
     }else if (cellIdentifier == kNormalCellID){
         //cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        NSLog(availableFromDefault);
         //cell.accessoryView = availableButton;
         if ([availableFromDefault isEqualToString:@"online"]) {
             cell.textLabel.textColor = [UIColor redColor];
@@ -281,10 +280,7 @@ UIButton *btnDone;
             [loadingAnimation showHUDAddedTo:self.view animated:YES];
             _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             dispatch_async(_queue, ^{
-                
-                
                 NSString *dummy = [hp getAtrributeValue:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute"];
-                NSLog(dummy);
                 [hp updateAtrribute:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute" newValue:@"offline"];
                 [defaults setObject:@"offline" forKey:@"USER_SWITCH_DEFAULT"];
                 availableFromDefault = @"offline";
@@ -383,17 +379,60 @@ UIButton *btnDone;
     simpleDBHelper *hp = [[simpleDBHelper alloc]init];
     if (targetedCellIndexPath.row == 0) {
         if ([availableFromDefault isEqualToString:@"online"]) {
-            [hp updateAtrribute:USER_NAME item:@"availbilityItem" attribute:@"startTimeAttribute" newValue:cell.detailTextLabel.text];
+            
+            [loadingAnimation showHUDAddedTo:self.view animated:YES];
+            _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            dispatch_async(_queue, ^{
+                NSString *dummy = [hp getAtrributeValue:USER_NAME item:@"availbilityItem" attribute:@"startTimeAttribute"];
+                [hp updateAtrribute:USER_NAME item:@"availbilityItem" attribute:@"startTimeAttribute" newValue:cell.detailTextLabel.text];
+                
+                while (![dummy isEqualToString:cell.detailTextLabel.text]) {
+                    dummy = [hp getAtrributeValue:USER_NAME item:@"availbilityItem" attribute:@"startTimeAttribute"];
+                    [hp updateAtrribute:USER_NAME item:@"availbilityItem" attribute:@"startTimeAttribute" newValue:cell.detailTextLabel.text];
+                }
+                dispatch_async(dispatch_get_main_queue(),^{
+                    //To show the Indicator
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"update successful." delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+                    [alert show];
+                    [self performSelector:@selector(stopRKLoading) withObject:nil];
+                    [self performSelector:@selector(dismissAlert:) withObject:alert afterDelay:1.0f];
+                });
+            });
+            //To show the Indicator
+            [loadingAnimation showHUDAddedTo:self.view animated:YES];
+            
+            //Call the method to hide the Indicator after 3 seconds
+            [self performSelector:@selector(stopRKLoading) withObject:nil];
         }
         [defaults setObject:cell.detailTextLabel.text forKey:@"USER_START_DEFAULT"];
     }else{
         if ([availableFromDefault isEqualToString:@"online"]) {
-            [hp updateAtrribute:USER_NAME item:@"availbilityItem" attribute:@"endTimeAttribute" newValue:cell.detailTextLabel.text];
+            [loadingAnimation showHUDAddedTo:self.view animated:YES];
+            _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            dispatch_async(_queue, ^{
+                NSString *dummy = [hp getAtrributeValue:USER_NAME item:@"availbilityItem" attribute:@"endTimeAttribute"];
+                [hp updateAtrribute:USER_NAME item:@"availbilityItem" attribute:@"endTimeAttribute" newValue:cell.detailTextLabel.text];
+                
+                while (![dummy isEqualToString:cell.detailTextLabel.text]) {
+                    dummy = [hp getAtrributeValue:USER_NAME item:@"availbilityItem" attribute:@"endTimeAttribute"];
+                    [hp updateAtrribute:USER_NAME item:@"availbilityItem" attribute:@"endTimeAttribute" newValue:cell.detailTextLabel.text];
+                }
+                dispatch_async(dispatch_get_main_queue(),^{
+                    //To show the Indicator
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"update successful." delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+                    [alert show];
+                    [self performSelector:@selector(stopRKLoading) withObject:nil];
+                    [self performSelector:@selector(dismissAlert:) withObject:alert afterDelay:1.0f];
+                });
+            });
+            //To show the Indicator
+            [loadingAnimation showHUDAddedTo:self.view animated:YES];
+            [self performSelector:@selector(stopRKLoading) withObject:nil];
+
         }
         [defaults setObject:cell.detailTextLabel.text forKey:@"USER_END_DEFAULT"];
     }
     [defaults synchronize];
-    
 }
 
 

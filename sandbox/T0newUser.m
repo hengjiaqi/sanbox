@@ -76,6 +76,7 @@ NSMutableArray *domains;
         confirm.registerPassword = newUserPassword.text;
     }
 }
+
 - (IBAction)confirmButton:(id)sender {
     int code = [self checkRegisterInfo];
     UIAlertView *alert;
