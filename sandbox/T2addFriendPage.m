@@ -10,6 +10,7 @@
 #import <AWSSimpleDB/AWSSimpleDB.h>
 #import "AmazonClientManager.h"
 #import "T2searchFriendPage.h"
+#import "simpleDBHelper.h"
 NSString *USER_NAME;
 NSString *friendNumber;
 NSString *friendNickname;
@@ -70,6 +71,7 @@ NSString *friendNickname;
     }
 }
 - (IBAction)searchNumber:(id)sender {
+    simpleDBHelper *hp = [[simpleDBHelper alloc]init];
     NSMutableArray *domains = [[NSMutableArray alloc] init];
     SimpleDBListDomainsRequest  *listDomainsRequest  = [[SimpleDBListDomainsRequest alloc] init];
     SimpleDBListDomainsResponse *listDomainsResponse = [[AmazonClientManager sdb] listDomains:listDomainsRequest];
@@ -92,28 +94,16 @@ NSString *friendNickname;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Cannot find this user." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     }else{
+        
         // get the nickname on the database
-        SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:USER_NAME andItemName:@"friendListItem"];
-        SimpleDBGetAttributesResponse *response = [[AmazonClientManager sdb] getAttributes:gar];
         BOOL alreadyFriend = NO;
-        for (SimpleDBAttribute *attr in response.attributes) {
-            if ([attr.name isEqualToString:numberToSearch.text]) {
-                alreadyFriend = YES;
-                break;
-            }
-        }
+        alreadyFriend = [hp hasAttributes:USER_NAME item:@"friendListItem" attributeName:numberToSearch.text];
         
         if (alreadyFriend) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"This person is already your friend." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
         }else{
-            
-            SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:numberToSearch.text andItemName:@"nicknameItem"];
-            SimpleDBGetAttributesResponse *response = [[AmazonClientManager sdb] getAttributes:gar];
-            friendNumber = numberToSearch.text;
-            for (SimpleDBAttribute *attr in response.attributes) {
-                friendNickname = attr.value;
-            }
+            friendNickname = [hp getAtrributeValue:USER_NAME item:@"nicknameItem" attribute:@"nicknameAttribute"];
             [self performSegueWithIdentifier:@"goToSearchResult" sender:sender];
         }
     }

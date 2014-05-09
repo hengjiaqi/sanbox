@@ -40,10 +40,16 @@ NSMutableArray *domains;
     SimpleDBDeleteAttributesRequest *request = [[SimpleDBDeleteAttributesRequest alloc] initWithDomainName:@"2069723264" andItemName:@"friendListItem" andAttributes:remove];
     [sdb deleteAttributes:request];
      
+    
+     
     AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
-     SimpleDBDeleteDomainRequest *request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2066176882"];
+     SimpleDBDeleteDomainRequest *request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000001"];
      [sdb deleteDomain:request];
-    */
+    request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000002"];
+    [sdb deleteDomain:request];
+    request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000003"];
+    [sdb deleteDomain:request];
+     */
     // Do any additional setup after loading the view.
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self

@@ -51,6 +51,9 @@
 		23F3EB9218D6C7B50075819D /* T0logInPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB9118D6C7B50075819D /* T0logInPage.m */; };
 		BE3CB6C118ECF396008CCC62 /* T3changePreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3CB6C018ECF396008CCC62 /* T3changePreferenceViewController.m */; };
 		BE47CFC918E8F62300503842 /* T3changeAvailableTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE47CFC818E8F62300503842 /* T3changeAvailableTimeViewController.m */; };
+		BE57C726191D3DD80043770D /* T3changePasswordPage.m in Sources */ = {isa = PBXBuildFile; fileRef = BE57C725191D3DD80043770D /* T3changePasswordPage.m */; };
+		BE57C729191D71900043770D /* T3changeNickNameTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE57C728191D71900043770D /* T3changeNickNameTableViewController.m */; };
+		BE57C72C191D768E0043770D /* T3changeMyNickName.m in Sources */ = {isa = PBXBuildFile; fileRef = BE57C72B191D768E0043770D /* T3changeMyNickName.m */; };
 		BE5B07BB18EF503D0090D3F2 /* T3mainPage.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5B07BA18EF503D0090D3F2 /* T3mainPage.m */; };
 		BE941BFF1910AEE400E465F7 /* loadingAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE941BFE1910AEE400E465F7 /* loadingAnimation.m */; };
 		BE941C011910B07900E465F7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE941C001910B07900E465F7 /* QuartzCore.framework */; };
@@ -132,6 +135,12 @@
 		BE3CB6C018ECF396008CCC62 /* T3changePreferenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3changePreferenceViewController.m; sourceTree = "<group>"; };
 		BE47CFC718E8F62300503842 /* T3changeAvailableTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3changeAvailableTimeViewController.h; sourceTree = "<group>"; };
 		BE47CFC818E8F62300503842 /* T3changeAvailableTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3changeAvailableTimeViewController.m; sourceTree = "<group>"; };
+		BE57C724191D3DD80043770D /* T3changePasswordPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3changePasswordPage.h; sourceTree = "<group>"; };
+		BE57C725191D3DD80043770D /* T3changePasswordPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3changePasswordPage.m; sourceTree = "<group>"; };
+		BE57C727191D71900043770D /* T3changeNickNameTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = T3changeNickNameTableViewController.h; path = ../T3changeNickNameTableViewController.h; sourceTree = "<group>"; };
+		BE57C728191D71900043770D /* T3changeNickNameTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = T3changeNickNameTableViewController.m; path = ../T3changeNickNameTableViewController.m; sourceTree = "<group>"; };
+		BE57C72A191D768E0043770D /* T3changeMyNickName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3changeMyNickName.h; sourceTree = "<group>"; };
+		BE57C72B191D768E0043770D /* T3changeMyNickName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3changeMyNickName.m; sourceTree = "<group>"; };
 		BE5B07B918EF503D0090D3F2 /* T3mainPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3mainPage.h; sourceTree = "<group>"; };
 		BE5B07BA18EF503D0090D3F2 /* T3mainPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3mainPage.m; sourceTree = "<group>"; };
 		BE941BFD1910AEE400E465F7 /* loadingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loadingAnimation.h; sourceTree = "<group>"; };
@@ -237,6 +246,8 @@
 				23E6235618ECFFB6003F1693 /* simpleDBHelper.h */,
 				23E6235718ECFFB6003F1693 /* simpleDBHelper.m */,
 				23F3EB8E18D6C7680075819D /* Storyboard.storyboard */,
+				BE57C72A191D768E0043770D /* T3changeMyNickName.h */,
+				BE57C72B191D768E0043770D /* T3changeMyNickName.m */,
 				23F3EB6618D6C7460075819D /* Supporting Files */,
 				23BB25E318D823A000ED81E8 /* T0confirmPage.h */,
 				23BB25E418D823A000ED81E8 /* T0confirmPage.m */,
@@ -262,8 +273,12 @@
 				BE5B07BA18EF503D0090D3F2 /* T3mainPage.m */,
 				BEBE44BC18E6915000929899 /* T3mepage.h */,
 				BEBE44BD18E6915000929899 /* T3mepage.m */,
+				BE57C724191D3DD80043770D /* T3changePasswordPage.h */,
+				BE57C725191D3DD80043770D /* T3changePasswordPage.m */,
 				BEBE44B918E6911800929899 /* T3preferencepageTableViewController.h */,
 				BEBE44BA18E6911800929899 /* T3preferencepageTableViewController.m */,
+				BE57C727191D71900043770D /* T3changeNickNameTableViewController.h */,
+				BE57C728191D71900043770D /* T3changeNickNameTableViewController.m */,
 				BE941BFD1910AEE400E465F7 /* loadingAnimation.h */,
 				BE941C021910B1EE00E465F7 /* UIColor.h */,
 				BE941C031910B1EE00E465F7 /* UIColor.m */,
@@ -421,10 +436,12 @@
 				BE941C041910B1EE00E465F7 /* UIColor.m in Sources */,
 				23E8D9D518E34A7D0092A1C3 /* FriendList.m in Sources */,
 				239B473018EDD5DA00D552B8 /* T1friendPreference.m in Sources */,
+				BE57C72C191D768E0043770D /* T3changeMyNickName.m in Sources */,
 				BE941BFF1910AEE400E465F7 /* loadingAnimation.m in Sources */,
 				23E6235818ECFFB6003F1693 /* simpleDBHelper.m in Sources */,
 				23B24A1718EA61850040586A /* T2addFriendPage.m in Sources */,
 				23C645B018E206B00097D968 /* Constants.m in Sources */,
+				BE57C726191D3DD80043770D /* T3changePasswordPage.m in Sources */,
 				23F3EB6C18D6C7460075819D /* main.m in Sources */,
 				BE5B07BB18EF503D0090D3F2 /* T3mainPage.m in Sources */,
 				BEBE44BB18E6911800929899 /* T3preferencepageTableViewController.m in Sources */,
@@ -432,6 +449,7 @@
 				23E8D9D718E34A7D0092A1C3 /* T2friendRequest.m in Sources */,
 				BE47CFC918E8F62300503842 /* T3changeAvailableTimeViewController.m in Sources */,
 				BE3CB6C118ECF396008CCC62 /* T3changePreferenceViewController.m in Sources */,
+				BE57C729191D71900043770D /* T3changeNickNameTableViewController.m in Sources */,
 				23F3EB9218D6C7B50075819D /* T0logInPage.m in Sources */,
 				BEBE44BE18E6915000929899 /* T3mepage.m in Sources */,
 			);
