@@ -34,7 +34,15 @@ FriendList *currentFriend;
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        
+        [self.tableView registerClass:[UITableViewCell class]
+               forCellReuseIdentifier:@"Available Friends"];
+        self.refreshControl = [[UIRefreshControl alloc] init];
+        self.refreshControl = self.refreshControl;
+        [self.refreshControl addTarget:self
+                                action:@selector(handleRefresh:)
+                      forControlEvents:UIControlEventValueChanged];
+        
     }
     return self;
 }
@@ -57,6 +65,7 @@ FriendList *currentFriend;
     [self.tableView reloadData];
 
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"LOGGED_IN"];
+    [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
 
     
     /*
@@ -200,54 +209,7 @@ FriendList *currentFriend;
 }
 
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
 
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -294,5 +256,27 @@ FriendList *currentFriend;
 -(void)stopRKLoading
 {
     [loadingAnimation hideHUDForView:self.view animated:YES];
+}
+
+- (void) handleRefresh:(id)paramSender{
+    
+    /* Put a bit of delay between when the refresh control is released
+     and when we actually do the refreshing to make the UI look a bit
+     smoother than just doing the update without the animation */
+    NSLog(@"it;s here");
+    int64_t delayInSeconds = 1.0f;
+    dispatch_time_t popTime =
+    dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        
+        /* Add the current date to the list of dates that we have
+         so that when the table view is refreshed, a new item will appear
+         on the screen so that the user will see the difference between
+         the before and the after of the refresh */
+        
+        [self.refreshControl endRefreshing];
+    });
+    
 }
 @end

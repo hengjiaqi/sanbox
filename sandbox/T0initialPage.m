@@ -22,10 +22,11 @@
     [super viewDidLoad];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *userPassword = [defaults objectForKey:@"EAT2GETHER_PASSWORD"];
+    NSLog(@"3232");
     NSString *userPhoneNumber = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
     simpleDBHelper *hp = [[simpleDBHelper alloc]init];
     NSString *passwordFromDB = [hp getAtrributeValue:userPhoneNumber item:@"passwordItem" attribute:@"passwordAttribute"];
-    if (userPassword.length == 0 || ![passwordFromDB isEqualToString:userPassword]) {
+    if (![defaults boolForKey:@"logged_in"] || ![passwordFromDB isEqualToString:userPassword]) {
         [self performSegueWithIdentifier:@"startFromLoginPage" sender:self];
     }else{
         [self performSegueWithIdentifier:@"startFromMainPage" sender:self];
