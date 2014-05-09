@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		232D08C618EB3124008798A0 /* T2searchFriendPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 232D08C518EB3124008798A0 /* T2searchFriendPage.m */; };
+		2341E9E7191CAA7F007EB736 /* T0initialPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2341E9E6191CAA7F007EB736 /* T0initialPage.m */; };
+		2341E9E9191CB2BD007EB736 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2341E9E8191CB2BD007EB736 /* Security.framework */; };
 		239B473018EDD5DA00D552B8 /* T1friendPreference.m in Sources */ = {isa = PBXBuildFile; fileRef = 239B472F18EDD5DA00D552B8 /* T1friendPreference.m */; };
 		23A3B3CD1910FFC300D9BD4C /* iphone4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A3B3CB1910FFC300D9BD4C /* iphone4@2x.png */; };
 		23A3B3CE1910FFC300D9BD4C /* iphone5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A3B3CC1910FFC300D9BD4C /* iphone5@2x.png */; };
@@ -72,6 +74,9 @@
 /* Begin PBXFileReference section */
 		232D08C418EB3124008798A0 /* T2searchFriendPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = T2searchFriendPage.h; path = ../T2searchFriendPage.h; sourceTree = "<group>"; };
 		232D08C518EB3124008798A0 /* T2searchFriendPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = T2searchFriendPage.m; path = ../T2searchFriendPage.m; sourceTree = "<group>"; };
+		2341E9E5191CAA7F007EB736 /* T0initialPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T0initialPage.h; sourceTree = "<group>"; };
+		2341E9E6191CAA7F007EB736 /* T0initialPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T0initialPage.m; sourceTree = "<group>"; };
+		2341E9E8191CB2BD007EB736 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		239B472E18EDD5DA00D552B8 /* T1friendPreference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T1friendPreference.h; sourceTree = "<group>"; };
 		239B472F18EDD5DA00D552B8 /* T1friendPreference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T1friendPreference.m; sourceTree = "<group>"; };
 		23A3B3CB1910FFC300D9BD4C /* iphone4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone4@2x.png"; sourceTree = "<group>"; };
@@ -150,6 +155,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2341E9E9191CB2BD007EB736 /* Security.framework in Frameworks */,
 				BE941C011910B07900E465F7 /* QuartzCore.framework in Frameworks */,
 				23C645B818E207C60097D968 /* AWSSQS.framework in Frameworks */,
 				23B39B8E18DD6A610098F06A /* SystemConfiguration.framework in Frameworks */,
@@ -201,6 +207,7 @@
 		23F3EB5E18D6C7460075819D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2341E9E8191CB2BD007EB736 /* Security.framework */,
 				BE941C001910B07900E465F7 /* QuartzCore.framework */,
 				23C645B118E207C60097D968 /* AWSRuntime.framework */,
 				23C645B218E207C60097D968 /* AWSSNS.framework */,
@@ -222,24 +229,28 @@
 		23F3EB6518D6C7460075819D /* sandbox */ = {
 			isa = PBXGroup;
 			children = (
-				23A3B3CB1910FFC300D9BD4C /* iphone4@2x.png */,
-				23A3B3CC1910FFC300D9BD4C /* iphone5@2x.png */,
-				23CF984018FD06F100D9A452 /* checkbox_normal.png */,
-				23CF984118FD06F100D9A452 /* checkbox_checked.png */,
-				23CF983818FD04D700D9A452 /* checkBox.png */,
-				23CF983918FD04D700D9A452 /* checkBox@2x.png */,
-				23CF983A18FD04D700D9A452 /* checkBoxMarked.png */,
-				23CF983B18FD04D700D9A452 /* checkBoxMarked@2x.png */,
 				23F3EB6E18D6C7460075819D /* AppDelegate.h */,
 				23F3EB6F18D6C7460075819D /* AppDelegate.m */,
+				23CF983818FD04D700D9A452 /* checkBox.png */,
+				23CF983918FD04D700D9A452 /* checkBox@2x.png */,
+				23CF984118FD06F100D9A452 /* checkbox_checked.png */,
+				23CF984018FD06F100D9A452 /* checkbox_normal.png */,
+				23CF983A18FD04D700D9A452 /* checkBoxMarked.png */,
+				23CF983B18FD04D700D9A452 /* checkBoxMarked@2x.png */,
 				23E8D9CC18E34A7D0092A1C3 /* FriendList.h */,
 				23E8D9CD18E34A7D0092A1C3 /* FriendList.m */,
+				23A3B3CB1910FFC300D9BD4C /* iphone4@2x.png */,
+				23A3B3CC1910FFC300D9BD4C /* iphone5@2x.png */,
+				BE941BFD1910AEE400E465F7 /* loadingAnimation.h */,
+				BE941BFE1910AEE400E465F7 /* loadingAnimation.m */,
 				23E6235618ECFFB6003F1693 /* simpleDBHelper.h */,
 				23E6235718ECFFB6003F1693 /* simpleDBHelper.m */,
 				23F3EB8E18D6C7680075819D /* Storyboard.storyboard */,
 				23F3EB6618D6C7460075819D /* Supporting Files */,
 				23BB25E318D823A000ED81E8 /* T0confirmPage.h */,
 				23BB25E418D823A000ED81E8 /* T0confirmPage.m */,
+				2341E9E5191CAA7F007EB736 /* T0initialPage.h */,
+				2341E9E6191CAA7F007EB736 /* T0initialPage.m */,
 				23F3EB9018D6C7B50075819D /* T0logInPage.h */,
 				23F3EB9118D6C7B50075819D /* T0logInPage.m */,
 				23BB25DA18D80B4100ED81E8 /* T0newUser.h */,
@@ -264,10 +275,8 @@
 				BEBE44BD18E6915000929899 /* T3mepage.m */,
 				BEBE44B918E6911800929899 /* T3preferencepageTableViewController.h */,
 				BEBE44BA18E6911800929899 /* T3preferencepageTableViewController.m */,
-				BE941BFD1910AEE400E465F7 /* loadingAnimation.h */,
 				BE941C021910B1EE00E465F7 /* UIColor.h */,
 				BE941C031910B1EE00E465F7 /* UIColor.m */,
-				BE941BFE1910AEE400E465F7 /* loadingAnimation.m */,
 			);
 			path = sandbox;
 			sourceTree = "<group>";
@@ -424,6 +433,7 @@
 				BE941BFF1910AEE400E465F7 /* loadingAnimation.m in Sources */,
 				23E6235818ECFFB6003F1693 /* simpleDBHelper.m in Sources */,
 				23B24A1718EA61850040586A /* T2addFriendPage.m in Sources */,
+				2341E9E7191CAA7F007EB736 /* T0initialPage.m in Sources */,
 				23C645B018E206B00097D968 /* Constants.m in Sources */,
 				23F3EB6C18D6C7460075819D /* main.m in Sources */,
 				BE5B07BB18EF503D0090D3F2 /* T3mainPage.m in Sources */,

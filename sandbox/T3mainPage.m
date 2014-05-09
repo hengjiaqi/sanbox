@@ -335,7 +335,6 @@ UIButton *btnDone;
                  });
             });
             
-            //Call the method to hide the Indicator after 3 seconds
         }
     }
     if (!pickerIsShown) {

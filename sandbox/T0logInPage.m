@@ -105,6 +105,7 @@
             [alert show];
         }else{
             [defaults setObject:phoneNumber.text forKey:@"EAT2GETHER_ACCOUNT_NAME"];
+            [defaults setObject:password.text forKey:@"EAT2GETHER_PASSWORD"];
             [defaults synchronize];
             [self performSegueWithIdentifier:@"loginTransistion" sender:sender];
         }
