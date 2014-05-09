@@ -34,7 +34,6 @@ NSString *GNickname;
 {
     simpleDBHelper *hp = [[simpleDBHelper alloc]init];
     [super viewDidLoad];
-<<<<<<< HEAD
     /*
   //  AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
 =======

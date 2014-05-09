@@ -288,12 +288,9 @@
 				BE57C725191D3DD80043770D /* T3changePasswordPage.m */,
 				BEBE44B918E6911800929899 /* T3preferencepageTableViewController.h */,
 				BEBE44BA18E6911800929899 /* T3preferencepageTableViewController.m */,
-<<<<<<< HEAD
 				BE57C727191D71900043770D /* T3changeNickNameTableViewController.h */,
 				BE57C728191D71900043770D /* T3changeNickNameTableViewController.m */,
 				BE941BFD1910AEE400E465F7 /* loadingAnimation.h */,
-=======
->>>>>>> FETCH_HEAD
 				BE941C021910B1EE00E465F7 /* UIColor.h */,
 				BE941C031910B1EE00E465F7 /* UIColor.m */,
 			);
