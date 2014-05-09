@@ -93,8 +93,12 @@ NSString *GNickname;
 }
 
 - (IBAction)logOutButton:(id)sender {
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"logged_in"];
-    [self performSegueWithIdentifier:@"logOut" sender:sender];
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"This will log you out from this account" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
+                            @"Log out",
+                            nil];
+    popup.tag = 1;
+    [popup showInView:[UIApplication sharedApplication].keyWindow];
+    
 }
 - (IBAction)camera {
     picker2 = [[UIImagePickerController alloc] init];
@@ -117,8 +121,25 @@ NSString *GNickname;
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     [self dismissModalViewControllerAnimated:YES];
 }
-
-
+- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    switch (popup.tag) {
+        case 1: {
+            switch (buttonIndex) {
+                case 0:
+                    NSLog(@"detect the logout signal ");
+                    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"logged_in"];
+                    [self performSegueWithIdentifier:@"logOut" sender:self];
+                    break;
+                default:
+                    break;
+            }
+            break;
+        }
+        default:
+            break;
+    }
+}
 
 
 @end
