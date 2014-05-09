@@ -104,7 +104,7 @@ UIButton *btnDone;
     [defaults setObject:availableButtonFromDB forKey:@"USER_SWITCH_DEFAULT"];
     
     //[hp deleteAttributePair:USER_NAME item:@"onlineItem" attributeName:@"onlineAttribute" attributeValue:@"online"];
-    NSLog(@"NSUserDefaults dump: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+ 
     
     
     
@@ -148,14 +148,12 @@ UIButton *btnDone;
     }else{
         cellIdentifier = kNormalCellID;
     }
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell==nil){
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.backgroundColor = [UIColor clearColor];
+    cell.backgroundColor = [UIColor whiteColor];
     if (cellIdentifier == kDateCellID) {
-        
         if (indexPath.row == 0) {
             cell.textLabel.text = data[0];
             cell.detailTextLabel.text = startTimeFromDefault;
@@ -164,8 +162,7 @@ UIButton *btnDone;
             cell.detailTextLabel.text = endTimeFromDefault;
         }
     }else if(cellIdentifier == kPreferenceCellID){
-        
-        self.preferenceTextField = [[UITextView alloc] initWithFrame:CGRectMake(15, 0, cell.frame.size.width - 15, cell.frame.size.height * 1.5)];
+        self.preferenceTextField = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height * 1.5)];
         //preferenceTextField.delegate = self;
         self.preferenceTextField.textColor = [UIColor blackColor];
         self.preferenceTextField.delegate = self;
@@ -174,10 +171,11 @@ UIButton *btnDone;
         self.preferenceTextField.keyboardType = UIKeyboardTypeDefault;
         self.preferenceTextField.returnKeyType = UIReturnKeyDone;
         self.preferenceTextField.text = preferenceFromDefault;
-        self.preferenceTextField.backgroundColor = [UIColor clearColor];
+        self.preferenceTextField.backgroundColor = [UIColor whiteColor];
         self.preferenceTextField.autocorrectionType = UITextAutocorrectionTypeNo;
         self.preferenceTextField.autocapitalizationType = UITextAutocorrectionTypeDefault;
         self.preferenceTextField.tag = 0;
+        self.preferenceTextField.returnKeyType = UIReturnKeyNext;
         [cell.contentView addSubview:self.preferenceTextField];
     }else if (cellIdentifier == kNormalCellID){
         //cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -189,9 +187,6 @@ UIButton *btnDone;
             
             cell.textLabel.textColor = [UIColor greenColor];
             cell.textLabel.text =@"Make Me Available";
-            
-
-            
         }
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
         
@@ -214,7 +209,6 @@ UIButton *btnDone;
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)aTextView
 {
-    NSLog(@"jajaaj");
     [self createInputAccessoryView];
     [aTextView setInputAccessoryView:inputAccView];
     self.preferenceTextField = aTextView;
@@ -253,22 +247,28 @@ UIButton *btnDone;
 //
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"hehehe");
+    NSLog(@"Selected indexpath is %d", indexPath.row);
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    if (cell.reuseIdentifier == kDateCellID && !pickerIsShown)
-    {
-        //NSLog(@"hehehe");
-        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")){
-            [self displayInlineDatePickerForRowAtIndexPath:indexPath];
-        }else
-            [self displayExternalDatePickerForRowAtIndexPath:indexPath];
-    }
-    else if(pickerIsShown)
-    {
-        pickerIsShown = NO;
-        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:pickerRow inSection:0]]
-                              withRowAnimation:UITableViewRowAnimationFade];
+    if (cell.reuseIdentifier == kDateCellID) {
+        if (pickerIsShown) {
+            [self.tableView beginUpdates];
+            pickerIsShown = NO;
+            [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:pickerRow inSection:0]]
+                                  withRowAnimation:UITableViewRowAnimationFade];
+            pickerIsShown = NO;
+            [self.tableView endUpdates];
+            if (indexPath.row + 1 != pickerRow) {
+                if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")){
+                    [self displayInlineDatePickerForRowAtIndexPath:indexPath];
+                }else
+                    [self displayExternalDatePickerForRowAtIndexPath:indexPath];
+            }
+        }else{
+            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")){
+                [self displayInlineDatePickerForRowAtIndexPath:indexPath];
+            }else
+                [self displayExternalDatePickerForRowAtIndexPath:indexPath];
+        }
         
     }
     if (cell.reuseIdentifier == kNormalCellID) {
@@ -291,7 +291,7 @@ UIButton *btnDone;
                 NSLog(@"It was on, and will be turned off");
                 dispatch_async(dispatch_get_main_queue(),^{
                 //To show the Indicator
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"update successful." delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"You are unavailable." delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
                 [alert show];
                 [self performSelector:@selector(stopRKLoading) withObject:nil];
                 [self performSelector:@selector(dismissAlert:) withObject:alert afterDelay:1.0f];
@@ -328,7 +328,7 @@ UIButton *btnDone;
             dispatch_async(dispatch_get_main_queue(),^{
 
             //To show the Indicator
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"update successful." delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"You are available." delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
                     [alert show];
             [self performSelector:@selector(stopRKLoading) withObject:nil];
             [self performSelector:@selector(dismissAlert:) withObject:alert afterDelay:1.0f];
@@ -338,7 +338,10 @@ UIButton *btnDone;
             //Call the method to hide the Indicator after 3 seconds
         }
     }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (!pickerIsShown) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    }
     
 }
 
@@ -347,19 +350,20 @@ UIButton *btnDone;
 - (void)displayInlineDatePickerForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSLog(@"The indexpath is %ld", (long)indexPath.row);
-    if (pickerIsShown) {
-        
-    }else{
         [self.tableView beginUpdates];
-        NSArray *indexPaths = @[[NSIndexPath indexPathForRow:indexPath.row + 1 inSection:0]];
-        NSLog(@"%@",[indexPaths componentsJoinedByString:@" "]);
-        NSLog(@"length is %lu", (unsigned long)indexPaths.count);
+        if (indexPath.row == 0) {
+            pickerRow = indexPath.row+1;
+        }else{
+            pickerRow = 2;
+        }
+        NSArray *indexPaths = @[[NSIndexPath indexPathForRow:pickerRow inSection:0]];
+        pickerIsShown = YES;
         [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
-        pickerRow = indexPath.row+1;
         pickerIsShown = YES;
         [self.tableView endUpdates];
-    }
+
+    
+    NSLog(@"picker row is %d", pickerRow);
     
 }
 
@@ -375,12 +379,12 @@ UIButton *btnDone;
         endTime = targetedDatePicker.date;
     }
     cell.detailTextLabel.text = [self.dateFormatter stringFromDate:targetedDatePicker.date];
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     simpleDBHelper *hp = [[simpleDBHelper alloc]init];
     if (targetedCellIndexPath.row == 0) {
         if ([availableFromDefault isEqualToString:@"online"]) {
             
-            [loadingAnimation showHUDAddedTo:self.view animated:YES];
             _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             dispatch_async(_queue, ^{
                 NSString *dummy = [hp getAtrributeValue:USER_NAME item:@"availbilityItem" attribute:@"startTimeAttribute"];
@@ -390,24 +394,11 @@ UIButton *btnDone;
                     dummy = [hp getAtrributeValue:USER_NAME item:@"availbilityItem" attribute:@"startTimeAttribute"];
                     [hp updateAtrribute:USER_NAME item:@"availbilityItem" attribute:@"startTimeAttribute" newValue:cell.detailTextLabel.text];
                 }
-                dispatch_async(dispatch_get_main_queue(),^{
-                    //To show the Indicator
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"update successful." delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
-                    [alert show];
-                    [self performSelector:@selector(stopRKLoading) withObject:nil];
-                    [self performSelector:@selector(dismissAlert:) withObject:alert afterDelay:1.0f];
-                });
             });
-            //To show the Indicator
-            [loadingAnimation showHUDAddedTo:self.view animated:YES];
-            
-            //Call the method to hide the Indicator after 3 seconds
-            [self performSelector:@selector(stopRKLoading) withObject:nil];
         }
         [defaults setObject:cell.detailTextLabel.text forKey:@"USER_START_DEFAULT"];
     }else{
         if ([availableFromDefault isEqualToString:@"online"]) {
-            [loadingAnimation showHUDAddedTo:self.view animated:YES];
             _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             dispatch_async(_queue, ^{
                 NSString *dummy = [hp getAtrributeValue:USER_NAME item:@"availbilityItem" attribute:@"endTimeAttribute"];
@@ -417,18 +408,7 @@ UIButton *btnDone;
                     dummy = [hp getAtrributeValue:USER_NAME item:@"availbilityItem" attribute:@"endTimeAttribute"];
                     [hp updateAtrribute:USER_NAME item:@"availbilityItem" attribute:@"endTimeAttribute" newValue:cell.detailTextLabel.text];
                 }
-                dispatch_async(dispatch_get_main_queue(),^{
-                    //To show the Indicator
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"update successful." delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
-                    [alert show];
-                    [self performSelector:@selector(stopRKLoading) withObject:nil];
-                    [self performSelector:@selector(dismissAlert:) withObject:alert afterDelay:1.0f];
-                });
             });
-            //To show the Indicator
-            [loadingAnimation showHUDAddedTo:self.view animated:YES];
-            [self performSelector:@selector(stopRKLoading) withObject:nil];
-
         }
         [defaults setObject:cell.detailTextLabel.text forKey:@"USER_END_DEFAULT"];
     }
@@ -467,7 +447,7 @@ UIButton *btnDone;
     }
     else
     {
-        return @"Publish";
+        return nil;
     }
 }
 
@@ -485,7 +465,6 @@ UIButton *btnDone;
 }
 
 -(void)textFieldDidChange:(id)sender{
-    NSLog(@"%lu", (unsigned long)self.preferenceTextField.text.length);
     if (self.preferenceTextField.text.length > 32) {
         CGRect frameRect = self.preferenceTextField.frame;
         frameRect.size.height = self.tableView.rowHeight * 2;
