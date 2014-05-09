@@ -235,6 +235,12 @@ FriendList *currentFriend;
 }
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return self.tableView.rowHeight * 1.5;
+}
+
+
 -(void)cancelButtonPress:(id)sender{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -270,6 +276,9 @@ FriendList *currentFriend;
     
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         
+        FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:@"extra" onLineorNot:(YES) number:@"123"];
+        
+        [self.FriendListelements addObject:myOnlineFriendListelement];
         /* Add the current date to the list of dates that we have
          so that when the table view is refreshed, a new item will appear
          on the screen so that the user will see the difference between

@@ -25,8 +25,12 @@
     NSLog(@"3232");
     NSString *userPhoneNumber = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
     simpleDBHelper *hp = [[simpleDBHelper alloc]init];
-    NSString *passwordFromDB = [hp getAtrributeValue:userPhoneNumber item:@"passwordItem" attribute:@"passwordAttribute"];
-    if (![defaults boolForKey:@"logged_in"] || ![passwordFromDB isEqualToString:userPassword]) {
+    NSLog(@"%@", userPhoneNumber);
+    NSString *passwordFromDB = @"";
+    if (userPhoneNumber != nil) {
+        passwordFromDB = [hp getAtrributeValue:userPhoneNumber item:@"passwordItem" attribute:@"passwordAttribute"];
+    }
+    if (![defaults boolForKey:@"logged_in"] || ![passwordFromDB isEqualToString:userPassword] || userPhoneNumber == nil) {
         [self performSegueWithIdentifier:@"startFromLoginPage" sender:self];
     }else{
         [self performSegueWithIdentifier:@"startFromMainPage" sender:self];
