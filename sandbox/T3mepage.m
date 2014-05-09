@@ -34,8 +34,12 @@ NSString *GNickname;
 {
     simpleDBHelper *hp = [[simpleDBHelper alloc]init];
     [super viewDidLoad];
+<<<<<<< HEAD
     /*
   //  AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
+=======
+    //AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
+>>>>>>> FETCH_HEAD
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
                                    action:@selector(dismissKeyboard)];

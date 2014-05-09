@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@import Security;
 
 @interface T0confirmPage : UIViewController<UITextFieldDelegate>{
     

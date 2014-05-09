@@ -51,8 +51,8 @@
     if ( [self.confirmationCode isEqualToString:confirmCode.text]) {
         [self setupDatabase];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        
         [defaults setObject:self.registerPhoneNumber forKey:@"EAT2GETHER_ACCOUNT_NAME"];
+        [defaults setObject:self.registerPassword forKey:@"EAT2GETHER_PASSWORD"];
         [defaults synchronize];
         
         [self performSegueWithIdentifier:@"logInAfterRegister" sender:sender];

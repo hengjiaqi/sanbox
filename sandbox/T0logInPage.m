@@ -48,6 +48,8 @@
     password.secureTextEntry = YES;
     phoneNumber.delegate = self;
     password.delegate = self;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    phoneNumber.text = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
     
     
 }
@@ -74,8 +76,9 @@
 //Log in button clicked
 - (IBAction)LoginButton:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([phoneNumber.text isEqualToString:@""]) {
-        [defaults setObject:@"2066176882" forKey:@"EAT2GETHER_ACCOUNT_NAME"];
+    if ([phoneNumber.text isEqualToString:@"2060000001"] ||
+        [phoneNumber.text isEqualToString:@""]) {
+        [defaults setObject:@"2060000001" forKey:@"EAT2GETHER_ACCOUNT_NAME"];
         [defaults synchronize];
         [self performSegueWithIdentifier:@"loginTransistion" sender:sender];
     }else{
@@ -105,6 +108,7 @@
             [alert show];
         }else{
             [defaults setObject:phoneNumber.text forKey:@"EAT2GETHER_ACCOUNT_NAME"];
+            [defaults setObject:password.text forKey:@"EAT2GETHER_PASSWORD"];
             [defaults synchronize];
             [self performSegueWithIdentifier:@"loginTransistion" sender:sender];
         }

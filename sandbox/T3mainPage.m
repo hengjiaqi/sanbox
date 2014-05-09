@@ -105,9 +105,7 @@ UIButton *btnDone;
     
     //[hp deleteAttributePair:USER_NAME item:@"onlineItem" attributeName:@"onlineAttribute" attributeValue:@"online"];
  
-    
-    
-    
+
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -217,12 +215,16 @@ UIButton *btnDone;
 
 -(void)doneTyping{
     [self.preferenceTextField resignFirstResponder];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.preferenceTextField.text forKey:@"USER_PREF_DEFAULT"];
-    if ([availableFromDefault isEqualToString:@"online"]) {
-        simpleDBHelper *hp = [[simpleDBHelper alloc]init];
-        [hp updateAtrribute:USER_NAME item:@"preferenceItem" attribute:@"preferenceAttribute" newValue:self.preferenceTextField.text];
-    }
+    
+    _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(_queue, ^{
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:self.preferenceTextField.text forKey:@"USER_PREF_DEFAULT"];
+        if ([availableFromDefault isEqualToString:@"online"]) {
+            simpleDBHelper *hp = [[simpleDBHelper alloc]init];
+            [hp updateAtrribute:USER_NAME item:@"preferenceItem" attribute:@"preferenceAttribute" newValue:self.preferenceTextField.text];
+        }
+    });
 }
 
 // set the numbers of row in specific section
@@ -335,7 +337,6 @@ UIButton *btnDone;
                  });
             });
             
-            //Call the method to hide the Indicator after 3 seconds
         }
     }
     if (!pickerIsShown) {
