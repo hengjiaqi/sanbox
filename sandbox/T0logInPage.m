@@ -119,14 +119,8 @@
 }
 
 - (NSString *)getPassword:(NSString *)domainName {
-    NSString* myNickName = [[NSString alloc] init];
-    SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:domainName andItemName:@"passwordItem"];
-    SimpleDBGetAttributesResponse *response = [[AmazonClientManager sdb] getAttributes:gar];
-    for (SimpleDBAttribute *attr in response.attributes) {
-        myNickName = attr.value;
-    }
-    return myNickName;
-    
+    simpleDBHelper *hp = [[simpleDBHelper alloc]init];
+    return [hp getAtrributeValue:domainName item:@"passwordItem" attribute:@"passwordAttribute"];
 }
 
 

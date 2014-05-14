@@ -51,11 +51,16 @@
 }
 
 -(BOOL) hasAttributes: (NSString*) domainName item:(NSString*) itemName attributeName:(NSString*) attributeName{
+    NSLog(@"1");
     SimpleDBGetAttributesRequest* gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:domainName andItemName:itemName];
+    NSLog(@"2 , domain name: %@, item name : %@" , domainName, itemName);
     SimpleDBGetAttributesResponse* response = [[AmazonClientManager sdb] getAttributes:gar];
+    NSLog(@"3");
     BOOL attributeExist = NO;
     for (SimpleDBAttribute *attr in response.attributes ) {
+        NSLog(@"4");
         if ([attr.name isEqualToString:attributeName]) {
+            NSLog(@"5");
             attributeExist = YES;
         }
     }

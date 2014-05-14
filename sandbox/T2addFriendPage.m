@@ -103,7 +103,8 @@ NSString *friendNickname;
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"This person is already your friend." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
         }else{
-            friendNickname = [hp getAtrributeValue:USER_NAME item:@"nicknameItem" attribute:@"nicknameAttribute"];
+            friendNickname = [hp getAtrributeValue:numberToSearch.text item:@"nicknameItem" attribute:@"nicknameAttribute"];
+            friendNumber = numberToSearch.text;
             [self performSegueWithIdentifier:@"goToSearchResult" sender:sender];
         }
     }

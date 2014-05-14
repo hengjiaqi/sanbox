@@ -24,12 +24,24 @@
 @synthesize phoneNumber = _phoneNumber;
 -(id)initWithName:(NSString *)name onLineorNot:(BOOL)onLineorNot number:(NSString *)phonenumber{
     self = [super init];
-    
     if(self){
         self.phoneNumber = phonenumber;
         self.name=name;
         self.onLineorNot = onLineorNot;
         
+    }
+    return self;
+}
+
+-(id)initWithName:(NSString *)name onLineorNot:(BOOL)onLineorNot number:(NSString *)phonenumber
+start:(NSString *)startTime end:(NSString *)endTime{
+    self = [super init];
+    if(self){
+        self.phoneNumber = phonenumber;
+        self.name=name;
+        self.onLineorNot = onLineorNot;
+        self.endTime = endTime;
+        self.startTime = startTime;
     }
     return self;
 }

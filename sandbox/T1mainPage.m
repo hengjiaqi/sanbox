@@ -66,7 +66,6 @@ FriendList *currentFriend;
 
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"LOGGED_IN"];
     [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
-
     
     /*
      FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:@"My first online friend" onLineorNot:(YES)];
@@ -101,12 +100,17 @@ FriendList *currentFriend;
     else {
         [onlineFriendList removeAllObjects];
     }
-    
+    simpleDBHelper *hp = [[simpleDBHelper alloc]init];
     for (SimpleDBAttribute *attr in response.attributes) {
-        FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:attr.value onLineorNot:(YES) number:attr.name];
-        if (![myOnlineFriendListelement.phoneNumber isEqualToString:@"2060000000"]) {
+        if (![attr.name isEqualToString:@"2060000000"]) {
+        NSLog(@"number to search is %@", attr.name);
+        NSString *startTime = [hp getAtrributeValue:attr.name item:@"availbilityItem" attribute:@"startTimeAttribute"];
+        NSString *endTime = [hp getAtrributeValue:attr.name item:@"availbilityItem" attribute:@"endTimeAttribute"];
+        FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:attr.value onLineorNot:(YES) number:attr.name start:startTime end:endTime];
+        
             [onlineFriendList addObject:myOnlineFriendListelement];
         }
+        
     }
     
     [self.tableView reloadData];
@@ -176,34 +180,49 @@ FriendList *currentFriend;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     static NSString *OnLineCellIndetifier = @"Available Friends";  // what type of cell  to actuall indentify use that in story board
-    
-    
     static NSString *OffLineCellIndetifier = @"UnAvailable Friends";
     // which friend we point at
+    NSString *cellIdentifier = currentFriend.onLineorNot ? OnLineCellIndetifier : OffLineCellIndetifier;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if( indexPath.section == 0 ){
         currentFriend = [onlineFriendList objectAtIndex:indexPath.row];  // which cell we looking at
-
     }else{
         currentFriend = [offlineFriendList objectAtIndex:indexPath.row];  // which cell we looking at
-
     }
     
-    
-    NSString *cellIdentifier = currentFriend.onLineorNot ? OnLineCellIndetifier : OffLineCellIndetifier;
     
     
     // if you have extra give it to me
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
     
     if (cell==nil){
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        if( indexPath.section == 0 ){
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+            NSMutableString *label = [[NSMutableString alloc]initWithFormat:@"%@",currentFriend.startTime];
+            [label appendFormat:@"\n to \n"];
+            [label appendFormat:@"%@",currentFriend.endTime];
+            cell.detailTextLabel.text = label;
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
+            cell.detailTextLabel.numberOfLines = 3;
+        }else{
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        }
+    }else{
+        cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (indexPath.section == 0) {
+            NSMutableString *label = [[NSMutableString alloc]initWithFormat:@"%@",currentFriend.startTime];
+            [label appendFormat:@"\n to \n"];
+            [label appendFormat:@"%@",currentFriend.endTime];
+            cell.detailTextLabel.text = label;
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
+            cell.detailTextLabel.numberOfLines = 3;
+        }
+
     }
     
     // Configure the cell...
-
-    
-    // set the text of the cell
     cell.textLabel.text = currentFriend.name;
     return cell;
 }
@@ -228,6 +247,8 @@ FriendList *currentFriend;
     prefer.friendPhoneNumber = currentFriend.phoneNumber;
     prefer.friendNickName = currentFriend.name;
     if([segue.identifier isEqualToString:@"onlineFriendClicked"]){
+        
+        
         prefer.onlineORoffline = @"online";
     }else if([segue.identifier isEqualToString:@"offlineFriendClicked"]){
         prefer.onlineORoffline = @"offline";
@@ -275,15 +296,6 @@ FriendList *currentFriend;
     dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        
-        FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:@"extra" onLineorNot:(YES) number:@"123"];
-        
-        [self.FriendListelements addObject:myOnlineFriendListelement];
-        /* Add the current date to the list of dates that we have
-         so that when the table view is refreshed, a new item will appear
-         on the screen so that the user will see the difference between
-         the before and the after of the refresh */
-        
         [self.refreshControl endRefreshing];
     });
     

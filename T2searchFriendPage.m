@@ -77,7 +77,8 @@ NSString* numberToAdd;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FriendList *currentFriend = [self.FriendListelements objectAtIndex:indexPath.row];
-    numberToAdd = currentFriend.phoneNumber;
+    numberToAdd = self.friendPhoneNumber;
+    currentFriend.phoneNumber = numberToAdd;
     UIAlertView *alert;
     alert = [[UIAlertView alloc] initWithTitle:@"Add Friend" message:@"Send a friend request?" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Cancel", nil];
     [alert show];
@@ -92,26 +93,22 @@ NSString* numberToAdd;
 
     if ((buttonIndex == 0) && ([[alertView title] isEqualToString:@"Add Friend"]))
     {
+        NSLog(@"dialog shows up");
         //Check to see if request has already been sent
-        SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:numberToAdd andItemName:@"friendRequestListItem"];
-        SimpleDBGetAttributesResponse *response = [[AmazonClientManager sdb] getAttributes:gar];
-        BOOL alreadySent = NO;
-        for (SimpleDBAttribute *attr in response.attributes) {
-            if ([attr.name isEqualToString:USER_NAME]) {
-                alreadySent = YES;
-                break;
-            }
-        }
+        simpleDBHelper *hp = [[simpleDBHelper alloc]init];
+        numberToAdd = self.friendPhoneNumber;
+        NSLog(@"NUMBER TO ADD IS %@", numberToAdd);
+        
+        BOOL alreadySent = [hp hasAttributes:numberToAdd item:@"friendRequestListItem" attributeName:USER_NAME];
+        NSLog(@"%hhd", alreadySent);
         if (alreadySent) {
             UIAlertView *alert;
             alert = [[UIAlertView alloc] initWithTitle:@"Friend Request" message:@"You have already sent this person a request" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
         }else{
             //Get my nick name
-            
+            NSLog(@"2");
             NSString* myNickName = [[NSString alloc] init];
-
-            simpleDBHelper *hp = [[simpleDBHelper alloc]init];
             myNickName = [hp getAtrributeValue:USER_NAME item:@"nicknameItem" attribute:@"nicknameAttribute"];
             NSLog(@"MY NICK NAME IS %@", myNickName);
             //send the request
@@ -123,55 +120,6 @@ NSString* numberToAdd;
     }
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 - (IBAction)backButtonPressed:(id)sender {
     [self dismissViewControllerAnimated:NO completion:nil];
 }
