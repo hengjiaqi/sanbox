@@ -78,12 +78,13 @@ FriendList *currentFriend;
     
     
 }
+- (void)viewDidDisappear:(BOOL)animated{
+    [onlineFriendList removeAllObjects];
+    [offlineFriendList removeAllObjects];
+}
 
 
 - (void)loadFriends{
-    
-    
-    
     queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
     //*************************************//
@@ -107,8 +108,33 @@ FriendList *currentFriend;
         NSString *startTime = [hp getAtrributeValue:attr.name item:@"availbilityItem" attribute:@"startTimeAttribute"];
         NSString *endTime = [hp getAtrributeValue:attr.name item:@"availbilityItem" attribute:@"endTimeAttribute"];
         FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:attr.value onLineorNot:(YES) number:attr.name start:startTime end:endTime];
-        
-            [onlineFriendList addObject:myOnlineFriendListelement];
+            /*
+            if (onlineFriendList.count > 0) {
+                for (int i = 0; i<onlineFriendList.count; i++) {
+                    FriendList *local = [onlineFriendList objectAtIndex:i];
+                    if (local.startTime.length > 8 && myOnlineFriendListelement.startTime.length > 8) {
+                        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+                        [df setDateFormat:@"EEE,MM/dd hh:mm a"];
+                        for (int j = 0; j< onlineFriendList.count
+                             ; j++) {
+                            NSDate *localDate = [[NSDate alloc]init];
+                            localDate = [df dateFromString:local.startTime];
+                            NSDate *newDate = [[NSDate alloc]init];
+                            newDate = [df dateFromString:myOnlineFriendListelement.startTime];
+                            if ([localDate compare:newDate] == NSOrderedDescending) {
+                                [onlineFriendList insertObject:myOnlineFriendListelement atIndex:j];
+                            }
+                            break;
+                        }
+                        [onlineFriendList addObject:myOnlineFriendListelement];
+                        
+                    }else{
+                        [onlineFriendList insertObject:myOnlineFriendListelement atIndex:0];
+                    }
+                }*/
+            //}else{
+                [onlineFriendList addObject:myOnlineFriendListelement];
+            //}
         }
         
     }
@@ -210,7 +236,6 @@ FriendList *currentFriend;
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         }
     }else{
-        cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (indexPath.section == 0) {
             NSMutableString *label = [[NSMutableString alloc]initWithFormat:@"%@",currentFriend.startTime];
             [label appendFormat:@"\n to \n"];
@@ -298,6 +323,39 @@ FriendList *currentFriend;
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self.refreshControl endRefreshing];
     });
+    
+}
+- (IBAction)sortFriend:(id)sender {
+    for (int m = 0; m < onlineFriendList.count; m++) {
+        
+    
+        FriendList *myOnlineFriendListelement = [onlineFriendList objectAtIndex:m];
+    for (int i = 0; i<onlineFriendList.count; i++) {
+        FriendList *local = [onlineFriendList objectAtIndex:i];
+        if (local.startTime.length > 8 && myOnlineFriendListelement.startTime.length > 8) {
+            NSDateFormatter *df = [[NSDateFormatter alloc] init];
+            [df setDateFormat:@"EEE,MM/dd hh:mm a"];
+            for (int j = 0; j< onlineFriendList.count
+                 ; j++) {
+                NSDate *localDate = [[NSDate alloc]init];
+                localDate = [df dateFromString:local.startTime];
+                NSDate *newDate = [[NSDate alloc]init];
+                newDate = [df dateFromString:myOnlineFriendListelement.startTime];
+                if ([localDate compare:newDate] == NSOrderedDescending) {
+                    [onlineFriendList insertObject:myOnlineFriendListelement atIndex:j];
+                }
+                break;
+            }
+            [onlineFriendList addObject:myOnlineFriendListelement];
+            
+        }else{
+            [onlineFriendList insertObject:myOnlineFriendListelement atIndex:0];
+        }
+    }
+    
+    }
+    [self.tableView reloadData];
+
     
 }
 @end

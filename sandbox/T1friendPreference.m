@@ -47,8 +47,10 @@ NSString* myNickName;
     numberCell.userInteractionEnabled = NO;
     availablityCell.userInteractionEnabled = NO;
     preferenceCell.userInteractionEnabled = NO;
-    contactCell.userInteractionEnabled = NO;
     [checkboxCell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [callButton addTarget:self
+                 action:@selector(callNumber:)
+       forControlEvents:UIControlEventTouchUpInside];
 
 }
 
@@ -62,21 +64,22 @@ NSString* myNickName;
     simpleDBHelper *hp = [[simpleDBHelper alloc] init];
     NSString* startTime = [hp getAtrributeValue:self.friendPhoneNumber item:@"availbilityItem" attribute:@"startTimeAttribute"];
     NSString* endTime = [hp getAtrributeValue:self.friendPhoneNumber item:@"availbilityItem" attribute:@"endTimeAttribute"];
-    NSLog(startTime);
-    NSLog(endTime);
     startTime = [startTime stringByAppendingString:@" - "];
     if(isOnline){
+        avaliableLabel.font =[UIFont systemFontOfSize:14.0];
         avaliableLabel.text = [startTime stringByAppendingString:endTime];
-        preferenceLabel.textLabel.text = [hp getAtrributeValue:self.friendPhoneNumber item:@"preferenceItem" attribute:@"preferenceAttribute"];
+        NSMutableString *label = [[NSMutableString alloc]initWithFormat:@"%@",[hp getAtrributeValue:self.friendPhoneNumber item:@"preferenceItem" attribute:@"preferenceAttribute"]];
+        preferenceLabel.text = label;
+        
 
     }else{
         avaliableLabel.text = @"This person is currently unavailable";
-        preferenceLabel.textLabel.text = @"This person is currently unavailable";
+        preferenceLabel.text = @"This person is currently unavailable";
     }
     if (!isOnline) {
         phoneNumberLabel.textColor = [UIColor grayColor];
         avaliableLabel.textColor = [UIColor grayColor];
-        preferenceLabel.textLabel.textColor = [UIColor grayColor];
+        preferenceLabel.textColor = [UIColor grayColor];
     }
     if ([hp hasAttributes:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber]) {
         [checkBoxButton setImage:[UIImage imageNamed:@"checkbox_checked.png"] forState:UIControlStateNormal];
@@ -145,6 +148,29 @@ NSString* myNickName;
 
 - (IBAction)backButtonPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)callNumber:(id)sender {
+    NSLog(@"CLICKED");
+    
+    NSString *phNo = [[NSString alloc] initWithFormat:@"+1%@", phoneNumberLabel.text];
+    NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",phNo]];
+    
+    if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
+        [[UIApplication sharedApplication] openURL:phoneUrl];
+    } else
+    {
+        UIAlertView *calert = [[UIAlertView alloc]init];
+        calert = [[UIAlertView alloc]initWithTitle:@"Alert" message:@"Call facility is not available!!!" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+        [calert show];
+    }
+    
+}
+
+- (IBAction)textNumber:(id)sender {
+    NSString *number = [[NSString alloc]initWithFormat:@"sms:+1%@", phoneNumberLabel.text];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:number]];
+
 }
 
 - (IBAction)checkBoxClicked:(id)sender {

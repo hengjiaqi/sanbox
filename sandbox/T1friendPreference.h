@@ -12,7 +12,7 @@
     
     IBOutlet UILabel *phoneNumberLabel;
     
-    IBOutlet UITableViewCell *preferenceLabel;
+    IBOutlet UILabel *preferenceLabel;
     IBOutlet UILabel *avaliableLabel;
     IBOutlet UINavigationItem *topbar;
     BOOL checked;
@@ -23,6 +23,7 @@
     
     IBOutlet UITableViewCell *preferenceCell;
     IBOutlet UITableViewCell *contactCell;
+    IBOutlet UIButton *callButton;
     IBOutlet UITableViewCell *checkboxCell;
 }
 @property (weak, nonatomic) IBOutlet UIButton *checkBoxButton;
@@ -31,6 +32,9 @@
 @property (strong, nonatomic) NSString* friendNickName;
 @property (strong, nonatomic) NSString* onlineORoffline;
 - (IBAction)backButtonPressed:(id)sender;
+- (IBAction)callNumber:(id)sender;
+
+- (IBAction)textNumber:(id)sender;
 
 - (IBAction)checkBoxClicked:(id)sender;
 

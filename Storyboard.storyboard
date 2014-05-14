@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="siX-3O-EN7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="siX-3O-EN7">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -233,6 +233,14 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="phI-XQ-8G3" id="msS-N5-JFD">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRQ-5l-cfl">
+                                                    <rect key="frame" x="20" y="11" width="280" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -252,6 +260,9 @@
                                                     <state key="normal" title="Text">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="textNumber:" destination="Kx5-Jv-5rv" eventType="touchUpInside" id="iTn-Ae-3n5"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VwX-vT-xaZ">
                                                     <rect key="frame" x="210" y="7" width="30" height="30"/>
@@ -259,6 +270,9 @@
                                                     <state key="normal" title="Call">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="callNumber:" destination="Kx5-Jv-5rv" eventType="touchUpInside" id="3V4-gi-Xer"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -308,13 +322,14 @@
                     <connections>
                         <outlet property="availablityCell" destination="PUa-5m-GYp" id="3Vi-nw-uaN"/>
                         <outlet property="avaliableLabel" destination="Sb9-EN-lNa" id="RTw-EY-4sE"/>
+                        <outlet property="callButton" destination="VwX-vT-xaZ" id="E27-KA-HyI"/>
                         <outlet property="checkBoxButton" destination="01q-wz-JRK" id="Dbo-mO-gsi"/>
                         <outlet property="checkboxCell" destination="uGY-Gy-Z9E" id="hhA-gT-0eQ"/>
-                        <outlet property="contactCell" destination="6T2-oS-MTj" id="3Aq-OM-nyY"/>
+                        <outlet property="contactCell" destination="6T2-oS-MTj" id="NxS-GR-0xk"/>
                         <outlet property="numberCell" destination="Bvl-n7-Afy" id="w1F-O6-kCJ"/>
                         <outlet property="phoneNumberLabel" destination="bFV-zd-leD" id="Kta-wS-ghS"/>
                         <outlet property="preferenceCell" destination="phI-XQ-8G3" id="AY3-lA-OSh"/>
-                        <outlet property="preferenceLabel" destination="phI-XQ-8G3" id="Ubi-Xt-KIX"/>
+                        <outlet property="preferenceLabel" destination="vRQ-5l-cfl" id="8hR-0A-i71"/>
                         <outlet property="topbar" destination="Un6-Eh-Vlm" id="v58-TN-RPy"/>
                     </connections>
                 </tableViewController>
@@ -660,7 +675,13 @@
                             <outlet property="delegate" destination="7He-rb-jQY" id="EUo-RO-50g"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Friends" id="AMD-kF-lnw"/>
+                    <navigationItem key="navigationItem" title="Friends" id="AMD-kF-lnw">
+                        <barButtonItem key="rightBarButtonItem" title="Sort" id="6Ol-Rd-pEJ">
+                            <connections>
+                                <action selector="sortFriend:" destination="7He-rb-jQY" id="PJb-kY-AIV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="QvS-IF-aBH" kind="modal" identifier="onlineFriendClicked" modalTransitionStyle="crossDissolve" id="Sdw-Uo-oLf"/>
                         <segue destination="QvS-IF-aBH" kind="modal" identifier="offlineFriendClicked" modalTransitionStyle="crossDissolve" id="SOf-rq-dpe"/>
@@ -1342,7 +1363,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="q8f-cQ-XVB"/>
+        <segue reference="0tz-Tm-IF4"/>
         <segue reference="nTN-4M-jb0"/>
         <segue reference="Sdw-Uo-oLf"/>
     </inferredMetricsTieBreakers>
