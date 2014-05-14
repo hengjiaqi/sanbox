@@ -17,6 +17,9 @@
 - (IBAction)me_update_button:(id)sender;
 - (IBAction)logOutButton:(id)sender;
 - (IBAction)camera;
+@property (nonatomic, weak) IBOutlet UITableViewCell *theStaticCell;
+
+@property (weak, nonatomic) IBOutlet UILabel *NickNameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *me_NickName_textfield;
 @property (weak, nonatomic) IBOutlet UITextField *me_Password_textfield;
 @property (weak, nonatomic) IBOutlet UITextField *me_rePassword_textfield;

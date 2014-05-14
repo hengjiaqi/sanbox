@@ -21,6 +21,9 @@ NSString *GNickname;
 @synthesize me_NickName_textfield = _me_NickName_textfield;
 @synthesize me_Password_textfield = _me_Password_textfield;
 @synthesize me_rePassword_textfield = _me_rePassword_textfield;
+@synthesize NickNameLabel = _NickNameLabel;
+//@property (nonatomic, weak) IBOutlet UITableViewCell *theStaticCell;
+NSString *imagecellID = @"imagecellID";
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -29,6 +32,8 @@ NSString *GNickname;
     }
     return self;
 }
+//
+
 
 - (void)viewDidLoad
 {
@@ -63,6 +68,7 @@ NSString *GNickname;
     NSString *mycurrentpassword = [hp getAtrributeValue: USER_NAME item:@"passwordItem" attribute:@"passwordAttribute"];
     NSLog(@"here mycurrentpassword password is , %@",mycurrentpassword);
     _me_NickName_textfield.text = myNickName;
+    _NickNameLabel.text = myNickName;
     sc.selectedSegmentIndex = -1;
     
     //me_NickName_textfield.delegate = self;
@@ -168,6 +174,7 @@ NSString *GNickname;
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     switch (popup.tag) {
+        // case 1 is logout
         case 1: {
             switch (buttonIndex) {
                 case 0:
@@ -180,13 +187,61 @@ NSString *GNickname;
             }
             break;
         }
+        // case 2 is photo
+        case 2:{
+            switch (buttonIndex){
+                case 0:
+                    NSLog(@"take a photo");
+                    [picker2 setSourceType:UIImagePickerControllerSourceTypeCamera];
+                    break;
+                case 1:
+                    NSLog(@"choose from photo");
+                     [picker2 setSourceType:(UIImagePickerControllerSourceTypePhotoLibrary)];
+                         [self presentModalViewController:picker2 animated:YES];
+                    break;
+            }
+        }
         default:
             break;
     }
+}
+-(void) viewDidAppear:(BOOL)animated{
+    simpleDBHelper *hp = [[simpleDBHelper alloc]init];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //get the user name
+    USER_NAME = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
+    
+    // get nickname
+    
+    NSString *myNickName = [hp getAtrributeValue:USER_NAME item:@"nicknameItem" attribute:@"nicknameAttribute"];
+    NSLog(@"here my nick name is , %@",myNickName);
+    NSString *mycurrentpassword = [hp getAtrributeValue: USER_NAME item:@"passwordItem" attribute:@"passwordAttribute"];
+    NSLog(@"here mycurrentpassword password is , %@",mycurrentpassword);
+    _me_NickName_textfield.text = myNickName;
+    _NickNameLabel.text = myNickName;
+    
 }
 
 -(void)dismissAlert:(UIAlertView *) alertView
 {
     [alertView dismissWithClickedButtonIndex:nil animated:YES];
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString *cellText = cell.textLabel.text;
+    
+    if(cell==_theStaticCell){
+        NSLog(@"fuck me fuck me");
+        UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Change your Profile" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
+                                @"Take Photo",@"Choose Photo",
+                                nil];
+        picker2 = [[UIImagePickerController alloc] init];
+        picker2.delegate = self;
+        popup.tag = 2;
+        [popup showInView:[UIApplication sharedApplication].keyWindow];
+   
+    }
+}
+
+
 @end

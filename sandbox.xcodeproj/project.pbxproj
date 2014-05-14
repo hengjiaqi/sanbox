@@ -52,6 +52,7 @@
 		23F3EB8F18D6C7680075819D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F3EB8E18D6C7680075819D /* Storyboard.storyboard */; };
 		23F3EB9218D6C7B50075819D /* T0logInPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB9118D6C7B50075819D /* T0logInPage.m */; };
 		BE3CB6C118ECF396008CCC62 /* T3changePreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3CB6C018ECF396008CCC62 /* T3changePreferenceViewController.m */; };
+		BE43CBEA1922A20D00E10293 /* 123TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43CBE91922A20D00E10293 /* 123TableViewController.m */; };
 		BE47CFC918E8F62300503842 /* T3changeAvailableTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE47CFC818E8F62300503842 /* T3changeAvailableTimeViewController.m */; };
 		BE57C726191D3DD80043770D /* T3changePasswordPage.m in Sources */ = {isa = PBXBuildFile; fileRef = BE57C725191D3DD80043770D /* T3changePasswordPage.m */; };
 		BE57C729191D71900043770D /* T3changeNickNameTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE57C728191D71900043770D /* T3changeNickNameTableViewController.m */; };
@@ -138,6 +139,8 @@
 		23F3EB9118D6C7B50075819D /* T0logInPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T0logInPage.m; sourceTree = "<group>"; };
 		BE3CB6BF18ECF396008CCC62 /* T3changePreferenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3changePreferenceViewController.h; sourceTree = "<group>"; };
 		BE3CB6C018ECF396008CCC62 /* T3changePreferenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3changePreferenceViewController.m; sourceTree = "<group>"; };
+		BE43CBE81922A20D00E10293 /* 123TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 123TableViewController.h; sourceTree = "<group>"; };
+		BE43CBE91922A20D00E10293 /* 123TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = 123TableViewController.m; sourceTree = "<group>"; };
 		BE47CFC718E8F62300503842 /* T3changeAvailableTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3changeAvailableTimeViewController.h; sourceTree = "<group>"; };
 		BE47CFC818E8F62300503842 /* T3changeAvailableTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3changeAvailableTimeViewController.m; sourceTree = "<group>"; };
 		BE57C724191D3DD80043770D /* T3changePasswordPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3changePasswordPage.h; sourceTree = "<group>"; };
@@ -282,6 +285,8 @@
 				BE3CB6C018ECF396008CCC62 /* T3changePreferenceViewController.m */,
 				BE5B07B918EF503D0090D3F2 /* T3mainPage.h */,
 				BE5B07BA18EF503D0090D3F2 /* T3mainPage.m */,
+				BE43CBE81922A20D00E10293 /* 123TableViewController.h */,
+				BE43CBE91922A20D00E10293 /* 123TableViewController.m */,
 				BEBE44BC18E6915000929899 /* T3mepage.h */,
 				BEBE44BD18E6915000929899 /* T3mepage.m */,
 				BE57C724191D3DD80043770D /* T3changePasswordPage.h */,
@@ -438,6 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE43CBEA1922A20D00E10293 /* 123TableViewController.m in Sources */,
 				232D08C618EB3124008798A0 /* T2searchFriendPage.m in Sources */,
 				23E8D9D618E34A7D0092A1C3 /* T1mainPage.m in Sources */,
 				23C645AC18E205CE0097D968 /* AmazonClientManager.m in Sources */,
