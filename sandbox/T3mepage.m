@@ -195,9 +195,9 @@ NSString *imagecellID = @"imagecellID";
                     [picker2 setSourceType:UIImagePickerControllerSourceTypeCamera];
                     break;
                 case 1:
-                    NSLog(@"choose from photo");
-                     [picker2 setSourceType:(UIImagePickerControllerSourceTypePhotoLibrary)];
-                         [self presentModalViewController:picker2 animated:YES];
+                     NSLog(@"choose from photo");
+                    [picker2 setSourceType:(UIImagePickerControllerSourceTypePhotoLibrary)];
+                    [self presentModalViewController:picker2 animated:YES];
                     break;
             }
         }
