@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <dispatch/dispatch.h>
+#import "loadingAnimation.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface T3changeNickNameTableViewController : UITableViewController
 - (IBAction)back_button:(id)sender;
