@@ -64,11 +64,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sandbox/T1friendPreference.m"
-            timestampString = "421750171.731352"
+            timestampString = "421827305.26674"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "-switchChanged:"
             landmarkType = "5">
          </BreakpointContent>
@@ -80,11 +80,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sandbox/T1mainPage.m"
-            timestampString = "421746152.415832"
+            timestampString = "421827587.023399"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "-loadFriends"
             landmarkType = "5">
          </BreakpointContent>

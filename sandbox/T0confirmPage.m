@@ -87,7 +87,7 @@
     [sdb putAttributes:putAttributesRequest];
     
     //onlineItem
-    SimpleDBReplaceableAttribute *onlineAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"onlineAttribute" andValue:@"online" andReplace:YES];
+    SimpleDBReplaceableAttribute *onlineAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"onlineAttribute" andValue:@"offline" andReplace:YES];
     NSMutableArray *onlineAttributes = [[NSMutableArray alloc] initWithCapacity:2];
     [onlineAttributes addObject:onlineAttribute];
     [onlineAttributes addObject:passwordAttribute1];

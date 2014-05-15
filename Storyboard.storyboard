@@ -675,13 +675,7 @@
                             <outlet property="delegate" destination="7He-rb-jQY" id="EUo-RO-50g"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Friends" id="AMD-kF-lnw">
-                        <barButtonItem key="rightBarButtonItem" title="Sort" id="6Ol-Rd-pEJ">
-                            <connections>
-                                <action selector="sortFriend:" destination="7He-rb-jQY" id="PJb-kY-AIV"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Friends" id="AMD-kF-lnw"/>
                     <connections>
                         <segue destination="QvS-IF-aBH" kind="modal" identifier="onlineFriendClicked" modalTransitionStyle="crossDissolve" id="Sdw-Uo-oLf"/>
                         <segue destination="QvS-IF-aBH" kind="modal" identifier="offlineFriendClicked" modalTransitionStyle="crossDissolve" id="SOf-rq-dpe"/>

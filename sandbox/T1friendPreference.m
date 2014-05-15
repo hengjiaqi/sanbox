@@ -62,16 +62,12 @@ NSString* myNickName;
     }
     phoneNumberLabel.text = self.friendPhoneNumber;
     simpleDBHelper *hp = [[simpleDBHelper alloc] init];
-    NSString* startTime = [hp getAtrributeValue:self.friendPhoneNumber item:@"availbilityItem" attribute:@"startTimeAttribute"];
-    NSString* endTime = [hp getAtrributeValue:self.friendPhoneNumber item:@"availbilityItem" attribute:@"endTimeAttribute"];
-    startTime = [startTime stringByAppendingString:@" - "];
+
     if(isOnline){
         avaliableLabel.font =[UIFont systemFontOfSize:14.0];
-        avaliableLabel.text = [startTime stringByAppendingString:endTime];
-        NSMutableString *label = [[NSMutableString alloc]initWithFormat:@"%@",[hp getAtrributeValue:self.friendPhoneNumber item:@"preferenceItem" attribute:@"preferenceAttribute"]];
+        avaliableLabel.text = self.friendAvailablity;
+        NSMutableString *label = [[NSMutableString alloc]initWithFormat:@"%@",self.friendPreference];
         preferenceLabel.text = label;
-        
-
     }else{
         avaliableLabel.text = @"This person is currently unavailable";
         preferenceLabel.text = @"This person is currently unavailable";

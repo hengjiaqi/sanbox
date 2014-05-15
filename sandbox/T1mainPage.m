@@ -108,6 +108,9 @@ FriendList *currentFriend;
         NSString *startTime = [hp getAtrributeValue:attr.name item:@"availbilityItem" attribute:@"startTimeAttribute"];
         NSString *endTime = [hp getAtrributeValue:attr.name item:@"availbilityItem" attribute:@"endTimeAttribute"];
         FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:attr.value onLineorNot:(YES) number:attr.name start:startTime end:endTime];
+            
+            
+            // DON'T DELETE!!!!!!!!!!!!!!!!!!!!
             /*
             if (onlineFriendList.count > 0) {
                 for (int i = 0; i<onlineFriendList.count; i++) {
@@ -163,7 +166,7 @@ FriendList *currentFriend;
         
     }
     NSLog(@"RESPONSE2 IS %d", count);
-        dispatch_async(dispatch_get_main_queue(),^{
+    dispatch_async(dispatch_get_main_queue(),^{
     //add all of them to the table view
     self.FriendListelements =[[NSMutableArray alloc]init];
     [self.FriendListelements addObjectsFromArray:(onlineFriendList)];
@@ -272,9 +275,23 @@ FriendList *currentFriend;
     prefer.friendPhoneNumber = currentFriend.phoneNumber;
     prefer.friendNickName = currentFriend.name;
     if([segue.identifier isEqualToString:@"onlineFriendClicked"]){
-        
-        
+        NSLog(@"it's here");
         prefer.onlineORoffline = @"online";
+        queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(queue, ^{
+            simpleDBHelper *hp = [[simpleDBHelper alloc] init];
+            NSString* startTime = [hp getAtrributeValue:currentFriend.phoneNumber item:@"availbilityItem" attribute:@"startTimeAttribute"];
+            NSString* endTime = [hp getAtrributeValue:currentFriend.phoneNumber item:@"availbilityItem" attribute:@"endTimeAttribute"];
+            startTime = [startTime stringByAppendingString:@" - "];
+            startTime = [startTime stringByAppendingString:endTime];
+            prefer.friendAvailablity = startTime;
+            prefer.friendPreference = [hp getAtrributeValue:currentFriend.phoneNumber item:@"preferenceItem" attribute:@"preferenceAttribute"];
+            dispatch_async(dispatch_get_main_queue(),^{
+                //add all of them to the table view
+                [self performSelector:@selector(stopRKLoading) withObject:nil];
+            });
+            
+        });
     }else if([segue.identifier isEqualToString:@"offlineFriendClicked"]){
         prefer.onlineORoffline = @"offline";
     }
@@ -315,7 +332,6 @@ FriendList *currentFriend;
     /* Put a bit of delay between when the refresh control is released
      and when we actually do the refreshing to make the UI look a bit
      smoother than just doing the update without the animation */
-    NSLog(@"it;s here");
     int64_t delayInSeconds = 1.0f;
     dispatch_time_t popTime =
     dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);

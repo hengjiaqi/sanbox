@@ -30,6 +30,8 @@
 
 @property (strong, nonatomic) NSString* friendPhoneNumber;
 @property (strong, nonatomic) NSString* friendNickName;
+@property (strong, nonatomic) NSString* friendAvailablity;
+@property (strong, nonatomic) NSString* friendPreference;
 @property (strong, nonatomic) NSString* onlineORoffline;
 - (IBAction)backButtonPressed:(id)sender;
 - (IBAction)callNumber:(id)sender;
