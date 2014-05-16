@@ -33,6 +33,7 @@
 @property (strong, nonatomic) NSString* friendAvailablity;
 @property (strong, nonatomic) NSString* friendPreference;
 @property (strong, nonatomic) NSString* onlineORoffline;
+@property (nonatomic) BOOL isalwaysUnavailable;
 - (IBAction)backButtonPressed:(id)sender;
 - (IBAction)callNumber:(id)sender;
 

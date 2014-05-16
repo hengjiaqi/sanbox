@@ -10,6 +10,7 @@
 #import <AWSSimpleDB/AWSSimpleDB.h>
 #import "AmazonClientManager.h"
 #import "simpleDBHelper.h"
+#import "loadingAnimation.h"
 
 
 @interface T0logInPage ()

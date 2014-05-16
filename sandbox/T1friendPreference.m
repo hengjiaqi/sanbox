@@ -11,13 +11,15 @@
 #import <AWSSimpleDB/AWSSimpleDB.h>
 #import "AmazonClientManager.h"
 #import "simpleDBHelper.h"
+#import "loadingAnimation.h"
 BOOL isOnline;
 
 NSString* USER_NAME;
 NSString* myNickName;
-
-@interface T1friendPreference ()
-
+simpleDBHelper *hp;
+@interface T1friendPreference (){
+    dispatch_queue_t queue;
+}
 @end
 
 @implementation T1friendPreference
@@ -36,14 +38,11 @@ NSString* myNickName;
 {
     [super viewDidLoad];
     NSLog(@"1221321");
-    
+    hp = [[simpleDBHelper alloc]init];
     topbar.title = self.friendNickName;
     //[invisibleSwitch setOnTintColor:[UIColor redColor]];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     USER_NAME = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
-    simpleDBHelper *hp = [[simpleDBHelper alloc] init];
-    myNickName = [hp getAtrributeValue:USER_NAME item:@"nicknameItem" attribute:@"nicknameAttribute"];
-    
     numberCell.userInteractionEnabled = NO;
     availablityCell.userInteractionEnabled = NO;
     preferenceCell.userInteractionEnabled = NO;
@@ -55,48 +54,74 @@ NSString* myNickName;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    if ([self.onlineORoffline isEqualToString:@"online"]) {
-        isOnline = YES;
-    }else{
-        isOnline = NO;
-    }
-    phoneNumberLabel.text = self.friendPhoneNumber;
-    simpleDBHelper *hp = [[simpleDBHelper alloc] init];
+    [loadingAnimation showHUDAddedTo:self.view animated:YES];
+    queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    self.tabBarController.tabBar.userInteractionEnabled = NO;
+    [self.view setUserInteractionEnabled:NO];
+    dispatch_async(queue, ^{
 
-    if(isOnline){
-        avaliableLabel.font =[UIFont systemFontOfSize:14.0];
-        avaliableLabel.text = self.friendAvailablity;
-        NSMutableString *label = [[NSMutableString alloc]initWithFormat:@"%@",self.friendPreference];
-        preferenceLabel.text = label;
-    }else{
-        avaliableLabel.text = @"This person is currently unavailable";
-        preferenceLabel.text = @"This person is currently unavailable";
-    }
-    if (!isOnline) {
-        phoneNumberLabel.textColor = [UIColor grayColor];
-        avaliableLabel.textColor = [UIColor grayColor];
-        preferenceLabel.textColor = [UIColor grayColor];
-    }
-    if ([hp hasAttributes:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber]) {
-        [checkBoxButton setImage:[UIImage imageNamed:@"checkbox_checked.png"] forState:UIControlStateNormal];
-        checked = YES;
-        [hp addAtrribute:USER_NAME item:@"beUnavailableToListItem" attribute:self.friendPhoneNumber value:self.friendNickName];
+        NSString* startTime = [hp getAtrributeValue:self.friendPhoneNumber item:@"availbilityItem" attribute:@"startTimeAttribute"];
+        NSString* endTime = [hp getAtrributeValue:self.friendPhoneNumber item:@"availbilityItem" attribute:@"endTimeAttribute"];
+        startTime = [startTime stringByAppendingString:@" - "];
+        startTime = [startTime stringByAppendingString:endTime];
+        self.friendAvailablity = startTime;
+        self.friendPreference = [hp getAtrributeValue:self.friendPhoneNumber item:@"preferenceItem" attribute:@"preferenceAttribute"];
+        self.isalwaysUnavailable = [hp hasAttributes:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber];
+        if (self.isalwaysUnavailable) {
+            
+            [hp addAtrribute:USER_NAME item:@"beUnavailableToListItem" attribute:self.friendPhoneNumber value:self.friendNickName];
+            
+            if([hp hasAttributes:self.friendPhoneNumber item:@"onlineFriendListItem" attributeName:USER_NAME]){
+                [hp deleteAttributePair:self.friendPhoneNumber item:@"onlineFriendListItem" attributeName:USER_NAME attributeValue:myNickName];
+                [hp addAtrribute:self.friendPhoneNumber item:@"offlineFriendListItem" attribute:USER_NAME value:myNickName];
+            }
+        }else{
+            if([hp hasAttributes:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber]){
+                [hp deleteAttributePair:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber attributeValue:self.friendNickName];
+            }
+            if([hp hasAttributes:self.friendPhoneNumber item:@"offlineFriendListItem" attributeName:USER_NAME]){
+                [hp deleteAttributePair:self.friendPhoneNumber item:@"offlineFriendListItem" attributeName:USER_NAME attributeValue:myNickName];
+                [hp addAtrribute:self.friendPhoneNumber item:@"onlineFriendListItem" attribute:USER_NAME value:myNickName];
+            }
+        }
         
-        if([hp hasAttributes:self.friendPhoneNumber item:@"onlineFriendListItem" attributeName:USER_NAME]){
-            [hp deleteAttributePair:self.friendPhoneNumber item:@"onlineFriendListItem" attributeName:USER_NAME attributeValue:myNickName];
-            [hp addAtrribute:self.friendPhoneNumber item:@"offlineFriendListItem" attribute:USER_NAME value:myNickName];
-        }
-    }else{
-        [checkBoxButton setImage:[UIImage imageNamed:@"checkbox_normal.png"] forState:UIControlStateNormal];
-        checked = NO;
-        if([hp hasAttributes:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber]){
-            [hp deleteAttributePair:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber attributeValue:self.friendNickName];
-        }
-        if([hp hasAttributes:self.friendPhoneNumber item:@"offlineFriendListItem" attributeName:USER_NAME]){
-            [hp deleteAttributePair:self.friendPhoneNumber item:@"offlineFriendListItem" attributeName:USER_NAME attributeValue:myNickName];
-            [hp addAtrribute:self.friendPhoneNumber item:@"onlineFriendListItem" attribute:USER_NAME value:myNickName];
-        }
-    }
+        dispatch_async(dispatch_get_main_queue(),^{
+            //add all of them to the table view
+            if ([self.onlineORoffline isEqualToString:@"online"]) {
+                isOnline = YES;
+            }else{
+                isOnline = NO;
+            }
+            phoneNumberLabel.text = self.friendPhoneNumber;
+            if(isOnline){
+                avaliableLabel.font =[UIFont systemFontOfSize:14.0];
+                avaliableLabel.text = self.friendAvailablity;
+                NSMutableString *label = [[NSMutableString alloc]initWithFormat:@"%@",self.friendPreference];
+                preferenceLabel.text = label;
+            }else{
+                avaliableLabel.text = @"This person is currently unavailable";
+                preferenceLabel.text = @"This person is currently unavailable";
+            }
+            if (!isOnline) {
+                phoneNumberLabel.textColor = [UIColor grayColor];
+                avaliableLabel.textColor = [UIColor grayColor];
+                preferenceLabel.textColor = [UIColor grayColor];
+            }
+            if (self.isalwaysUnavailable) {
+                [checkBoxButton setImage:[UIImage imageNamed:@"checkbox_checked.png"] forState:UIControlStateNormal];
+                checked = YES;
+            }else{
+                [checkBoxButton setImage:[UIImage imageNamed:@"checkbox_normal.png"] forState:UIControlStateNormal];
+                checked = NO;
+            }
+
+
+            [self performSelector:@selector(stopRKLoading) withObject:nil];
+        });
+        
+    });
+    
+    
     
 }
 
@@ -174,24 +199,67 @@ NSString* myNickName;
     if (!checked) {
         [checkBoxButton setImage:[UIImage imageNamed:@"checkbox_checked.png"] forState:UIControlStateNormal];
         checked = YES;
-        [hp addAtrribute:USER_NAME item:@"beUnavailableToListItem" attribute:self.friendPhoneNumber value:self.friendNickName];
         
-        if([hp hasAttributes:self.friendPhoneNumber item:@"onlineFriendListItem" attributeName:USER_NAME]){
-            [hp deleteAttributePair:self.friendPhoneNumber item:@"onlineFriendListItem" attributeName:USER_NAME attributeValue:myNickName];
-            [hp addAtrribute:self.friendPhoneNumber item:@"offlineFriendListItem" attribute:USER_NAME value:myNickName];
-        }
+        
+        [loadingAnimation showHUDAddedTo:self.view animated:YES];
+        queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(queue, ^{
+            [hp addAtrribute:USER_NAME item:@"beUnavailableToListItem" attribute:self.friendPhoneNumber value:self.friendNickName];
+            
+            if([hp hasAttributes:self.friendPhoneNumber item:@"onlineFriendListItem" attributeName:USER_NAME]){
+                [hp deleteAttributePair:self.friendPhoneNumber item:@"onlineFriendListItem" attributeName:USER_NAME attributeValue:myNickName];
+                [hp addAtrribute:self.friendPhoneNumber item:@"offlineFriendListItem" attribute:USER_NAME value:myNickName];
+            }
+            dispatch_async(dispatch_get_main_queue(),^{
+                //Call the method to hide the Indicator after 3 seconds
+                [self performSelector:@selector(stopRKLoading) withObject:nil];
+            });
+        });
+        
+        
     }
     
     else if (checked) {
         [checkBoxButton setImage:[UIImage imageNamed:@"checkbox_normal.png"] forState:UIControlStateNormal];
         checked = NO;
-        if([hp hasAttributes:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber]){
-            [hp deleteAttributePair:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber attributeValue:self.friendNickName];
-        }
-        if([hp hasAttributes:self.friendPhoneNumber item:@"offlineFriendListItem" attributeName:USER_NAME]){
-            [hp deleteAttributePair:self.friendPhoneNumber item:@"offlineFriendListItem" attributeName:USER_NAME attributeValue:myNickName];
-            [hp addAtrribute:self.friendPhoneNumber item:@"onlineFriendListItem" attribute:USER_NAME value:myNickName];
-        }
+        
+        [loadingAnimation showHUDAddedTo:self.view animated:YES];
+        queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(queue, ^{
+            if([hp hasAttributes:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber]){
+                [hp deleteAttributePair:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber attributeValue:self.friendNickName];
+            }
+            if([hp hasAttributes:self.friendPhoneNumber item:@"offlineFriendListItem" attributeName:USER_NAME]){
+                [hp deleteAttributePair:self.friendPhoneNumber item:@"offlineFriendListItem" attributeName:USER_NAME attributeValue:myNickName];
+                [hp addAtrribute:self.friendPhoneNumber item:@"onlineFriendListItem" attribute:USER_NAME value:myNickName];
+            }
+            dispatch_async(dispatch_get_main_queue(),^{
+                //Call the method to hide the Indicator after 3 seconds
+                [self performSelector:@selector(stopRKLoading) withObject:nil];
+            });
+        });
     }
 }
+
+-(void)stopRKLoading
+{
+    self.tabBarController.tabBar.userInteractionEnabled = YES;
+    [self.view setUserInteractionEnabled:YES];
+    [loadingAnimation hideHUDForView:self.view animated:YES];
+}
+
+- (void) handleRefresh:(id)paramSender{
+    
+    /* Put a bit of delay between when the refresh control is released
+     and when we actually do the refreshing to make the UI look a bit
+     smoother than just doing the update without the animation */
+    int64_t delayInSeconds = 1.0f;
+    dispatch_time_t popTime =
+    dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.refreshControl endRefreshing];
+    });
+    
+}
+
 @end

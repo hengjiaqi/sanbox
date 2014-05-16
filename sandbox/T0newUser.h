@@ -19,5 +19,6 @@
 
 -(void)dismissKeyboard;
 -(BOOL)textFieldShouldReturn:(UITextField*) textField;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end

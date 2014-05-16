@@ -17,6 +17,8 @@
 @property (strong, nonatomic) NSString* registerPhoneNumber;
 @property (strong, nonatomic) NSString* registerNickName;
 @property (strong, nonatomic) NSString* registerPassword;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 - (IBAction)confirmButton:(id)sender;
 
 -(void)dismissKeyboard;

@@ -9,7 +9,10 @@
 #import "T0confirmPage.h"
 #import <AWSSimpleDB/AWSSimpleDB.h>
 #import "AmazonClientManager.h"
-@interface T0confirmPage ()
+#import "loadingAnimation.h"
+@interface T0confirmPage (){
+    dispatch_queue_t queue;
+}
 
 @end
 
@@ -49,13 +52,21 @@
     NSLog(@"code got sent is %@", self.confirmationCode);
     NSLog(@"code got entered is %@", confirmCode.text);
     if ( [self.confirmationCode isEqualToString:confirmCode.text]) {
-        [self setupDatabase];
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:self.registerPhoneNumber forKey:@"EAT2GETHER_ACCOUNT_NAME"];
-        [defaults setObject:self.registerPassword forKey:@"EAT2GETHER_PASSWORD"];
-        [defaults synchronize];
         
-        [self performSegueWithIdentifier:@"logInAfterRegister" sender:sender];
+        [loadingAnimation showHUDAddedTo:self.view animated:YES];
+        queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(queue, ^{
+            [self setupDatabase];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:self.registerPhoneNumber forKey:@"EAT2GETHER_ACCOUNT_NAME"];
+            [defaults setObject:self.registerPassword forKey:@"EAT2GETHER_PASSWORD"];
+            [defaults synchronize];
+            dispatch_async(dispatch_get_main_queue(),^{
+                [self performSegueWithIdentifier:@"logInAfterRegister" sender:sender];
+                //Call the method to hide the Indicator after 3 seconds
+                [self performSelector:@selector(stopRKLoading) withObject:nil];
+            });
+        });
     }else{
         UIAlertView *alert;
         alert = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:@"The confirmation code is incorret. Please check again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -191,6 +202,27 @@
     }else{
         [self.view setFrame:CGRectMake(0, 0, 320, 480)];
     }
+}
+
+-(void)stopRKLoading
+{
+    self.tabBarController.tabBar.userInteractionEnabled = YES;
+    [self.view setUserInteractionEnabled:YES];
+    [loadingAnimation hideHUDForView:self.view animated:YES];
+}
+
+- (void) handleRefresh:(id)paramSender{
+    
+    /* Put a bit of delay between when the refresh control is released
+     and when we actually do the refreshing to make the UI look a bit
+     smoother than just doing the update without the animation */
+    int64_t delayInSeconds = 1.0f;
+    dispatch_time_t popTime =
+    dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.refreshControl endRefreshing];
+    });
+    
 }
 
 @end

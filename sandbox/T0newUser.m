@@ -9,12 +9,15 @@
 #import "T0newUser.h"
 #import "AmazonClientManager.h"
 #import "T0confirmPage.h"
+#import "loadingAnimation.h"
 NSString *twilioAccount = @"ACa8cd84343d08f6f84fd3ca5b1c532751";
 NSString *twilioAuth = @"dd10c126da38021664352140c022b0a6";
 NSString *twilioNumber = @"4257287464";
 int confirmation;
 NSMutableArray *domains;
-@interface T0newUser ()
+@interface T0newUser (){
+    dispatch_queue_t queue;
+}
 
 @end
 
@@ -88,7 +91,13 @@ NSMutableArray *domains;
     UIAlertView *alert;
     //everything is ok, send user a confirmation code
     if (code == 0) {
-        [self sendMessage : newUserPhoneNumber.text];
+        queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(queue, ^{
+            [self sendMessage : newUserPhoneNumber.text];
+            dispatch_async(dispatch_get_main_queue(),^{
+                [self performSelector:@selector(stopRKLoading) withObject:nil];
+            });
+        });
         alert = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:@"We have send you a text message with confirmation code." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
         [self performSegueWithIdentifier:@"goToConfirmPage" sender:sender];
@@ -170,6 +179,7 @@ NSMutableArray *domains;
     confirmation = (arc4random() % (9000)) + 1000;
     NSString *textContent = [NSString stringWithFormat:@"Hello from Eat2gether! Your confirmation code IS: %d", confirmation];
     //textContent = @"LALALALALALA";
+    NSLog(@"number is %d", confirmation);
     NSString *bodyString = [NSString stringWithFormat:@"From=%@&To=%@&Body=%@", twilioNumber,userPhoneNumber,textContent];
     NSData *data = [bodyString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:data];
@@ -182,7 +192,7 @@ NSMutableArray *domains;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Something is wrong" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     }else{
-        NSLog(@"%@", receivedData.description);
+        NSLog(@"Message sent!");
     }
     
 }
@@ -218,7 +228,25 @@ NSMutableArray *domains;
         [self.view setFrame:CGRectMake(0, 0, 320, 480)];
     }
 }
+-(void)stopRKLoading
+{
+    self.tabBarController.tabBar.userInteractionEnabled = YES;
+    [self.view setUserInteractionEnabled:YES];
+    [loadingAnimation hideHUDForView:self.view animated:YES];
+}
 
+- (void) handleRefresh:(id)paramSender{
+    /* Put a bit of delay between when the refresh control is released
+     and when we actually do the refreshing to make the UI look a bit
+     smoother than just doing the update without the animation */
+    int64_t delayInSeconds = 1.0f;
+    dispatch_time_t popTime =
+    dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.refreshControl endRefreshing];
+    });
+    
+}
 
 
 

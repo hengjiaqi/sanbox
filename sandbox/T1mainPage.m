@@ -50,7 +50,8 @@ FriendList *currentFriend;
 
 - (void)viewDidAppear:(BOOL)animated{
     NSLog(@"Tabs showed up!");
-    
+    [self.view setUserInteractionEnabled:NO];
+    self.tabBarController.tabBar.userInteractionEnabled = NO;
     [loadingAnimation showHUDAddedTo:self.view animated:YES];
     [self loadFriends];
 }
@@ -66,7 +67,6 @@ FriendList *currentFriend;
 
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"LOGGED_IN"];
     [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
-    
     /*
      FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:@"My first online friend" onLineorNot:(YES)];
      [self.FriendListelements addObject:myOnlineFriendListelement];
@@ -277,21 +277,6 @@ FriendList *currentFriend;
     if([segue.identifier isEqualToString:@"onlineFriendClicked"]){
         NSLog(@"it's here");
         prefer.onlineORoffline = @"online";
-        queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        dispatch_async(queue, ^{
-            simpleDBHelper *hp = [[simpleDBHelper alloc] init];
-            NSString* startTime = [hp getAtrributeValue:currentFriend.phoneNumber item:@"availbilityItem" attribute:@"startTimeAttribute"];
-            NSString* endTime = [hp getAtrributeValue:currentFriend.phoneNumber item:@"availbilityItem" attribute:@"endTimeAttribute"];
-            startTime = [startTime stringByAppendingString:@" - "];
-            startTime = [startTime stringByAppendingString:endTime];
-            prefer.friendAvailablity = startTime;
-            prefer.friendPreference = [hp getAtrributeValue:currentFriend.phoneNumber item:@"preferenceItem" attribute:@"preferenceAttribute"];
-            dispatch_async(dispatch_get_main_queue(),^{
-                //add all of them to the table view
-                [self performSelector:@selector(stopRKLoading) withObject:nil];
-            });
-            
-        });
     }else if([segue.identifier isEqualToString:@"offlineFriendClicked"]){
         prefer.onlineORoffline = @"offline";
     }
@@ -324,6 +309,8 @@ FriendList *currentFriend;
 }
 -(void)stopRKLoading
 {
+    self.tabBarController.tabBar.userInteractionEnabled = YES;
+    [self.view setUserInteractionEnabled:YES];
     [loadingAnimation hideHUDForView:self.view animated:YES];
 }
 
@@ -335,7 +322,6 @@ FriendList *currentFriend;
     int64_t delayInSeconds = 1.0f;
     dispatch_time_t popTime =
     dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self.refreshControl endRefreshing];
     });

@@ -17,6 +17,8 @@
 // here is domains  tasks
 @property(nonatomic,strong) NSMutableArray *FriendListelements;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic) BOOL fromPreferencePage;
+
 - (IBAction)sortFriend:(id)sender;
 
 @end
