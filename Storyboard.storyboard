@@ -597,11 +597,11 @@
             </objects>
             <point key="canvasLocation" x="3044" y="1516"/>
         </scene>
-        <!--Navigation Controller - FL-->
+        <!--Navigation Controller-->
         <scene sceneID="lpb-3y-hJc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FBq-pz-CzU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="FL" id="tsi-wk-gwa"/>
+                    <tabBarItem key="tabBarItem" image="fl301.png" id="tsi-wk-gwa"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iXQ-R3-Y4u">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -754,11 +754,11 @@
             </objects>
             <point key="canvasLocation" x="880" y="866"/>
         </scene>
-        <!--Navigation Controller - FM-->
+        <!--Navigation Controller-->
         <scene sceneID="pFa-xw-oCb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1yn-hO-oJv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="FM" id="VnM-N7-QE0"/>
+                    <tabBarItem key="tabBarItem" id="VnM-N7-QE0"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="k2D-cz-nah"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gr4-CG-567">
@@ -1334,6 +1334,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </scenes>
     <resources>
         <image name="checkbox_normal.png" width="16" height="16"/>
+        <image name="fl301.png" width="31" height="31"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -108,6 +108,19 @@ NSString *GNickname;
      
      }*/
     [loadingAnimation showHUDAddedTo:self.view animated:YES];
+    
+    [self saveChanges];
+    
+}
+-(void)dismissAlert:(UIAlertView *) alertView
+{
+    [alertView dismissWithClickedButtonIndex:nil animated:YES];
+}
+
+
+-(void)saveChanges
+{
+    [self dismissKeyboard];
     _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(_queue, ^{
         simpleDBHelper *hp = [[simpleDBHelper alloc]init];
@@ -115,35 +128,32 @@ NSString *GNickname;
         NSString *currentnickName;
         currentnickName = _nickName_textfield.text;
         NSLog(@"my currentnickName  , %@",currentnickName);
-
+        
         NSString *myNickName = [hp getAtrributeValue:USER_NAME item:@"nicknameItem" attribute:@"nicknameAttribute"];
-
+        
         [hp updateAtrribute:USER_NAME item:@"nicknameItem" attribute:@"nicknameAttribute" newValue:currentnickName];
         while(![myNickName isEqualToString:currentnickName]){
             myNickName = [hp getAtrributeValue:USER_NAME item:@"nicknameItem" attribute:@"nicknameAttribute"];
             [hp updateAtrribute:USER_NAME item:@"nicknameItem" attribute:@"nicknameAttribute" newValue:currentnickName];
         }
-            dispatch_async(dispatch_get_main_queue(),^{
-
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"update success" delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
-        
-            [alert show];
+        dispatch_async(dispatch_get_main_queue(),^{
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"update success" delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
             [self performSelector:@selector(stopRKLoading) withObject:nil];
+            [alert show];
+            
             [self performSelector:@selector(dismissAlert:) withObject:alert afterDelay:1.0f];
         });
     });
-    [loadingAnimation showHUDAddedTo:self.view animated:YES];
-    
-    //Call the method to hide the Indicator after 3 seconds
-    [self performSelector:@selector(stopRKLoading) withObject:nil];
-}
--(void)dismissAlert:(UIAlertView *) alertView
-{
-    [alertView dismissWithClickedButtonIndex:nil animated:YES];
+
 }
 -(void)stopRKLoading
 {
     [loadingAnimation hideHUDForView:self.view animated:YES];
 }
+-(void)dismissKeyboard {
+    [self.nickName_textfield resignFirstResponder];
+}
+
 
 @end
