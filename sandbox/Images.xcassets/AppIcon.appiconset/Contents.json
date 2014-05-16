@@ -3,55 +3,55 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "eat2gether58.fw.png",
+      "filename" : "58_58.fw.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "eat2gether80.fw.png",
+      "filename" : "80_80.fw-1.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "eat2gether60.fw.png",
+      "filename" : "120_120.fw.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "eat2gether29.fw-1.png",
+      "filename" : "29_29.fw.png",
       "scale" : "1x"
     },
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "eat2gether58.fw-1.png",
+      "filename" : "58_58.fw-1.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "eat2gether40.fw-1.png",
+      "filename" : "40_40.fw.png",
       "scale" : "1x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "eat2gether80.fw-1.png",
+      "filename" : "80_80.fw.png",
       "scale" : "2x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "eat2gether76.fw-1.png",
+      "filename" : "76_76.fw.png",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "eat2gether152.fw.png",
+      "filename" : "152_152.fw.png",
       "scale" : "2x"
     }
   ],

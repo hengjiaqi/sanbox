@@ -51,6 +51,8 @@
 		23F3EB8518D6C7460075819D /* sandboxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB8418D6C7460075819D /* sandboxTests.m */; };
 		23F3EB8F18D6C7680075819D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F3EB8E18D6C7680075819D /* Storyboard.storyboard */; };
 		23F3EB9218D6C7B50075819D /* T0logInPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB9118D6C7B50075819D /* T0logInPage.m */; };
+		BE21D71019259774005FF0AA /* fl30.png in Resources */ = {isa = PBXBuildFile; fileRef = BE21D70F19259774005FF0AA /* fl30.png */; };
+		BE21D712192597A4005FF0AA /* fl301.png in Resources */ = {isa = PBXBuildFile; fileRef = BE21D711192597A4005FF0AA /* fl301.png */; };
 		BE3CB6C118ECF396008CCC62 /* T3changePreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3CB6C018ECF396008CCC62 /* T3changePreferenceViewController.m */; };
 		BE43CBEA1922A20D00E10293 /* 123TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43CBE91922A20D00E10293 /* 123TableViewController.m */; };
 		BE47CFC918E8F62300503842 /* T3changeAvailableTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE47CFC818E8F62300503842 /* T3changeAvailableTimeViewController.m */; };
@@ -137,6 +139,8 @@
 		23F3EB8E18D6C7680075819D /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = ../Storyboard.storyboard; sourceTree = "<group>"; };
 		23F3EB9018D6C7B50075819D /* T0logInPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T0logInPage.h; sourceTree = "<group>"; };
 		23F3EB9118D6C7B50075819D /* T0logInPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T0logInPage.m; sourceTree = "<group>"; };
+		BE21D70F19259774005FF0AA /* fl30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fl30.png; sourceTree = "<group>"; };
+		BE21D711192597A4005FF0AA /* fl301.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fl301.png; sourceTree = "<group>"; };
 		BE3CB6BF18ECF396008CCC62 /* T3changePreferenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3changePreferenceViewController.h; sourceTree = "<group>"; };
 		BE3CB6C018ECF396008CCC62 /* T3changePreferenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3changePreferenceViewController.m; sourceTree = "<group>"; };
 		BE43CBE81922A20D00E10293 /* 123TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 123TableViewController.h; sourceTree = "<group>"; };
@@ -244,10 +248,12 @@
 				23F3EB6E18D6C7460075819D /* AppDelegate.h */,
 				23F3EB6F18D6C7460075819D /* AppDelegate.m */,
 				23CF983818FD04D700D9A452 /* checkBox.png */,
+				BE21D70F19259774005FF0AA /* fl30.png */,
 				23CF983918FD04D700D9A452 /* checkBox@2x.png */,
 				23CF984118FD06F100D9A452 /* checkbox_checked.png */,
 				23CF984018FD06F100D9A452 /* checkbox_normal.png */,
 				23CF983A18FD04D700D9A452 /* checkBoxMarked.png */,
+				BE21D711192597A4005FF0AA /* fl301.png */,
 				23CF983B18FD04D700D9A452 /* checkBoxMarked@2x.png */,
 				23E8D9CC18E34A7D0092A1C3 /* FriendList.h */,
 				23E8D9CD18E34A7D0092A1C3 /* FriendList.m */,
@@ -422,8 +428,10 @@
 				23F3EB6A18D6C7460075819D /* InfoPlist.strings in Resources */,
 				23F3EB7218D6C7460075819D /* Images.xcassets in Resources */,
 				23CF983C18FD04D700D9A452 /* checkBox.png in Resources */,
+				BE21D71019259774005FF0AA /* fl30.png in Resources */,
 				23CF984218FD06F100D9A452 /* checkbox_normal.png in Resources */,
 				23CF983F18FD04D700D9A452 /* checkBoxMarked@2x.png in Resources */,
+				BE21D712192597A4005FF0AA /* fl301.png in Resources */,
 				23F3EB8F18D6C7680075819D /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
