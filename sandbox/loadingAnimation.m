@@ -1,10 +1,5 @@
 //
-//  loadingAnimation.m
-//  iOS7StyleLoading
-//
-//  Created by raj on 15/12/13.
-//  Copyright (c) 2013 iPhone. All rights reserved.
-//
+
 
 //We are going to see how easy is to display and hide the  indicator with just single line of code in your ViewControllers.
 #import "loadingAnimation.h"
@@ -28,7 +23,7 @@
     [view addSubview:hud];
     float height = [[UIScreen mainScreen] bounds].size.height;
     float width = [[UIScreen mainScreen] bounds].size.width;
-    CGPoint center = CGPointMake(width/2, height/2);
+    CGPoint center = CGPointMake(width/2, height/2-50);
     hud.center = center;
 	return hud;
 }
