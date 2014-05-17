@@ -28,7 +28,9 @@
     NSLog(@"%@", userPhoneNumber);
     NSString *passwordFromDB = @"";
     if (userPhoneNumber != nil) {
-        passwordFromDB = [hp getAtrributeValue:userPhoneNumber item:@"passwordItem" attribute:@"passwordAttribute"];
+        if ([hp hasDomain:userPhoneNumber]) {
+            passwordFromDB = [hp getAtrributeValue:userPhoneNumber item:@"passwordItem" attribute:@"passwordAttribute"];
+        }
     }
     if (![defaults boolForKey:@"logged_in"] || ![passwordFromDB isEqualToString:userPassword] || userPhoneNumber == nil) {
         [self performSegueWithIdentifier:@"startFromLoginPage" sender:self];

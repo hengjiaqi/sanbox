@@ -22,4 +22,6 @@
               attributeName:(NSString*)attributeName attributeValue:(NSString*) attributeValue;
 -(BOOL) hasAttributes: (NSString*) domainName item:(NSString*) itemName attributeName:(NSString*) attributeName;
 
+-(BOOL) hasDomain: (NSString*) domainName;
+
 @end

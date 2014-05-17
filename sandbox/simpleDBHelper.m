@@ -115,4 +115,35 @@
     return result;
 }
 
+
+
+-(BOOL) hasDomain:(NSString *)domainName{
+    NSMutableArray *domains;
+    SimpleDBListDomainsRequest *listDoaminRequest = [[SimpleDBListDomainsRequest alloc]init];
+    SimpleDBListDomainsResponse *listDomainResponse = [[AmazonClientManager sdb] listDomains:listDoaminRequest];
+    if (listDomainResponse.error != nil) {
+        NSLog(@"Error: @%", listDomainResponse.error);
+    }
+    if (domains == nil) {
+        domains = [[NSMutableArray alloc] initWithCapacity:[listDomainResponse.domainNames count]];
+    }
+    else {
+        [domains removeAllObjects];
+    }
+    
+    for (NSString *name in listDomainResponse.domainNames) {
+        [domains addObject:name];
+    }
+    
+    [domains sortUsingSelector:@selector(compare:)];
+    
+    bool exist = [domains containsObject:domainName];
+    return exist;
+    
+    
+}
+
+
+
+
 @end
