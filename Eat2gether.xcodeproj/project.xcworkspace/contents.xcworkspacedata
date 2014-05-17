@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:sandbox.xcodeproj">
+      location = "self:Eat2gether.xcodeproj">
    </FileRef>
 </Workspace>

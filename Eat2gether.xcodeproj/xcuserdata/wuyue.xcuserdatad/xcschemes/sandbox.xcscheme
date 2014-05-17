@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "23F3EB5B18D6C7460075819D"
-               BuildableName = "sandbox.app"
-               BlueprintName = "sandbox"
-               ReferencedContainer = "container:sandbox.xcodeproj">
+               BuildableName = "Eat2gether.app"
+               BlueprintName = "Eat2gether"
+               ReferencedContainer = "container:Eat2gether.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "23F3EB7618D6C7460075819D"
-               BuildableName = "sandboxTests.xctest"
-               BlueprintName = "sandboxTests"
-               ReferencedContainer = "container:sandbox.xcodeproj">
+               BuildableName = "Eat2getherTests.xctest"
+               BlueprintName = "Eat2getherTests"
+               ReferencedContainer = "container:Eat2gether.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "23F3EB5B18D6C7460075819D"
-            BuildableName = "sandbox.app"
-            BlueprintName = "sandbox"
-            ReferencedContainer = "container:sandbox.xcodeproj">
+            BuildableName = "Eat2gether.app"
+            BlueprintName = "Eat2gether"
+            ReferencedContainer = "container:Eat2gether.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "23F3EB5B18D6C7460075819D"
-            BuildableName = "sandbox.app"
-            BlueprintName = "sandbox"
-            ReferencedContainer = "container:sandbox.xcodeproj">
+            BuildableName = "Eat2gether.app"
+            BlueprintName = "Eat2gether"
+            ReferencedContainer = "container:Eat2gether.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "23F3EB5B18D6C7460075819D"
-            BuildableName = "sandbox.app"
-            BlueprintName = "sandbox"
-            ReferencedContainer = "container:sandbox.xcodeproj">
+            BuildableName = "Eat2gether.app"
+            BlueprintName = "Eat2gether"
+            ReferencedContainer = "container:Eat2gether.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

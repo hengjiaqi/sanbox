@@ -51,8 +51,6 @@
 		23F3EB8518D6C7460075819D /* sandboxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB8418D6C7460075819D /* sandboxTests.m */; };
 		23F3EB8F18D6C7680075819D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F3EB8E18D6C7680075819D /* Storyboard.storyboard */; };
 		23F3EB9218D6C7B50075819D /* T0logInPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3EB9118D6C7B50075819D /* T0logInPage.m */; };
-		BE21D71019259774005FF0AA /* fl30.png in Resources */ = {isa = PBXBuildFile; fileRef = BE21D70F19259774005FF0AA /* fl30.png */; };
-		BE21D712192597A4005FF0AA /* fl301.png in Resources */ = {isa = PBXBuildFile; fileRef = BE21D711192597A4005FF0AA /* fl301.png */; };
 		BE3CB6C118ECF396008CCC62 /* T3changePreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3CB6C018ECF396008CCC62 /* T3changePreferenceViewController.m */; };
 		BE43CBEA1922A20D00E10293 /* 123TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43CBE91922A20D00E10293 /* 123TableViewController.m */; };
 		BE47CFC918E8F62300503842 /* T3changeAvailableTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE47CFC818E8F62300503842 /* T3changeAvailableTimeViewController.m */; };
@@ -63,6 +61,11 @@
 		BE941BFF1910AEE400E465F7 /* loadingAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE941BFE1910AEE400E465F7 /* loadingAnimation.m */; };
 		BE941C011910B07900E465F7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE941C001910B07900E465F7 /* QuartzCore.framework */; };
 		BE941C041910B1EE00E465F7 /* UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = BE941C031910B1EE00E465F7 /* UIColor.m */; };
+		BE9796A61927173E002090C2 /* addfriends.png in Resources */ = {isa = PBXBuildFile; fileRef = BE9796A31927173E002090C2 /* addfriends.png */; };
+		BE9796A71927173E002090C2 /* Friendlist.png in Resources */ = {isa = PBXBuildFile; fileRef = BE9796A41927173E002090C2 /* Friendlist.png */; };
+		BE9796AA19271BF5002090C2 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = BE9796A919271BF5002090C2 /* profile.png */; };
+		BE9796AD19271D93002090C2 /* addfriends-1.png in Resources */ = {isa = PBXBuildFile; fileRef = BE9796AB19271D93002090C2 /* addfriends-1.png */; };
+		BE9796AE19271D93002090C2 /* Friendlist-1.png in Resources */ = {isa = PBXBuildFile; fileRef = BE9796AC19271D93002090C2 /* Friendlist-1.png */; };
 		BEBE44BB18E6911800929899 /* T3preferencepageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBE44BA18E6911800929899 /* T3preferencepageTableViewController.m */; };
 		BEBE44BE18E6915000929899 /* T3mepage.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBE44BD18E6915000929899 /* T3mepage.m */; };
 /* End PBXBuildFile section */
@@ -120,27 +123,25 @@
 		23E8D9CF18E34A7D0092A1C3 /* T1mainPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T1mainPage.m; sourceTree = "<group>"; };
 		23E8D9D018E34A7D0092A1C3 /* T2friendRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T2friendRequest.h; sourceTree = "<group>"; };
 		23E8D9D118E34A7D0092A1C3 /* T2friendRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T2friendRequest.m; sourceTree = "<group>"; };
-		23F3EB5C18D6C7460075819D /* sandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		23F3EB5C18D6C7460075819D /* Eat2gether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eat2gether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23F3EB5F18D6C7460075819D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		23F3EB6118D6C7460075819D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		23F3EB6318D6C7460075819D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		23F3EB6718D6C7460075819D /* sandbox-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "sandbox-Info.plist"; sourceTree = "<group>"; };
+		23F3EB6718D6C7460075819D /* Eat2gether-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Eat2gether-Info.plist"; sourceTree = "<group>"; };
 		23F3EB6918D6C7460075819D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		23F3EB6B18D6C7460075819D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		23F3EB6D18D6C7460075819D /* sandbox-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sandbox-Prefix.pch"; sourceTree = "<group>"; };
+		23F3EB6D18D6C7460075819D /* Eat2gether-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Eat2gether-Prefix.pch"; sourceTree = "<group>"; };
 		23F3EB6E18D6C7460075819D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		23F3EB6F18D6C7460075819D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		23F3EB7118D6C7460075819D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		23F3EB7718D6C7460075819D /* sandboxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sandboxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		23F3EB7718D6C7460075819D /* Eat2getherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Eat2getherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23F3EB7818D6C7460075819D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		23F3EB8018D6C7460075819D /* sandboxTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "sandboxTests-Info.plist"; sourceTree = "<group>"; };
+		23F3EB8018D6C7460075819D /* Eat2getherTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Eat2getherTests-Info.plist"; sourceTree = "<group>"; };
 		23F3EB8218D6C7460075819D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		23F3EB8418D6C7460075819D /* sandboxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = sandboxTests.m; sourceTree = "<group>"; };
 		23F3EB8E18D6C7680075819D /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = ../Storyboard.storyboard; sourceTree = "<group>"; };
 		23F3EB9018D6C7B50075819D /* T0logInPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T0logInPage.h; sourceTree = "<group>"; };
 		23F3EB9118D6C7B50075819D /* T0logInPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T0logInPage.m; sourceTree = "<group>"; };
-		BE21D70F19259774005FF0AA /* fl30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fl30.png; sourceTree = "<group>"; };
-		BE21D711192597A4005FF0AA /* fl301.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fl301.png; sourceTree = "<group>"; };
 		BE3CB6BF18ECF396008CCC62 /* T3changePreferenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3changePreferenceViewController.h; sourceTree = "<group>"; };
 		BE3CB6C018ECF396008CCC62 /* T3changePreferenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3changePreferenceViewController.m; sourceTree = "<group>"; };
 		BE43CBE81922A20D00E10293 /* 123TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 123TableViewController.h; sourceTree = "<group>"; };
@@ -160,6 +161,11 @@
 		BE941C001910B07900E465F7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BE941C021910B1EE00E465F7 /* UIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColor.h; sourceTree = "<group>"; };
 		BE941C031910B1EE00E465F7 /* UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColor.m; sourceTree = "<group>"; };
+		BE9796A31927173E002090C2 /* addfriends.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addfriends.png; path = ../../../../Desktop/tab/addfriends.png; sourceTree = "<group>"; };
+		BE9796A41927173E002090C2 /* Friendlist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Friendlist.png; path = ../../../../Desktop/tab/Friendlist.png; sourceTree = "<group>"; };
+		BE9796A919271BF5002090C2 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profile.png; path = ../../../../Desktop/tab/profile.png; sourceTree = "<group>"; };
+		BE9796AB19271D93002090C2 /* addfriends-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "addfriends-1.png"; path = "../../../../Desktop/tab/addfriends-1.png"; sourceTree = "<group>"; };
+		BE9796AC19271D93002090C2 /* Friendlist-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Friendlist-1.png"; path = "../../../../Desktop/tab/Friendlist-1.png"; sourceTree = "<group>"; };
 		BEBE44B918E6911800929899 /* T3preferencepageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3preferencepageTableViewController.h; sourceTree = "<group>"; };
 		BEBE44BA18E6911800929899 /* T3preferencepageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3preferencepageTableViewController.m; sourceTree = "<group>"; };
 		BEBE44BC18E6915000929899 /* T3mepage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3mepage.h; sourceTree = "<group>"; };
@@ -214,8 +220,8 @@
 		23F3EB5D18D6C7460075819D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				23F3EB5C18D6C7460075819D /* sandbox.app */,
-				23F3EB7718D6C7460075819D /* sandboxTests.xctest */,
+				23F3EB5C18D6C7460075819D /* Eat2gether.app */,
+				23F3EB7718D6C7460075819D /* Eat2getherTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -245,15 +251,18 @@
 		23F3EB6518D6C7460075819D /* sandbox */ = {
 			isa = PBXGroup;
 			children = (
+				BE9796A31927173E002090C2 /* addfriends.png */,
+				BE9796A41927173E002090C2 /* Friendlist.png */,
 				23F3EB6E18D6C7460075819D /* AppDelegate.h */,
+				BE9796A919271BF5002090C2 /* profile.png */,
 				23F3EB6F18D6C7460075819D /* AppDelegate.m */,
 				23CF983818FD04D700D9A452 /* checkBox.png */,
-				BE21D70F19259774005FF0AA /* fl30.png */,
 				23CF983918FD04D700D9A452 /* checkBox@2x.png */,
 				23CF984118FD06F100D9A452 /* checkbox_checked.png */,
 				23CF984018FD06F100D9A452 /* checkbox_normal.png */,
 				23CF983A18FD04D700D9A452 /* checkBoxMarked.png */,
-				BE21D711192597A4005FF0AA /* fl301.png */,
+				BE9796AB19271D93002090C2 /* addfriends-1.png */,
+				BE9796AC19271D93002090C2 /* Friendlist-1.png */,
 				23CF983B18FD04D700D9A452 /* checkBoxMarked@2x.png */,
 				23E8D9CC18E34A7D0092A1C3 /* FriendList.h */,
 				23E8D9CD18E34A7D0092A1C3 /* FriendList.m */,
@@ -316,10 +325,10 @@
 				23C645A918E205CE0097D968 /* Constants.h */,
 				23C645AA18E205CE0097D968 /* AmazonClientManager.h */,
 				23C645AB18E205CE0097D968 /* AmazonClientManager.m */,
-				23F3EB6718D6C7460075819D /* sandbox-Info.plist */,
+				23F3EB6718D6C7460075819D /* Eat2gether-Info.plist */,
 				23F3EB6818D6C7460075819D /* InfoPlist.strings */,
 				23F3EB6B18D6C7460075819D /* main.m */,
-				23F3EB6D18D6C7460075819D /* sandbox-Prefix.pch */,
+				23F3EB6D18D6C7460075819D /* Eat2gether-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -336,7 +345,7 @@
 		23F3EB7F18D6C7460075819D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				23F3EB8018D6C7460075819D /* sandboxTests-Info.plist */,
+				23F3EB8018D6C7460075819D /* Eat2getherTests-Info.plist */,
 				23F3EB8118D6C7460075819D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -345,9 +354,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		23F3EB5B18D6C7460075819D /* sandbox */ = {
+		23F3EB5B18D6C7460075819D /* Eat2gether */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 23F3EB8818D6C7460075819D /* Build configuration list for PBXNativeTarget "sandbox" */;
+			buildConfigurationList = 23F3EB8818D6C7460075819D /* Build configuration list for PBXNativeTarget "Eat2gether" */;
 			buildPhases = (
 				23F3EB5818D6C7460075819D /* Sources */,
 				23F3EB5918D6C7460075819D /* Frameworks */,
@@ -357,14 +366,14 @@
 			);
 			dependencies = (
 			);
-			name = sandbox;
+			name = Eat2gether;
 			productName = sandbox;
-			productReference = 23F3EB5C18D6C7460075819D /* sandbox.app */;
+			productReference = 23F3EB5C18D6C7460075819D /* Eat2gether.app */;
 			productType = "com.apple.product-type.application";
 		};
-		23F3EB7618D6C7460075819D /* sandboxTests */ = {
+		23F3EB7618D6C7460075819D /* Eat2getherTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 23F3EB8B18D6C7460075819D /* Build configuration list for PBXNativeTarget "sandboxTests" */;
+			buildConfigurationList = 23F3EB8B18D6C7460075819D /* Build configuration list for PBXNativeTarget "Eat2getherTests" */;
 			buildPhases = (
 				23F3EB7318D6C7460075819D /* Sources */,
 				23F3EB7418D6C7460075819D /* Frameworks */,
@@ -375,9 +384,9 @@
 			dependencies = (
 				23F3EB7D18D6C7460075819D /* PBXTargetDependency */,
 			);
-			name = sandboxTests;
+			name = Eat2getherTests;
 			productName = sandboxTests;
-			productReference = 23F3EB7718D6C7460075819D /* sandboxTests.xctest */;
+			productReference = 23F3EB7718D6C7460075819D /* Eat2getherTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -397,7 +406,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 23F3EB5718D6C7460075819D /* Build configuration list for PBXProject "sandbox" */;
+			buildConfigurationList = 23F3EB5718D6C7460075819D /* Build configuration list for PBXProject "Eat2gether" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -409,8 +418,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				23F3EB5B18D6C7460075819D /* sandbox */,
-				23F3EB7618D6C7460075819D /* sandboxTests */,
+				23F3EB5B18D6C7460075819D /* Eat2gether */,
+				23F3EB7618D6C7460075819D /* Eat2getherTests */,
 			);
 		};
 /* End PBXProject section */
@@ -420,19 +429,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE9796AD19271D93002090C2 /* addfriends-1.png in Resources */,
 				23A3B3CD1910FFC300D9BD4C /* iphone4@2x.png in Resources */,
+				BE9796A61927173E002090C2 /* addfriends.png in Resources */,
 				23CF984318FD06F100D9A452 /* checkbox_checked.png in Resources */,
+				BE9796A71927173E002090C2 /* Friendlist.png in Resources */,
+				BE9796AE19271D93002090C2 /* Friendlist-1.png in Resources */,
 				23CF983E18FD04D700D9A452 /* checkBoxMarked.png in Resources */,
 				23CF983D18FD04D700D9A452 /* checkBox@2x.png in Resources */,
 				23A3B3CE1910FFC300D9BD4C /* iphone5@2x.png in Resources */,
 				23F3EB6A18D6C7460075819D /* InfoPlist.strings in Resources */,
 				23F3EB7218D6C7460075819D /* Images.xcassets in Resources */,
 				23CF983C18FD04D700D9A452 /* checkBox.png in Resources */,
-				BE21D71019259774005FF0AA /* fl30.png in Resources */,
 				23CF984218FD06F100D9A452 /* checkbox_normal.png in Resources */,
 				23CF983F18FD04D700D9A452 /* checkBoxMarked@2x.png in Resources */,
-				BE21D712192597A4005FF0AA /* fl301.png in Resources */,
 				23F3EB8F18D6C7680075819D /* Storyboard.storyboard in Resources */,
+				BE9796AA19271BF5002090C2 /* profile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,7 +505,7 @@
 /* Begin PBXTargetDependency section */
 		23F3EB7D18D6C7460075819D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 23F3EB5B18D6C7460075819D /* sandbox */;
+			target = 23F3EB5B18D6C7460075819D /* Eat2gether */;
 			targetProxy = 23F3EB7C18D6C7460075819D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -602,16 +614,16 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "sandbox/sandbox-Prefix.pch";
+				GCC_PREFIX_HEADER = "sandbox/Eat2gether-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
-				INFOPLIST_FILE = "sandbox/sandbox-Info.plist";
+				INFOPLIST_FILE = "sandbox/Eat2gether-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Eat2gether;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -630,16 +642,16 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "sandbox/sandbox-Prefix.pch";
+				GCC_PREFIX_HEADER = "sandbox/Eat2gether-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
-				INFOPLIST_FILE = "sandbox/sandbox-Info.plist";
+				INFOPLIST_FILE = "sandbox/Eat2gether-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Eat2gether;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -661,8 +673,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "sandboxTests/sandboxTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "sandboxTests/Eat2getherTests-Info.plist";
+				PRODUCT_NAME = Eat2getherTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -679,8 +691,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sandbox/sandbox-Prefix.pch";
-				INFOPLIST_FILE = "sandboxTests/sandboxTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "sandboxTests/Eat2getherTests-Info.plist";
+				PRODUCT_NAME = Eat2getherTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -689,7 +701,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		23F3EB5718D6C7460075819D /* Build configuration list for PBXProject "sandbox" */ = {
+		23F3EB5718D6C7460075819D /* Build configuration list for PBXProject "Eat2gether" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				23F3EB8618D6C7460075819D /* Debug */,
@@ -698,7 +710,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		23F3EB8818D6C7460075819D /* Build configuration list for PBXNativeTarget "sandbox" */ = {
+		23F3EB8818D6C7460075819D /* Build configuration list for PBXNativeTarget "Eat2gether" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				23F3EB8918D6C7460075819D /* Debug */,
@@ -707,7 +719,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		23F3EB8B18D6C7460075819D /* Build configuration list for PBXNativeTarget "sandboxTests" */ = {
+		23F3EB8B18D6C7460075819D /* Build configuration list for PBXNativeTarget "Eat2getherTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				23F3EB8C18D6C7460075819D /* Debug */,
