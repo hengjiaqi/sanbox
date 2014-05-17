@@ -102,14 +102,13 @@ FriendList *currentFriend;
         [onlineFriendList removeAllObjects];
     }
     simpleDBHelper *hp = [[simpleDBHelper alloc]init];
+        int numberOfOnlineFriends = 0;
     for (SimpleDBAttribute *attr in response.attributes) {
         if (![attr.name isEqualToString:@"2060000000"]) {
-        NSLog(@"number to search is %@", attr.name);
-        NSString *startTime = [hp getAtrributeValue:attr.name item:@"availbilityItem" attribute:@"startTimeAttribute"];
-        NSString *endTime = [hp getAtrributeValue:attr.name item:@"availbilityItem" attribute:@"endTimeAttribute"];
-        FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:attr.value onLineorNot:(YES) number:attr.name start:startTime end:endTime];
-            
-            
+            NSString *startTime = [hp getAtrributeValue:attr.name item:@"availbilityItem" attribute:@"startTimeAttribute"];
+            NSString *endTime = [hp getAtrributeValue:attr.name item:@"availbilityItem" attribute:@"endTimeAttribute"];
+            FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:attr.value onLineorNot:(YES) number:attr.name start:startTime end:endTime];
+            numberOfOnlineFriends++;
             // DON'T DELETE!!!!!!!!!!!!!!!!!!!!
             /*
             if (onlineFriendList.count > 0) {
@@ -156,16 +155,28 @@ FriendList *currentFriend;
     else {
         [offlineFriendList removeAllObjects];
     }
-    int count = 0;
+    int numberOfOfflineFriends = 0;
+        
     for (SimpleDBAttribute *attr in response2.attributes) {
         FriendList *myOfflineFriendListelement = [[FriendList alloc]initWithName:attr.value onLineorNot:(NO) number:attr.name];
         if (![myOfflineFriendListelement.phoneNumber isEqualToString:@"2060000000"]) {
             [offlineFriendList addObject:myOfflineFriendListelement];
-            count++;
+            numberOfOfflineFriends++;
         }
         
     }
-    NSLog(@"RESPONSE2 IS %d", count);
+        
+    //self checking mode
+    NSMutableArray *allFrindsNumber = [hp getAllAttributeNames:USER_NAME item:@"friendListItem"];
+    if (numberOfOnlineFriends + numberOfOfflineFriends < allFrindsNumber.count - 1) {
+            //self checking mode is enabled.
+        for(int i = 0; i < onlineFriendList.count; i++){
+            FriendList *element = [onlineFriendList objectAtIndex:i];
+            
+        }
+        
+        
+    }
     dispatch_async(dispatch_get_main_queue(),^{
     //add all of them to the table view
     self.FriendListelements =[[NSMutableArray alloc]init];

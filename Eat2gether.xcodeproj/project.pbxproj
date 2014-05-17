@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		230F31151928027A00DAED12 /* Friendlist-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 230F31121928027A00DAED12 /* Friendlist-1.png */; };
+		230F31161928027A00DAED12 /* addfriends-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 230F31131928027A00DAED12 /* addfriends-1.png */; };
+		230F31171928027A00DAED12 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 230F31141928027A00DAED12 /* profile.png */; };
 		232D08C618EB3124008798A0 /* T2searchFriendPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 232D08C518EB3124008798A0 /* T2searchFriendPage.m */; };
 		2341E9E7191CAA7F007EB736 /* T0initialPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2341E9E6191CAA7F007EB736 /* T0initialPage.m */; };
 		2341E9E9191CB2BD007EB736 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2341E9E8191CB2BD007EB736 /* Security.framework */; };
@@ -61,11 +64,6 @@
 		BE941BFF1910AEE400E465F7 /* loadingAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE941BFE1910AEE400E465F7 /* loadingAnimation.m */; };
 		BE941C011910B07900E465F7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE941C001910B07900E465F7 /* QuartzCore.framework */; };
 		BE941C041910B1EE00E465F7 /* UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = BE941C031910B1EE00E465F7 /* UIColor.m */; };
-		BE9796A61927173E002090C2 /* addfriends.png in Resources */ = {isa = PBXBuildFile; fileRef = BE9796A31927173E002090C2 /* addfriends.png */; };
-		BE9796A71927173E002090C2 /* Friendlist.png in Resources */ = {isa = PBXBuildFile; fileRef = BE9796A41927173E002090C2 /* Friendlist.png */; };
-		BE9796AA19271BF5002090C2 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = BE9796A919271BF5002090C2 /* profile.png */; };
-		BE9796AD19271D93002090C2 /* addfriends-1.png in Resources */ = {isa = PBXBuildFile; fileRef = BE9796AB19271D93002090C2 /* addfriends-1.png */; };
-		BE9796AE19271D93002090C2 /* Friendlist-1.png in Resources */ = {isa = PBXBuildFile; fileRef = BE9796AC19271D93002090C2 /* Friendlist-1.png */; };
 		BEBE44BB18E6911800929899 /* T3preferencepageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBE44BA18E6911800929899 /* T3preferencepageTableViewController.m */; };
 		BEBE44BE18E6915000929899 /* T3mepage.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBE44BD18E6915000929899 /* T3mepage.m */; };
 /* End PBXBuildFile section */
@@ -81,6 +79,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		230F31121928027A00DAED12 /* Friendlist-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Friendlist-1.png"; path = "../../../Friendlist-1.png"; sourceTree = "<group>"; };
+		230F31131928027A00DAED12 /* addfriends-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "addfriends-1.png"; path = "../../../addfriends-1.png"; sourceTree = "<group>"; };
+		230F31141928027A00DAED12 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profile.png; path = ../../../profile.png; sourceTree = "<group>"; };
 		232D08C418EB3124008798A0 /* T2searchFriendPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = T2searchFriendPage.h; path = ../T2searchFriendPage.h; sourceTree = "<group>"; };
 		232D08C518EB3124008798A0 /* T2searchFriendPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = T2searchFriendPage.m; path = ../T2searchFriendPage.m; sourceTree = "<group>"; };
 		2341E9E5191CAA7F007EB736 /* T0initialPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T0initialPage.h; sourceTree = "<group>"; };
@@ -161,11 +162,6 @@
 		BE941C001910B07900E465F7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BE941C021910B1EE00E465F7 /* UIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColor.h; sourceTree = "<group>"; };
 		BE941C031910B1EE00E465F7 /* UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColor.m; sourceTree = "<group>"; };
-		BE9796A31927173E002090C2 /* addfriends.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addfriends.png; path = ../../../../Desktop/tab/addfriends.png; sourceTree = "<group>"; };
-		BE9796A41927173E002090C2 /* Friendlist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Friendlist.png; path = ../../../../Desktop/tab/Friendlist.png; sourceTree = "<group>"; };
-		BE9796A919271BF5002090C2 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profile.png; path = ../../../../Desktop/tab/profile.png; sourceTree = "<group>"; };
-		BE9796AB19271D93002090C2 /* addfriends-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "addfriends-1.png"; path = "../../../../Desktop/tab/addfriends-1.png"; sourceTree = "<group>"; };
-		BE9796AC19271D93002090C2 /* Friendlist-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Friendlist-1.png"; path = "../../../../Desktop/tab/Friendlist-1.png"; sourceTree = "<group>"; };
 		BEBE44B918E6911800929899 /* T3preferencepageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3preferencepageTableViewController.h; sourceTree = "<group>"; };
 		BEBE44BA18E6911800929899 /* T3preferencepageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3preferencepageTableViewController.m; sourceTree = "<group>"; };
 		BEBE44BC18E6915000929899 /* T3mepage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3mepage.h; sourceTree = "<group>"; };
@@ -251,18 +247,16 @@
 		23F3EB6518D6C7460075819D /* sandbox */ = {
 			isa = PBXGroup;
 			children = (
-				BE9796A31927173E002090C2 /* addfriends.png */,
-				BE9796A41927173E002090C2 /* Friendlist.png */,
+				230F31121928027A00DAED12 /* Friendlist-1.png */,
+				230F31131928027A00DAED12 /* addfriends-1.png */,
+				230F31141928027A00DAED12 /* profile.png */,
 				23F3EB6E18D6C7460075819D /* AppDelegate.h */,
-				BE9796A919271BF5002090C2 /* profile.png */,
 				23F3EB6F18D6C7460075819D /* AppDelegate.m */,
 				23CF983818FD04D700D9A452 /* checkBox.png */,
 				23CF983918FD04D700D9A452 /* checkBox@2x.png */,
 				23CF984118FD06F100D9A452 /* checkbox_checked.png */,
 				23CF984018FD06F100D9A452 /* checkbox_normal.png */,
 				23CF983A18FD04D700D9A452 /* checkBoxMarked.png */,
-				BE9796AB19271D93002090C2 /* addfriends-1.png */,
-				BE9796AC19271D93002090C2 /* Friendlist-1.png */,
 				23CF983B18FD04D700D9A452 /* checkBoxMarked@2x.png */,
 				23E8D9CC18E34A7D0092A1C3 /* FriendList.h */,
 				23E8D9CD18E34A7D0092A1C3 /* FriendList.m */,
@@ -429,22 +423,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE9796AD19271D93002090C2 /* addfriends-1.png in Resources */,
 				23A3B3CD1910FFC300D9BD4C /* iphone4@2x.png in Resources */,
-				BE9796A61927173E002090C2 /* addfriends.png in Resources */,
 				23CF984318FD06F100D9A452 /* checkbox_checked.png in Resources */,
-				BE9796A71927173E002090C2 /* Friendlist.png in Resources */,
-				BE9796AE19271D93002090C2 /* Friendlist-1.png in Resources */,
 				23CF983E18FD04D700D9A452 /* checkBoxMarked.png in Resources */,
 				23CF983D18FD04D700D9A452 /* checkBox@2x.png in Resources */,
 				23A3B3CE1910FFC300D9BD4C /* iphone5@2x.png in Resources */,
+				230F31161928027A00DAED12 /* addfriends-1.png in Resources */,
 				23F3EB6A18D6C7460075819D /* InfoPlist.strings in Resources */,
 				23F3EB7218D6C7460075819D /* Images.xcassets in Resources */,
 				23CF983C18FD04D700D9A452 /* checkBox.png in Resources */,
 				23CF984218FD06F100D9A452 /* checkbox_normal.png in Resources */,
+				230F31151928027A00DAED12 /* Friendlist-1.png in Resources */,
 				23CF983F18FD04D700D9A452 /* checkBoxMarked@2x.png in Resources */,
 				23F3EB8F18D6C7680075819D /* Storyboard.storyboard in Resources */,
-				BE9796AA19271BF5002090C2 /* profile.png in Resources */,
+				230F31171928027A00DAED12 /* profile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
