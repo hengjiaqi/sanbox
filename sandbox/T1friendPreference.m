@@ -81,7 +81,7 @@ simpleDBHelper *hp;
             }
             if([hp hasAttributes:self.friendPhoneNumber item:@"offlineFriendListItem" attributeName:USER_NAME]){
                 [hp deleteAttributePair:self.friendPhoneNumber item:@"offlineFriendListItem" attributeName:USER_NAME attributeValue:myNickName];
-                [hp addAtrribute:self.friendPhoneNumber item:@"onlineFriendListItem" attribute:USER_NAME value:myNickName];
+                [hp addAtrribute:self.friendPhoneNumber item:@"offlineFriendListItem" attribute:USER_NAME value:myNickName];
             }
         }
         
