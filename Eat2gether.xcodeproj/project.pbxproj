@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		230F31151928027A00DAED12 /* Friendlist-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 230F31121928027A00DAED12 /* Friendlist-1.png */; };
-		230F31161928027A00DAED12 /* addfriends-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 230F31131928027A00DAED12 /* addfriends-1.png */; };
-		230F31171928027A00DAED12 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 230F31141928027A00DAED12 /* profile.png */; };
+		230F311B1928054F00DAED12 /* Friendlist-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 230F31181928054F00DAED12 /* Friendlist-1.png */; };
+		230F311C1928054F00DAED12 /* addfriends-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 230F31191928054F00DAED12 /* addfriends-1.png */; };
+		230F311D1928054F00DAED12 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 230F311A1928054F00DAED12 /* profile.png */; };
 		232D08C618EB3124008798A0 /* T2searchFriendPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 232D08C518EB3124008798A0 /* T2searchFriendPage.m */; };
 		2341E9E7191CAA7F007EB736 /* T0initialPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2341E9E6191CAA7F007EB736 /* T0initialPage.m */; };
 		2341E9E9191CB2BD007EB736 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2341E9E8191CB2BD007EB736 /* Security.framework */; };
@@ -79,9 +79,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		230F31121928027A00DAED12 /* Friendlist-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Friendlist-1.png"; path = "../../../Friendlist-1.png"; sourceTree = "<group>"; };
-		230F31131928027A00DAED12 /* addfriends-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "addfriends-1.png"; path = "../../../addfriends-1.png"; sourceTree = "<group>"; };
-		230F31141928027A00DAED12 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profile.png; path = ../../../profile.png; sourceTree = "<group>"; };
+		230F31181928054F00DAED12 /* Friendlist-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Friendlist-1.png"; sourceTree = "<group>"; };
+		230F31191928054F00DAED12 /* addfriends-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addfriends-1.png"; sourceTree = "<group>"; };
+		230F311A1928054F00DAED12 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		232D08C418EB3124008798A0 /* T2searchFriendPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = T2searchFriendPage.h; path = ../T2searchFriendPage.h; sourceTree = "<group>"; };
 		232D08C518EB3124008798A0 /* T2searchFriendPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = T2searchFriendPage.m; path = ../T2searchFriendPage.m; sourceTree = "<group>"; };
 		2341E9E5191CAA7F007EB736 /* T0initialPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T0initialPage.h; sourceTree = "<group>"; };
@@ -247,9 +247,9 @@
 		23F3EB6518D6C7460075819D /* sandbox */ = {
 			isa = PBXGroup;
 			children = (
-				230F31121928027A00DAED12 /* Friendlist-1.png */,
-				230F31131928027A00DAED12 /* addfriends-1.png */,
-				230F31141928027A00DAED12 /* profile.png */,
+				230F31181928054F00DAED12 /* Friendlist-1.png */,
+				230F31191928054F00DAED12 /* addfriends-1.png */,
+				230F311A1928054F00DAED12 /* profile.png */,
 				23F3EB6E18D6C7460075819D /* AppDelegate.h */,
 				23F3EB6F18D6C7460075819D /* AppDelegate.m */,
 				23CF983818FD04D700D9A452 /* checkBox.png */,
@@ -428,15 +428,15 @@
 				23CF983E18FD04D700D9A452 /* checkBoxMarked.png in Resources */,
 				23CF983D18FD04D700D9A452 /* checkBox@2x.png in Resources */,
 				23A3B3CE1910FFC300D9BD4C /* iphone5@2x.png in Resources */,
-				230F31161928027A00DAED12 /* addfriends-1.png in Resources */,
+				230F311C1928054F00DAED12 /* addfriends-1.png in Resources */,
 				23F3EB6A18D6C7460075819D /* InfoPlist.strings in Resources */,
 				23F3EB7218D6C7460075819D /* Images.xcassets in Resources */,
 				23CF983C18FD04D700D9A452 /* checkBox.png in Resources */,
 				23CF984218FD06F100D9A452 /* checkbox_normal.png in Resources */,
-				230F31151928027A00DAED12 /* Friendlist-1.png in Resources */,
+				230F311B1928054F00DAED12 /* Friendlist-1.png in Resources */,
 				23CF983F18FD04D700D9A452 /* checkBoxMarked@2x.png in Resources */,
 				23F3EB8F18D6C7680075819D /* Storyboard.storyboard in Resources */,
-				230F31171928027A00DAED12 /* profile.png in Resources */,
+				230F311D1928054F00DAED12 /* profile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

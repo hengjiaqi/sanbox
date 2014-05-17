@@ -172,6 +172,9 @@ FriendList *currentFriend;
             //self checking mode is enabled.
         for(int i = 0; i < onlineFriendList.count; i++){
             FriendList *element = [onlineFriendList objectAtIndex:i];
+            if (![allFrindsNumber containsObject:element.phoneNumber]) {
+                
+            }
             
         }
         
