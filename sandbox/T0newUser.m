@@ -43,14 +43,14 @@ NSMutableArray *domains;
     SimpleDBDeleteAttributesRequest *request = [[SimpleDBDeleteAttributesRequest alloc] initWithDomainName:@"2069723264" andItemName:@"friendListItem" andAttributes:remove];
     [sdb deleteAttributes:request];
      */
+    
     /*
-     
     AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
-     SimpleDBDeleteDomainRequest *request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000001"];
+     SimpleDBDeleteDomainRequest *request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2066176882"];
      [sdb deleteDomain:request];
-    request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000002"];
+    request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2068888888"];
     [sdb deleteDomain:request];
-    request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000003"];
+    request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2063848715"];
     [sdb deleteDomain:request];
     */
     // Do any additional setup after loading the view.

@@ -67,6 +67,7 @@ simpleDBHelper *hp;
         self.friendAvailablity = startTime;
         self.friendPreference = [hp getAtrributeValue:self.friendPhoneNumber item:@"preferenceItem" attribute:@"preferenceAttribute"];
         self.isalwaysUnavailable = [hp hasAttributes:USER_NAME item:@"beUnavailableToListItem" attributeName:self.friendPhoneNumber];
+        /*
         if (self.isalwaysUnavailable) {
             
             [hp addAtrribute:USER_NAME item:@"beUnavailableToListItem" attribute:self.friendPhoneNumber value:self.friendNickName];
@@ -84,7 +85,7 @@ simpleDBHelper *hp;
                 [hp addAtrribute:self.friendPhoneNumber item:@"offlineFriendListItem" attribute:USER_NAME value:myNickName];
             }
         }
-        
+        */
         dispatch_async(dispatch_get_main_queue(),^{
             //add all of them to the table view
             if ([self.onlineORoffline isEqualToString:@"online"]) {

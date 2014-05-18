@@ -74,6 +74,27 @@
     return response.attributes;
 }
 
+
+-(NSMutableArray*) getAllDomains{
+    NSMutableArray *domains;
+    SimpleDBListDomainsRequest *listDoaminRequest = [[SimpleDBListDomainsRequest alloc]init];
+    SimpleDBListDomainsResponse *listDomainResponse = [[AmazonClientManager sdb] listDomains:listDoaminRequest];
+    if (listDomainResponse.error != nil) {
+        NSLog(@"Error: @%", listDomainResponse.error);
+    }
+    if (domains == nil) {
+        domains = [[NSMutableArray alloc] initWithCapacity:[listDomainResponse.domainNames count]];
+    }
+    else {
+        [domains removeAllObjects];
+    }
+    
+    for (NSString *name in listDomainResponse.domainNames) {
+        [domains addObject:name];
+    }
+    return domains;
+}
+
 -(NSMutableArray*) getAllAttributeNames: (NSString*) domainName item:(NSString*) itemName{
     SimpleDBGetAttributesRequest *gar = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:domainName andItemName:itemName];
     SimpleDBGetAttributesResponse *response = [[AmazonClientManager sdb] getAttributes:gar];

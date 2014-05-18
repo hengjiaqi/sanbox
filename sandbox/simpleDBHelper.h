@@ -18,6 +18,9 @@
 -(NSMutableArray*) getAllAttributes: (NSString*) domainName item:(NSString*) itemName;
 -(NSMutableArray*) getAllAttributeNames: (NSString*) domainName item:(NSString*) itemName;
 
+-(NSMutableArray*) getAllDomains;
+
+
 -(void) deleteAttributePair: (NSString*) domainName item:(NSString*)itemName
               attributeName:(NSString*)attributeName attributeValue:(NSString*) attributeValue;
 -(BOOL) hasAttributes: (NSString*) domainName item:(NSString*) itemName attributeName:(NSString*) attributeName;

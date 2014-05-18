@@ -305,37 +305,58 @@ UIButton *btnDone;
             //Call the method to hide the Indicator after 3 seconds
             [self performSelector:@selector(stopRKLoading) withObject:nil];
         }else{
-            cell.textLabel.textColor = [UIColor redColor];
-            cell.textLabel.text = @"Make Me Unavailable";
-            availableFromDefault = @"online";
-            [defaults setObject:@"online" forKey:@"USER_SWITCH_DEFAULT"];
-            [loadingAnimation showHUDAddedTo:self.view animated:YES];
-            _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-            dispatch_async(_queue, ^{
-            [hp updateAtrribute:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute" newValue:@"online"];
-            NSString *dummy = [hp getAtrributeValue:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute"];
-            while ([dummy isEqualToString:@"offline"]) {
-                dummy = [hp getAtrributeValue:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute"];
-                [hp updateAtrribute:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute" newValue:@"online"];
+            BOOL valid = NO;
+            if (startTimeFromDefault.length < 9) {
+                valid = YES;
             }
-            //upload start time and end time to AWS
-            [hp updateAtrribute:USER_NAME item:@"availbilityItem" attribute:@"startTimeAttribute" newValue:startTimeFromDefault];
+            if (!valid) {
+                NSDateFormatter *df = [[NSDateFormatter alloc] init];
+                [df setDateFormat:@"EEE,MM/dd hh:mm a"];
+                NSDate *newStartDate = [[NSDate alloc]init];
+                newStartDate = [df dateFromString:startTimeFromDefault];
+                NSDate *newEndDate = [[NSDate alloc]init];
+                newEndDate = [df dateFromString:endTimeFromDefault];
+                if ([newStartDate compare:newEndDate] == NSOrderedAscending) {
+                    valid = YES;
+                }
+            }
             
-            [hp updateAtrribute:USER_NAME item:@"availbilityItem" attribute:@"endTimeAttribute" newValue:endTimeFromDefault];
+            if (valid) {
+                cell.textLabel.textColor = [UIColor redColor];
+                cell.textLabel.text = @"Make Me Unavailable";
+                availableFromDefault = @"online";
+                [defaults setObject:@"online" forKey:@"USER_SWITCH_DEFAULT"];
+                [loadingAnimation showHUDAddedTo:self.view animated:YES];
+                _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                dispatch_async(_queue, ^{
+                    [hp updateAtrribute:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute" newValue:@"online"];
+                    NSString *dummy = [hp getAtrributeValue:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute"];
+                    while ([dummy isEqualToString:@"offline"]) {
+                        dummy = [hp getAtrributeValue:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute"];
+                        [hp updateAtrribute:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute" newValue:@"online"];
+                    }
+                    //upload start time and end time to AWS
+                    [hp updateAtrribute:USER_NAME item:@"availbilityItem" attribute:@"startTimeAttribute" newValue:startTimeFromDefault];
+                    
+                    [hp updateAtrribute:USER_NAME item:@"availbilityItem" attribute:@"endTimeAttribute" newValue:endTimeFromDefault];
+                    
+                    [hp updateAtrribute:USER_NAME item:@"preferenceItem" attribute:@"preferenceAttribute" newValue:self.preferenceTextField.text];
+                    NSLog(@"DONE!");
+                    dispatch_async(dispatch_get_main_queue(),^{
+                        
+                        //To show the Indicator
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"You are available." delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+                        [alert show];
+                        [self performSelector:@selector(stopRKLoading) withObject:nil];
+                        [self performSelector:@selector(dismissAlert:) withObject:alert afterDelay:1.0f];
+                    });
+                });
+            }else{
+                UIAlertView *alert;
+                alert = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:@"The start time can not be later than end time!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+            }
             
-            [hp updateAtrribute:USER_NAME item:@"preferenceItem" attribute:@"preferenceAttribute" newValue:self.preferenceTextField.text];
-            
-            
-            NSLog(@"DONE!");
-            dispatch_async(dispatch_get_main_queue(),^{
-
-            //To show the Indicator
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"You are available." delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
-                    [alert show];
-            [self performSelector:@selector(stopRKLoading) withObject:nil];
-            [self performSelector:@selector(dismissAlert:) withObject:alert afterDelay:1.0f];
-                 });
-            });
             
         }
     }

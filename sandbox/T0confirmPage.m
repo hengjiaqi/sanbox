@@ -52,7 +52,7 @@
     NSLog(@"code got sent is %@", self.confirmationCode);
     NSLog(@"code got entered is %@", confirmCode.text);
     if ( [self.confirmationCode isEqualToString:confirmCode.text]) {
-        
+        [confirmCode resignFirstResponder];
         [loadingAnimation showHUDAddedTo:self.view animated:YES];
         queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(queue, ^{

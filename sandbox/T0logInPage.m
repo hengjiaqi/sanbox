@@ -11,6 +11,7 @@
 #import "AmazonClientManager.h"
 #import "simpleDBHelper.h"
 #import "loadingAnimation.h"
+#import <AddressBook/AddressBook.h>
 
 
 @interface T0logInPage ()
@@ -31,6 +32,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    ABAddressBookRef addressBook = ABAddressBookCreate( );
+    CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople( addressBook );
+    CFIndex nPeople = ABAddressBookGetPersonCount( addressBook );
+    
+    for ( int i = 0; i < nPeople; i++ )
+    {
+        ABRecordRef ref = CFArrayGetValueAtIndex( allPeople, i );
+        
+    }
+    AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
+    SimpleDBCreateDomainRequest *request = [[SimpleDBCreateDomainRequest alloc] initWithDomainName:@"fireAlarm"];
+    [sdb createDomain:request];
+    
     
     
 //    //To show the Indicator
@@ -180,6 +194,8 @@
 {
     [loadingAnimation hideHUDForView:self.view animated:YES];
 }
+
+
 
 
 

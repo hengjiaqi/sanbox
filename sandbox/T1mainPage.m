@@ -170,15 +170,40 @@ FriendList *currentFriend;
     NSMutableArray *allFrindsNumber = [hp getAllAttributeNames:USER_NAME item:@"friendListItem"];
     if (numberOfOnlineFriends + numberOfOfflineFriends < allFrindsNumber.count - 1) {
             //self checking mode is enabled.
-        for(int i = 0; i < onlineFriendList.count; i++){
-            FriendList *element = [onlineFriendList objectAtIndex:i];
-            if (![allFrindsNumber containsObject:element.phoneNumber]) {
-                
-            }
-            
+        
+        NSMutableArray *onlineFriendsNumber = [[NSMutableArray alloc]init];
+        for (FriendList *element in onlineFriendList) {
+            [onlineFriendsNumber addObject:element.phoneNumber];
         }
         
+        NSMutableArray *offlineFriendsNumber = [[NSMutableArray alloc]init];
+        for (FriendList *element in offlineFriendList) {
+            [offlineFriendsNumber addObject:element.phoneNumber];
+        }
         
+        for(int i = 0; i < allFrindsNumber.count; i++){
+            NSString *friendNumber = allFrindsNumber[i];
+            if ((![onlineFriendsNumber containsObject:friendNumber]) &&
+                !([offlineFriendsNumber containsObject:friendNumber])) {
+                if ([friendNumber isEqualToString:@"2060000000"]) {
+                    break;
+                }
+                NSString *onlineOrNot = [hp getAtrributeValue:friendNumber item:@"onlineItem" attribute:@"onlineAttribute"];
+                BOOL status = [onlineOrNot isEqualToString:@"online"];
+                NSString *startTime = [hp getAtrributeValue:friendNumber item:@"availbilityItem" attribute:@"startTimeAttribute"];
+                NSString *endTime = [hp getAtrributeValue:friendNumber item:@"availbilityItem" attribute:@"endTimeAttribute"];
+                NSString *nickName = [hp getAtrributeValue:friendNumber item:@"nicknameItem" attribute:@"nicknameAttribute"];
+                if (status) {
+                    FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:nickName onLineorNot:(YES) number:friendNumber start:startTime end:endTime];
+                    [onlineFriendList addObject:myOnlineFriendListelement];
+                    [hp addAtrribute:USER_NAME item:@"onlineFriendListItem" attribute:friendNumber value:nickName];
+                }else{
+                    FriendList *myOnlineFriendListelement = [[FriendList alloc]initWithName:nickName onLineorNot:(NO) number:friendNumber start:startTime end:endTime];
+                    [offlineFriendList addObject:myOnlineFriendListelement];
+                    [hp addAtrribute:USER_NAME item:@"offlineFriendListItem" attribute:friendNumber value:nickName];
+                }
+            }
+        }
     }
     dispatch_async(dispatch_get_main_queue(),^{
     //add all of them to the table view
