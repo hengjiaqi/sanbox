@@ -106,11 +106,14 @@ ABAddressBookRef addressBookRef;
             CFStringRef currentPhoneLabel = ABMultiValueCopyLabelAtIndex(phonesRef, i);
             CFStringRef currentPhoneValue = ABMultiValueCopyValueAtIndex(phonesRef, i);
             
-            if (CFStringCompare(currentPhoneLabel, kABPersonPhoneMobileLabel, 0) == kCFCompareEqualTo) {
-                NSString *afterPhoneNumber = [(__bridge NSString *)currentPhoneValue stringByReplacingOccurrencesOfString:@"+1" withString:@""];
-                afterPhoneNumber = [[afterPhoneNumber componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet]] componentsJoinedByString:@""];
-                NSLog(afterPhoneNumber);
-                [contacts setObject:fullName forKey:afterPhoneNumber];
+            NSString *check = (__bridge NSString *)currentPhoneLabel;
+            if (check.length !=0 ) {
+                if (CFStringCompare(currentPhoneLabel, kABPersonPhoneMobileLabel, 0) == kCFCompareEqualTo) {
+                    NSString *afterPhoneNumber = [(__bridge NSString *)currentPhoneValue stringByReplacingOccurrencesOfString:@"+1" withString:@""];
+                    afterPhoneNumber = [[afterPhoneNumber componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet]] componentsJoinedByString:@""];
+                    NSLog(afterPhoneNumber);
+                    [contacts setObject:fullName forKey:afterPhoneNumber];
+                }
             }
             CFRelease(currentPhoneLabel);
             CFRelease(currentPhoneValue);

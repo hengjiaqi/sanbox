@@ -10,6 +10,7 @@
 #import "AmazonClientManager.h"
 #import "T0confirmPage.h"
 #import "loadingAnimation.h"
+#import "simpleDBHelper.h"
 NSString *twilioAccount = @"ACa8cd84343d08f6f84fd3ca5b1c532751";
 NSString *twilioAuth = @"dd10c126da38021664352140c022b0a6";
 NSString *twilioNumber = @"4257287464";
@@ -91,18 +92,25 @@ NSMutableArray *domains;
     UIAlertView *alert;
     //everything is ok, send user a confirmation code
     if (code == 0) {
-        queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        dispatch_async(queue, ^{
-            [self sendMessage : newUserPhoneNumber.text];
-            dispatch_async(dispatch_get_main_queue(),^{
-                [self performSelector:@selector(stopRKLoading) withObject:nil];
+        
+        simpleDBHelper *hp = [[simpleDBHelper alloc]init];
+        NSString *localAlarm = [hp getAtrributeValue:@"fireAlarm" item:@"fireAlarmItem" attribute:@"fireAlarmAttribute"];
+        if ([localAlarm isEqualToString:@"off"]) {
+            queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            dispatch_async(queue, ^{
+                [self sendMessage : newUserPhoneNumber.text];
+                dispatch_async(dispatch_get_main_queue(),^{
+                    [self performSelector:@selector(stopRKLoading) withObject:nil];
+                });
             });
-        });
-        alert = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:@"We have send you a text message with confirmation code." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-        [self performSegueWithIdentifier:@"goToConfirmPage" sender:sender];
-        
-        
+            alert = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:@"We have send you a text message with confirmation code." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            [self performSegueWithIdentifier:@"goToConfirmPage" sender:sender];
+        }else{
+            UIAlertView *alert;
+            alert = [[UIAlertView alloc] initWithTitle:@"Maintain" message:@"The application is under maintainess. It will be back asap" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
     }else if(code == 1){
         alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter a valid Phone Number" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];

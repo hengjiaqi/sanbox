@@ -13,7 +13,7 @@
 #import "loadingAnimation.h"
 #import <AddressBook/AddressBook.h>
 
-
+NSString *localAlarm;
 @interface T0logInPage ()
 
 @end
@@ -41,10 +41,11 @@
         ABRecordRef ref = CFArrayGetValueAtIndex( allPeople, i );
         
     }
-    AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
-    SimpleDBCreateDomainRequest *request = [[SimpleDBCreateDomainRequest alloc] initWithDomainName:@"fireAlarm"];
-    [sdb createDomain:request];
+
+    simpleDBHelper *hp = [[simpleDBHelper alloc]init];
+    localAlarm = [hp getAtrributeValue:@"fireAlarm" item:@"fireAlarmItem" attribute:@"fireAlarmAttribute"];
     
+    [hp deleteAttributePair:@"2068494022" item:@"onlineItem" attributeName:@"onlineAttribute" attributeValue:@"offline"];
     
     
 //    //To show the Indicator
@@ -125,7 +126,14 @@
             [defaults setObject:phoneNumber.text forKey:@"EAT2GETHER_ACCOUNT_NAME"];
             [defaults setObject:password.text forKey:@"EAT2GETHER_PASSWORD"];
             [defaults synchronize];
-            [self performSegueWithIdentifier:@"loginTransistion" sender:sender];
+            
+            if ([localAlarm isEqualToString:@"off"]) {
+                [self performSegueWithIdentifier:@"loginTransistion" sender:sender];
+            }else{
+                UIAlertView *alert;
+                alert = [[UIAlertView alloc] initWithTitle:@"Maintain" message:@"The application is under maintainess. It will be back asap" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+            }
         }
     }
     
