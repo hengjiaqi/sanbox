@@ -81,7 +81,7 @@ NSInteger* rowSelected;
     }
     FriendList *currentFriend = [requestList objectAtIndex:indexPath.row];
     cell.textLabel.text = currentFriend.name;
-    rowSelected = indexPath.row;
+    rowSelected = (NSInteger *)indexPath.row;
     return cell;
 }
 
@@ -122,7 +122,7 @@ NSInteger* rowSelected;
             [hp addAtrribute:numberToAccept item:@"offlineFriendListItem" attribute:USER_NAME value:myNickName];
         }
         [hp deleteAttributePair:USER_NAME item:@"friendRequestListItem" attributeName:numberToAccept attributeValue:nameToAccept];
-        [requestList removeObjectAtIndex:(rowSelected)];
+        [requestList removeObjectAtIndex:(int)(rowSelected)];
         
     }
     NSLog(@"%@, %@, %@", USER_NAME, numberToAccept, nameToAccept);

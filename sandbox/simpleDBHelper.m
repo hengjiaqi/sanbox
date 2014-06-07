@@ -80,7 +80,7 @@
     SimpleDBListDomainsRequest *listDoaminRequest = [[SimpleDBListDomainsRequest alloc]init];
     SimpleDBListDomainsResponse *listDomainResponse = [[AmazonClientManager sdb] listDomains:listDoaminRequest];
     if (listDomainResponse.error != nil) {
-        NSLog(@"Error: @%", listDomainResponse.error);
+        NSLog(@"Error: %@", listDomainResponse.error);
     }
     if (domains == nil) {
         domains = [[NSMutableArray alloc] initWithCapacity:[listDomainResponse.domainNames count]];
@@ -143,7 +143,7 @@
     SimpleDBListDomainsRequest *listDoaminRequest = [[SimpleDBListDomainsRequest alloc]init];
     SimpleDBListDomainsResponse *listDomainResponse = [[AmazonClientManager sdb] listDomains:listDoaminRequest];
     if (listDomainResponse.error != nil) {
-        NSLog(@"Error: @%", listDomainResponse.error);
+        NSLog(@"Error: %@", listDomainResponse.error);
     }
     if (domains == nil) {
         domains = [[NSMutableArray alloc] initWithCapacity:[listDomainResponse.domainNames count]];

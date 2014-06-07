@@ -138,7 +138,7 @@ NSMutableArray *domains;
     SimpleDBListDomainsRequest *listDoaminRequest = [[SimpleDBListDomainsRequest alloc]init];
     SimpleDBListDomainsResponse *listDomainResponse = [[AmazonClientManager sdb] listDomains:listDoaminRequest];
     if (listDomainResponse.error != nil) {
-        NSLog(@"Error: @%", listDomainResponse.error);
+        NSLog(@"Error: %@", listDomainResponse.error);
     }
     if (domains == nil) {
         domains = [[NSMutableArray alloc] initWithCapacity:[listDomainResponse.domainNames count]];
@@ -193,8 +193,8 @@ NSMutableArray *domains;
     [request setHTTPBody:data];
     
     NSError *error;
-    NSURLResponse *response;
-    NSData *receivedData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    //NSURLResponse *response;
+    //NSData *receivedData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     if(error){
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Something is wrong" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];

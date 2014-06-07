@@ -159,17 +159,17 @@ NSString *imagecellID = @"imagecellID";
     else if(sc.selectedSegmentIndex == 1){
         [picker2 setSourceType:(UIImagePickerControllerSourceTypePhotoLibrary)];
     }
-    [self presentModalViewController:picker2 animated:YES];
+    [self presentViewController:picker2 animated:YES completion:nil];
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     [imageView setImage:image];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
     
@@ -197,7 +197,7 @@ NSString *imagecellID = @"imagecellID";
                 case 1:
                      NSLog(@"choose from photo");
                     [picker2 setSourceType:(UIImagePickerControllerSourceTypePhotoLibrary)];
-                    [self presentModalViewController:picker2 animated:YES];
+                    [self presentViewController:picker2 animated:YES completion:nil];
                     break;
             }
         }
@@ -224,11 +224,11 @@ NSString *imagecellID = @"imagecellID";
 
 -(void)dismissAlert:(UIAlertView *) alertView
 {
-    [alertView dismissWithClickedButtonIndex:nil animated:YES];
+    [alertView dismissWithClickedButtonIndex:0 animated:YES];
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    NSString *cellText = cell.textLabel.text;
+    //NSString *cellText = cell.textLabel.text;
     
     if(cell==_theStaticCell){
         NSLog(@"fuck me fuck me");

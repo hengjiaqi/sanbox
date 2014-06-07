@@ -32,13 +32,14 @@ NSString *localAlarm;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    ABAddressBookRef addressBook = ABAddressBookCreate( );
-    CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople( addressBook );
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+    //CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople( addressBook );
     CFIndex nPeople = ABAddressBookGetPersonCount( addressBook );
     
     for ( int i = 0; i < nPeople; i++ )
     {
-        ABRecordRef ref = CFArrayGetValueAtIndex( allPeople, i );
+        
+        //ABRecordRef ref = CFArrayGetValueAtIndex( allPeople, i );
         
     }
 

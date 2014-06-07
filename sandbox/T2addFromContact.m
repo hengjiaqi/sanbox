@@ -111,7 +111,7 @@ ABAddressBookRef addressBookRef;
                 if (CFStringCompare(currentPhoneLabel, kABPersonPhoneMobileLabel, 0) == kCFCompareEqualTo) {
                     NSString *afterPhoneNumber = [(__bridge NSString *)currentPhoneValue stringByReplacingOccurrencesOfString:@"+1" withString:@""];
                     afterPhoneNumber = [[afterPhoneNumber componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet]] componentsJoinedByString:@""];
-                    NSLog(afterPhoneNumber);
+                    NSLog(@"%@",afterPhoneNumber);
                     [contacts setObject:fullName forKey:afterPhoneNumber];
                 }
             }
@@ -206,7 +206,7 @@ ABAddressBookRef addressBookRef;
         friendPhoneNumber = registeredContactsNumber[indexPath.row];
         
     }else{
-        NSLog(unregisteredContactsNumber[indexPath.row]);
+        //NSLog(unregisteredContactsNumber[indexPath.row]);
         
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -247,7 +247,7 @@ ABAddressBookRef addressBookRef;
 
 -(void)dismissAlert:(UIAlertView *) alertView
 {
-    [alertView dismissWithClickedButtonIndex:nil animated:YES];
+    [alertView dismissWithClickedButtonIndex:0 animated:YES];
 }
 
 

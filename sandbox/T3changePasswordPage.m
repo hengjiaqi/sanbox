@@ -126,7 +126,7 @@ NSString *GNickname;
 }
 -(void)dismissAlert:(UIAlertView *) alertView
 {
-    [alertView dismissWithClickedButtonIndex:nil animated:YES];
+    [alertView dismissWithClickedButtonIndex:0 animated:YES];
 }
 
 @end

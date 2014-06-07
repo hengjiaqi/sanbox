@@ -259,7 +259,6 @@
 				23E8D9CD18E34A7D0092A1C3 /* FriendList.m */,
 				23A3B3CB1910FFC300D9BD4C /* iphone4@2x.png */,
 				23A3B3CC1910FFC300D9BD4C /* iphone5@2x.png */,
-				BE941BFD1910AEE400E465F7 /* loadingAnimation.h */,
 				BE941BFE1910AEE400E465F7 /* loadingAnimation.m */,
 				230F311A1928054F00DAED12 /* profile.png */,
 				23E6235618ECFFB6003F1693 /* simpleDBHelper.h */,

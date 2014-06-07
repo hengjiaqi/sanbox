@@ -10,7 +10,7 @@
 #import "loadingAnimation.h"
 #import <QuartzCore/QuartzCore.h>
 #import <dispatch/dispatch.h>
-@interface T3mainPage : UITableViewController<UITextFieldDelegate>{
+@interface T3mainPage : UITableViewController<UITextFieldDelegate, UITextViewDelegate>{
 
 }
 

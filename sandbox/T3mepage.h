@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface T3mepage : UITableViewController <UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
+@interface T3mepage : UITableViewController <UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIActionSheetDelegate>{
     IBOutlet UISegmentedControl *sc;
     IBOutlet UIImageView *imageView;
     UIImagePickerController *picker2;
