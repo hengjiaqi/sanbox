@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AWSS3/AWSS3.h>
+typedef enum {
+    GrandCentralDispatch,
+    Delegate,
+    BackgroundThread
+} UploadType;
 
-@interface T3mepage : UITableViewController <UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIActionSheetDelegate>{
+@interface T3mepage : UITableViewController <UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIActionSheetDelegate,AmazonServiceRequestDelegate>{
     IBOutlet UISegmentedControl *sc;
     IBOutlet UIImageView *imageView;
     UIImagePickerController *picker2;
@@ -16,9 +22,9 @@
 - (IBAction)me_back_button:(id)sender;
 - (IBAction)me_update_button:(id)sender;
 - (IBAction)logOutButton:(id)sender;
-- (IBAction)camera;
-@property (nonatomic, weak) IBOutlet UITableViewCell *theStaticCell;
 
+@property (nonatomic, retain) AmazonS3Client *s3;
+@property (nonatomic, weak) IBOutlet UITableViewCell *theStaticCell;
 @property (weak, nonatomic) IBOutlet UILabel *NickNameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *me_NickName_textfield;
 @property (weak, nonatomic) IBOutlet UITextField *me_Password_textfield;

@@ -25,10 +25,12 @@
 #define SECRET_KEY                   @"x+RSDvdOaSkKsJuHa2vnLAI4bdfR2LhwcU7dpEXR"
 #define CREDENTIALS_ALERT_MESSAGE    @"Please update the Constants.h file with your credentials or Token Vending Machine URL."
 
-
+#define PICTURE_BUCKET         @"picture-bucket"
+#define PICTURE_NAME           @"NameOfThePicture"
 @interface Constants:NSObject {
 }
 
 +(UIAlertView *)credentialsAlert;
++(NSString *)pictureBucket;
 
 @end
