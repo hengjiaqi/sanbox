@@ -249,7 +249,7 @@ UIButton *btnDone;
 //
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Selected indexpath is %d", indexPath.row);
+    
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if (cell.reuseIdentifier == kDateCellID) {
         if (pickerIsShown) {
@@ -374,7 +374,7 @@ UIButton *btnDone;
     
         [self.tableView beginUpdates];
         if (indexPath.row == 0) {
-            pickerRow = indexPath.row+1;
+            pickerRow = (int)indexPath.row + 1;
         }else{
             pickerRow = 2;
         }

@@ -34,7 +34,6 @@ FriendList *currentFriend;
 {
     self = [super initWithStyle:style];
     if (self) {
-        
         [self.tableView registerClass:[UITableViewCell class]
                forCellReuseIdentifier:@"Available Friends"];
         self.refreshControl = [[UIRefreshControl alloc] init];
@@ -42,7 +41,6 @@ FriendList *currentFriend;
         [self.refreshControl addTarget:self
                                 action:@selector(handleRefresh:)
                       forControlEvents:UIControlEventValueChanged];
-        
     }
     return self;
 }
@@ -259,12 +257,7 @@ FriendList *currentFriend;
     }else{
         currentFriend = [offlineFriendList objectAtIndex:indexPath.row];  // which cell we looking at
     }
-    
-    
-    
     // if you have extra give it to me
-    
-    
     if (cell==nil){
         if( indexPath.section == 0 ){
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];

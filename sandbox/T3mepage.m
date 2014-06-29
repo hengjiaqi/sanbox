@@ -66,7 +66,7 @@ NSString *imagecellID = @"imagecellID";
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    S3CreateBucketRequest *createBucketRequest = [[S3CreateBucketRequest alloc] initWithName:[Constants pictureBucket]  andRegion:[S3Region USWest2]];
+    //S3CreateBucketRequest *createBucketRequest = [[S3CreateBucketRequest alloc] initWithName:[Constants pictureBucket]  andRegion:[S3Region USWest2]];
 }
 
 -(void)dismissKeyboard {
@@ -200,7 +200,8 @@ NSString *imagecellID = @"imagecellID";
                 case 1:
                     NSLog(@"choose from photo");
                     [picker2 setSourceType:(UIImagePickerControllerSourceTypePhotoLibrary)];
-                    [self presentModalViewController:picker2 animated:YES];
+          //          [self presentModalViewController:picker2 animated:YES];
+                    [self presentViewController:picker2 animated:YES completion:nil];
                     break;
             }
         }
@@ -283,7 +284,7 @@ NSString *imagecellID = @"imagecellID";
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    NSString *cellText = cell.textLabel.text;
+   // NSString *cellText = cell.textLabel.text;
     
     if(cell==_theStaticCell){
         NSLog(@"fuck me fuck me");

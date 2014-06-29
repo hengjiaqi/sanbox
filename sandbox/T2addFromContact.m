@@ -224,7 +224,7 @@ ABAddressBookRef addressBookRef;
         NSLog(@"NUMBER TO ADD IS %@", numberToAdd);
         
         BOOL alreadySent = [hp hasAttributes:numberToAdd item:@"friendRequestListItem" attributeName:USER_NAME];
-        NSLog(@"%hhd", alreadySent);
+      //  NSLog(@"%hhd", alreadySent);
         if (alreadySent) {
             UIAlertView *alert;
             alert = [[UIAlertView alloc] initWithTitle:@"Friend Request" message:@"You have already sent this person a request" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
