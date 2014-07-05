@@ -14,6 +14,9 @@
 @property(nonatomic, strong) NSString *phoneNumber;
 @property(nonatomic, strong) NSString *startTime;
 @property(nonatomic, strong) NSString *endTime;
+
+
+
 @property(nonatomic,assign)BOOL onLineorNot;
 
 -(id)initWithName:(NSString *)name onLineorNot:(BOOL)onLineorNot number:(NSString *)phonenumber;

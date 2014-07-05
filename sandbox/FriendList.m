@@ -25,6 +25,7 @@
 -(id)initWithName:(NSString *)name onLineorNot:(BOOL)onLineorNot number:(NSString *)phonenumber{
     self = [super init];
     if(self){
+        
         self.phoneNumber = phonenumber;
         self.name=name;
         self.onLineorNot = onLineorNot;

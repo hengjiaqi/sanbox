@@ -282,6 +282,9 @@ FriendList *currentFriend;
 
     }
     
+    NSString *currentphonenumber = currentFriend.phoneNumber;
+    cell.imageView.image = [UIImage imageNamed:@"Friendlist-1.png"];
+    
     // Configure the cell...
     cell.textLabel.text = currentFriend.name;
     return cell;
