@@ -22,6 +22,7 @@ FriendList *currentFriend;
     dispatch_queue_t queue;
 }
 
+
 @end
 
 @implementation T1mainPage
@@ -29,7 +30,7 @@ FriendList *currentFriend;
 // set and get the frindlist
 
 @synthesize FriendListelements = _FriendListelements;
-
+@synthesize s3 = _s3;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -209,12 +210,14 @@ FriendList *currentFriend;
     [self.FriendListelements addObjectsFromArray:(onlineFriendList)];
     [self.FriendListelements addObjectsFromArray:(offlineFriendList)];
     [self.tableView reloadData];
+        
             
             //Call the method to hide the Indicator after 3 seconds
             [self performSelector:@selector(stopRKLoading) withObject:nil];
         });
         
     });
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -243,10 +246,8 @@ FriendList *currentFriend;
 
 // we can refer certain view
 // index path a list of numbers what row we looking at
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     static NSString *OnLineCellIndetifier = @"Available Friends";  // what type of cell  to actuall indentify use that in story board
     static NSString *OffLineCellIndetifier = @"UnAvailable Friends";
     // which friend we point at
@@ -282,10 +283,62 @@ FriendList *currentFriend;
 
     }
     
-    NSString *currentphonenumber = currentFriend.phoneNumber;
-    cell.imageView.image = [UIImage imageNamed:@"Friendlist-1.png"];
+//    NSString *currentphonenumber = currentFriend.phoneNumber;
+  
     
     // Configure the cell...
+    // nnnnnnnnnnnnnnnneeeeeeeeedddddddddhelp/////    get the photo from the s3   should be same as T3mepage
+    // load the image on the s3
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        
+        // Set the content type so that the browser will treat the URL as an image.
+        S3ResponseHeaderOverrides *override = [[S3ResponseHeaderOverrides alloc] init];
+        override.contentType = @"image/jpeg";
+        
+        // Request a pre-signed URL to picture that has been uplaoded.
+        S3GetPreSignedURLRequest *gpsur = [[S3GetPreSignedURLRequest alloc] init];
+        gpsur.key                     = currentFriend.phoneNumber;
+        gpsur.bucket                  = [Constants pictureBucket];
+        gpsur.expires                 = [NSDate dateWithTimeIntervalSinceNow:(NSTimeInterval) 3600]; // Added an hour's worth of seconds to the current time.
+        gpsur.responseHeaderOverrides = override;
+        
+        
+        
+        
+        // Get the URL
+        NSError *error = nil;
+        NSURL *url = [self.s3 getPreSignedURL:gpsur error:&error];
+        
+        //      NSString *simpleDBURL = [url absoluteString];
+        // try to put the url to simpledb
+        // simpleDBHelper *hp = [[simpleDBHelper alloc]init];
+        //  [hp updateAtrribute:USER_NAME item:@"photoProfileItem" attribute:@"photoAttribute" newValue:simpleDBURL];
+        
+        
+        NSData *data = [NSData dataWithContentsOfURL: url];
+        UIImage *image = [UIImage imageWithData:data];
+        if(url == nil)
+        {
+            if(error != nil)
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSLog(@"Error: %@", error);
+                });
+            }
+        }
+        else
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [cell.imageView setImage:image];
+                //cannot gethere
+                NSLog(@"get here?");
+            });
+        }
+    });
+    // below hard code image worked
+    cell.imageView.image = [UIImage imageNamed:@"Friendlist-1.png"];
     cell.textLabel.text = currentFriend.name;
     return cell;
 }

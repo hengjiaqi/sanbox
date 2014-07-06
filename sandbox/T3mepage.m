@@ -247,10 +247,10 @@ NSString *imagecellID = @"imagecellID";
         NSError *error = nil;
         NSURL *url = [self.s3 getPreSignedURL:gpsur error:&error];
         
-        NSString *simpleDBURL = [url absoluteString];
+  //      NSString *simpleDBURL = [url absoluteString];
         // try to put the url to simpledb
-        simpleDBHelper *hp = [[simpleDBHelper alloc]init];
-        [hp updateAtrribute:USER_NAME item:@"photoProfileItem" attribute:@"photoAttribute" newValue:simpleDBURL];
+      // simpleDBHelper *hp = [[simpleDBHelper alloc]init];
+      //  [hp updateAtrribute:USER_NAME item:@"photoProfileItem" attribute:@"photoAttribute" newValue:simpleDBURL];
         
         
         NSData *data = [NSData dataWithContentsOfURL: url];
@@ -260,21 +260,17 @@ NSString *imagecellID = @"imagecellID";
             if(error != nil)
             {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    
                     NSLog(@"Error: %@", error);
-                    
                 });
             }
         }
         else
         {
             dispatch_async(dispatch_get_main_queue(), ^{
-                
                 [imageView setImage:image];
-                
+                NSLog(@"get here?");
             });
         }
-        
     });
 }
 

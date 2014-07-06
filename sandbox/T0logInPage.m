@@ -38,16 +38,11 @@ NSString *localAlarm;
     
     for ( int i = 0; i < nPeople; i++ )
     {
-        
         //ABRecordRef ref = CFArrayGetValueAtIndex( allPeople, i );
-        
     }
-
     simpleDBHelper *hp = [[simpleDBHelper alloc]init];
     localAlarm = [hp getAtrributeValue:@"fireAlarm" item:@"fireAlarmItem" attribute:@"fireAlarmAttribute"];
-    
     [hp deleteAttributePair:@"2068494022" item:@"onlineItem" attributeName:@"onlineAttribute" attributeValue:@"offline"];
-    
     
 //    //To show the Indicator
 //    [loadingAnimation showHUDAddedTo:self.view animated:YES];
@@ -56,6 +51,29 @@ NSString *localAlarm;
 //    [self performSelector:@selector(stopRKLoading) withObject:nil afterDelay:3];
     
     // Do any additional setup after loading the view.
+    
+    
+    
+    // delete the 6882;
+    
+   //  [hp deleteAttributePair:@"2060000001" item:@"friendListItem" attributeName:@"2066176882" attributeValue:@"jake"];
+   //  [hp deleteAttributePair:@"2060000001" item:@"offlineFriendListItem" attributeName:@"2066176882" attributeValue:@"jake"];
+    
+    // setup the on/off line friend list
+    // for user 2 setup the photo  since cannot confirm new user.
+    //[hp addAtrribute:@"2060000001" item:@"photoAttribute"
+    AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
+    SimpleDBReplaceableAttribute *photoAttribute = [[SimpleDBReplaceableAttribute alloc]  initWithName:@"photoAttribute" andValue:@"nil" andReplace:YES];
+    SimpleDBReplaceableAttribute *photoAttribute1 = [[SimpleDBReplaceableAttribute alloc] initWithName:@"dummyAttribute" andValue:@"dummyAttribute" andReplace:YES];
+    NSMutableArray *attributes1 = [[NSMutableArray alloc] initWithCapacity:2];
+    [attributes1 addObject:photoAttribute];
+    [attributes1 addObject:photoAttribute1];
+    SimpleDBPutAttributesRequest *putAttributesRequest1 = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:@"2060000008" andItemName:@"photoProfileItem" andAttributes:attributes1];
+    [sdb putAttributes:putAttributesRequest1];
+    
+
+
+    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
                                    action:@selector(dismissKeyboard)];
@@ -67,8 +85,6 @@ NSString *localAlarm;
     password.delegate = self;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     phoneNumber.text = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -137,9 +153,6 @@ NSString *localAlarm;
             }
         }
     }
-    
-    
-    
 }
 
 - (NSString *)getPassword:(NSString *)domainName {
@@ -172,17 +185,18 @@ NSString *localAlarm;
     
 }
 
-
 //Dealing with keyboard
 -(void)dismissKeyboard {
     [phoneNumber resignFirstResponder];
     [password resignFirstResponder];
 }
+
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
     
     [textField resignFirstResponder];
     return YES;
 }
+
 -(void)keyboardDidShow:(NSNotification *)notification{
     if ([[UIScreen mainScreen]bounds].size.height==568) {
         [self.view setFrame:CGRectMake(0, -50, 320, 568)];
@@ -191,7 +205,6 @@ NSString *localAlarm;
     }
 }
 
-
 -(void)keyboardDidHide:(NSNotification *)notification{
     if ([[UIScreen mainScreen]bounds].size.height==568) {
         [self.view setFrame:CGRectMake(0, 0, 320, 568)];
@@ -199,13 +212,9 @@ NSString *localAlarm;
         [self.view setFrame:CGRectMake(0, 0, 320, 480)];
     }
 }
+
 -(void)stopRKLoading
 {
     [loadingAnimation hideHUDForView:self.view animated:YES];
 }
-
-
-
-
-
 @end

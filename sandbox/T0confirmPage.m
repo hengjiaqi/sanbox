@@ -176,7 +176,25 @@
     putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"offlineFriendListItem" andAttributes:offlineFriendListAttributes];
     [sdb putAttributes:putAttributesRequest];
     
+    // photoProfileItem
+    NSMutableArray *attributes1 = [[NSMutableArray alloc] initWithCapacity:2];
+    SimpleDBReplaceableAttribute *photoAttribute = [[SimpleDBReplaceableAttribute alloc]  initWithName:@"photoAttribute" andValue:@"nil" andReplace:YES];
+    SimpleDBReplaceableAttribute *photoAttribute1 = [[SimpleDBReplaceableAttribute alloc] initWithName:@"dummyAttribute" andValue:@"dummyAttribute" andReplace:YES];
+    [attributes1 addObject:photoAttribute];
+    [attributes1 addObject:photoAttribute1];
+    SimpleDBPutAttributesRequest *putAttributesRequest1 = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"photoProfileItem" andAttributes:attributes1];
+    [sdb putAttributes:putAttributesRequest1];
     
+    
+    
+    
+//    NSMutableArray *availibility= [[NSMutableArray alloc] initWithCapacity:2];
+//    SimpleDBReplaceableAttribute *startTimeAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"startTimeAttribute" andValue:@"00:00AM" andReplace:YES];
+//    SimpleDBReplaceableAttribute *endTimeAttribute = [[SimpleDBReplaceableAttribute alloc] initWithName:@"endTimeAttribute" andValue:@"00:00AM" andReplace:YES];
+//    [availibility addObject:startTimeAttribute];
+//    [availibility addObject:endTimeAttribute];
+//    putAttributesRequest = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"availbilityItem" andAttributes:availibility];
+//    [sdb putAttributes:putAttributesRequest];
 }
 
 -(void)dismissKeyboard {
