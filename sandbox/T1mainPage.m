@@ -12,6 +12,13 @@
 #import "AmazonClientManager.h"
 #import "T1friendPreference.h"
 #import "simpleDBHelper.h"
+
+
+#import <AWSSimpleDB/AWSSimpleDB.h>
+#import "AmazonClientManager.h"
+#import "simpleDBhelper.h"
+#import "Constants.h"
+#import <AWSRuntime/AWSRuntime.h>
 NSString *USER_NAME;
 NSMutableArray *onlineFriendList;
 NSMutableArray *offlineFriendList;
@@ -62,6 +69,9 @@ FriendList *currentFriend;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     USER_NAME = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
     
+    self.s3 = [[AmazonS3Client alloc] initWithAccessKey:ACCESS_KEY_ID withSecretKey:SECRET_KEY];
+    self.s3.endpoint = [AmazonEndpoints s3Endpoint:US_WEST_2];
+    
     [self.tableView reloadData];
 
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"LOGGED_IN"];
@@ -78,6 +88,8 @@ FriendList *currentFriend;
     
 }
 - (void)viewDidDisappear:(BOOL)animated{
+
+    
     [onlineFriendList removeAllObjects];
     [offlineFriendList removeAllObjects];
 }
@@ -321,6 +333,7 @@ FriendList *currentFriend;
         UIImage *image = [UIImage imageWithData:data];
         if(url == nil)
         {
+            NSLog(@"Errorhmgfjhgfjhgf: %@", error);
             if(error != nil)
             {
                 dispatch_async(dispatch_get_main_queue(), ^{
