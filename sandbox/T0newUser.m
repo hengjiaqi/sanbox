@@ -13,7 +13,7 @@
 #import "simpleDBHelper.h"
 NSString *twilioAccount = @"ACa8cd84343d08f6f84fd3ca5b1c532751";
 NSString *twilioAuth = @"dd10c126da38021664352140c022b0a6";
-NSString *twilioNumber = @"4257287464";
+NSString *twilioNumber = @"+18889817395";
 int confirmation;
 NSMutableArray *domains;
 @interface T0newUser (){
@@ -178,29 +178,56 @@ NSMutableArray *domains;
 }
 
 - (void)sendMessage:(NSString *) userPhoneNumber {
-    NSString *urlString = [NSString stringWithFormat:@"https://%@:%@@api.twilio.com/2010-04-01/Accounts/%@/SMS/Messages", twilioAccount, twilioAuth, twilioAccount];
-    NSURL *url = [NSURL URLWithString:urlString];
+//    NSString *urlString = [NSString stringWithFormat:@"https://%@:%@@api.twilio.com/2010-04-01/Accounts/%@/SMS/Messages", twilioAccount, twilioAuth, twilioAccount];
+//    NSURL *url = [NSURL URLWithString:urlString];
+//    
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
+//    [request setURL:url];
+//    [request setHTTPMethod:@"POST"];
+//    confirmation = (arc4random() % (9000)) + 1000;
+//    NSString *textContent = [NSString stringWithFormat:@"Hello from Eat2gether! Your confirmation code IS: %d", confirmation];
+//    //textContent = @"LALALALALALA";
+//    NSLog(@"number is %d", confirmation);
+//    NSString *bodyString = [NSString stringWithFormat:@"From=%@&To=%@&Body=%@", twilioNumber,userPhoneNumber,textContent];
+//    NSData *data = [bodyString dataUsingEncoding:NSUTF8StringEncoding];
+//    [request setHTTPBody:data];
+//    
+//    NSError *error;
+//    //NSURLResponse *response;
+//    //NSData *receivedData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+//    if(error){
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Something is wrong" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//        [alert show];
+//    }else{
+//        NSLog(@"Message sent!");
+//    }
     
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
-    [request setURL:url];
-    [request setHTTPMethod:@"POST"];
+    
+    NSLog(@"Sending request.");
+    
+    // Common constants
     confirmation = (arc4random() % (9000)) + 1000;
     NSString *textContent = [NSString stringWithFormat:@"Hello from Eat2gether! Your confirmation code IS: %d", confirmation];
-    //textContent = @"LALALALALALA";
-    NSLog(@"number is %d", confirmation);
-    NSString *bodyString = [NSString stringWithFormat:@"From=%@&To=%@&Body=%@", twilioNumber,userPhoneNumber,textContent];
+    // Build request
+    NSString *urlString = [NSString stringWithFormat:@"https://%@:%@@api.twilio.com/2010-04-01/Accounts/%@/SMS/Messages", twilioAccount, twilioAuth, twilioAccount];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:url];
+    [request setHTTPMethod:@"POST"];
+    // Set up the body
+    NSString *bodyString = [NSString stringWithFormat:@"From=%@&To=%@&Body=%@", twilioNumber, userPhoneNumber, textContent];
     NSData *data = [bodyString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:data];
-    
     NSError *error;
-    //NSURLResponse *response;
-    //NSData *receivedData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    if(error){
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Something is wrong" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-    }else{
-        NSLog(@"Message sent!");
+    NSURLResponse *response;
+    NSData *receivedData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSLog(@"number is %d", confirmation);
+    // Handle the received data
+    if (error) {
+        NSLog(@"Error: %@", error);
+    } else {
+        NSString *receivedString = [[NSString alloc]initWithData:receivedData encoding:NSUTF8StringEncoding];
+        NSLog(@"Request sent. %@", receivedString);
     }
     
 }

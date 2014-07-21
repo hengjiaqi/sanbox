@@ -12,11 +12,6 @@
 #import "AmazonClientManager.h"
 #import "T1friendPreference.h"
 #import "simpleDBHelper.h"
-
-
-#import <AWSSimpleDB/AWSSimpleDB.h>
-#import "AmazonClientManager.h"
-#import "simpleDBhelper.h"
 #import "Constants.h"
 #import <AWSRuntime/AWSRuntime.h>
 NSString *USER_NAME;
@@ -28,14 +23,10 @@ FriendList *currentFriend;
 @interface T1mainPage (){
     dispatch_queue_t queue;
 }
-
-
 @end
 
 @implementation T1mainPage
-
 // set and get the frindlist
-
 @synthesize FriendListelements = _FriendListelements;
 @synthesize s3 = _s3;
 - (id)initWithStyle:(UITableViewStyle)style
@@ -68,12 +59,9 @@ FriendList *currentFriend;
     NSLog(@"Tabs showed up!");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     USER_NAME = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
-    
     self.s3 = [[AmazonS3Client alloc] initWithAccessKey:ACCESS_KEY_ID withSecretKey:SECRET_KEY];
     self.s3.endpoint = [AmazonEndpoints s3Endpoint:US_WEST_2];
-    
     [self.tableView reloadData];
-
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"LOGGED_IN"];
     [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
     /*
@@ -88,8 +76,7 @@ FriendList *currentFriend;
     
 }
 - (void)viewDidDisappear:(BOOL)animated{
-
-    
+    [self loadFriends];
     [onlineFriendList removeAllObjects];
     [offlineFriendList removeAllObjects];
 }
@@ -218,12 +205,10 @@ FriendList *currentFriend;
     }
     dispatch_async(dispatch_get_main_queue(),^{
     //add all of them to the table view
-    self.FriendListelements =[[NSMutableArray alloc]init];
-    [self.FriendListelements addObjectsFromArray:(onlineFriendList)];
-    [self.FriendListelements addObjectsFromArray:(offlineFriendList)];
-    [self.tableView reloadData];
-        
-            
+            self.FriendListelements =[[NSMutableArray alloc]init];
+            [self.FriendListelements addObjectsFromArray:(onlineFriendList)];
+            [self.FriendListelements addObjectsFromArray:(offlineFriendList)];
+            [self.tableView reloadData];
             //Call the method to hide the Indicator after 3 seconds
             [self performSelector:@selector(stopRKLoading) withObject:nil];
         });
@@ -304,31 +289,22 @@ FriendList *currentFriend;
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
-        
         // Set the content type so that the browser will treat the URL as an image.
         S3ResponseHeaderOverrides *override = [[S3ResponseHeaderOverrides alloc] init];
         override.contentType = @"image/jpeg";
-        
         // Request a pre-signed URL to picture that has been uplaoded.
         S3GetPreSignedURLRequest *gpsur = [[S3GetPreSignedURLRequest alloc] init];
         gpsur.key                     = currentFriend.phoneNumber;
         gpsur.bucket                  = [Constants pictureBucket];
         gpsur.expires                 = [NSDate dateWithTimeIntervalSinceNow:(NSTimeInterval) 3600]; // Added an hour's worth of seconds to the current time.
         gpsur.responseHeaderOverrides = override;
-        
-        
-        
-        
         // Get the URL
         NSError *error = nil;
         NSURL *url = [self.s3 getPreSignedURL:gpsur error:&error];
-        
         //      NSString *simpleDBURL = [url absoluteString];
         // try to put the url to simpledb
         // simpleDBHelper *hp = [[simpleDBHelper alloc]init];
         //  [hp updateAtrribute:USER_NAME item:@"photoProfileItem" attribute:@"photoAttribute" newValue:simpleDBURL];
-        
-        
         NSData *data = [NSData dataWithContentsOfURL: url];
         UIImage *image = [UIImage imageWithData:data];
         if(url == nil)
@@ -344,21 +320,20 @@ FriendList *currentFriend;
         else
         {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [cell.imageView setImage:image];
-                //cannot gethere
+                CGSize itemSize = CGSizeMake(40, 40);
+                UIGraphicsBeginImageContext(itemSize);
+                CGRect imageRect = CGRectMake(0.0, 0.3, itemSize.width, itemSize.height);
+                [image drawInRect:imageRect];
+                cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+                UIGraphicsEndImageContext();
                 NSLog(@"get here?");
+                
             });
         }
     });
-    // below hard code image worked
-    cell.imageView.image = [UIImage imageNamed:@"Friendlist-1.png"];
     cell.textLabel.text = currentFriend.name;
     return cell;
 }
-
-
-
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     currentFriend = [self.FriendListelements objectAtIndex:indexPath.row];
@@ -372,7 +347,6 @@ FriendList *currentFriend;
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     T1friendPreference *prefer = (T1friendPreference *)[[segue destinationViewController] topViewController];
     NSLog(@"second, %@", currentFriend.name);
-    
     prefer.friendPhoneNumber = currentFriend.phoneNumber;
     prefer.friendNickName = currentFriend.name;
     if([segue.identifier isEqualToString:@"onlineFriendClicked"]){
@@ -416,7 +390,6 @@ FriendList *currentFriend;
 }
 
 - (void) handleRefresh:(id)paramSender{
-    
     /* Put a bit of delay between when the refresh control is released
      and when we actually do the refreshing to make the UI look a bit
      smoother than just doing the update without the animation */
@@ -430,8 +403,6 @@ FriendList *currentFriend;
 }
 - (IBAction)sortFriend:(id)sender {
     for (int m = 0; m < onlineFriendList.count; m++) {
-        
-    
         FriendList *myOnlineFriendListelement = [onlineFriendList objectAtIndex:m];
     for (int i = 0; i<onlineFriendList.count; i++) {
         FriendList *local = [onlineFriendList objectAtIndex:i];
@@ -455,10 +426,7 @@ FriendList *currentFriend;
             [onlineFriendList insertObject:myOnlineFriendListelement atIndex:0];
         }
     }
-    
     }
     [self.tableView reloadData];
-
-    
 }
 @end

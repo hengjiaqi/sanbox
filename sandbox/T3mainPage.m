@@ -14,7 +14,7 @@
 
 //#import "FriendListTableViewController.m"
 NSString *USER_NAME;
-NSString *GNickname;
+//NSString *GNickname;
 NSString *startTimeFromDefault;
 NSString *endTimeFromDefault;
 NSString *preferenceFromDefault;
@@ -104,8 +104,6 @@ UIButton *btnDone;
     [defaults setObject:availableButtonFromDB forKey:@"USER_SWITCH_DEFAULT"];
     
     //[hp deleteAttributePair:USER_NAME item:@"onlineItem" attributeName:@"onlineAttribute" attributeValue:@"online"];
- 
-
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -117,17 +115,6 @@ UIButton *btnDone;
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    if (pickerIsShown && indexPath.row == pickerRow && indexPath.section == 0) {
-        return self.pickerCellRowHeight;
-    }else if(indexPath.section == 1){
-        return self.tableView.rowHeight * 1.5;
-    }else{
-        return self.tableView.rowHeight;
-    }
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -182,7 +169,6 @@ UIButton *btnDone;
             cell.textLabel.textColor = [UIColor redColor];
             cell.textLabel.text =@"Make Me Unavailable";
         }else{
-            
             cell.textLabel.textColor = [UIColor greenColor];
             cell.textLabel.text =@"Make Me Available";
         }
@@ -215,7 +201,6 @@ UIButton *btnDone;
 
 -(void)doneTyping{
     [self.preferenceTextField resignFirstResponder];
-    
     _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(_queue, ^{
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -301,7 +286,6 @@ UIButton *btnDone;
             });
             //To show the Indicator
             [loadingAnimation showHUDAddedTo:self.view animated:YES];
-            
             //Call the method to hide the Indicator after 3 seconds
             [self performSelector:@selector(stopRKLoading) withObject:nil];
         }else{
@@ -384,9 +368,8 @@ UIButton *btnDone;
         pickerIsShown = YES;
         [self.tableView endUpdates];
 
-    
     NSLog(@"picker row is %d", pickerRow);
-    
+
 }
 
 //
@@ -438,40 +421,8 @@ UIButton *btnDone;
 }
 
 
-- (void)updateDatePicker
-{
-    if (pickerIsShown)
-    {
-        NSIndexPath *targetedCellIndexPath = [NSIndexPath indexPathForRow:pickerRow inSection:0];
-        UITableViewCell *associatedDatePickerCell = [self.tableView cellForRowAtIndexPath:targetedCellIndexPath];
-        
-        UIDatePicker *targetedDatePicker = (UIDatePicker *)[associatedDatePickerCell viewWithTag:kDatePickerTag];
-        if (targetedDatePicker != nil)
-        {
-            if (pickerRow == 1) {
-                [targetedDatePicker setDate:startTime animated:NO];
-            }else{
-                [targetedDatePicker setDate:endTime animated:NO];
-            }
-        }
-    }
-}
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if(section == 0)
-    {
-        return @"Availbility";
-    }
-    else if(section == 1)
-    {
-        return @"Preference";
-    }
-    else
-    {
-        return nil;
-    }
-}
+
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
 {
@@ -491,14 +442,10 @@ UIButton *btnDone;
         CGRect frameRect = self.preferenceTextField.frame;
         frameRect.size.height = self.tableView.rowHeight * 2;
         self.preferenceTextField.frame = frameRect;
-        
     }
 }
 
 
--(void)dismissKeyboard {
-    [self.preferenceTextField resignFirstResponder];
-}
 
 - (void)displayExternalDatePickerForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -517,11 +464,8 @@ UIButton *btnDone;
         
         // the end position is slid up by the height of the view
         endFrame.origin.y = startFrame.origin.y - endFrame.size.height;
-        
         self.pickerView.frame = startFrame;
-        
         [self.view addSubview:self.pickerView];
-        
         // animate the date picker into view
         [UIView animateWithDuration:kPickerAnimationDuration animations: ^{ self.pickerView.frame = endFrame; }
                          completion:^(BOOL finished) {
@@ -531,17 +475,72 @@ UIButton *btnDone;
     }
 }
 
+
+// set the title
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if(section == 0)
+    {
+        return @"Availbility";
+    }
+    else if(section == 1)
+    {
+        return @"Preference";
+    }
+    else
+    {
+        return nil;
+    }
+}
+
 -(void)stopRKLoading
 {
     [loadingAnimation hideHUDForView:self.view animated:YES];
 }
 // other code
 
+// set the height of picker
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if (pickerIsShown && indexPath.row == pickerRow && indexPath.section == 0) {
+        return self.pickerCellRowHeight;
+    }else if(indexPath.section == 1){
+        return self.tableView.rowHeight * 1.5;
+    }else{
+        return self.tableView.rowHeight;
+    }
+}
+
 -(void)dismissAlert:(UIAlertView *) alertView
 {
    [alertView dismissWithClickedButtonIndex:0 animated:YES];
 }
 
+-(void)dismissKeyboard {
+    [self.preferenceTextField resignFirstResponder];
+}
+/*
+// below are functions never use for reference
+- (void)updateDatePicker
+{
+    if (pickerIsShown)
+    {
+        NSIndexPath *targetedCellIndexPath = [NSIndexPath indexPathForRow:pickerRow inSection:0];
+        UITableViewCell *associatedDatePickerCell = [self.tableView cellForRowAtIndexPath:targetedCellIndexPath];
+        
+        UIDatePicker *targetedDatePicker = (UIDatePicker *)[associatedDatePickerCell viewWithTag:kDatePickerTag];
+        if (targetedDatePicker != nil)
+        {
+            if (pickerRow == 1) {
+                [targetedDatePicker setDate:startTime animated:NO];
+            }else{
+                [targetedDatePicker setDate:endTime animated:NO];
+            }
+        }
+    }
+}
+*/
 @end
 
 

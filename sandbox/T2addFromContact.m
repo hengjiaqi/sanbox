@@ -78,7 +78,6 @@ ABAddressBookRef addressBookRef;
         }else{
             [unregisteredContactsNumber addObject:number];
             [unregisteredContactsName addObject:[contacts objectForKey:number]];
-            
         }
     }
     
@@ -100,6 +99,7 @@ ABAddressBookRef addressBookRef;
         }
         
         NSString *fullName = [[NSString alloc]initWithFormat:@"%@ %@", firstNameString, lastNameString];
+        
         
         ABMultiValueRef phonesRef = ABRecordCopyValue(person, kABPersonPhoneProperty);
         for (int i=0; i<ABMultiValueGetCount(phonesRef); i++) {

@@ -163,8 +163,8 @@
     
     
 }
-
-
-
+-(void) deletedomain:(NSString *)domainName{
+    
+}
 
 @end

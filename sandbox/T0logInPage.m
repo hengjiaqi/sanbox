@@ -52,7 +52,7 @@ NSString *localAlarm;
     
     // Do any additional setup after loading the view.
     
-    
+      AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
     
     // delete the 6882;
     
@@ -62,7 +62,8 @@ NSString *localAlarm;
     // setup the on/off line friend list
     // for user 2 setup the photo  since cannot confirm new user.
     //[hp addAtrribute:@"2060000001" item:@"photoAttribute"
-    AmazonSimpleDBClient *sdb = [AmazonClientManager sdb];
+  
+ 
     SimpleDBReplaceableAttribute *photoAttribute = [[SimpleDBReplaceableAttribute alloc]  initWithName:@"photoAttribute" andValue:@"nil" andReplace:YES];
     SimpleDBReplaceableAttribute *photoAttribute1 = [[SimpleDBReplaceableAttribute alloc] initWithName:@"dummyAttribute" andValue:@"dummyAttribute" andReplace:YES];
     NSMutableArray *attributes1 = [[NSMutableArray alloc] initWithCapacity:2];
@@ -70,7 +71,9 @@ NSString *localAlarm;
     [attributes1 addObject:photoAttribute1];
     SimpleDBPutAttributesRequest *putAttributesRequest1 = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:@"2060000008" andItemName:@"photoProfileItem" andAttributes:attributes1];
     [sdb putAttributes:putAttributesRequest1];
-    
+    SimpleDBDeleteDomainRequest *deleteDomain = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2066608173"];
+    [sdb deleteDomain:deleteDomain];
+ 
 
 
     
