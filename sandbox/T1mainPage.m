@@ -51,6 +51,8 @@ FriendList *currentFriend;
     self.tabBarController.tabBar.userInteractionEnabled = NO;
     [loadingAnimation showHUDAddedTo:self.view animated:YES];
     [self loadFriends];
+    [self loadFriends];
+    [self loadFriends];
 }
 
 - (void)viewDidLoad
@@ -59,6 +61,7 @@ FriendList *currentFriend;
     NSLog(@"Tabs showed up!");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     USER_NAME = [defaults objectForKey:@"EAT2GETHER_ACCOUNT_NAME"];
+    
     self.s3 = [[AmazonS3Client alloc] initWithAccessKey:ACCESS_KEY_ID withSecretKey:SECRET_KEY];
     self.s3.endpoint = [AmazonEndpoints s3Endpoint:US_WEST_2];
     [self.tableView reloadData];
@@ -73,7 +76,8 @@ FriendList *currentFriend;
      */
     // reload the data
     
-    
+    [self loadFriends];
+    [self loadFriends];
 }
 - (void)viewDidDisappear:(BOOL)animated{
     [self loadFriends];
@@ -245,6 +249,7 @@ FriendList *currentFriend;
 // index path a list of numbers what row we looking at
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    simpleDBHelper *hp = [[simpleDBHelper alloc]init];
     static NSString *OnLineCellIndetifier = @"Available Friends";  // what type of cell  to actuall indentify use that in story board
     static NSString *OffLineCellIndetifier = @"UnAvailable Friends";
     // which friend we point at
@@ -290,8 +295,10 @@ FriendList *currentFriend;
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
         // Set the content type so that the browser will treat the URL as an image.
-        S3ResponseHeaderOverrides *override = [[S3ResponseHeaderOverrides alloc] init];
+        
+        /*S3ResponseHeaderOverrides *override = [[S3ResponseHeaderOverrides alloc] init];
         override.contentType = @"image/jpeg";
+        
         // Request a pre-signed URL to picture that has been uplaoded.
         S3GetPreSignedURLRequest *gpsur = [[S3GetPreSignedURLRequest alloc] init];
         gpsur.key                     = currentFriend.phoneNumber;
@@ -301,12 +308,28 @@ FriendList *currentFriend;
         // Get the URL
         NSError *error = nil;
         NSURL *url = [self.s3 getPreSignedURL:gpsur error:&error];
+         */
+        
+        
+        
+        NSString *geturl= [hp getAtrributeValue:currentFriend.phoneNumber item:@"photoUrlItem" attribute:@"photoUrlAttribute"];
+        
+        NSLog(@"da chu shenme lai le ne%@",geturl);
+        NSURL *url = [NSURL URLWithString:geturl];
+        
+        
+        
+        NSData *data = [NSData dataWithContentsOfURL: url];
+        UIImage *image = [UIImage imageWithData:data];
+        NSError *error = nil;
+        
+        
+        
         //      NSString *simpleDBURL = [url absoluteString];
         // try to put the url to simpledb
         // simpleDBHelper *hp = [[simpleDBHelper alloc]init];
         //  [hp updateAtrribute:USER_NAME item:@"photoProfileItem" attribute:@"photoAttribute" newValue:simpleDBURL];
-        NSData *data = [NSData dataWithContentsOfURL: url];
-        UIImage *image = [UIImage imageWithData:data];
+       
         if(url == nil)
         {
             NSLog(@"Errorhmgfjhgfjhgf: %@", error);
@@ -320,12 +343,15 @@ FriendList *currentFriend;
         else
         {
             dispatch_async(dispatch_get_main_queue(), ^{
+                
                 CGSize itemSize = CGSizeMake(40, 40);
                 UIGraphicsBeginImageContext(itemSize);
                 CGRect imageRect = CGRectMake(0.0, 0.3, itemSize.width, itemSize.height);
+               
                 [image drawInRect:imageRect];
                 cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
                 UIGraphicsEndImageContext();
+                
                 NSLog(@"get here?");
                 
             });

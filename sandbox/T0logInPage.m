@@ -71,8 +71,18 @@ NSString *localAlarm;
     [attributes1 addObject:photoAttribute1];
     SimpleDBPutAttributesRequest *putAttributesRequest1 = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:@"2060000008" andItemName:@"photoProfileItem" andAttributes:attributes1];
     [sdb putAttributes:putAttributesRequest1];
-    SimpleDBDeleteDomainRequest *deleteDomain = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2066608173"];
-    [sdb deleteDomain:deleteDomain];
+    
+//    
+//    SimpleDBDeleteDomainRequest *deleteDomain = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2066608173"];
+//    [sdb deleteDomain:deleteDomain];
+//    SimpleDBDeleteDomainRequest *deleteDomain1 = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000001"];
+//    [sdb deleteDomain:deleteDomain1];
+//    SimpleDBDeleteDomainRequest *deleteDomain2 = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000002"];
+//    [sdb deleteDomain:deleteDomain2];
+//    SimpleDBDeleteDomainRequest *deleteDomain3 = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000003"];
+//    [sdb deleteDomain:deleteDomain3];
+//    SimpleDBDeleteDomainRequest *deleteDomain4 = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:@"2060000004"];
+//    [sdb deleteDomain:deleteDomain4];
  
 
 

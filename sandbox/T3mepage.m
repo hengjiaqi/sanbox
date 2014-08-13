@@ -3,7 +3,7 @@
 //  sandbox
 //
 //  Created by wuyue on 3/28/14.
-//  Copyright (c) 2014 jake. All rights reserved.
+//  Copyright (c) 2014 jake and wuyue. All rights reserved.
 //
 
 #import "T3mepage.h"
@@ -54,7 +54,7 @@ NSString *imagecellID = @"imagecellID";
     NSLog(@"here mycurrentpassword password is , %@",mycurrentpassword);
     _me_NickName_textfield.text = myNickName;
     _NickNameLabel.text = myNickName;
-    sc.selectedSegmentIndex = -1;
+   // sc.selectedSegmentIndex = -1;
     
     self.s3 = [[AmazonS3Client alloc] initWithAccessKey:ACCESS_KEY_ID withSecretKey:SECRET_KEY];
     self.s3.endpoint = [AmazonEndpoints s3Endpoint:US_WEST_2];
@@ -139,17 +139,7 @@ NSString *imagecellID = @"imagecellID";
     [popup showInView:[UIApplication sharedApplication].keyWindow];
     
 }
-- (IBAction)camera {
-    picker2 = [[UIImagePickerController alloc] init];
-    picker2.delegate = self;
-    if(sc.selectedSegmentIndex == 0){
-        [picker2 setSourceType:UIImagePickerControllerSourceTypeCamera];
-    }
-    else if(sc.selectedSegmentIndex == 1){
-        [picker2 setSourceType:(UIImagePickerControllerSourceTypePhotoLibrary)];
-    }
-    [self presentViewController:picker2 animated:YES completion:nil];
-}
+
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
@@ -162,8 +152,21 @@ NSString *imagecellID = @"imagecellID";
     
     [self processGrandCentralDispatchUpload:imageData];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self dismissViewControllerAnimated:NO completion:^{
+        [self presentViewController:picker animated:YES completion:nil];
+    }];
+    
+    
 }
+
+
+
+
+
+
+
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -185,23 +188,24 @@ NSString *imagecellID = @"imagecellID";
         }
             // case 2 is photo
         case 2:{
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
             switch (buttonIndex){
                 case 0:
                     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-                        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+                         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
                         picker.delegate = self;
-                        picker.allowsEditing = YES;
-                        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                       // picker.allowsEditing = YES;
+                       
                         
                         [self presentViewController:picker animated:YES completion:NULL];
                     }
-                    //[picker2 setSourceType:(UIImagePickerControllerSourceTypeCamera)];
+          
                     break;
                 case 1:
                     NSLog(@"choose from photo");
-                    [picker2 setSourceType:(UIImagePickerControllerSourceTypePhotoLibrary)];
-          //          [self presentModalViewController:picker2 animated:YES];
-                    [self presentViewController:picker2 animated:YES completion:nil];
+                    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                      picker.delegate = self;
+                    [self presentViewController:picker animated:YES completion:nil];
                     break;
             }
         }
@@ -230,6 +234,8 @@ NSString *imagecellID = @"imagecellID";
     dispatch_async(queue, ^{
         
         // Set the content type so that the browser will treat the URL as an image.
+        
+        /*
         S3ResponseHeaderOverrides *override = [[S3ResponseHeaderOverrides alloc] init];
         override.contentType = @"image/jpeg";
         
@@ -246,15 +252,27 @@ NSString *imagecellID = @"imagecellID";
         // Get the URL
         NSError *error = nil;
         NSURL *url = [self.s3 getPreSignedURL:gpsur error:&error];
-        
+        */
   //      NSString *simpleDBURL = [url absoluteString];
         // try to put the url to simpledb
       // simpleDBHelper *hp = [[simpleDBHelper alloc]init];
       //  [hp updateAtrribute:USER_NAME item:@"photoProfileItem" attribute:@"photoAttribute" newValue:simpleDBURL];
         
+        // get the url from simpleBD
+        
+        
+        NSString *geturl= [hp getAtrributeValue:USER_NAME item:@"photoUrlItem" attribute:@"photoUrlAttribute"];
+        NSLog(@"da chu shenme lai le ne%@",geturl);
+        NSURL *url = [NSURL URLWithString:geturl];
+        
+        
         
         NSData *data = [NSData dataWithContentsOfURL: url];
         UIImage *image = [UIImage imageWithData:data];
+        NSError *error = nil;
+
+        
+        
         if(url == nil)
         {
             if(error != nil)
@@ -287,8 +305,7 @@ NSString *imagecellID = @"imagecellID";
         UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Change your Profile" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
                                 @"Take Photo",@"Choose Photo",
                                 nil];
-        picker2 = [[UIImagePickerController alloc] init];
-        picker2.delegate = self;
+   
         popup.tag = 2;
         [popup showInView:[UIApplication sharedApplication].keyWindow];
         
@@ -315,6 +332,27 @@ NSString *imagecellID = @"imagecellID";
             else
             {
                 [self showAlertMessage:@"The image was successfully uploaded." withTitle:@"Upload Completed"];
+                
+                S3ResponseHeaderOverrides *override = [[S3ResponseHeaderOverrides alloc] init];
+                override.contentType = @"image/jpeg";
+                
+                // Request a pre-signed URL to picture that has been uplaoded.
+                S3GetPreSignedURLRequest *gpsur = [[S3GetPreSignedURLRequest alloc] init];
+                gpsur.key                     = USER_NAME;
+                gpsur.bucket                  = [Constants pictureBucket];
+                gpsur.expires                 = [NSDate dateWithTimeIntervalSinceNow:(NSTimeInterval) 3600]; // Added an hour's worth of seconds to the current time.
+                gpsur.responseHeaderOverrides = override;
+                
+                
+                // Get the URL
+                NSError *error = nil;
+                NSURL *url = [self.s3 getPreSignedURL:gpsur error:&error];
+                NSString *simpleDBURL = [url absoluteString];
+                
+                // put the url on to the simpleDB
+                simpleDBHelper *hp = [[simpleDBHelper alloc]init];
+                [hp updateAtrribute:USER_NAME item:@"photoUrlItem" attribute:@"photoUrlAttribute" newValue:simpleDBURL];
+                
             }
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         });
@@ -329,6 +367,7 @@ NSString *imagecellID = @"imagecellID";
                                               otherButtonTitles:nil];
     [alertView show];
 }
+
 
 
 @end

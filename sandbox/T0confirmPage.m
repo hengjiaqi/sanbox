@@ -178,11 +178,11 @@
     
     // photoProfileItem
     NSMutableArray *attributes1 = [[NSMutableArray alloc] initWithCapacity:2];
-    SimpleDBReplaceableAttribute *photoAttribute = [[SimpleDBReplaceableAttribute alloc]  initWithName:@"photoAttribute" andValue:@"nil" andReplace:YES];
+    SimpleDBReplaceableAttribute *photoAttribute = [[SimpleDBReplaceableAttribute alloc]  initWithName:@"photoUrlAttribute" andValue:@"nil" andReplace:YES];
     SimpleDBReplaceableAttribute *photoAttribute1 = [[SimpleDBReplaceableAttribute alloc] initWithName:@"dummyAttribute" andValue:@"dummyAttribute" andReplace:YES];
     [attributes1 addObject:photoAttribute];
     [attributes1 addObject:photoAttribute1];
-    SimpleDBPutAttributesRequest *putAttributesRequest1 = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"photoProfileItem" andAttributes:attributes1];
+    SimpleDBPutAttributesRequest *putAttributesRequest1 = [[SimpleDBPutAttributesRequest alloc] initWithDomainName:self.registerPhoneNumber andItemName:@"photoUrlItem" andAttributes:attributes1];
     [sdb putAttributes:putAttributesRequest1];
     
     

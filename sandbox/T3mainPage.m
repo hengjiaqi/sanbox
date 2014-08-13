@@ -14,7 +14,7 @@
 
 //#import "FriendListTableViewController.m"
 NSString *USER_NAME;
-//NSString *GNickname;
+NSString *GNickname;
 NSString *startTimeFromDefault;
 NSString *endTimeFromDefault;
 NSString *preferenceFromDefault;
@@ -115,6 +115,17 @@ UIButton *btnDone;
 }
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if (pickerIsShown && indexPath.row == pickerRow && indexPath.section == 0) {
+        return self.pickerCellRowHeight;
+    }else if(indexPath.section == 1){
+        return self.tableView.rowHeight * 1.5;
+    }else{
+        return self.tableView.rowHeight;
+    }
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -300,6 +311,13 @@ UIButton *btnDone;
                 newStartDate = [df dateFromString:startTimeFromDefault];
                 NSDate *newEndDate = [[NSDate alloc]init];
                 newEndDate = [df dateFromString:endTimeFromDefault];
+                //// here the stringtype start time and date type start time is different
+                NSLog(@"String type startTimeFromDefault %@",startTimeFromDefault);
+                NSLog(@"NSdata type startTime %@",newStartDate);
+                NSLog(@"String type endTimeFromDefault %@",endTimeFromDefault);
+                NSLog(@"NSdata type newEndDate %@",newEndDate);
+                
+                
                 if ([newStartDate compare:newEndDate] == NSOrderedAscending) {
                     valid = YES;
                 }
@@ -378,6 +396,49 @@ UIButton *btnDone;
     targetedCellIndexPath = [NSIndexPath indexPathForRow:pickerRow - 1 inSection:0];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:targetedCellIndexPath];
     UIDatePicker *targetedDatePicker = sender;
+    
+    // as long as user click on the picker the make me button off!
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    simpleDBHelper *hp = [[simpleDBHelper alloc]init];
+
+    if ([availableFromDefault isEqualToString:@"online"]) {
+        
+      //  UITableViewCell *cell = [tableView CellWithIdentifier:@"kNormalCellID" forIndexPath:3];
+        
+        NSIndexPath *targetedCellIndexPath = nil;
+        targetedCellIndexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:targetedCellIndexPath];
+        
+        cell.textLabel.text = @"Make Me Available";
+        cell.textLabel.textColor = [UIColor greenColor];
+        [loadingAnimation showHUDAddedTo:self.view animated:YES];
+        _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(_queue, ^{
+            NSString *dummy = [hp getAtrributeValue:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute"];
+            [hp updateAtrribute:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute" newValue:@"offline"];
+            [defaults setObject:@"offline" forKey:@"USER_SWITCH_DEFAULT"];
+            availableFromDefault = @"offline";
+            while ([dummy isEqualToString:@"online"]) {
+                dummy = [hp getAtrributeValue:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute"];
+                [hp updateAtrribute:USER_NAME item:@"onlineItem" attribute:@"onlineAttribute" newValue:@"offline"];
+            }
+            NSLog(@"It was on, and will be turned off");
+            dispatch_async(dispatch_get_main_queue(),^{
+                //To show the Indicator
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"You are unavailable." delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+                [alert show];
+                [self performSelector:@selector(stopRKLoading) withObject:nil];
+                [self performSelector:@selector(dismissAlert:) withObject:alert afterDelay:1.0f];
+            });
+        });
+        //To show the Indicator
+        [loadingAnimation showHUDAddedTo:self.view animated:YES];
+        //Call the method to hide the Indicator after 3 seconds
+        [self performSelector:@selector(stopRKLoading) withObject:nil];
+    }
+    
+    
+    
     if (pickerRow == 1) {
         startTime = targetedDatePicker.date;
     }else{
@@ -385,8 +446,7 @@ UIButton *btnDone;
     }
     cell.detailTextLabel.text = [self.dateFormatter stringFromDate:targetedDatePicker.date];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    simpleDBHelper *hp = [[simpleDBHelper alloc]init];
+   
     if (targetedCellIndexPath.row == 0) {
         if ([availableFromDefault isEqualToString:@"online"]) {
             
@@ -402,6 +462,7 @@ UIButton *btnDone;
             });
         }
         [defaults setObject:cell.detailTextLabel.text forKey:@"USER_START_DEFAULT"];
+        startTimeFromDefault =cell.detailTextLabel.text;
     }else{
         if ([availableFromDefault isEqualToString:@"online"]) {
             _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -416,13 +477,46 @@ UIButton *btnDone;
             });
         }
         [defaults setObject:cell.detailTextLabel.text forKey:@"USER_END_DEFAULT"];
+        endTimeFromDefault = cell.detailTextLabel.text;
     }
     [defaults synchronize];
 }
 
 
+- (void)updateDatePicker
+{
+    if (pickerIsShown)
+    {
+        NSIndexPath *targetedCellIndexPath = [NSIndexPath indexPathForRow:pickerRow inSection:0];
+        UITableViewCell *associatedDatePickerCell = [self.tableView cellForRowAtIndexPath:targetedCellIndexPath];
+        
+        UIDatePicker *targetedDatePicker = (UIDatePicker *)[associatedDatePickerCell viewWithTag:kDatePickerTag];
+        if (targetedDatePicker != nil)
+        {
+            if (pickerRow == 1) {
+                [targetedDatePicker setDate:startTime animated:NO];
+            }else{
+                [targetedDatePicker setDate:endTime animated:NO];
+            }
+        }
+    }
+}
 
-
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if(section == 0)
+    {
+        return @"Availbility";
+    }
+    else if(section == 1)
+    {
+        return @"Preference";
+    }
+    else
+    {
+        return nil;
+    }
+}
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
 {
@@ -446,6 +540,9 @@ UIButton *btnDone;
 }
 
 
+-(void)dismissKeyboard {
+    [self.preferenceTextField resignFirstResponder];
+}
 
 - (void)displayExternalDatePickerForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -475,72 +572,17 @@ UIButton *btnDone;
     }
 }
 
-
-// set the title
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if(section == 0)
-    {
-        return @"Availbility";
-    }
-    else if(section == 1)
-    {
-        return @"Preference";
-    }
-    else
-    {
-        return nil;
-    }
-}
-
 -(void)stopRKLoading
 {
     [loadingAnimation hideHUDForView:self.view animated:YES];
 }
 // other code
 
-// set the height of picker
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    if (pickerIsShown && indexPath.row == pickerRow && indexPath.section == 0) {
-        return self.pickerCellRowHeight;
-    }else if(indexPath.section == 1){
-        return self.tableView.rowHeight * 1.5;
-    }else{
-        return self.tableView.rowHeight;
-    }
-}
-
 -(void)dismissAlert:(UIAlertView *) alertView
 {
    [alertView dismissWithClickedButtonIndex:0 animated:YES];
 }
 
--(void)dismissKeyboard {
-    [self.preferenceTextField resignFirstResponder];
-}
-/*
-// below are functions never use for reference
-- (void)updateDatePicker
-{
-    if (pickerIsShown)
-    {
-        NSIndexPath *targetedCellIndexPath = [NSIndexPath indexPathForRow:pickerRow inSection:0];
-        UITableViewCell *associatedDatePickerCell = [self.tableView cellForRowAtIndexPath:targetedCellIndexPath];
-        
-        UIDatePicker *targetedDatePicker = (UIDatePicker *)[associatedDatePickerCell viewWithTag:kDatePickerTag];
-        if (targetedDatePicker != nil)
-        {
-            if (pickerRow == 1) {
-                [targetedDatePicker setDate:startTime animated:NO];
-            }else{
-                [targetedDatePicker setDate:endTime animated:NO];
-            }
-        }
-    }
-}
-*/
 @end
 
 
