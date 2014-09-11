@@ -317,27 +317,21 @@ FriendList *currentFriend;
         NSLog(@"da chu shenme lai le ne%@",geturl);
         NSURL *url = [NSURL URLWithString:geturl];
         
-        
-        
         NSData *data = [NSData dataWithContentsOfURL: url];
         UIImage *image = [UIImage imageWithData:data];
         NSError *error = nil;
-        
-        
-        
         //      NSString *simpleDBURL = [url absoluteString];
         // try to put the url to simpledb
         // simpleDBHelper *hp = [[simpleDBHelper alloc]init];
         //  [hp updateAtrribute:USER_NAME item:@"photoProfileItem" attribute:@"photoAttribute" newValue:simpleDBURL];
-       
-        if(url == nil)
-        {
+        if(url == nil){
             NSLog(@"Errorhmgfjhgfjhgf: %@", error);
-            if(error != nil)
-            {
+            if(error != nil){
                 dispatch_async(dispatch_get_main_queue(), ^{
                     NSLog(@"Error: %@", error);
                 });
+            }else{
+                NSLog(@"the profile pic is missing");
             }
         }
         else

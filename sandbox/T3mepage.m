@@ -152,11 +152,11 @@ NSString *imagecellID = @"imagecellID";
     
     [self processGrandCentralDispatchUpload:imageData];
     
-    //[self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
-    [self dismissViewControllerAnimated:NO completion:^{
-        [self presentViewController:picker animated:YES completion:nil];
-    }];
+    //[self dismissViewControllerAnimated:NO completion:^{
+      //  [self presentViewController:picker animated:YES completion:nil];
+    //}];
     
     
 }
@@ -245,34 +245,24 @@ NSString *imagecellID = @"imagecellID";
         gpsur.bucket                  = [Constants pictureBucket];
         gpsur.expires                 = [NSDate dateWithTimeIntervalSinceNow:(NSTimeInterval) 3600]; // Added an hour's worth of seconds to the current time.
         gpsur.responseHeaderOverrides = override;
-        
-        
-        
-        
         // Get the URL
         NSError *error = nil;
         NSURL *url = [self.s3 getPreSignedURL:gpsur error:&error];
         */
-  //      NSString *simpleDBURL = [url absoluteString];
+      //      NSString *simpleDBURL = [url absoluteString];
         // try to put the url to simpledb
       // simpleDBHelper *hp = [[simpleDBHelper alloc]init];
       //  [hp updateAtrribute:USER_NAME item:@"photoProfileItem" attribute:@"photoAttribute" newValue:simpleDBURL];
         
         // get the url from simpleBD
-        
-        
         NSString *geturl= [hp getAtrributeValue:USER_NAME item:@"photoUrlItem" attribute:@"photoUrlAttribute"];
         NSLog(@"da chu shenme lai le ne%@",geturl);
         NSURL *url = [NSURL URLWithString:geturl];
-        
-        
         
         NSData *data = [NSData dataWithContentsOfURL: url];
         UIImage *image = [UIImage imageWithData:data];
         NSError *error = nil;
 
-        
-        
         if(url == nil)
         {
             if(error != nil)
@@ -332,6 +322,7 @@ NSString *imagecellID = @"imagecellID";
             else
             {
                 [self showAlertMessage:@"The image was successfully uploaded." withTitle:@"Upload Completed"];
+
                 
                 S3ResponseHeaderOverrides *override = [[S3ResponseHeaderOverrides alloc] init];
                 override.contentType = @"image/jpeg";
